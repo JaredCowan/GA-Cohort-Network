@@ -1,0 +1,14 @@
+<%= form_for(@current_user) do |f| %>
+  <%#= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+
+  <%= f.label :user_name %>
+  <%= f.text_field :user_name %>
+
+  <%= f.submit "Update my account", class: "button" %>
+<% end %>

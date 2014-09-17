@@ -5,12 +5,6 @@ class UserFriendshipsController < ApplicationController
   def index
     @user_friendships = UserFriendshipDecorator.decorate_collection(friendship_association.all)
     respond_with @user_friendships
-    
-
-    # respond_to do |format|
-    #   format.html
-    #   format.json { render json: @user_friendships.to_json}
-    # end
   end
 
   def accept
@@ -36,7 +30,7 @@ class UserFriendshipsController < ApplicationController
 
   def new
     if params[:friend_id]
-      @friend = User.where(user_id: params[:friend_id]).first
+      @friend = User.where(user_id: params[:id]).first
       raise ActiveRecord::RecordNotFound if @friend.nil?
       @user_friendship = current_user.user_friendships.new(friend: @friend)
     else

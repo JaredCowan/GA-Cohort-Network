@@ -16,7 +16,7 @@
   <% if current_user.requested_user_friendships.length > 0 %>
 
   <dd class="<%= 'active' if params[:list] == "requested" %>">
-    <%= user_friendships_path(list: 'requested') %>">Requested<span class="badge">
+    <%= link_to "Requested", user_friendships_path(list: 'requested') %><span class="label round">
       <%= current_user.requested_user_friendships.length.to_s %></span>
   </dd> 
 
@@ -47,7 +47,7 @@
     <div class="media-body">
       <h4 class="media-heading"><%= friend.full_name %></h4>
       <em>Friendship is <%= friendship.state %></em>. <br />
-      <%= link_to "#{friendship.update_action_verbiage}", edit_user_friendship_path(friend.full_name), class: 'btn btn-small' %>
+      <%= link_to "#{friendship.update_action_verbiage}", edit_user_friendship_path(friend), class: 'button' %>
     </div>
   </div>
 <% end %>

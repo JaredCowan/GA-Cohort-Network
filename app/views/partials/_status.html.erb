@@ -1,4 +1,7 @@
 <center>
+<div class="row">
+  <div class="small-7 small-centered columns">
+
   <form accept-charset="UTF-8" action="/statuses" class="simple_form form-horizontal" enctype="multipart/form-data" id="new_status" method="post" novalidate="novalidate">
 
     <div style="display:none">
@@ -6,6 +9,13 @@
       <input name="authenticity_token" type="hidden" value="p3Uk9tIkbnhmFCekzz+NNQ61/yiKzbTJ6MQL7hzesu4=" />
     </div>
     
+    <div class="control-group text required status_subject">
+      <label class="text required control-label" for="status_subject">
+      <div class="controls">
+        <textarea class="tinymce" id="status_subject" name="status[subject]" placeholder="Subject"></textarea>
+      </div>
+    </div>
+
     <div class="control-group text required status_content">
       <label class="text required control-label" for="status_content">
       <div class="controls">
@@ -13,10 +23,13 @@
       </div>
     </div>
 
-    
-    <div class="actions">
-      <input class="file optional" id="status_document_attributes_attachment" name="status[document_attributes][attachment]" type="file" value="Upload Photo"/>
-      <input id="btn2" class="comment_button btn-xs btn btn-success" name="commit" type="submit" value="Create Status"/>
+    <div class="actions row">
+      <div class="medium-6 columns">
+      <input class="file optional" id="status_document_attributes_attachment" name="status[document_attributes][attachment]" type="file" value="Upload Photo"/> </div>
+      <div class="medium-6 columns">
+      <input id="btn2" class="button success" name="commit" type="submit" value="Create Status"/></div>
     </div>
   </form>
 </center>
+</div>
+</div>

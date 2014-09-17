@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :statuses
-
+  get 'friends', to: 'user_friendships#index', as: :friends
   get 'forum', to: 'statuses#index', as: :forum
   get '/profile/:id', to: 'profiles#show', as: :profile_page
 

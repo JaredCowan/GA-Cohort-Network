@@ -1,9 +1,32 @@
 <div class="row">
   <div class="large-12 columns text-center">
     <%= render :partial => "partials/status" %>
-    <%= render "all_statuses" %>
+    <%#= render "all_statuses" %>
+    <div class="row">
+  <div class="large-12 columns text-center">
+    <% @statuses.each do |status| %>
+      <% if can_display_status?(status) %>
+        <div class="panel">
+        <strong><%= link_to status.user.full_name, profile_page_path(status.user) %></strong>
+          <ul class="no-bullet">
+          <li> <%= status.subject %> </li>
+          <li> <%= status.content %> </li>
+
+          <% if status.document %>
+            <p> <%= image_tag status.document.attachment.url %> </p>
+          <% end %>
+
+          <% if status.user == current_user%>
+            <li><%= link_to 'Edit', edit_status_path(status) %></li>
+            <li><%= link_to 'Delete', status, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+
+           <em><%= link_to time_ago_in_words(status.created_at) + " ago", status %></em>
+           <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
-
-<div id="reload-statuses-partial">
+</div>
 </div>
