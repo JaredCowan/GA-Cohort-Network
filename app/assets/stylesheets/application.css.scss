@@ -1,0 +1,70 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require foundation_and_overrides
+ */
+@import 'foundation-icons';
+@import "foundation/components/offcanvas";
+
+/* Override for menu to be full width */
+.off-canvas-wrap, .inner-wrap { height: 100%; }
+.icon-bar > * {
+  font-size: 1rem;
+  padding: 0;
+  zoom:120%;
+}
+.tab-bar {
+  margin-bottom: 60px;
+}
+.clearing-close {
+  right: 70px;
+}
+#thumbnail {
+  width:  100px;
+  height: 100px;
+}
+.hold-canvas {
+  height: 100%;
+}
+.hold-canvas .inner-wrap{
+  height: 100%;
+}
+.online:after {
+  color: green!important;
+  content: " - Online"
+}
+.idle:after {
+  color: #E5E500!important;
+  content: " - Idle"
+}
+.offline:after {
+  color: red!important;
+  content: " - Offline"
+}
+#flash-alert {
+  margin: 14px auto;
+  width: 70%;
+}
+.alert-box .close {
+  color: #fff;
+  opacity: 1;
+}
+#alert-div {
+  margin-top: -30px;
+  margin-bottom: 30px;
+  height: 40px;
+}
+body { 
+  height: 100%; 
+}

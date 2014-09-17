@@ -1,0 +1,22 @@
+<center>
+  <form accept-charset="UTF-8" action="/statuses" class="simple_form form-horizontal" enctype="multipart/form-data" id="new_status" method="post" novalidate="novalidate">
+
+    <div style="display:none">
+      <input name="utf8" type="hidden" value="&#x2713;"/>
+      <input name="authenticity_token" type="hidden" value="p3Uk9tIkbnhmFCekzz+NNQ61/yiKzbTJ6MQL7hzesu4=" />
+    </div>
+    
+    <div class="control-group text required status_content">
+      <label class="text required control-label" for="status_content">
+      <div class="controls">
+        <textarea class="tinymce" id="status_content" name="status[content]" placeholder="New Post"></textarea>
+      </div>
+    </div>
+
+    
+    <div class="actions">
+      <input class="file optional" id="status_document_attributes_attachment" name="status[document_attributes][attachment]" type="file" value="Upload Photo"/>
+      <input id="btn2" class="comment_button btn-xs btn btn-success" name="commit" type="submit" value="Create Status"/>
+    </div>
+  </form>
+</center>

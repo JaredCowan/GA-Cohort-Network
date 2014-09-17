@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="small-5 columns">
+    <form data-abide accept-charset="UTF-8" action="/sessions" class="simple_form session" method="post" novalidate="novalidate">
+      <div style="display:none">
+        <input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="Z8om645E2k/dk6PFr7L7vg/ANYvbJBpTFAF1SmuE+WM=">
+      </div>
+      <div class="form-group email-field">
+        <label>Email <small>required</small>
+        <input class="form-control" id="session_email" name="session[email]" placeholder="your email address.." type="text" required>
+        <small class="error">An email address is required.</small>
+        </label>
+      </div>
+      <div class="form-group password-field">
+        <label>Password <small>required</small>
+        <input class="form-control" id="session_password" name="session[password]" placeholder="password ..." type="password" required pattern="[a-zA-Z0-9]+">
+        </label>
+        <small class="error">Your password must match the requirements</small>
+      </div>
+      <div class="form-group">
+        <button type="submit" value="Log me in">Submit</button>
+        <!-- <br /> -->
+        <%= link_to("Sign Up", signup_path, class: 'button right') %>
+      </div>
+    </form>
+  </div>
+</div>
