@@ -1,7 +1,19 @@
 <div class="row">
   <div class="large-12 columns text-center">
-    <%= render :partial => "partials/status" %>
+    
+    <a href="#" data-reveal-id="newhelp" class="radius button">Post new question&hellip;</a>
+
+    <!-- Reveal Modals begin -->
+<div id="newhelp" class="reveal-modal" data-reveal>
+  <%= render :partial => "partials/status" %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
     <%#= render "all_statuses" %>
+
+
+
+
     <div class="row">
   <div class="large-12 columns text-center">
     <% @statuses.each do |status| %>

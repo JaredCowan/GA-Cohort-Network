@@ -1,6 +1,5 @@
 class StatusesController < ApplicationController
   before_action :signed_in_user
-  # , only: [:new, :show, :create, :edit, :update, :destroy]
   respond_to :json
 
   def index
