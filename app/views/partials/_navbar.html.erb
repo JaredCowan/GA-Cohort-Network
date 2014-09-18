@@ -1,56 +1,57 @@
 <div class="off-canvas-wrap" data-offcanvas>
-        <div class="inner-wrap">
-          <nav class="tab-bar">
+  <div class="inner-wrap">
+    <nav class="tab-bar">
 
-            <div class="icon-bar one-up">
-              <section class="left-small">
-              <a class="left-off-canvas-toggle item"><i class="fi-home"></i>
-              </section></a>
-            </div>
+      <div class="icon-bar one-up">
+        <section class="left-small">
+        <a class="left-off-canvas-toggle item"><i class="fi-home"></i>
+        </section></a>
+      </div>
 
-            <section class="middle tab-bar-section">
-              <h1 class="title"><%= signed_in? ? "Hello,\s" + current_user.full_name + "." : "GA Community" %></h1>
-            </section>
+      <section class="middle tab-bar-section">
+        <h1 class="title"><%= signed_in? ? "Hello,\s" + current_user.full_name + "." : "GA Community" %></h1>
+      </section>
 
-            <div class="icon-bar one-up">
-              <section class="right-small">
-              <% if signed_in? %>
-                <a class="right-off-canvas-toggle"><i class="fi-torsos"></i>
-                </section></a>
-              <% end %>
-            </div>
-          </nav>
+      <div class="icon-bar one-up">
+        <section class="right-small">
+        <% if signed_in? %>
+          <a class="right-off-canvas-toggle"><i class="fi-torsos"></i>
+          </section></a>
+        <% end %>
+      </div>
+    </nav>
 
-          <aside class="left-off-canvas-menu">
-            <ul class="off-canvas-list">
-              <li><label>Account</label></li>
-              <li> <%= navbar_home_link %> </li>
-              <li> <%= friendship_path %> </li>
-              <li> <%= login_logout_link %> </li>
-              <li><label>Get Help</label></li>
-              <li> <%= forum_path %> </li>
+    <aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <li><label>Account</label></li>
+        <li> <%= navbar_home_link %> </li>
+        <li> <%= friendship_path %> </li>
+        <li> <%= link_to "Edit profile", edit_user_path(current_user) %> </li>
+        <li> <%= login_logout_link %> </li>
+        <li><label> <%= "Get Help" if signed_in? %> </label></li>
+        <li> <%= forum_path %> </li>
+      </ul>
+    </aside>
+
+    <aside class="right-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <li><label>Classmates</label></li>
+        <% User.order(updated_at: :desc).each do |u| %>
+        <li class="has-submenu">
+              <%= user_online(u) %>
+            <ul class="right-submenu">
+              <li class="back"><a href="#">Back</a></li>
+              <li><label><%= u.full_name %>
+              </label></li>
+              <li> <%= link_to "Profile", user_path(u) %> </li>
             </ul>
-          </aside>
+          
+          <% end %>
+        </li>
+      </ul>
+    </aside>
 
-          <aside class="right-off-canvas-menu">
-            <ul class="off-canvas-list">
-              <li><label>Classmates</label></li>
-              <% User.order(updated_at: :desc).each do |u| %>
-              <li class="has-submenu">
-                    <%= user_online(u) %>
-                  <ul class="right-submenu">
-                    <li class="back"><a href="#">Back</a></li>
-                    <li><label><%= u.full_name %>
-                    </label></li>
-                    <li> <%= link_to "Profile", user_path(u) %> </li>
-                  </ul>
-                
-                <% end %>
-              </li>
-            </ul>
-          </aside>
-
-          <section class="main-section">
-            <!-- content goes here -->
-          </section>
+    <section class="main-section">
+      <!-- content goes here -->
+    </section>
 <!-- Divs closed on layouts/application.html.erb -->

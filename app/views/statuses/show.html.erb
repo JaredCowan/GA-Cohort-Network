@@ -20,6 +20,10 @@
     <p><%= image_tag @status.document.attachment.url %></p>
   <% end %>
 </p>
+
+
+
+
 <div class="col-md-11">
   <% if @status.user == current_user || current_user.superadmin %>
     <div class="btn-group pull-right">
@@ -34,4 +38,28 @@
       </ul>
     </div>
   <% end %>
+</div>
+
+<div class="row">
+  <div class="small-5 columns">
+<% if @status.comments.length > 0 %>
+  <% @status.comments.each do |comment| %>
+  <%= link_to comment.user.full_name, comment.user %> <br />
+  <%= avatar_url %>
+  <%= comment.body %> <br />
+  <%= "Posted\s" + time_ago_in_words(comment.created_at) + "\sago" %> <br />
+  <% end %>
+  <h2>Comments Form</h2>
+  <% end %>
+
+<%= form_for([@status, @status.comments.build]) do |f| %>
+
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+  <%= f.hidden_field :user_id, :value => current_user.user_id %>
+
+  <%= f.submit %>
+
+<% end %>
+</div>
 </div>

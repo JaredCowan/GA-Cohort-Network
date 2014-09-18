@@ -10,23 +10,24 @@
         <strong><%= link_to status.user.full_name, profile_page_path(status.user) %></strong>
           <ul class="no-bullet">
           <li> <%= status.subject %> </li>
-          <li> <%= status.content %> </li>
+          <li> <%#= status.content %> </li>
 
-          <% if status.document %>
-            <p> <%= image_tag status.document.attachment.url %> </p>
-          <% end %>
+          <%# if status.document %>
+            <p> <%#= image_tag status.document.attachment.url %> </p>
+          <%# end %>
 
-          <% if status.user == current_user%>
-            <li><%= link_to 'Edit', edit_status_path(status) %></li>
-            <li><%= link_to 'Delete', status, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          <%# if status.user == current_user%>
+            <li><%#= link_to 'Edit', edit_status_path(status) %></li>
+            <li><%#= link_to 'Delete', status, method: :delete, data: { confirm: 'Are you sure?' } %></li>
 
-           <em><%= link_to time_ago_in_words(status.created_at) + " ago", status %></em>
-           <% end %>
+           <em><%= link_to "Posted\s" + time_ago_in_words(status.created_at) + "\sago", status %></em>
+           <%# end %>
+           <em> <br />
+             <%= link_to(status.comments.length.to_s + "\s comments", status) %>
+           </em>
           </ul>
         </div>
       <% end %>
     <% end %>
   </div>
-</div>
-</div>
 </div>

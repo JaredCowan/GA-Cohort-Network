@@ -12,6 +12,14 @@ module ApplicationHelper
 
   def friendship_path
     link_to "Friends", user_friendships_path if signed_in?
+  end
+
+  # def edit_user_path
+  #   link_to "Edit profile", edit_user_path(current_user)
+  # end 
+
+  def full_name
+    first_name + '\s' + last_name
   end 
 
   def forum_path

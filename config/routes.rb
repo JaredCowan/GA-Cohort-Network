@@ -5,11 +5,16 @@ Rails.application.routes.draw do
   
   root :to => 'static_pages#home'
     match '/signup',    to: 'users#new',              via: 'get'
+    match '/users/:id/edit',      to: 'users#edit',             via: 'get'
     match '/signin',    to: 'sessions#new',           via: 'get'
     match '/signout',   to: 'sessions#destroy',       via: 'delete'
     match '/home',      to: 'static_pages#home',      via: 'get'
     match '/dashboard', to: 'static_pages#dashboard', via: 'get'
 
+  resources :statuses do 
+    resources :comments
+  end  
+    
   resources :user_friendships do
     member do
       put :accept

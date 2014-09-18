@@ -2,6 +2,7 @@ class Status < ActiveRecord::Base
   # attr_accessible :content, :document_attributes
   belongs_to :user
   belongs_to :document
+  has_many :comments
 
   accepts_nested_attributes_for :document
 
