@@ -42,13 +42,13 @@ class UserFriendship < ActiveRecord::Base
     end
   end
 
-  def send_request_email
-    UserNotifier.friend_requested(id).deliver
-  end
+  # def send_request_email
+  #   UserNotifier.friend_requested(id).deliver
+  # end
 
-  def send_acceptance_email
-    UserNotifier.friend_request_accepted(id).deliver
-  end
+  # def send_acceptance_email
+  #   UserNotifier.friend_request_accepted(id).deliver
+  # end
 
   def mutual_friendship
     self.class.where({user_id: friend_id, friend_id: user_id}).first

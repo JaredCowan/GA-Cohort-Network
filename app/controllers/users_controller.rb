@@ -7,8 +7,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @users.to_json(
-         include: [:friends]) }
+      format.json { render json: @users.to_json(only: [:id],
+         include: [:statuses]) }
     end
   end
 

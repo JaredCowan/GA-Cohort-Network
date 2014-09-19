@@ -12,13 +12,14 @@
       </div>
     <% end %>
 
+    <%= f.input :subject %>
     <%= f.input :content %>
     <%= f.fields_for :document do |document_fields| %>
-    <%= document_fields.input :attachment, as: :file %>
+      <%= document_fields.input :attachment, as: :file %>
     <% end %>
 
     <span class="actions">
-      <%= f.button :submit, class: 'btn btn-primary' %>
+      <%= f.button :submit, class: 'button round success' %>
     </span>
   <% end %>
 </div>

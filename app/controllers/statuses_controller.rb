@@ -27,7 +27,7 @@ class StatusesController < ApplicationController
   def new
     # @status = Status.new
     @status = current_user.statuses.new
-    @attachment.build_document
+    # @attachment.build_document
 
     respond_to do |format|
       format.html
@@ -55,7 +55,7 @@ class StatusesController < ApplicationController
 
   def update
 
-    if current_user.superadmin == true
+    if current_user
       @status = Status.find(params[:id])
       @document = @status.document
     else
@@ -69,7 +69,7 @@ class StatusesController < ApplicationController
 
     respond_to do |format|
       if @status.update_attributes(status_params)
-        format.html { redirect_to :forum, notice: 'Status was successfully updated.' }
+        format.html { redirect_to status_path(@status), notice: 'Status was successfully updated.' }
         format.json { head :no_content }
       else
         redirect_to :forum
