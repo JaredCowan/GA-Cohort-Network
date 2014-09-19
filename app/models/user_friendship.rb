@@ -20,6 +20,10 @@ class UserFriendship < ActiveRecord::Base
     end
   end
 
+  def name_with_initial
+    "#{friend.email}"
+  end
+
   validate :not_blocked
 
   def self.request(user1, user2)

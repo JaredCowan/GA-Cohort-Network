@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :user_name, :email, :password, :password_confirmation, :friend, :user_id, :friend_id, :state)
   end
 
-  #  def user_friendship
-  #   params.require(:user_friendship).permit(:user_id, :friend_id, :user, :friend, :state, :user_friendship)
-  # end  
+   def user_friendship
+    params.require(:user_friendship).permit(:user_id, :friend_id, :user, :friend, :state, :user_friendship)
+  end  
 end # End controller

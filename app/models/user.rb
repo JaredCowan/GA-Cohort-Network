@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
                                       foreign_key: :user_id
   has_many :accepted_friends, through: :accepted_user_friendships, source: :friend
 
+
   def self.get_gravatars
     all.each do |user|
       if user
@@ -45,6 +46,10 @@ class User < ActiveRecord::Base
         print "."
       end
     end
+  end
+
+  def name_with_initial
+    "#{full_name}"
   end
 
   def self.online_now

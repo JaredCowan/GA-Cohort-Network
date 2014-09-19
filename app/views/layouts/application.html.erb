@@ -14,7 +14,7 @@
     
     <div id="alert-div">
       <%= render :partial => "partials/flash_alert" %>
-    </div>  
+    </div>
 
     <div class="container">
 
@@ -31,11 +31,9 @@
           
           <div class="row">
             <div class="large-12 columns text-center">
-              <!-- <a href="#" data-reveal-id="myModal">Click Me For A Modal</a> -->
-
-<div id="myModal" class="reveal-modal" data-reveal>
-  <%= render :partial => "partials/status" %>
-</div>
+              <div id="myModal" class="reveal-modal" data-reveal>
+                <%= render :partial => "partials/status" %>
+              </div>
             </div>
           </div>
         </div>
@@ -50,20 +48,22 @@
 
       <script>
         $(function(){ $(document).foundation();});
+        $(document).foundation('joyride', 'start');
       </script>
-      <script>
 
+      <script>
         $('#calendar').fullCalendar({
           header: {
             left: 'prev,next today',
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
            },
+            selectable: true,
 
-          dayClick: function(start, end) {
+          dayClick: function() {
+            $('#myModal').foundation('reveal', 'open', '');
+          },
 
-        $('#myModal').foundation('reveal', 'open', '');
-    },
           events: {
             url: '/forum.json',
             type: 'GET',
@@ -71,11 +71,10 @@
               console.log("Calendar data successfully received.")
             },
             error: function() {
-              alert('there was an error while fetching events!');
+              console.log('there was an error while fetching events!');
             },
-            // color:     'yellow',  
-            // textColor:  'black'
-          }
+            textColor:  'black'
+          },
         });
       </script>
 

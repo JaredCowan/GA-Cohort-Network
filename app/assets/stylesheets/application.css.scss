@@ -19,7 +19,7 @@
 @import "foundation/components/offcanvas";
 
 /* Override for menu to be full height */
-// .off-canvas-wrap, .inner-wrap { height: 100%; }
+.off-canvas-wrap, .inner-wrap { min-height: 900px; }
 .icon-bar > * {
   font-size: 1rem;
   padding: 0;
@@ -66,6 +66,22 @@
   margin-bottom: 30px;
   height: 40px;
 }
+.calendar-wrapper {
+  height: 70%;
+  width: 90%;
+  margin: 0 auto;
+}
 body { 
   height: 100%; 
 }
+.fc-widget-content:hover {
+  background-color: lightblue;
+}
+div .fc-event-inner {
+  background-color: #32a3c7;
+  padding: 3px;
+}
+div .fc-event-inner:hover {
+  background-color: #007ea7;
+}
+

@@ -1,3 +1,5 @@
+<%= collection_select(:users, :users, current_user.friends, :email, :name_with_initial, prompt: true) %>
+
 <%= "Name:\s" %> <%= link_to @user.full_name.titleize, user_path(@user.id) %> <br />
 <% if signed_in? %>
 <span id="friend-status">
