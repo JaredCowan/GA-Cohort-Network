@@ -1,0 +1,25 @@
+<%= render :partial => "topnav" %>
+<div class="row">
+  <div class="small-7 small-centered columns">
+  <hr>
+    <% @jobs.each do |j| %>
+      <%= j.company %> <br>
+      <%= j.contact_person %> <br>
+      <%= j.contact_email %> <br>
+      <%= j.contact_number %> <br>
+      <%= j.website %> <br>
+      <%= j.start_date %> <br>
+      <%= j.url %> <br>
+      <%= j.position %> <br>
+      <%= j.salery %> <br>
+      <%= j.job_type %> <br>
+      <%= j.desription %> <br>
+      <%= j.responsibilities %> <br>
+      <%= j.qualifications %> <br>
+      <%= j.address %> <br>
+      <%= j.city %> <br>
+      <%= j.state %> <br>
+      <%= j.zip %> <br><hr>
+    <% end %>
+  </div>
+</div>

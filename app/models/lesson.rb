@@ -1,9 +1,7 @@
 class Lesson < ActiveRecord::Base
   belongs_to :user
-  belongs_to :document
 
   # paginates_per 50
-  accepts_nested_attributes_for :document
 
   # validates :instructor, presence: true
   # validates :start,      presence: true

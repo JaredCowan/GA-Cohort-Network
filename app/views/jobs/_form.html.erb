@@ -1,0 +1,29 @@
+<%= render :partial => "topnav" %>
+<div class="row">
+  <div class="small-7 small-centered columns">
+
+    <%= simple_form_for(Job.new, :html => {:class => "form-horizontal", multipart: true}) do |f| %>
+      <%= f.input :company, label: "Hey", label_html: { class: "job-label" } %>
+      <%= f.input :contact_person %>
+      <%= f.input :contact_email %>
+      <%= f.input :contact_number %>
+      <%= f.input :website %>
+      <%= f.input :start_date %>
+      <%= f.input :url %>
+      <%= f.input :position %>
+      <%= f.input :salery %>
+      <%= f.input :job_type %>
+      <%= f.input :desription %>
+      <%= f.input :responsibilities %>
+      <%= f.input :qualifications %>
+      <%= f.input :address %>
+      <%= f.input :city %>
+      <%= f.input :state %>
+      <%= f.input :zip %>
+
+      <span class="actions">
+        <%= f.button :submit, class: 'button round success' %>
+      </span>
+    <% end %>
+  </div>
+</div>

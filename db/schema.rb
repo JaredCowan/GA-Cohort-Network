@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140923030848) do
+ActiveRecord::Schema.define(version: 20140923200703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,31 @@ ActiveRecord::Schema.define(version: 20140923030848) do
   end
 
   add_index "documents", ["user_id"], name: "index_documents_on_user_id", using: :btree
+
+  create_table "jobs", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "company"
+    t.string   "contact_person"
+    t.string   "contact_email"
+    t.string   "contact_number"
+    t.string   "website"
+    t.date     "start_date"
+    t.string   "url"
+    t.string   "position"
+    t.string   "salery"
+    t.text     "desription"
+    t.text     "responsibilities"
+    t.text     "qualifications"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.integer  "user_id"
+    t.string   "job_type"
+  end
+
+  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree
 
   create_table "lessons", force: true do |t|
     t.integer  "classroom"
@@ -152,13 +177,13 @@ ActiveRecord::Schema.define(version: 20140923030848) do
     t.string   "website",         default: ""
     t.string   "city",            default: ""
     t.string   "state",           default: ""
-    t.string   "job",             default: ""
     t.string   "job_position",    default: ""
     t.date     "job_start",       default: '-4711-01-01'
     t.date     "job_end",         default: '-4711-01-01'
     t.string   "job_description", default: ""
     t.string   "group",           default: "student",     null: false
     t.boolean  "admin",           default: false,         null: false
+    t.string   "job_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
