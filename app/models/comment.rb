@@ -1,4 +1,5 @@
 class Comment < ActiveRecord::Base
+  acts_as_votable
   belongs_to :status
   belongs_to :user
 

@@ -19,7 +19,7 @@
 <div class="form-actions">
   <% if @user_friendship.requested? %>
     <%= form_for @user_friendship, url: accept_user_friendship_path(@user_friendship), method: :put do |form| %>
-      <%= submit_tag "Accept Friendship", class: 'btn btn-primary' %>
+      <%= submit_tag "Accept Friendship", class: 'button' %>
     <% end %>
   <% end %>
 
@@ -28,6 +28,6 @@
   <% end %>
 
   <%= form_for @user_friendship, url: user_friendship_path(@user_friendship), method: :delete do |form| %>
-      <%= submit_tag "Delete Friendship", class: 'btn btn-danger' %>
+      <%= submit_tag "Delete Friendship", class: 'button alert' %>
   <% end %>
 </div>

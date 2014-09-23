@@ -18,8 +18,6 @@ Rails.application.routes.draw do
     resources :comments
   end  
     
-  resources :lessons
-  resources :jobs
 
   resources :conversations do
     member do
@@ -27,6 +25,23 @@ Rails.application.routes.draw do
       post :trash
       post :untrash
       post :perm_trash
+    end
+  end
+
+  resources :lessons
+  resources :jobs
+
+  resources :users do
+   member do
+    get :following
+    get :followers
+   end
+  end
+
+  resources :jobs do
+    member do
+      put "like", to: "jobs#upvote"
+      put "dislike", to: "jobs#downvote"
     end
   end
 

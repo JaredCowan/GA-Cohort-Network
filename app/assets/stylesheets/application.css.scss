@@ -116,6 +116,12 @@ ul.off-canvas-list li a:hover {
 .item-2 {
   border-bottom-right-radius: 15px;
 }
+.inline-list li:nth-child(odd) {
+  margin-right: 10px;
+}
+div .like-dislike {
+  width: 100%;
+}
 body { 
   height: 100%;
   color: #fff!important;

@@ -30,6 +30,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'modernizr-rails'
 gem 'fullcalendar-rails'
 gem 'kaminari'
+gem 'acts_as_votable', '~> 0.10.0'
 
 group :test do
   gem 'minitest'
