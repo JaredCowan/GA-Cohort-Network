@@ -1,0 +1,11 @@
+<%= simple_form_for :conversation, url: :conversations do |f| %>
+  
+  <input class="string required" id="conversation_recipients" name="conversation[recipients]" placeholder="<%= @user.email %>" type="hidden" value="<%= @user.email %>">
+
+  <%= f.input :subject %>
+  <%= f.input :body, as: :text %>
+   
+   
+  <%= f.button :submit, class: 'button' %>
+  <%= f.button :submit, 'Cancel', type: :reset, class: 'button alert' %>
+<% end %>

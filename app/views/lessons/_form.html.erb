@@ -25,6 +25,11 @@
       <%= collection_select(:users, :assistant, User.all, :id, :name_with_initial, prompt: true) %>
     </div>
   </div>
+  <div class="row">
+    <div class="small-12 large-12 columns">
+      <%= f.input :description, placeholder: 'Description of class or notes.', required: true %>
+    </div>
+  </div>
 
   <br />
   <br />

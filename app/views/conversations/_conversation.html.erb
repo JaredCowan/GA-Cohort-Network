@@ -1,7 +1,8 @@
 <%= content_tag_for(:li, conversation) do |conversation| %>
   <p>
-    <%= link_to conversation.subject, conversation_path(conversation) %>
-    <%= conversation.recipients.first.first_name + ' ' + conversation.recipients.first.last_name %>
+    <%= link_to conversation.subject.titleize, conversation_path(conversation) %>
+    <%= conversation.recipients.first.first_name.titleize + ' ' + conversation.recipients.first.last_name.titleize %>
+    <%= "Sent " + time_ago_in_words(conversation.updated_at) %>
     
     <% if conversation.is_completely_trashed?(current_user) %>
       <%= link_to 'Untrash', untrash_conversation_path(conversation), method: :post %>

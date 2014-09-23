@@ -6,7 +6,7 @@ class ConversationsController < ApplicationController
     recipients = User.where(email: recipient_emails).all
 
     conversation = current_user.
-      send_message(recipients, *conversation_params(:body, :subject)).conversation.page(params[:page]).per(2)
+      send_message(recipients, *conversation_params(:body, :subject)).conversation
 
     redirect_to :conversations
   end

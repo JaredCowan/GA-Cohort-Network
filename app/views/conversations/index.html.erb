@@ -1,12 +1,30 @@
+<div class="row">
+  <div class="small-4 small-centered columns">
+    <div class="icon-bar two-up" id="convo-quick-bar">
+      <a href="<%= conversations_path %>" class="item item-1">
+        <i class="fi-mail"></i>
+        <label>Home</label>
+      </a>
+      <a class="item item-2" href="/conversations/new">
+        <i class="fi-mail"></i>
+        <label>Compose New</label>
+      </a>
+    </div>
+  </div>
+</div>
 <button class="button rasuccess"> <a href="/conversations/new">Compose</a></button>
 <h1> Conversations </h1>
 
 <div class="row">
   <div class="small-6 large-2 columns">
-    <h2> Inbox </h2>
-<div id="mailbox">
-<%= render collection: mailbox.inbox, partial: 'conversation' %>
-</div>
+    <% if has_unread? %>
+      <h2> Inbox <span class="label"><%= unread_message_count %> unread</span></h2>
+      <% else %>
+        <h2> Inbox </h2>
+      <% end %>
+      <div id="mailbox">
+        <%= render collection: mailbox.inbox, partial: 'conversation' %>
+      </div>
   </div>
   <div class="small-6 large-8 columns">
     <!-- <h2> Sentbox </h2> -->

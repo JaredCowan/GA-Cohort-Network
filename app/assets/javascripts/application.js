@@ -60,32 +60,3 @@ if ($('.joyride-tip-guide').length >= 0) {
 // End fade alert box
 
 
-$('#calendar').fullCalendar({
-          header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,agendaWeek,agendaDay'
-           },
-           editable: true,
-           eventLimit: true, // allow "more" link when too many events
-
-          dayClick: function() {
-            $('#lessonModal').foundation('reveal', 'open', '');
-          },
-
-          eventClick: function() {
-            $('#editLessonModal').foundation('reveal', 'open', '');
-          },
-
-          events: {
-            url: '/lessons.json',
-            type: 'GET',
-            success: function() {
-              console.log("Calendar data successfully received.")
-            },
-            error: function() {
-              console.log('there was an error while fetching events!');
-            },
-            textColor:  'black'
-          },
-        });

@@ -22,8 +22,6 @@ gem 'spring',        group: :development
 gem 'jquery-rails'
 gem 'coveralls', require: false
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.1'
-# gem 'will_paginate', '3.0.4'
-# gem 'bootstrap-will_paginate', '0.0.9'
 gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
 gem 'sass-rails', '~> 4.0.3'
