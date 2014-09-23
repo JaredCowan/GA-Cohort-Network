@@ -1,0 +1,39 @@
+<button class="button rasuccess"> <a href="/conversations/new">Compose</a></button>
+<h1> Conversations </h1>
+
+<div class="row">
+  <div class="small-6 large-2 columns">
+    <h2> Inbox </h2>
+<div id="mailbox">
+<%= render collection: mailbox.inbox, partial: 'conversation' %>
+</div>
+  </div>
+  <div class="small-6 large-8 columns">
+    <!-- <h2> Sentbox </h2> -->
+    <dl class="tabs" data-tab>
+  <dd class="active"><a href="#panel1">Sentbox</a></dd>
+  <dd><a href="#panel2">Trash</a></dd>
+</dl>
+<div class="tabs-content">
+  <div class="content active" id="panel1">
+    <div id="mailbox">
+  <%= render collection: mailbox.sentbox, partial: 'conversation' %>
+</div>
+  </div>
+  <div class="content" id="panel2">
+<div id="mailbox">
+<%= render collection: mailbox.trash, partial: 'conversation' %>
+</div>
+  </div>
+</div>
+
+  </div>
+  <div class="small-12 large-2 columns">
+    
+  </div>
+</div>
+
+
+
+<!-- <h2> Trash </h2> -->
+

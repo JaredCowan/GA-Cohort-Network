@@ -3,8 +3,7 @@ class LessonsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @lessons = Lesson.all
-
+    @lessons = Lesson.all.page params[:page]
     respond_to do |format|
       format.html
       format.json { render json: @lessons}

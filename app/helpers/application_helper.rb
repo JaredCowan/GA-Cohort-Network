@@ -33,6 +33,34 @@ module ApplicationHelper
     link_to "Forum", forum_url if signed_in?
   end
 
+  def has_unread?
+    current_user && current_user.receipts.is_unread.length > 0 
+  end
+
+  def user_profile
+    # user_profile_end = current_user.profile_name.split(' ').join('_')
+    user_profile = request.original_url
+  end
+
+  def unread_message_count
+    current_user && current_user.receipts.is_unread.length
+  end
+
+  def message_name
+    if conversation.recipients.length >= 2
+      if current_user.first_name != nil && conversation.recipients[0].first_name == current_user.first_name
+         "Your conversation with\s" + conversation.recipients[1].first_name +
+                               "\s" + conversation.recipients[1].last_name
+                               
+       elsif current_user.first_name != nil && conversation.recipients[1].first_name == current_user.first_name
+         "Your conversation with\s" + conversation.recipients[0].first_name +
+                               "\s" + conversation.recipients[0].last_name
+      end
+    else
+      # Display none if no recipients of message
+    end
+  end
+
   def user_online(u)
     if User.online_now.include?(u)
       link_to u.full_name, "#", class: "online"

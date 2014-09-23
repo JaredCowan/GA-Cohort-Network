@@ -1,15 +1,3 @@
-<%= collection_select(:users, :users, current_user.friends, :email, :name_with_initial, prompt: true) %>
-
-<%= collection_select(:users, :users, current_user.statuses, :subject, :name_with_initial, prompt: true) %>
-
-<%= date_select("user", "created_at", :order => [:month, :day, :year]) %>
-
-<%= date_select("post", "start", :include_blank => false) %>
-
-<p>Date: <input type="date" id="datepicker"></p>
-
-
-
 <%= "Name:\s" %> <%= link_to @user.full_name.titleize, user_path(@user.id) %> <br />
 <% if signed_in? %>
 <span id="friend-status">

@@ -75,6 +75,28 @@
   height: 500px;
   overflow: scroll;
 }
+#mailbox {
+  height: 200px;
+  overflow: scroll;
+}
+#mailbox li, p {
+  margin-bottom: 0;
+  padding-top: 2px;
+  padding-left: 8px;
+  height: 30px;
+  text-align: middle;
+}
+#mailbox li:nth-child(odd) {
+  background-color: #bfbfbf;
+  list-style: none;
+}
+#mailbox li:nth-child(even) {
+  background-color: #d8d8d8;
+  list-style: none;
+}
+#mailbox li:hover {
+  background-color: #FFFFE0;
+}
 body { 
   height: 100%; 
 }

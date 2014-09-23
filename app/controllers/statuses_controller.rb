@@ -3,7 +3,7 @@ class StatusesController < ApplicationController
   respond_to :json
 
   def index
-    @statuses = Status.all.reverse_order
+    @statuses = Status.all.reverse_order.page params[:page]
 
     # respond_to do |format|
     #   format.html

@@ -3,6 +3,7 @@ class Status < ActiveRecord::Base
   belongs_to :document
   has_many :comments
 
+  paginates_per 20
   accepts_nested_attributes_for :document
 
   validates :subject, presence: true,

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
                 only: [:index, :edit, :update, :destroy]          
 
   def index
-    @users = User.all
+    @users = User.all.page params[:page]
 
     respond_to do |format|
       format.html

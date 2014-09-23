@@ -26,13 +26,14 @@
         <li><label>Account</label></li>
         <li> <%= link_to "Your Profile", user_path(current_user) if signed_in? %> </li>
         <li> <%= navbar_home_link %> </li>
+        <li> <%= link_to "Private Messages", conversations_path %> </li>
         <li> <%= friendship_path %> </li>
         <li> <%= link_to "Edit Profile", edit_user_path(current_user) if signed_in? %> </li>
         <li> <%= login_logout_link %> </li>
         <li><label>Calendar</label></li>
-          <li> <%= link_to "Lessons", lessons_path %> </li>
+          <li> <%= link_to "Lessons", lessons_path if signed_in? %> </li>
         <li><label> <%= "Get Help" if signed_in? %> </label></li>
-        <li> <%= forum_path %> </li>
+        <li> <%= forum_path if signed_in? %> </li>
       </ul>
     </aside>
 

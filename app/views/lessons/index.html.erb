@@ -31,6 +31,11 @@
   <hr>
 <% end %>
 
+<div class="pagination-centered">
+  <ul class="pagination">
+  <%= paginate @lessons, :window => 2 %>
+  </ul>
+</div>
 
 <div id="lessonModal" class="reveal-modal" data-reveal>
    <%= render 'form' %>

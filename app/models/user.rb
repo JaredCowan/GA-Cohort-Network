@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 
+  acts_as_messageable
   before_save { self.email = email.downcase }
   before_save { user_id = self.id }
   before_create :create_remember_token
@@ -11,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :statuses
   has_many :lessons
   has_secure_password
-
+  paginates_per 20
   # has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   # validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   # validates :password, length: { minimum: 6 }
@@ -66,6 +67,10 @@ class User < ActiveRecord::Base
 
   def User.digest(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def mailboxer_email(object)
+    email
   end
 
   def full_name

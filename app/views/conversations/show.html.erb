@@ -1,0 +1,10 @@
+<h1> <%= message_name %> </h1>
+<%= render 'reply', conversation: conversation %>
+
+  <%= content_tag_for(:li, conversation.receipts_for(current_user)) do |receipt| %>
+    <% message = receipt.message %>
+    <% receipt.mark_as_read %> 
+    <h3> <%= message.subject %> </h3>
+    <h3> <%= message.is_read?(current_user) %>  </h3>
+    <p> <%= message.body %>  </p>
+<% end %>

@@ -7,11 +7,6 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag :modernizr %>
     <%= csrf_meta_tags %>
-    <script>
-  //       $(function() {
-  //   $( "#datepicker" ).datepicker();
-  // });
-    </script>
   </head>
   <body>
 
@@ -54,36 +49,6 @@
       <script>
         $(function(){ $(document).foundation();});
         $(document).foundation('joyride', 'start');
-      </script>
-
-      <script>
-        $('#calendar').fullCalendar({
-          header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,agendaWeek,agendaDay'
-           },
-
-          dayClick: function() {
-            $('#lessonModal').foundation('reveal', 'open', '');
-          },
-
-          eventClick: function() {
-            $('#editLessonModal').foundation('reveal', 'open', '');
-          },
-
-          events: {
-            url: '/lessons.json',
-            type: 'GET',
-            success: function() {
-              console.log("Calendar data successfully received.")
-            },
-            error: function() {
-              console.log('there was an error while fetching events!');
-            },
-            textColor:  'black'
-          },
-        });
       </script>
 
     </body>
