@@ -1,0 +1,45 @@
+<center>
+  <a href="#" data-reveal-id="lessonModal" class="radius button">New Lesson</a>
+</center>
+
+<div class="calendar-wrapper">
+  <div id="calendar"></div>
+</div>
+
+<br>
+
+<% @lessons.order('start asc').each do |l| %>
+  <%= l.title %> <br />
+  <%= l.subject %> <br />
+  <%= l.start %> <br />
+  <div class="col-md-11">
+  <% if l.user_id == current_user.id %>
+    <div class="btn-group pull-right">
+      <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button round dropdown tiny">Edit</button><br>
+
+      <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
+        <li>
+          <a href="#" data-reveal-id="myModal">Edit Post</a>
+        </li>
+        <li>
+          <a href="#" data-reveal-id="deleteModal">Delete Post</a>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+</div>
+  <hr>
+<% end %>
+
+
+<div id="lessonModal" class="reveal-modal" data-reveal>
+   <%= render 'form' %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="editLessonModal" class="reveal-modal" data-reveal>
+   <%= render 'form' %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+

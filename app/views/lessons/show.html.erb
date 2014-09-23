@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+<div class="status well">
+ <div class="row">
+  <div class="col-md-1">
+  </div>
+
+<p>
+  <b>Name:</b>
+  <%= @lesson.subject %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @lesson.subject.html_safe %>
+
+  <hr />
+</p>
+
+
+
+
+<div class="col-md-11">
+  <% if @lesson.user_id == current_user.id %>
+    <div class="btn-group pull-right">
+      <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button round dropdown tiny">Edit</button><br>
+
+      <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
+        <li>
+          <a href="#" data-reveal-id="myModal">Edit Post</a>
+        </li>
+        <li>
+          <a href="#" data-reveal-id="deleteModal">Delete Post</a>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+</div>
+
+<!-- Start Edit Modal  -->
+
+<div id="myModal" class="reveal-modal" data-reveal>
+  <h2>Edit Post</h2>
+  <hr />
+  <p class="lead">
+    <%= render :partial => "form" %>
+  </p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+<!-- End Edit Modal -->
+
+<!-- Start Delete Modal -->
+<div id="deleteModal" class="reveal-modal" data-reveal>
+  <h2>Permanently delete this post?</h2>
+  <hr />
+  <p>
+  <b>Name:</b>
+  <%= @lesson.user.full_name %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%= @lesson.subject %>
+</p>
+
+<p>
+  <b>Question:</b>
+  <%= @lesson.subject %>
+
+  <hr />
+</p>
+  <p class="lead"><%= link_to 'Delete Post', @lesson, method: :delete, class: "button alert" %></p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+<!-- End Delete Modal -->
+</div>

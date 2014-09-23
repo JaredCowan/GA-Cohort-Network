@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     resources :comments
   end  
     
+  # get 'lessons', to: 'lessons#index', as: :lessons
+  resources :lessons
+
   resources :user_friendships do
     member do
       put :accept

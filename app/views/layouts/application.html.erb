@@ -7,6 +7,11 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag :modernizr %>
     <%= csrf_meta_tags %>
+    <script>
+  //       $(function() {
+  //   $( "#datepicker" ).datepicker();
+  // });
+    </script>
   </head>
   <body>
 
@@ -58,14 +63,17 @@
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
            },
-            selectable: true,
 
           dayClick: function() {
-            $('#myModal').foundation('reveal', 'open', '');
+            $('#lessonModal').foundation('reveal', 'open', '');
+          },
+
+          eventClick: function() {
+            $('#editLessonModal').foundation('reveal', 'open', '');
           },
 
           events: {
-            url: '/forum.json',
+            url: '/lessons.json',
             type: 'GET',
             success: function() {
               console.log("Calendar data successfully received.")

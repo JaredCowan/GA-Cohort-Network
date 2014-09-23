@@ -14,6 +14,9 @@
 
     <%= f.input :subject %>
     <%= f.input :content %>
+    <%= f.input :created_at, as: :date, start_year: Date.today.year,
+                              end_year: Date.today.year - 12, discard_day: false,
+                              order: [:month, :day, :year] %>
     <%= f.fields_for :document do |document_fields| %>
       <%= document_fields.input :attachment, as: :file %>
     <% end %>

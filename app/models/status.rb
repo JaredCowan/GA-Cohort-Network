@@ -1,5 +1,4 @@
 class Status < ActiveRecord::Base
-  # attr_accessible :content, :document_attributes
   belongs_to :user
   belongs_to :document
   has_many :comments
@@ -13,5 +12,9 @@ class Status < ActiveRecord::Base
                       length: { minimum: 2 }
 
   validates :user_id, presence: true
+
+  def name_with_initial
+    "#{subject}"
+  end
 
 end

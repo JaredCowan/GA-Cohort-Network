@@ -71,6 +71,10 @@
   width: 90%;
   margin: 0 auto;
 }
+#lesson-scroller {
+  height: 500px;
+  overflow: scroll;
+}
 body { 
   height: 100%; 
 }

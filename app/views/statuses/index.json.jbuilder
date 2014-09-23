@@ -3,7 +3,7 @@ json.array!(@statuses) do |status|
   json.id status.id
   json.title status.subject
   json.description status.content
-  json.start status.created_at
-  json.end status.updated_at
+  json.start(status.created_at.strftime('%Y %m %d %H:%M:%S'))
+  json.end(status.created_at.strftime('%Y %m %d %H:%M:%S'))
   json.url status_url(status, format: :html)
 end

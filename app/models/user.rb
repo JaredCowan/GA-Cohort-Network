@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_many :statuses
+  has_many :lessons
   has_secure_password
 
   # has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
@@ -36,8 +37,7 @@ class User < ActiveRecord::Base
                                       class_name: 'UserFriendship',
                                       foreign_key: :user_id
   has_many :accepted_friends, through: :accepted_user_friendships, source: :friend
-
-
+  
   def self.get_gravatars
     all.each do |user|
       if user
