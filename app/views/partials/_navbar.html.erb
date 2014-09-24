@@ -35,6 +35,10 @@
         <li><label> <%= "Get Help" if signed_in? %> </label></li>
         <li> <%= forum_path if signed_in? %> </li>
         <li> <%= link_to "Jobs", jobs_path if signed_in? %> </li>
+        <li><label> <%= "Other" if signed_in? %> </label></li>
+          <li>
+            <%= link_to "All Users", users_path if signed_in? %>
+          </li>
       </ul>
     </aside>
 
@@ -46,11 +50,13 @@
               <%= user_online(u) %>
             <ul class="right-submenu">
               <li class="back"><a href="#">Back</a></li>
-              <li><label><%= u.full_name %>
-              </label></li>
+              <li>
+                <label>
+                  <%= u.full_name %>
+                </label>
+              </li>
               <li> <%= link_to "Profile", user_path(u) %> </li>
             </ul>
-          
           <% end %>
         </li>
       </ul>

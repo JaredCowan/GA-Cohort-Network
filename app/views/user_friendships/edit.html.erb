@@ -16,7 +16,16 @@
 
 <h3><%= @user_friendship.sub_message %></h3>
 
+<a href="#" data-reveal-id="editFriendModal" class="radius button alert">Edit Friendship</a>
+
+
+<div id="editFriendModal" class="reveal-modal" data-reveal>
+<center><strong>
+  <h2>Are you sure? This can't be undone.</h2>
+</center></strong>
+<hr>
 <div class="form-actions">
+<center>
   <% if @user_friendship.requested? %>
     <%= form_for @user_friendship, url: accept_user_friendship_path(@user_friendship), method: :put do |form| %>
       <%= submit_tag "Accept Friendship", class: 'button' %>
@@ -24,10 +33,13 @@
   <% end %>
 
   <%= form_for @user_friendship, url: block_user_friendship_path(@user_friendship), method: :put do |form| %>
-    <%= submit_tag "Block Friendship", class: 'btn' %>
+    <%= submit_tag "Block Friendship", class: 'button alert' %>
   <% end %>
 
   <%= form_for @user_friendship, url: user_friendship_path(@user_friendship), method: :delete do |form| %>
       <%= submit_tag "Delete Friendship", class: 'button alert' %>
   <% end %>
 </div>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+</center>

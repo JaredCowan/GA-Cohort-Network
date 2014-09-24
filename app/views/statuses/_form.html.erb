@@ -14,9 +14,21 @@
 
     <%= f.input :subject %>
     <%= f.input :content %>
-    <%= f.input :created_at, as: :date, start_year: Date.today.year,
-                              end_year: Date.today.year - 12, discard_day: false,
-                              order: [:month, :day, :year] %>
+    <%= f.input :created_at, as: :date,
+                start_year: Date.today.year,
+                end_year: Date.today.year - 12, discard_day: false,
+                order: [:month, :day, :year] %>
+
+  <p>
+<b>Content:</b>
+  <%= @status.content %>
+  <% if @status.document && @status.document.attachment? && @status.document.valid? %>
+    <ul class="clearing-thumbs" data-clearing>
+      <li><a href="<%= @status.document.attachment.url %>">
+        <span class="label label-info">Click To View Attachment</span><br><img id="thumbnail" src="<%= @status.document.attachment.url %>"/></a></li>
+    </ul>
+  <% end %>
+</p>                          
     <%= f.fields_for :document do |document_fields| %>
       <%= document_fields.input :attachment, as: :file %>
     <% end %>

@@ -19,25 +19,15 @@
     <div class="container">
 
       <%= yield %>
-      
-      <div class="row">
-        <div class="large-12 columns">
           
-          <div class="row">
-            <div class="large-12 columns show-for-small">
-              <!-- <img src="http://placehold.it/1200x700&text=Mobile Header"> -->
-            </div>
-          </div><br>
-          
+          <!-- This was fucking shit up -->
           <div class="row">
             <div class="large-12 columns text-center">
-              <div id="myModal" class="reveal-modal" data-reveal>
-                <%= render :partial => "partials/status" %>
-              </div>
+              <!-- <div id="myModal" class="reveal-modal" data-reveal>
+                <%#= render :partial => "partials/status" %>
+              </div> -->
             </div>
           </div>
-        </div>
-      </div>
 
         <a class="exit-off-canvas"></a>
       <%= javascript_include_tag "application" %>
@@ -69,7 +59,8 @@
               }
             }
           }
-        );});
+        );
+      });
         $(document).foundation('joyride', 'start');
       </script>
       <script>
@@ -79,8 +70,8 @@
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
            },
-           editable: true,
-           eventLimit: true, // allow "more" link when too many events
+           // editable: true,
+           // eventLimit: true, // allow "more" link when too many events
 
           dayClick: function() {
             $('#lessonModal').foundation('reveal', 'open', '');
@@ -102,7 +93,6 @@
             textColor:  'black'
           },
         });
-
       </script>
     </body>
   </html>

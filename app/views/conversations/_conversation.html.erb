@@ -1,14 +1,13 @@
 <%= content_tag_for(:li, conversation) do |conversation| %>
   <p>
-    <%= link_to conversation.subject.titleize, conversation_path(conversation) %>
     <%= conversation.recipients.first.first_name.titleize + ' ' + conversation.recipients.first.last_name.titleize %>
-    <%= "Sent " + time_ago_in_words(conversation.updated_at) %>
+    <%= link_to conversation.subject.titleize, conversation_path(conversation), class: 'subject' %>
     
     <% if conversation.is_completely_trashed?(current_user) %>
       <%= link_to 'Untrash', untrash_conversation_path(conversation), method: :post %>
       <%= link_to 'DELETE', perm_trash_conversation_path(conversation), method: :post %>
     <% else %>
-     <%= link_to 'Move to trash', trash_conversation_path(conversation), method: :post %>
+
+     <%= link_to '<i class="fi-trash"></i>'.html_safe, trash_conversation_path(conversation), class: 'move-to-trash', method: :post %>
      <% end %>
  <% end %>
-    

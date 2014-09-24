@@ -2,10 +2,6 @@
   <%#= f.input :recipients %>
   <%= collection_select(:conversation, :recipients, current_user.friends, :email, :name_with_initial, prompt: true) %>
 
-  <!-- /= f.autocomplete_field :conversations, autocomplete_user_first_name_path
-  / = f.input :recipients, :required => true, label: false, :autofocus => true, placeholder: 'User email', input_html: { class: 'form-control' }
-  /= collection_select :dropdown, :friend_id, User.all, :id, :first_name, { allow_blank: "Select area..." }, { class: 'dropdown_notification' } -->
-
   <%= f.input :subject %>
   <%= f.input :body, as: :text %>
    <!-- .form-actions -->

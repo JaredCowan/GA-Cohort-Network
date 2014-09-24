@@ -1,50 +1,82 @@
 <p id="notice"><%= notice %></p>
-<div class="status well">
+
  <div class="row">
-  <div class="col-md-1">
-     <%#= image_tag @status.user.avatar(:thumb) %>
+  <div class="small-9 small-centered columns">
+    <p><b>Name:</b>
+      <%= @status.user.full_name %>
+    </p>
+
+    <p><b>Content:</b>
+      <%= @status.content %>
+    </p>
+
+    <p><b>Posted:</b>
+      <%= time_ago_in_words(@status.created_at).titleize + "\sAgo On\s" + @status.created_at.strftime('%a %b %d %Y') %>
+    </p> 
+
+    <p>
+      <% if @status.document && @status.document.attachment? && @status.document.valid? %>
+        <ul class="clearing-thumbs" data-clearing>
+          <li><a href="<%= @status.document.attachment.url %>">
+            <span class="label label-info">Click To View Attachment</span><br><img id="thumbnail" src="<%= @status.document.attachment.url %>"/></a></li>
+        </ul>
+      <% end %>
+    </p>
   </div>
 
-<p>
-  <b>Name:</b>
-  <%= @status.user.full_name %>
-</p>
+  <div class="small-9 small-centered columns">
 
-<p>
-  <b>Content:</b>
-  <%= @status.content.html_safe %>
+    <% if @status.user == current_user %>
+      <div class="btn-group pull-right">
+        <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button round dropdown tiny">Edit</button><br>
 
-  <hr />
-  <% if @status.document && @status.document.attachment? && @status.document.valid? %>
-    <span class="label label-info">Attachment</span>
-    <p><%= image_tag @status.document.attachment.url %></p>
-  <% end %>
-</p>
+        <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
+          <li>
+            <a href="#" data-reveal-id="editModal">Edit Post</a>
+          </li>
+          <li>
+            <a href="#" data-reveal-id="deleteModal">Delete Post</a>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  <hr>
+  </div>
+  <br>
+  <br>
 
 
 
 
-<div class="col-md-11">
-  <% if @status.user == current_user %>
-    <div class="btn-group pull-right">
-      <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button round dropdown tiny">Edit</button><br>
+  <div class="row">
+    <div class="small-9 small-centered columns">
+      <hr>
+      <% if @status.comments.length > 0 %>
+        <% @status.comments.each do |comment| %>
+          <%= link_to comment.user.full_name, comment.user %> <br />
+          <%= avatar_url %>
+          <%= comment.body %> <br />
+          <%= time_ago_in_words(@status.created_at).titleize + "\sAgo On\s" + @status.created_at.strftime('%a %b %d %Y') %> <br />
+          <hr>
+        <% end %>
+      <% end %>
+      <h2>Comments Form</h2>
+    <div>
 
-      <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
-        <li>
-          <a href="#" data-reveal-id="editModal">Edit Post</a>
-        </li>
-        <li>
-          <a href="#" data-reveal-id="deleteModal">Delete Post</a>
-        </li>
-      </ul>
-    </div>
-  <% end %>
+    <%= form_for([@status, @status.comments.build]) do |f| %>
+
+      <%= f.label :body %>
+      <%= f.text_area :body %>
+      <%= f.hidden_field :user_id, :value => current_user.user_id %>
+
+      <input class="button alert" name="commit" type="submit" value="Post comment">
+    <% end %>
+  </div>
 </div>
-
 <!-- Start Edit Modal  -->
 
 <div id="editModal" class="reveal-modal" data-reveal>
-  <h2>Edit Post</h2>
+  <h2>Editing Post From <%= @status.created_at.strftime('%a %b %d %Y') %> </h2>
   <hr />
   <p class="lead">
     <%= render :partial => "form" %>
@@ -69,38 +101,28 @@
 
 <p>
   <b>Question:</b>
-  <%= @status.content.html_safe %>
+  <%= @status.content %>
+</p>
 
-  <hr />
+<p>
+<b>Content:</b>
+  <%= @status.content %>
   <% if @status.document && @status.document.attachment? && @status.document.valid? %>
-    <span class="label label-info">Attachment</span>
-    <p><%= image_tag @status.document.attachment.url %></p>
+    <ul class="clearing-thumbs" data-clearing>
+      <li><a href="<%= @status.document.attachment.url %>">
+        <span class="label label-info">Click To View Attachment</span><br><img id="thumbnail" src="<%= @status.document.attachment.url %>"/></a></li>
+    </ul>
   <% end %>
 </p>
-  <p class="lead"><%= link_to 'Delete Post', @status, method: :delete, class: "button alert" %></p>
+
+<p>
+  <b>Posted:</b>
+  <%= time_ago_in_words(@status.created_at).titleize + "\sAgo On\s" + @status.created_at.strftime('%a %b %d %Y') %>
+</p>
+<br>
+  <%= link_to 'Delete Post', @status, method: :delete, class: "button alert" %></p>
   <a class="close-reveal-modal">&#215;</a>
+
+</div>
 </div>
 <!-- End Delete Modal -->
-<div class="row">
-  <div class="small-5 columns">
-<% if @status.comments.length > 0 %>
-  <% @status.comments.each do |comment| %>
-  <%= link_to comment.user.full_name, comment.user %> <br />
-  <%= avatar_url %>
-  <%= comment.body %> <br />
-  <%= "Posted\s" + time_ago_in_words(comment.created_at) + "\sago" %> <br />
-  <% end %>
-  <h2>Comments Form</h2>
-  <% end %>
-
-<%= form_for([@status, @status.comments.build]) do |f| %>
-
-  <%= f.label :body %>
-  <%= f.text_area :body %>
-  <%= f.hidden_field :user_id, :value => current_user.user_id %>
-
-  <input class="button alert" name="commit" type="submit" value="Post comment">
-
-<% end %>
-</div>
-</div>

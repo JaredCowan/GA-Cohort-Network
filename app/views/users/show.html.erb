@@ -1,7 +1,7 @@
 <%= "Name:\s" %> <%= link_to @user.full_name.titleize, user_path(@user.id) %> <br />
 <% if signed_in? %>
 <span id="friend-status">
-  <% if current_user %>
+  <% if current_user == @user %>
     <%= link_to "You can't add yourself as a friend", '#', class: 'button alert tiny disabled' %>
   <% elsif current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
     <%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: 'button success' %>
