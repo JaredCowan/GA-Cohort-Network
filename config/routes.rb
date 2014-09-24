@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount Rapidfire::Engine => "/rapidfire"
+  
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   
@@ -56,5 +58,7 @@ Rails.application.routes.draw do
   get 'friends',      to: 'user_friendships#index', as: :friends
   get 'forum',        to: 'statuses#index',         as: :forum
   get '/profile/:id', to: 'profiles#show',          as: :profile_page
+
+
 
 end

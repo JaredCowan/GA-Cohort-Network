@@ -31,6 +31,7 @@ gem 'modernizr-rails'
 gem 'fullcalendar-rails'
 gem 'kaminari'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'rapidfire'
 
 group :test do
   gem 'minitest'

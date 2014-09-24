@@ -10,7 +10,12 @@ class ApplicationController < ActionController::Base
     if current_user
       current_user.update!(updated_at: Time.new)
     end
-  end 
+  end
+
+  def can_administer?
+    true
+    # current_user
+  end
 
   include SessionsHelper
 

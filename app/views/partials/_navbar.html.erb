@@ -1,68 +1,100 @@
-<div class="off-canvas-wrap" data-offcanvas>
-  <div class="inner-wrap">
-    <nav class="tab-bar">
+<% if controller_name != "question_groups" && controller_name != "answer_groups" && controller_name != "question_group_id" && controller_name != "questions" %>
+  <div class="off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+      <nav class="tab-bar">
 
-      <div class="icon-bar one-up">
-        <section class="left-small">
-        <a class="left-off-canvas-toggle item"><i class="fi-home"></i>
-        </section></a>
-      </div>
-
-      <section class="middle tab-bar-section">
-        <h1 class="title"><%= signed_in? ? "Hello,\s" + current_user.full_name + "." : "GA Community" %></h1>
-      </section>
-
-      <div class="icon-bar one-up">
-        <section class="right-small">
-        <% if signed_in? %>
-          <a class="right-off-canvas-toggle"><i class="fi-torsos"></i>
+        <div class="icon-bar one-up">
+          <section class="left-small">
+          <a class="left-off-canvas-toggle item"><i class="fi-home"></i>
           </section></a>
-        <% end %>
-      </div>
-    </nav>
+        </div>
 
-    <aside class="left-off-canvas-menu">
-      <ul class="off-canvas-list">
-        <li><label>Account</label></li>
-        <li> <%= link_to "Your Profile", user_path(current_user) if signed_in? %> </li>
-        <li> <%= navbar_home_link %> </li>
-        <li> <%= link_to "Private Messages", conversations_path %> </li>
-        <li> <%= friendship_path %> </li>
-        <li> <%= link_to "Edit Profile", edit_user_path(current_user) if signed_in? %> </li>
-        <li> <%= login_logout_link %> </li>
-        <li><label>Calendar</label></li>
-          <li> <%= link_to "Lessons", lessons_path if signed_in? %> </li>
-        <li><label> <%= "Get Help" if signed_in? %> </label></li>
-        <li> <%= forum_path if signed_in? %> </li>
-        <li> <%= link_to "Jobs", jobs_path if signed_in? %> </li>
-        <li><label> <%= "Other" if signed_in? %> </label></li>
-          <li>
-            <%= link_to "All Users", users_path if signed_in? %>
-          </li>
-      </ul>
-    </aside>
+        <section class="middle tab-bar-section">
+          <h1 class="title"><%= signed_in? ? "Hello,\s" + current_user.full_name + "." : "GA Community" %></h1>
+        </section>
 
-    <aside class="right-off-canvas-menu">
-      <ul class="off-canvas-list">
-        <li><label>Classmates</label></li>
-        <% User.order(updated_at: :desc).each do |u| %>
-        <li class="has-submenu">
-              <%= user_online(u) %>
-            <ul class="right-submenu">
-              <li class="back"><a href="#">Back</a></li>
-              <li>
-                <label>
-                  <%= u.full_name %>
-                </label>
-              </li>
-              <li> <%= link_to "Profile", user_path(u) %> </li>
-            </ul>
+        <div class="icon-bar one-up">
+          <section class="right-small">
+          <% if signed_in? %>
+            <a class="right-off-canvas-toggle"><i class="fi-torsos"></i>
+            </section></a>
           <% end %>
-        </li>
-      </ul>
-    </aside>
+        </div>
+      </nav>
 
-    <section class="main-section">
-      <!-- content goes here -->
-    </section>
+      <aside class="left-off-canvas-menu">
+        <ul class="off-canvas-list">
+          <li><label>Account</label></li>
+          <li> <%= link_to "Your Profile", user_path(current_user) if signed_in? %> </li>
+          <li> <%= navbar_home_link %> </li>
+          <li> <%= link_to "Private Messages", conversations_path %> </li>
+          <li> <%= friendship_path %> </li>
+          <li> <%= link_to "Edit Profile", edit_user_path(current_user) if signed_in? %> </li>
+          <li> <%= login_logout_link %> </li>
+          <li><label>Calendar</label></li>
+            <li> <%= link_to "Lessons", lessons_path if signed_in? %> </li>
+          <li><label> <%= "Get Help" if signed_in? %> </label></li>
+          <li> <%= forum_path if signed_in? %> </li>
+          <li> <%= link_to "Jobs", jobs_path if signed_in? %> </li>
+          <li><label> <%= "Other" if signed_in? %> </label></li>
+            <li>
+              <%= link_to "All Users", users_path if signed_in? %>
+            </li>
+        </ul>
+      </aside>
+
+      <aside class="right-off-canvas-menu">
+        <ul class="off-canvas-list">
+          <li><label>Classmates</label></li>
+          <% User.order(updated_at: :desc).each do |u| %>
+          <li class="has-submenu">
+                <%= user_online(u) %>
+              <ul class="right-submenu">
+                <li class="back"><a href="#">Back</a></li>
+                <li>
+                  <label>
+                    <%= u.full_name %>
+                  </label>
+                </li>
+                <li> <%= link_to "Profile", user_path(u) %> </li>
+              </ul>
+            <% end %>
+          </li>
+        </ul>
+      </aside>
+
+      <section class="main-section">
+        <!-- content goes here -->
+      </section>
 <!-- Divs closed on layouts/application.html.erb -->
+  <% else %>
+  <nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="#">My Site</a></h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="active"><a href="#">Right Button Active</a></li>
+      <li class="has-dropdown">
+        <a href="#">Right Button Dropdown</a>
+        <ul class="dropdown">
+          <li><a href="#">First link in dropdown</a></li>
+          <li class="active"><a href="#">Active link in dropdown</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li><a href="<%#=new_question_group_question_path(@question_group) %>">Left Nav Button</a></li>
+      <li><a href="<%= root_url %>">Left Nav Button</a></li>
+    </ul>
+  </section>
+</nav>
+<% end %>
