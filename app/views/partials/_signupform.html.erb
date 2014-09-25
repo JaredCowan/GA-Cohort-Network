@@ -1,27 +1,28 @@
+<br /> <h1>Sign up</h1> <br />
 <%= form_for(@user) do |f| %>
 
   <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
+  <%= f.text_field :first_name, placeholder: 'First Name' %>
 
   <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
+  <%= f.text_field :last_name, placeholder: 'Last Name' %>
 
   <%= f.label :user_name %>
-  <%= f.text_field :user_name %>
+  <%= f.text_field :user_name, placeholder: 'User Name' %>
 
   <%= f.label :email %>
-  <%= f.text_field :email %>
+  <%= f.text_field :email, placeholder: 'Email' %>
 
   <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.password_field :password, placeholder: 'Password' %>
 
   <%= f.label :password_confirmation, "Confirm Password" %>
-  <%= f.password_field :password_confirmation %>
+  <%= f.password_field :password_confirmation, placeholder: 'Confirm Your Password' %>
 
-  <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+  <%= f.submit "Create my account", class: "button expand" %>
 <% end %>
 
-<br /> <h1>Sign up</h1> <br />
+<!-- <br /> <h1>Sign up</h1> <br />
 
 <form data-abide accept-charset="UTF-8" action="/users" class="simple_form new_user" id="new_user" method="post" novalidate="novalidate">
   
@@ -40,7 +41,7 @@
   <div class="form-group last-name-field">
     
     <label>First name <small>required</small></label>
-    <input class="form-control" id="user_last_name" name="user[last_name]" placeholder="Your first name" type="text" pattern="<%= chr_length(3,30) %>" required>
+    <input class="form-control" id="user_last_name" name="user[last_name]" placeholder="Your first name" type="text" pattern="<%#= chr_length(3,30) %>" required>
     <small class="error">Your name must be longer than 3 characters</small>
     </label>
   </div>
@@ -56,7 +57,7 @@
   <div class="form-group password-field">
   
     <label>Password <small>required</small>
-    <input class="form-control" id="user_password" name="user[password]" placeholder="password ..." type="password" required pattern="<%= chr_length(3,30) %>">
+    <input class="form-control" id="user_password" name="user[password]" placeholder="password ..." type="password" required pattern="<%#= chr_length(3,30) %>">
     </label>
     <small class="error">Your password must be longer than 3 characters</small>
   </div>
@@ -64,12 +65,12 @@
   <div class="form-group password-confirmation-field">
     
     <label>Confirm Password <small>required</small>
-    <input id="user_password_confirmation" type="password" name="user[password_confirmation]" required pattern="<%= chr_length(3,30) %>" data-equalto="user_password">
+    <input id="user_password_confirmation" type="password" name="user[password_confirmation]" required pattern="<%#= chr_length(3,30) %>" data-equalto="user_password">
     </label>
     <small class="error">The password did not match</small>
   </div>
   
   <div class="form-group">
     <button type="submit" class="button expand" value="Create my account">Sign me up!</button>
-  </div>
+  </div> -->
 </form>
