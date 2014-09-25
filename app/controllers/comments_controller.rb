@@ -6,10 +6,10 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to status_path(@status), notice: 'Comment was successfully created.' }
+        format.html { redirect_to status_path(@status)}
         format.json { render json: @status, status: :created, location: @status }
       else
-        format.html { redirect_to status_path(@status), notice: "Comment can't be blank." }
+        format.html { redirect_to status_path(@status)}
       end
     end
   end
