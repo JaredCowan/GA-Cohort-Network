@@ -67,7 +67,7 @@
     <%= simple_form_for([@status, @status.comments.build]) do |f| %>
 
       <%= f.text_field :body %>
-      <%= f.hidden_field :user_id, :value => current_user.user_id %>
+      <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }  %>
 
       <input class="button alert" name="commit" type="submit" value="Post comment">
     <% end %>
