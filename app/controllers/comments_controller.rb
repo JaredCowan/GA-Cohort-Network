@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  respond_to :html, :json
 
   def create 
     @status = Status.find(params[:status_id])
