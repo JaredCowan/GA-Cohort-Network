@@ -1,7 +1,7 @@
 class StatusesController < ApplicationController
   before_action :signed_in_user
   before_action :set_forum, only: [:show, :edit, :update, :destroy]
-  respond_to :html, :json
+  # respond_to :html, :json
 
   def index
     @statuses = Status.all.reverse_order.page params[:page]
@@ -25,9 +25,9 @@ class StatusesController < ApplicationController
   end
 
   def new
-    # @status = Status.new
-    @status = current_user.statuses.new
-    @attachment.build_document
+    @status = Status.new
+    # @status = current_user.statuses.new
+    @document.build_document
 
     respond_to do |format|
       format.html
@@ -42,7 +42,7 @@ class StatusesController < ApplicationController
 
   def create
     @status = current_user.statuses.new(status_params)
-
+    @document.user_id = current_user.id
     respond_to do |format|
       if @status.save
         format.html { redirect_to :forum, notice: 'Question was successfully created.' }
@@ -55,17 +55,18 @@ class StatusesController < ApplicationController
 
   def update
 
-    if current_user
-      @status   = Status.find(params[:id])
-      @document = @status.document
-    else
+    # if current_user
+    #   @status   = Status.find(params[:id])
+    #   @document = @status.document
+    # else
       @status   = current_user.statuses.find(params[:id])
+      @status.document.user_id = current_user.id
       @document = @status.document
-    end
+    # end
       
-    if params[:status] && params[:status].has_key?(:user_id)
-      params[:status].delete(:user_id) 
-    end
+    # if params[:status] && params[:status].has_key?(:user_id)
+    #   params[:status].delete(:user_id) 
+    # end
 
     respond_to do |format|
       if @status.update_attributes(status_params)
@@ -106,11 +107,11 @@ class StatusesController < ApplicationController
 
   # Not in use.
   # Will be used to mark forum questions as answered
-  def solved
-      @status = Status.find(params[:id])
-      @status.upvote_from current_user
-      redirect_to :forum
-  end
+  # def solved
+  #     @status = Status.find(params[:id])
+  #     @status.upvote_from current_user
+  #     redirect_to :forum
+  # end
 
   private
 

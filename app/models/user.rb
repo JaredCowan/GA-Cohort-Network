@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_many :statuses
   has_many :lessons
+  has_many :documents
   has_many :jobs
   has_secure_password
   paginates_per 20
@@ -85,8 +86,8 @@ class User < ActiveRecord::Base
 
   private
 
-    def create_remember_token
-      self.remember_token = User.digest(User.new_remember_token)
-    end
+  def create_remember_token
+    self.remember_token = User.digest(User.new_remember_token)
+  end
 
 end
