@@ -45,10 +45,10 @@ class StatusesController < ApplicationController
 
     respond_to do |format|
       if @status.save
-        format.html { redirect_to :forum, notice: 'Status was successfully created.' }
+        format.html { redirect_to :forum, notice: 'Question was successfully created.' }
         format.json { render json: @status, status: :created, location: @status }
       else
-        format.html { redirect_to :forum, notice: "That's a no-no. Status is blank." }
+        format.html { redirect_to :forum, notice: "That's a no-no. QuestionQuestion is blank." }
       end
     end
   end
@@ -69,7 +69,7 @@ class StatusesController < ApplicationController
 
     respond_to do |format|
       if @status.update_attributes(status_params)
-        format.html { redirect_to status_path(@status), notice: 'Status was successfully updated.' }
+        format.html { redirect_to status_path(@status), notice: 'Question was successfully updated.' }
         format.json { head :no_content }
       else
         redirect_to :forum
@@ -83,7 +83,7 @@ class StatusesController < ApplicationController
 
     respond_to do |format|
       if @status.destroy
-        format.html { redirect_to forum_url, notice: 'Status was successfully deleted.' }
+        format.html { redirect_to forum_url, notice: 'Question was successfully deleted.' }
         format.json { head :no_content }
       else
         format_generic_error("index")
