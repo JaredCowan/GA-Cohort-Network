@@ -14,7 +14,7 @@
         <div id="calendar"></div>
       </div>
       <div class="small-3 columns" id="lesson-scroller">
-        <% Lesson.all.where("user_id = ?", current_user.id).order('start ASC').all.each do |l| %>
+        <% Lesson.all.where("user_id = ?", current_user.id).order('start DESC').all.each do |l| %>
       <%= l.title %> <br />
       <%= l.subject %> <br />
       <%= l.start.strftime('%m/%d/%Y %I:%M %p') %> <br />
