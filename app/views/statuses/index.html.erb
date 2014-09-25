@@ -17,7 +17,7 @@
         <strong><%= link_to status.user.full_name, profile_page_path(status.user) %></strong>
           <ul class="no-bullet">
           <li> <%= status.subject %> </li>
-
+          <%= link_to status.id, status, method: :delete, class: "button alert" %>
            <em><%= link_to "Posted\s" + time_ago_in_words(status.created_at) + "\sago", status %></em>
            <%# end %>
            <em> <br />

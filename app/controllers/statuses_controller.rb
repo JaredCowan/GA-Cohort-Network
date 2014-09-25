@@ -1,7 +1,7 @@
 class StatusesController < ApplicationController
   before_action :signed_in_user
   before_action :set_forum, only: [:show, :edit, :update, :destroy]
-  respond_to :json
+  respond_to :html, :json
 
   def index
     @statuses = Status.all.reverse_order.page params[:page]
@@ -27,7 +27,7 @@ class StatusesController < ApplicationController
   def new
     # @status = Status.new
     @status = current_user.statuses.new
-    # @attachment.build_document
+    @attachment.build_document
 
     respond_to do |format|
       format.html
@@ -121,7 +121,7 @@ class StatusesController < ApplicationController
 
   def format_generic_error(type)
     redirect_to :feed
-    # format.html { redirect_to :statuses_path }
+    format.html { redirect_to :statuses_path }
     format.json { render json: @status.errors, status: :unprocessable_entity }
   end
 

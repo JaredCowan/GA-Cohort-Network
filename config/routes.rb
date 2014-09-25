@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :statuses do 
     resources :comments
   end  
+  
 
   resources :conversations do
     member do
