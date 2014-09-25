@@ -1,0 +1,90 @@
+ <script>
+        $(function(){ $(document).foundation(
+          {
+            animation: 'fadeAndPop',
+            animation_speed: 250,
+            close_on_background_click: true,
+            dismiss_modal_class: 'close-reveal-modal',
+            bg_class: 'reveal-modal-bg',
+            root_element: 'body',
+            bg : $('.reveal-modal-bg'),
+            css : {
+              open : {
+                'opacity': 0,
+                'visibility': 'visible',
+                'display' : 'block'
+              },
+              close : {
+                'opacity': 1,
+                'visibility': 'hidden',
+                'display': 'none'
+              }
+            }
+          }
+        );
+      });
+        $(document).foundation('joyride', 'start');
+      </script>
+
+      <% if controller_name == "static_pages" %>
+        <script>
+          $('#calendar').fullCalendar({
+            header: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'month,agendaWeek,agendaDay'
+             },
+             // editable: true,
+             // eventLimit: true, // allow "more" link when too many events
+
+            dayClick: function() {
+              $('#lessonModal').foundation('reveal', 'open', '');
+            },
+
+            eventClick: function() {
+              $('#editLessonModal').foundation('reveal', 'open', '');
+            },
+
+            eventSources: [{
+              url: '/dashboard.json',
+              type: 'GET',
+              error: function() {
+                  alert('there was an error while fetching events!');
+              },
+              color: 'yellow',   // a non-ajax option
+              textColor: 'black' // a non-ajax option
+              }]
+          });
+        </script>
+      <% else %>
+        <script>
+          $('#calendar').fullCalendar({
+            header: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'month,agendaWeek,agendaDay'
+             },
+             // editable: true,
+             // eventLimit: true, // allow "more" link when too many events
+
+            dayClick: function() {
+              $('#lessonModal').foundation('reveal', 'open', '');
+            },
+
+            eventClick: function() {
+              $('#editLessonModal').foundation('reveal', 'open', '');
+            },
+            events: {
+              url: '/lessons.json',
+              type: 'GET',
+              success: function() {
+                console.log("Calendar data successfully received.")
+              },
+              error: function() {
+                console.log('there was an error while fetching events!');
+              },
+              textColor:  'black'
+            },
+          });
+        </script>
+      <% end %>

@@ -1,20 +1,24 @@
-<%= "Name:\s" %> <%= link_to @user.full_name.titleize, user_path(@user.id) %> <br />
-<% if signed_in? %>
-<span id="friend-status">
-  <% if current_user == @user %>
-    <%= link_to "You can't add yourself as a friend", '#', class: 'button alert tiny disabled' %>
-  <% elsif current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
-    <%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: 'button success' %>
-  <% else %>
-    <%= link_to "Add Friend", new_user_friendship_path(friend_id: @user), class: 'button', id: 'add-friendship', data: { friend_id: @user.to_param } %>
-  <% end %>
-<% end %>
-</span>
-<br><a href="#" data-reveal-id="messageModal" class="radius small button"> Message <%= @user.full_name %></a>
+<div class="row">
+  <div class="small-11 small-centered columns">
+    <%= "Name:\s" %> <%= link_to @user.full_name.titleize, user_path(@user.id) %> <br />
+    <% if signed_in? %>
+    <span id="friend-status">
+      <% if current_user == @user %>
+        <%= link_to "You can't add yourself as a friend", '#', class: 'button alert tiny disabled' %>
+      <% elsif current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
+        <%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: 'button success' %>
+      <% else %>
+        <%= link_to "Add Friend", new_user_friendship_path(friend_id: @user), class: 'button', id: 'add-friendship', data: { friend_id: @user.to_param } %>
+      <% end %>
+    <% end %>
+    </span>
+    <br><a href="#" data-reveal-id="messageModal" class="radius small button"> Message <%= @user.full_name %></a>
 
-<div id="calendar"></div>
+    <div id="calendar"></div>
 
-<div id="messageModal" class="reveal-modal" data-reveal>
-  <%= render :partial => "partials/newmessage" %>
-  <a class="close-reveal-modal">&#215;</a>
+    <div id="messageModal" class="reveal-modal" data-reveal>
+      <%= render :partial => "partials/newmessage" %>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+  </div>
 </div>

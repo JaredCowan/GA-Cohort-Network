@@ -1,16 +1,14 @@
-<center>
-  <a href="#" data-reveal-id="lessonModal" class="radius button">New Lesson</a>
-</center>
+<%= render :partial => "partials/lessonstopnav" %>
 
-<div class="calendar-wrapper">
+ <div class="calendar-wrapper">
   <div id="calendar"></div>
-</div>
 
 <br>
 
-<% @lessons.order('start asc').each do |l| %>
+<% @lessons.order('start DESC').each do |l| %>
   <%= l.title %> <br />
   <%= l.subject %> <br />
+  <%= User.find(l.user_id).full_name %> <br />
   <%= l.start %> <br />
   <div class="col-md-11">
   <% if l.user_id == current_user.id %>
@@ -45,6 +43,7 @@
 <div id="editLessonModal" class="reveal-modal" data-reveal>
    <%= render 'form' %>
   <a class="close-reveal-modal">&#215;</a>
+</div>
 </div>
 
 

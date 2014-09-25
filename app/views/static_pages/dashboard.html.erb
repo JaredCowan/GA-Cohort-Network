@@ -1,30 +1,38 @@
-<div id="firstStop"></div>
+<%= render :partial => "partials/lessonstopnav" %>
 
-<br>
-  <h3> Your lessons for today, <%= Time.zone.now.strftime('%a %b %d %Y') %> </h3>
-
-<hr> <br>
 
 <div class="row">
-  <div class="small-9 columns">
-    <div id="calendar"></div>
-  </div>
-  <div class="small-3 columns" id="lesson-scroller">
-    <% Lesson.where(user_id: current_user.id).where("start >= ?", Time.now).order('start DESC').each do |l| %>
-  <%= l.title %> <br />
-  <%= l.subject %> <br />
-  <%= l.start.strftime('%m/%d/%Y %I:%M:%S') %> <br />
-  <hr>
-<% end %>
+  <div class="large-12 small-centered columns">
+    <div id="firstStop"></div>
+    <br>
+      <h3> <%= "Your lessons for today,\s" + Time.zone.now.strftime('%a %b %d %Y') %> </h3>
+
+    <hr><br>
+
+    <div class="row">
+      <div class="small-9 columns">
+        <div id="calendar"></div>
+      </div>
+      <div class="small-3 columns" id="lesson-scroller">
+        <% Lesson.all.where("user_id = ?", current_user.id).order('start ASC').all.each do |l| %>
+      <%= l.title %> <br />
+      <%= l.subject %> <br />
+      <%= l.start.strftime('%m/%d/%Y %I:%M %p') %> <br />
+      safasd
+      <hr>
+    <% end %>
+      </div>
+    </div>
+    
+    <div class="calendar-wrapper"></div>
+
+    <ol class="joyride-list" data-joyride>
+      <%= tour("Take the tour!" + "<hr/> Click a day to add events <br /> Click events to go to view page") %>
+    </ol>
   </div>
 </div>
 
-
-
-<div class="calendar-wrapper">
-  
+<div id="lessonModal" class="reveal-modal" data-reveal>
+   <%= render 'lessons/form' %>
+  <a class="close-reveal-modal">&#215;</a>
 </div>
-
-<ol class="joyride-list" data-joyride>
-  <%= tour("Take the tour!" + "<hr/> Click a day to add events <br /> Click events to go to view page") %>
-</ol>

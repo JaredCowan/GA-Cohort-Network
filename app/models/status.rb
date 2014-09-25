@@ -2,8 +2,10 @@ class Status < ActiveRecord::Base
   belongs_to :user
   belongs_to :document
   has_many :comments
+  acts_as_votable
 
-  paginates_per 20
+  paginates_per 10
+
   accepts_nested_attributes_for :document
 
   validates :subject, presence: true,

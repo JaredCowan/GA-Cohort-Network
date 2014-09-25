@@ -1,5 +1,6 @@
 class StatusesController < ApplicationController
   before_action :signed_in_user
+  before_action :set_forum, only: [:show, :edit, :update, :destroy]
   respond_to :json
 
   def index
@@ -16,7 +17,6 @@ class StatusesController < ApplicationController
 
   def show
     @status = Status.find(params[:id])
-    # @status.increment!(:likes) # Temp. not used. Do not uncomment.
 
     # respond_to do |format|
     #   format.html
@@ -91,15 +91,42 @@ class StatusesController < ApplicationController
     end
   end
 
+  def upvote
+      @status = Status.find(params[:id])
+      @status.liked_by current_user
+      redirect_to :forum
+  end
+
+  # Change to unliked
+  def downvote
+      @status = Status.find(params[:id])
+      @status.downvote_from current_user
+      redirect_to :forum
+  end
+
+  # Not in use.
+  # Will be used to mark forum questions as answered
+  def solved
+      @status = Status.find(params[:id])
+      @status.upvote_from current_user
+      redirect_to :forum
+  end
+
   private
 
   def status_params
     params.require(:status).permit(:subject, :content, :id, :document_attributes, :attachment)
     params.require(:status).permit!
   end
+
   def format_generic_error(type)
     redirect_to :feed
     # format.html { redirect_to :statuses_path }
     format.json { render json: @status.errors, status: :unprocessable_entity }
   end
+
+  def set_forum
+    @status = Status.find(params[:id])
+  end
+
 end

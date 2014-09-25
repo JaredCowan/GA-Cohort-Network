@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  # rescue ArgumentError
-  #  redirect_to conversations_path
 
   protect_from_forgery with: :exception
 

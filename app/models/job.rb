@@ -2,7 +2,7 @@ class Job < ActiveRecord::Base
   belongs_to :user
   acts_as_votable
   
-  # paginates_per 50
+  paginates_per 10
 
   # validates :userid , presence: true
   # validates :company, presence: true

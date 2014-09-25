@@ -59,4 +59,3 @@ if ($('.joyride-tip-guide').length >= 0) {
 }
 // End fade alert box
 
-

@@ -4,10 +4,11 @@ class LessonsController < ApplicationController
 
   def index
     @lessons = Lesson.all.page params[:page]
-    respond_to do |format|
-      format.html
-      format.json { render json: @lessons}
-    end
+    # respond_with @lessons.where(user_id: 4)
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render json: @lessons}
+    # end
   end
 
   def show

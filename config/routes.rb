@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-
-  mount Rapidfire::Engine => "/rapidfire"
   
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  
+
   root :to => 'static_pages#dashboard'
 
   match '/signup',         to: 'users#new',              via: 'get'
@@ -19,7 +17,6 @@ Rails.application.routes.draw do
   resources :statuses do 
     resources :comments
   end  
-    
 
   resources :conversations do
     member do
@@ -47,6 +44,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :statuses do
+    member do
+      put "like", to: "statuses#upvote"
+      put "dislike", to: "statuses#downvote"
+    end
+  end
+
   resources :user_friendships do
     member do
       put :accept
@@ -58,7 +62,5 @@ Rails.application.routes.draw do
   get 'friends',      to: 'user_friendships#index', as: :friends
   get 'forum',        to: 'statuses#index',         as: :forum
   get '/profile/:id', to: 'profiles#show',          as: :profile_page
-
-
 
 end

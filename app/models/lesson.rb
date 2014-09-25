@@ -1,7 +1,7 @@
 class Lesson < ActiveRecord::Base
   belongs_to :user
 
-  # paginates_per 50
+  paginates_per 6
 
   # validates :instructor, presence: true
   # validates :start,      presence: true

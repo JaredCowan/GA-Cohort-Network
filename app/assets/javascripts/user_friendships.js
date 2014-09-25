@@ -1,4 +1,5 @@
 window.userFriendships = [];
+// window.current_user    = Routes.users_path(current_user)
 
 $(document).ready(function() {
   $.ajax({

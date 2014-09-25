@@ -4,7 +4,7 @@ class JobsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @jobs = Job.all
+    @jobs = Job.all.page params[:page]
     respond_to do |format|
       format.html
       format.json { render json: @jobs}
@@ -21,7 +21,6 @@ class JobsController < ApplicationController
   end
 
   def new
-    # @job = current_user.jobs.new
     @job = current_user.jobs.build
 
     respond_to do |format|

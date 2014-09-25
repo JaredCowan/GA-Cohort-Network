@@ -1,8 +1,8 @@
 class StaticPagesController < ApplicationController
   before_action :signed_in_user
+  respond_to :html, :json
   
   def home
-    User.all
   end
 
   def dashboard

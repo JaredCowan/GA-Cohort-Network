@@ -23,33 +23,39 @@
       <hr>
         <%= "Posted by:\s" + User.find(j.user_id).full_name %> <%= time_ago_in_words(j.created_at) + "\sago" %><br>
       <hr>
-      <div class="like-dislike">
-
+    <div class="like-dislike">
       <div class="icon-bar two-up">
-      <% if current_user.voted_up_on? j %>
-        <a href=" <%= "/jobs/"+ j.id.to_s + "/dislike" %>" action="downvote" data-method="put" class="item like-dislike">
-        <i class="fi-dislike"></i>
-        <label>Dislike</label>
-      </a>
-      <% else %>
-      <a href=" <%= "/jobs/"+ j.id.to_s + "/like" %>" action="upvote" data-method="put"  class="item like-dislike">
-        <i class="fi-like"></i>
-        <label>Like</label>
-      </a>
-      <% end %>
-      <a href=" <%= "/jobs/" + j.id.to_s %>" class="item like-dislike">
-        <i class="fi-info"></i>
-        <label>View Job</label>
-      </a>
-    </div><br>
-      </div>
-      <ul class="inline-list">
-    <li> <%= "Likes\s" + j.get_likes.size.to_s %> </li>
-    <li> <%= "Dislikes\s" + j.get_dislikes.size.to_s %> </li>
-    </ul>
-  <hr>
+        <% if current_user.voted_up_on? j %>
+          <a href=" <%= "/jobs/"+ j.id.to_s + "/dislike" %>" action="downvote" data-method="put" class="item like-dislike">
+          <i class="fi-dislike"></i>
+          <label>Dislike</label>
+        </a>
+        <% else %>
+        <a href=" <%= "/jobs/"+ j.id.to_s + "/like" %>" action="upvote" data-method="put"  class="item like-dislike">
+          <i class="fi-like"></i>
+          <label>Like</label>
+        </a>
+        <% end %>
+        <a href=" <%= "/jobs/" + j.id.to_s %>" class="item like-dislike">
+          <i class="fi-info"></i>
+          <label>View Job</label>
+        </a>
+      </div><br>
+        </div>
+        <ul class="inline-list">
+        <%# if signed_in? && current_user.voted_on? j %>
+        <%# else %>
+        <%# end %>
+      <li> <%= "Liked by\s" + pluralize(j.get_likes.size, 'person') %> </li>
+      <li> <%= "Disliked by\s" + pluralize(j.get_dislikes.size, 'person') %> </li>
+      </ul>
+      <hr>
     <% end %>
   </div>
 </div>
 
-<%#= link_to "Unlike", {:controller =>"jobs", :action => "downvote", :id => j.id}, :class => 'button tiny', method: :put %>
+<div class="pagination-centered">
+  <ul class="pagination">
+  <%= paginate @jobs %>
+  </ul>
+</div>

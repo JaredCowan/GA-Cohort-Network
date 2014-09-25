@@ -1,5 +1,5 @@
-<%# User.all.each do |u| %>
-  <%#= u.full_name %>
-<%# end %><br />
+<% Lesson.all.each do |u| %>
+  <%= u.subject %>
+<% end %><br />
 <%#= "Logged-in: " + user_id.to_s if signed_in? %>
 <%= login_form %>
