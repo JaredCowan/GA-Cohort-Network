@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
 gem 'rails', '4.1.5'
 gem 'pg'
 gem 'turbolinks'
@@ -31,6 +30,7 @@ gem 'modernizr-rails'
 gem 'fullcalendar-rails'
 gem 'kaminari'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'unicorn'
 
 group :test do
   gem 'minitest'
@@ -49,11 +49,9 @@ group :test do
 end
 
 group :production do
-  gem 'bootstrap-sass', '~> 3.2.0'
-  #For Heroku
-  gem 'rails_12factor'
+  # gem 'bootstrap-sass', '~> 3.2.0'
 end
 
-
-
+gem 'rails_12factor', group: :production
+ruby '2.1.2'
 

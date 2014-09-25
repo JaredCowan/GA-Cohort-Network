@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(version: 20140923203414) do
     t.text     "description"
     t.boolean  "all_day",     default: false
     t.integer  "user_id"
-    t.datetime "start",       default: '2014-09-22 20:10:35', null: false
-    t.datetime "end",         default: '2014-09-22 20:10:35', null: false
+    t.datetime "start",       default: '2014-09-25 13:10:02', null: false
+    t.datetime "end",         default: '2014-09-25 13:10:02', null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
