@@ -39,10 +39,10 @@
 
        <!-- Javascripts for calender etc. -->
       <%= render :partial => "layouts/script" %>
-      <% if signed_in?  %>
-        <%= javascript_tag do %>
-          window.current_user = '<%= current_user.id %>'
-        <% end %>
-      <% end %>
+      <%# if signed_in?  %>
+        <%#= javascript_tag do %>
+          <!-- window.current_user = '<%#= current_user.id %>' -->
+        <%# end %>
+      <%# end %>
     </body>
   </html>

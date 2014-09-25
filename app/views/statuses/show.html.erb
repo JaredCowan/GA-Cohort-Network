@@ -1,8 +1,9 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><%#= notice %></p>
 
  <div class="row">
   <div class="small-9 small-centered columns">
     <p><b>Name:</b>
+    <%= @status.inspect %>
       <%= @status.user.full_name %>
     </p>
 
@@ -67,7 +68,7 @@
 
       <%= f.text_field :body %>
       <%= f.hidden_field :user_id, :value => current_user.user_id %>
-      
+
       <input class="button alert" name="commit" type="submit" value="Post comment">
     <% end %>
   </div>
