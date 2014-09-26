@@ -1,16 +1,7 @@
+<%= render 'convo_top_navbar' %>
 <div class="row">
-  <div class="small-4 small-centered columns">
-    <div class="icon-bar two-up" id="convo-quick-bar">
-      <a href="<%= conversations_path %>" class="item item-1">
-        <i class="fi-mail"></i>
-        <label>Home</label>
-      </a>
-      <a class="item item-2" href="/conversations/new">
-        <i class="fi-mail"></i>
-        <label>Compose New</label>
-      </a>
-    </div>
+  <div class="small-9 small-centered columns">
+    <h1> Start Conversation </h1>
+    <%= render 'form' %>
   </div>
 </div>
-<h1> Start Conversation </h1>
-<%= render 'form' %>

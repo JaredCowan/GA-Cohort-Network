@@ -7,6 +7,15 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag :modernizr %>
     <%= csrf_meta_tags %>
+    <meta name="description" content="GA Cohort Network for developers attending General Assebmly" />
+    <meta property="og:site_name" content="GA Cohort Network" />
+    <meta property="og:title" content="GA Cohort Network" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="ga-cohorts.herokuapp.com" />
+    <meta property="og:image" content="https://generalassemb.ly/online/assets/ga-lockup-logo-9d95d5d0a1c966540edaedcb440b1963.png" />
+    <link rel="canonical" href="ga-cohorts.herokuapp.com" />
+    <link rel="shortlink" href="ga-cohorts.herokuapp.com" />
+    <link rel="shortcut icon" href="https://generalassemb.ly/online/assets/favicon-bb2f243f124d9d86bcf9f565dbd59dfc.ico" />
   </head>
   <body>
 
@@ -37,7 +46,7 @@
       </div> <!-- Do not remove. --> 
       <!--^^ Closes the partials/navbar div -->
 
-       <!-- Javascripts for calender etc. -->
+       <!-- Javascripts for calender -->
       <%= render :partial => "layouts/script" %>
       <%# if signed_in?  %>
         <%#= javascript_tag do %>

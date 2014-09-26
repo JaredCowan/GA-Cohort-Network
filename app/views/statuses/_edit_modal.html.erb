@@ -1,0 +1,14 @@
+<div id="editModal" class="reveal-modal" data-reveal>
+  <h2>Editing Post From 
+    <%= @status.created_at.strftime('%a %b %d %Y') %>
+  </h2>
+
+  <hr />
+
+  <p class="lead">
+    <%= render :partial => "form" %>
+  </p>
+
+  <a class="close-reveal-modal">&#215;</a>
+  
+</div>

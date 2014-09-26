@@ -1,6 +1,12 @@
-<%= simple_form_for :message, url: reply_conversation_path(conversation) do |f| %>
-  <%= f.input :subject %>
-  <%= f.input :body %>
-  <%= f.button :submit, class: 'button' %>
-  <%= submit_tag 'Cancel', type: :reset, class: 'button alert' %>
-<% end %>
+<div class="row">
+  <div class="small-10 small-centered columns">
+    <h1> <%= message_name %> </h1>
+    <%= simple_form_for :message, url: reply_conversation_path(conversation) do |f| %>
+      <%= f.input :subject, placeholder: 'Subject' %>
+      <%= f.label :body %>
+      <%= f.text_area :body, placeholder: 'Body' %>
+      <%= f.button :submit, class: 'button success left' %>
+      <%= submit_tag 'Cancel', type: :reset, class: 'button alert right' %>
+    <% end %>
+  </div>
+</div>

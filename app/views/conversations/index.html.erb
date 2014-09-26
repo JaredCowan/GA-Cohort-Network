@@ -1,58 +1,35 @@
+<%= render 'convo_top_navbar' %>
+
 <div class="row">
-  <div class="small-4 small-centered columns">
-    <div class="icon-bar two-up" id="convo-quick-bar">
-      <a href="<%= conversations_path %>" class="item item-1">
-        <i class="fi-mail"></i>
-        <label>Home</label>
-      </a>
-      <a class="item item-2" href="/conversations/new">
-        <i class="fi-mail"></i>
-        <label>Compose New</label>
-      </a>
+  <h1> Conversations </h1>
+  <div class="small-6 large-6 columns">
+    <% if has_unread? %>
+    <h2> Inbox <span class="label"><%= unread_message_count %> unread</span></h2>
+    <% else %>
+    <h2> Inbox </h2>
+    <% end %>
+    <div id="mailbox">
+      <%= render collection: mailbox.inbox, partial: 'conversation' %>
+    </div>
+  </div>
+
+  <div class="small-6 large-6 columns">
+    <dl class="tabs" data-tab>
+      <dd class="active"><a href="#panel1">Sentbox</a></dd>
+      <dd><a href="#panel2">Trash</a></dd>
+    </dl>
+    <div class="tabs-content">
+      <div class="content active" id="panel1">
+        <div id="mailbox">
+          <%= render collection: mailbox.sentbox, partial: 'conversation' %>
+        </div>
+      </div>
+      <div class="content" id="panel2">
+        <div id="mailbox">
+          <%= render collection: mailbox.trash, partial: 'conversation' %>
+          <%= "Nothing to see here. Move along.." if current_user.mailbox.trash.count <= 0 %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-<!-- <button class="button success"><a href="/conversations/new"></a>Compose</button> -->
-<h1> Conversations </h1>
-
-<div class="row">
-  <div class="small-6 large-6 columns">
-    <% if has_unread? %>
-      <h2> Inbox <span class="label"><%= unread_message_count %> unread</span></h2>
-      <% else %>
-        <h2> Inbox </h2>
-      <% end %>
-      <div id="mailbox">
-        <%= render collection: mailbox.inbox, partial: 'conversation' %>
-      </div>
-  </div>
-  <div class="small-6 large-6 columns">
-    <!-- <h2> Sentbox </h2> -->
-    <dl class="tabs" data-tab>
-  <dd class="active"><a href="#panel1">Sentbox</a></dd>
-  <dd><a href="#panel2">Trash</a></dd>
-</dl>
-<div class="tabs-content">
-  <div class="content active" id="panel1">
-    <div id="mailbox">
-  <%= render collection: mailbox.sentbox, partial: 'conversation' %>
-</div>
-  </div>
-  <div class="content" id="panel2">
-<div id="mailbox">
-<%= render collection: mailbox.trash, partial: 'conversation' %>
-<%= "Nothing to see here. Move along.." if current_user.mailbox.trash.count <= 0 %>
-</div>
-  </div>
-</div>
-
-  </div>
-  <div class="small-12 large-2 columns">
-    
-  </div>
-</div>
-
-
-
-<!-- <h2> Trash </h2> -->
-

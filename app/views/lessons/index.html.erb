@@ -1,49 +1,51 @@
 <%= render :partial => "partials/lessonstopnav" %>
+<div class="row">
+  <div class="large-12 small-centered columns">
+     <div class="calendar-wrapper">
+      <div id="calendar"></div>
 
- <div class="calendar-wrapper">
-  <div id="calendar"></div>
+    <br>
 
-<br>
+    <% @lessons.order('start DESC').each do |l| %>
+      <%= l.title %> <br />
+      <%= l.subject %> <br />
+      <%= User.find(l.user_id).full_name %> <br />
+      <%= l.start %> <br />
+      <div class="col-md-11">
+      <% if l.user_id == current_user.id %>
+        <div class="btn-group pull-right">
+          <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button round dropdown tiny">Edit</button><br>
 
-<% @lessons.order('start DESC').each do |l| %>
-  <%= l.title %> <br />
-  <%= l.subject %> <br />
-  <%= User.find(l.user_id).full_name %> <br />
-  <%= l.start %> <br />
-  <div class="col-md-11">
-  <% if l.user_id == current_user.id %>
-    <div class="btn-group pull-right">
-      <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button round dropdown tiny">Edit</button><br>
+          <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
+            <li>
+              <a href="#" data-reveal-id="myModal">Edit Post</a>
+            </li>
+            <li>
+              <a href="#" data-reveal-id="deleteModal">Delete Post</a>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+      <hr>
+    <% end %>
 
-      <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
-        <li>
-          <a href="#" data-reveal-id="myModal">Edit Post</a>
-        </li>
-        <li>
-          <a href="#" data-reveal-id="deleteModal">Delete Post</a>
-        </li>
+    <div class="pagination-centered">
+      <ul class="pagination">
+      <%= paginate @lessons, :window => 2 %>
       </ul>
     </div>
-  <% end %>
-</div>
-  <hr>
-<% end %>
 
-<div class="pagination-centered">
-  <ul class="pagination">
-  <%= paginate @lessons, :window => 2 %>
-  </ul>
-</div>
+    <div id="lessonModal" class="reveal-modal" data-reveal>
+       <%= render 'form' %>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
 
-<div id="lessonModal" class="reveal-modal" data-reveal>
-   <%= render 'form' %>
-  <a class="close-reveal-modal">&#215;</a>
+    <div id="editLessonModal" class="reveal-modal" data-reveal>
+       <%= render 'form' %>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+    </div>
+  </div>
 </div>
-
-<div id="editLessonModal" class="reveal-modal" data-reveal>
-   <%= render 'form' %>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-</div>
-
 

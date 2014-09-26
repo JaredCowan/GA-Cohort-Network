@@ -1,0 +1,41 @@
+<div id="deleteModal" class="reveal-modal" data-reveal>
+  <h2>Permanently delete this post?</h2>
+  <hr />
+  <p>
+    <b>Name:</b>
+    <%= @status.user.full_name %>
+  </p>
+
+  <p>
+    <b>Subject:</b>
+    <%= @status.subject %>
+  </p>
+
+  <p>
+    <b>Question:</b>
+    <%= @status.content %>
+  </p>
+
+  <p>
+    <b>Content:</b>
+    <%= @status.content %>
+    <% if @status.document && @status.document.attachment? && @status.document.valid? %>
+      <ul class="clearing-thumbs" data-clearing>
+        <li>
+          <a href="<%= @status.document.attachment.url %>">
+          <span class="label label-info">Click To View Attachment</span><br><img id="thumbnail" src="<%= @status.document.attachment.url %>"/></a></li>
+      </ul>
+    <% end %>
+  </p>
+
+  <p>
+    <b>Posted:</b>
+    <%= time_ago_in_words(@status.created_at).titleize + "\sAgo On\s" + @status.created_at.strftime('%a %b %d %Y') %>
+  </p>
+  <br>
+  
+  <%= link_to 'Delete Post', @status, method: :delete, class: "button alert" %></p>
+  <a class="close-reveal-modal">&#215;</a>
+
+  </div>
+</div>
