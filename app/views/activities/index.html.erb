@@ -2,5 +2,66 @@
   <div class="small-9 small-centered columns">
     <h1>Activity Feed</h1>
     <!-- change the wording to reflect the correct posting words -->
+    <% if Rails.env.development? %>
+    <% @activities.each do |activity| %>
+      <div class="panel" id="forum-index">
+        <strong><%= link_to activity.user.full_name, profile_page_path(activity.user) %></strong> asked a new <%= link_to "forum question", status_path(activity.targetable_id) %>
+        <br />
+        <br />
+          <ul class="no-bullet">
+          <li> &nbsp;&nbsp;&nbsp;
+            <strong>Subject:</strong> <%= Status.find(activity.targetable_id).subject %>
+            <br>
+            &nbsp;&nbsp;&nbsp;
+              <strong>Question:</strong> <%= truncate( Status.find(activity.targetable_id).content, length: 15) %> <%= link_to "(Read more)", status_path(activity.targetable_id), id: 'activity-read-more-link' %> </li><br>
+           <%= "Created\s" + time_ago_in_words(activity.created_at) + "\sago" %></small>
+          </ul>
+         <div class="like-dislike">
+      <div class="icon-bar four-up">
+        <% if current_user.voted_up_on? Status.find(activity.targetable_id) %>
+          <a href=" <%= "/activities/"+ activity.targetable_id.to_s + "/dislike" %>" action="downvote" data-method="put" class="item like-dislike">
+          <i class="fi-heart" id="red"></i>
+          <label>Favorited</label>
+        </a>
+        <% else %>
+        <a href=" <%= "/activities/"+ activity.targetable_id.to_s + "/like" %>" action="upvote" data-method="put"  class="item like-dislike">
+          <i class="fi-heart"></i>
+          <label>Favorite</label>
+        </a>
+        <% end %>
+        <a href=" <%= "/statuses/" + activity.targetable_id.to_s %>" class="item like-dislike">
+          <i class="fi-info"></i>
+          <label>View <%= activity.targetable_type %></label>
+        </a>
+
+        <a href=" <%= "/statuses/" + activity.targetable_id.to_s %>" class="item like-dislike">
+          <i class="fi-comments"></i>
+          <label><%= pluralize(Status.find(activity.targetable_id).comments.length.to_s, 'comment') %></label>
+        </a>
+
+        <a href="#" class="item like-dislike">
+          <i class="fi-share"></i>
+          <label>Send To User</label>
+        </a>
+      </div><br>
+        </div>
+        <ul class="inline-list">
+          <li> <%= "Favorited by\s" + pluralize(Status.find(activity.targetable_id).get_upvotes.size, 'person') %> </li>
+        </ul>
+      </div>
+      <% end %>
     
+  </div>
+</div>
+
+<div class="pagination-centered">
+  <ul class="pagination" role="menubar" aria-label="Pagination">
+  <li class="current"> <%= link_to_previous_page @activities, 'Previous Page' %> </li>
+  <li class="current"></i> <%= link_to_next_page @activities, 'Next Page' %> </li>
+  </ul>
+</div>
+<% else %>
+  <h1 style="color: red"><strong><%= "uh-oh!" %></strong></h1>
+  <p><h3 style="color: red"><%= "There seems to be a problem with the activity feed. We're working on getting it back up." %></p></h3>
+<% end %>
 
