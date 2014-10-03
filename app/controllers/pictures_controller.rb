@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :index]
+  # before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :index]
   before_filter :find_user
   before_filter :find_album
   before_filter :find_picture, only: [:edit, :update, :show, :destroy]
@@ -17,7 +17,7 @@ class PicturesController < ApplicationController
   end
 
   def show
-    add_breadcrumb @picture, album_picture_path(@album, @picture)
+    # add_breadcrumb @picture, album_picture_path(@album, @picture)
 
     respond_to do |format|
       format.html
@@ -87,11 +87,11 @@ class PicturesController < ApplicationController
     end
   end
 
-  def add_breadcrumbs
-    add_breadcrumb @user.first_name, profile_path(@user)
-    add_breadcrumb "Albums", albums_path
-    add_breadcrumb "Pictures", album_pictures_path(@album)
-  end
+  # def add_breadcrumbs
+  #   add_breadcrumb @user.first_name, profile_path(@user)
+  #   add_breadcrumb "Albums", albums_path
+  #   add_breadcrumb "Pictures", album_pictures_path(@album)
+  # end
 
   def find_user
     @user = User.find_by_profile_name(params[:profile_name])
