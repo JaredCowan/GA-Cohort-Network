@@ -6,9 +6,9 @@ class Activity < ActiveRecord::Base
   paginates_per 10
 
   def self.for_user(user, options={})
-    # options[:page] ||= 1
+    options[:page] ||= 1
     # Return an empty collection if the user object is somehow blank
-    # return WillPaginate::Collection.new(1, per_page, 1) unless user
+    return WillPaginate::Collection.new(1, per_page, 1) unless user
     friend_ids = user.friends.map(&:id).push(user.id)
     collection = where("user_id in (?)", friend_ids).
       order("created_at desc")
