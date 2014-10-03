@@ -1,0 +1,25 @@
+<%#= page_header do %>
+  <h1>Activity Feed</h1>
+<%# end %>
+
+
+<% @activities.each do |activity| %>
+  <div id="actdiv" class="media">
+    <%= activity.user.full_name %>
+    <div class="media-body">
+      <h4 class="media-heading">
+        <% if activity.user.full_name == current_user.full_name %><%= "You" %>
+        <% else %>
+            <%= activity.user.full_name %>
+        <% end %>
+      </h4>
+      <small><%= time_ago_in_words(activity.created_at) %></small><br />
+      <%= render partial: "activities/#{activity.targetable_type.underscore}/#{activity.action}", 
+            locals: { activity: activity } %>
+      <br />
+    </div>
+  </div>
+  <hr />
+<% end %>
+
+<%#= will_paginate @activities %>

@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-
+  resources :activities, only: [:index]
+  
   root :to => 'static_pages#dashboard'
 
   match '/signup',         to: 'users#new',              via: 'get'
@@ -56,6 +57,12 @@ Rails.application.routes.draw do
     member do
       put :accept
       put :block
+    end
+  end
+
+  scope ":profile_name" do
+    resources :albums do
+      resources :pictures
     end
   end
 

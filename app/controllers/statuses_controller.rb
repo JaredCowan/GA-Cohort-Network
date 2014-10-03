@@ -40,18 +40,36 @@ class StatusesController < ApplicationController
     @status = current_user.statuses.find(params[:id])
   end
 
+  # def create
+  #   @status = current_user.statuses.new(status_params)
+  #   @document.user_id = current_user.id
+  #   respond_to do |format|
+  #     if @status.save
+  #       format.html { redirect_to :forum, notice: 'Question was successfully created.' }
+  #       format.json { render json: @status, status: :created, location: @status }
+  #     else
+  #       format.html { redirect_to :forum, notice: "That's a no-no. QuestionQuestion is blank." }
+  #     end
+  #   end
+  # end
+
+
   def create
     @status = current_user.statuses.new(status_params)
-    @document.user_id = current_user.id
+    # @document.user_id = current_user.id
+
     respond_to do |format|
       if @status.save
-        format.html { redirect_to :forum, notice: 'Question was successfully created.' }
+        current_user.create_activity(@status, 'created')
+        format.html { redirect_to :forum, notice: 'Status was successfully created.' }
         format.json { render json: @status, status: :created, location: @status }
       else
-        format.html { redirect_to :forum, notice: "That's a no-no. QuestionQuestion is blank." }
+        format.html { render action: "new" }
+        format.json { render json: @status.errors, status: :unprocessable_entity }
       end
     end
   end
+
 
   def update
 

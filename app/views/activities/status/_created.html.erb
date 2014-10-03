@@ -1,0 +1,4 @@
+<p>Created a <%= link_to "status update", status_path(activity.targetable_id) %>.</p> <br />
+<p> <%= Status.find(activity.targetable_id).content  %></p>
+ <p> <%= link_to Status.find(activity.targetable_id).id %></p>
+<p> <%=  %></p>

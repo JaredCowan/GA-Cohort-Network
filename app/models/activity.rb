@@ -2,7 +2,7 @@ class Activity < ActiveRecord::Base
   belongs_to :user
   belongs_to :targetable, polymorphic: true
 
-  self.per_page = 10
+  # self.per_page = 10
 
   def self.for_user(user, options={})
     options[:page] ||= 1
@@ -23,7 +23,7 @@ class Activity < ActiveRecord::Base
   end
 
   def profile_name
-    user.profile_name
+    user.full_name
   end
   
 
@@ -31,7 +31,7 @@ class Activity < ActiveRecord::Base
     super(
       only: [:action, :id, :targetable_id, :targetable_type, :created_at, :id],
       include: :targetable,
-      methods: [:user_name, :profile_name, :status],
+      methods: [:user_name, :profile_name, :forum],
       include: :user
     ).merge(options)
   end
