@@ -58,7 +58,7 @@ var renderActivities = function() {
 
 var pollActivity = function() {
   $.ajax({
-    url: Routes.activities_path({format: 'json', since: window.lastFetch}),
+    url: Routes.activities_path({format: 'json'}),
     type: "GET",
     dataType: "json",
     success: function(data) {

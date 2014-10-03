@@ -72,7 +72,6 @@ class StatusesController < ApplicationController
 
 
   def update
-
     # if current_user
     #   @status   = Status.find(params[:id])
     #   @document = @status.document

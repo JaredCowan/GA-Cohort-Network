@@ -1,8 +1,23 @@
 class ActivitiesController < ApplicationController
   respond_to :html, :json
   def index
-    params[:page] ||= 1
-    @activities = Activity.for_user(current_user, params)
+    @activities = Activity.for_user(current_user).page params[:page]
     respond_with @activities
+    session[:return_to] ||= request.referer
   end
+
+  def upvote
+    @status = Status.find(params[:id])
+    @status.liked_by current_user
+    session[:return_to] ||= request.referer
+    redirect_to session.delete(:return_to)
+  end
+
+  def downvote
+    @status = Status.find(params[:id])
+    @status.downvote_from current_user
+    session[:return_to] ||= request.referer
+    redirect_to session.delete(:return_to)
+  end
+
 end
