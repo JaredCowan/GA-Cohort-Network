@@ -55,15 +55,8 @@
 
 <div class="pagination-centered">
   <ul class="pagination" role="menubar" aria-label="Pagination">
-  <%#= paginate @activities %>
   <li class="current"> <%= link_to_previous_page @activities, 'Previous Page' %> </li>
   <li class="current"></i> <%= link_to_next_page @activities, 'Next Page' %> </li>
   </ul>
 </div>
-
-  <!-- Reveal Modals begin -->
-  <div id="newhelp" class="reveal-modal" data-reveal>
-    <%= render :partial => "partials/status" %>
-  </div>
-  <!-- End Reveal Modals -->
 
