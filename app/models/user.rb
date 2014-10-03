@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_many :statuses
   has_many :lessons
+  has_many :activities
+  has_many :albums
+  has_many :pictures
   has_many :documents
   has_many :jobs
   has_secure_password
@@ -82,6 +85,14 @@ class User < ActiveRecord::Base
 
   def has_blocked?(other_user)
     blocked_friends.include?(other_user)
+  end
+
+  def create_activity(item, action)
+    activity = activities.new
+    activity.targetable = item
+    activity.action = action
+    activity.save
+    activity
   end
 
   private

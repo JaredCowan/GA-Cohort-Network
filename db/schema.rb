@@ -11,10 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140923203414) do
+ActiveRecord::Schema.define(version: 20141003035229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: true do |t|
+    t.integer  "user_id"
+    t.string   "action"
+    t.integer  "targetable_id"
+    t.string   "targetable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activities", ["targetable_id", "targetable_type"], name: "index_activities_on_targetable_id_and_targetable_type", using: :btree
+  add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
+
+  create_table "albums", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "albums", ["user_id"], name: "index_albums_on_user_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.text     "body"
@@ -73,8 +94,8 @@ ActiveRecord::Schema.define(version: 20140923203414) do
     t.text     "description"
     t.boolean  "all_day",     default: false
     t.integer  "user_id"
-    t.datetime "start",       default: '2014-09-25 13:10:02', null: false
-    t.datetime "end",         default: '2014-09-25 13:10:02', null: false
+    t.datetime "start",       default: '2014-09-22 20:10:35', null: false
+    t.datetime "end",         default: '2014-09-22 20:10:35', null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -133,6 +154,22 @@ ActiveRecord::Schema.define(version: 20140923203414) do
 
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
+
+  create_table "pictures", force: true do |t|
+    t.integer  "album_id"
+    t.integer  "user_id"
+    t.string   "caption"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
+  end
+
+  add_index "pictures", ["album_id"], name: "index_pictures_on_album_id", using: :btree
+  add_index "pictures", ["user_id"], name: "index_pictures_on_user_id", using: :btree
 
   create_table "statuses", force: true do |t|
     t.text     "content"
