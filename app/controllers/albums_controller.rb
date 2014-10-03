@@ -28,9 +28,9 @@ class AlbumsController < ApplicationController
     end
   end
 
-  def edit
-    add_breadcrumb "Editing Album"
-  end
+  # def edit
+  #   add_breadcrumb "Editing Album"
+  # end
 
   def create
     @album = current_user.albums.new(params[:album])
