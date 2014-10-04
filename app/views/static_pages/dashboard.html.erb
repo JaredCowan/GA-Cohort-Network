@@ -4,13 +4,6 @@
 <div class="row">
   <div class="large-12 small-centered columns">
     <div id="firstStop"></div>
-
-          <% User.all.each do |u| %>
-      <% u.activities.each do |activity| %>
-        <%= activity.inspect  %> <br>
-      <% end %>
-      <% end %>
-
     <br>
       <h3> <%= "Your lessons for today,\s" + Time.zone.now.strftime('%a %b %d %Y') %> </h3>
 
