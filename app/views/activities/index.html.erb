@@ -4,7 +4,7 @@
     <!-- change the wording to reflect the correct posting words -->
     <%# if Rails.env.development? %>
     <% @activities.each do |activity| %>
-      <%= activity.inspect  %> <br>
+      <%= activity.targetable_type  %> <br>
 <%# end %>
 <% end %>
 
