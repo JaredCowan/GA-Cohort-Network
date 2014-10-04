@@ -1,6 +1,6 @@
 class StatusesController < ApplicationController
   before_action :signed_in_user
-  # before_action :set_forum, only: [:show, :edit, :update, :destroy]
+  before_action :set_forum, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
 
   def index
@@ -58,18 +58,18 @@ class StatusesController < ApplicationController
 
 
   def update
-    # if current_user
-    #   @status   = Status.find(params[:id])
-    #   @document = @status.document
-    # else
+    if current_user
+      @status   = Status.find(params[:id])
+      @document = @status.document
+    else
       @status   = current_user.statuses.find(params[:id])
       @status.document.user_id = current_user.id
       @document = @status.document
-    # end
+    end
       
-    # if params[:status] && params[:status].has_key?(:user_id)
-    #   params[:status].delete(:user_id) 
-    # end
+    if params[:status] && params[:status].has_key?(:user_id)
+      params[:status].delete(:user_id) 
+    end
 
     respond_to do |format|
       if @status.update_attributes(status_params)
@@ -120,8 +120,8 @@ class StatusesController < ApplicationController
     format.json { render json: @status.errors, status: :unprocessable_entity }
   end
 
-  # def set_forum
-  #   @status = Status.find(params[:id])
-  # end
+  def set_forum
+    @status = Status.find(params[:id])
+  end
 
 end

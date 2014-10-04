@@ -7,6 +7,7 @@ json.array!(Activity.all) do |a|
   json.created_at a.created_at
   json.updated_at a.updated_at
   json.status Status.where(id: a.targetable_id)
+  json.comment Comment.where(id: a.targetable_id)
   json.question Question.where(id: a.targetable_id)
   json.answers Answer.where(question_id: a.targetable_id)
   json.user User.first

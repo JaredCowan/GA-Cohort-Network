@@ -7,8 +7,9 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to status_path(@status, location: @status)}
-        format.json { render json: @status, status: :created }
+        current_user.create_activity(@comment, 'created')
+        format.html { redirect_to status_path(@status, location: @comment)}
+        format.json { render json: @status, comment: :created }
       else
         format.html { redirect_to status_path(@status)}
       end

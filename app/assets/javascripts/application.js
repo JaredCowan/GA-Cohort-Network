@@ -43,12 +43,12 @@ var addActivity = function(item) {
 }
 
 var renderActivities = function() {
-//   var source = $('#activities-template').html();
-//   var template = Handlebars.compile(source);
-//   var html = template({
-//     activities: window.loadedActivities, 
-//     count: window.loadedActivities.length
-//   });
+  var source = $('#activities-template').html();
+  var template = Handlebars.compile(source);
+  var html = template({
+    activities: window.loadedActivities, 
+    count: window.loadedActivities.length
+  });
 //   var $activityFeedLink = $('li#activity-feed');
   
 //   $activityFeedLink.addClass('dropdown');
@@ -102,8 +102,8 @@ Handlebars.registerHelper('activityLink', function() {
     path = '#';
   }
 
-  // html = "<li><a href='" + path + "'>" + this.user_name + " " + this.action + " a " + linkText + ".</a></li>";
-  // return new Handlebars.SafeString( html );
+  html = "<li><a href='" + path + "'>" + this.user_name + " " + this.action + " a " + linkText + ".</a></li>";
+  return new Handlebars.SafeString( html );
 });
 
 // window.pollInterval = window.setInterval( pollActivity, 5000 );

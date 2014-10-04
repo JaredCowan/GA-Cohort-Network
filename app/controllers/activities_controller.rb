@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
   # respond_to :html, :json
   def index
-    @activities = Activity.for_user(current_user).page params[:page]
+    @activities = Activity.all.page params[:page]
     # respond_with @activities
     session[:return_to] ||= request.referer
   end
