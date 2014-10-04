@@ -3,7 +3,7 @@
   <div class="small-9 small-centered columns">
     
     <% @questions.each do |question| %>
-      <% if can_display_question?(question) %>
+      <%# if can_display_question?(question) %>
         <div class="panel" id="forum-index">
         <strong><%= link_to question.user.full_name, profile_page_path(question.user) %></strong>
           <ul class="no-bullet">
@@ -47,7 +47,7 @@
         </ul>
       </div>
       <% end %>
-    <% end %>
+    <%# end %>
   </div>
 </div>
 
