@@ -1,7 +1,7 @@
 class StatusesController < ApplicationController
   before_action :signed_in_user
-  before_action :set_forum, only: [:show, :edit, :update, :destroy]
-  # respond_to :html, :json
+  # before_action :set_forum, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :json
 
   def index
     @statuses = Status.all.reverse_order.page params[:page]
@@ -36,7 +36,7 @@ class StatusesController < ApplicationController
   end
 
   def edit
-    # @status = Status.find(params[:id])
+    @status = Status.find(params[:id])
     @status = current_user.statuses.find(params[:id])
   end
 
@@ -120,8 +120,8 @@ class StatusesController < ApplicationController
     format.json { render json: @status.errors, status: :unprocessable_entity }
   end
 
-  def set_forum
-    @status = Status.find(params[:id])
-  end
+  # def set_forum
+  #   @status = Status.find(params[:id])
+  # end
 
 end
