@@ -5,28 +5,14 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all.reverse_order.page params[:page]
-
-    # respond_to do |format|
-    #   format.html
-    #   format.json { render json: @statuses.to_json(only:
-    #     [:id, :content, :created_at, :updated_at,
-    #      :user_id, :document_id],
-    #      include: [:user, :document]) }
-    # end
   end
 
   def show
     @question = Question.find(params[:id])
-
-    # respond_to do |format|
-    #   format.html
-    #   format.json { render json: @status }
-    # end
   end
 
   def new
     @question = Question.new
-    # @status = current_user.statuses.new
     @document.build_document
 
     respond_to do |format|
@@ -36,23 +22,8 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    # @status = Status.find(params[:id])
     @question = current_user.questions.find(params[:id])
   end
-
-  # def create
-  #   @status = current_user.statuses.new(status_params)
-  #   @document.user_id = current_user.id
-  #   respond_to do |format|
-  #     if @status.save
-  #       format.html { redirect_to :forum, notice: 'Question was successfully created.' }
-  #       format.json { render json: @status, status: :created, location: @status }
-  #     else
-  #       format.html { redirect_to :forum, notice: "That's a no-no. QuestionQuestion is blank." }
-  #     end
-  #   end
-  # end
-
 
   def create
     @question = current_user.questions.new(question_params)
@@ -81,17 +52,13 @@ class QuestionsController < ApplicationController
       @document = @question.document
     # end
       
-    # if params[:status] && params[:status].has_key?(:user_id)
-    #   params[:status].delete(:user_id) 
-    # end
-
     respond_to do |format|
       if @question.update_attributes(question_params)
         format.html { redirect_to question_path(@question), notice: 'Question was successfully updated.' }
         format.json { head :no_content }
       else
         redirect_to question_path(@question)
-        # format_generic_error("edit")
+        format_generic_error("edit")
       end
     end
   end
