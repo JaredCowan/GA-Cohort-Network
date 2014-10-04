@@ -29,11 +29,11 @@ class Activity < ActiveRecord::Base
   
 
   def as_json(options={})
-    super(
-      only: [:action, :id, :targetable_id, :targetable_type, :created_at, :id],
-      include: :targetable,
-      methods: [:user_name, :profile_name],
-      include: :user
-    ).merge(options)
+    # super(
+    #   only: [:action, :id, :targetable_id, :targetable_type, :created_at, :id],
+    #   include: :targetable,
+    #   methods: [:user_name, :profile_name],
+    #   include: :user
+    # ).merge(options)
   end
 end

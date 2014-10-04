@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :activities, only: [:index]
+  resources :activities
+  resources :statuses
+  resources :questions
   
   root :to => 'static_pages#dashboard'
 
@@ -83,8 +85,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :statuses
-  resources :questions
   get 'friends',      to: 'user_friendships#index', as: :friends
   get 'forum',        to: 'statuses#index',         as: :forum
   get '/profile/:id', to: 'profiles#show',          as: :profile_page
