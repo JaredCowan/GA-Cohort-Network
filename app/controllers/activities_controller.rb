@@ -1,9 +1,9 @@
 class ActivitiesController < ApplicationController
-  # respond_to :html, :json
+  respond_to :html, :json
   def index
-    @activities = Activity.all.page params[:page]
+    @activities = Activity.all
     # respond_with @activities
-    session[:return_to] ||= request.referer
+    # session[:return_to] ||= request.referer
   end
 
   def upvote
