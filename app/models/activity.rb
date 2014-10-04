@@ -1,9 +1,9 @@
 class Activity < ActiveRecord::Base
   belongs_to :user
   belongs_to :targetable, polymorphic: true
-  acts_as_votable
+  # acts_as_votable
 
-  paginates_per 10
+  # paginates_per 10
 
   # def self.for_user(user, options={})
   #   options[:page] ||= 1
@@ -20,13 +20,13 @@ class Activity < ActiveRecord::Base
   #   collection.page(options[:page])
   # end
 
-  def user_name
-    user.full_name
-  end
+  # def user_name
+  #   user.full_name
+  # end
 
-  def profile_name
-    user.full_name
-  end
+  # def profile_name
+  #   user.full_name
+  # end
   
 
   # def as_json(options={})
