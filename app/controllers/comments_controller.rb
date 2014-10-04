@@ -1,14 +1,14 @@
 class CommentsController < ApplicationController
 
   def create 
+
     @status = Status.find(params[:status_id])
     @comment = @status.comments.create(comment_params)
-    # , location: @status
-    # , status: :created
+
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to status_path(@status)}
-        format.json { render json: @status }
+        format.html { redirect_to status_path(@status, location: @status)}
+        format.json { render json: @status, status: :created }
       else
         format.html { redirect_to status_path(@status)}
       end
@@ -17,6 +17,6 @@ class CommentsController < ApplicationController
 
   private 
     def comment_params
-      params.require(:comment).permit(:body, :user_id)
+      params.require(:comment).permit(:body, :user_id, :id, :question_id, :status_id)
     end
 end

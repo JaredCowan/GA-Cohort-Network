@@ -1,0 +1,13 @@
+<%= simple_form_for(Question.new, :html => {:class => "form-horizontal", multipart: true}) do |f| %>
+
+  <%= f.input :subject  %>
+  <%= f.input :body  %>
+
+  <div class="medium-6 columns">
+    <input class="file optional" id="question_document_attributes_attachment" name="question[document_attributes][attachment]" type="file" value="Upload Photo"/> </input>
+    <span class="actions">
+      <%= f.button :submit, class: 'button round success' %>
+    </span>
+  <% end %>
+  <!-- </div> -->
+</div>

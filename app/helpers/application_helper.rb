@@ -85,6 +85,10 @@ module ApplicationHelper
     signed_in? && !current_user.has_blocked?(status.user) || !signed_in?
   end
 
+  def can_display_question?(question) 
+    signed_in? && !current_user.has_blocked?(question.user) || !signed_in?
+  end
+
   def navbar_home_link
     if signed_in?
        link_to "Dashboard", dashboard_url

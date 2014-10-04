@@ -1,6 +1,7 @@
 class Document < ActiveRecord::Base
   attr_accessor :document
   belongs_to :status
+  belongs_to :question
   belongs_to :lesson
   belongs_to :user
   # user = User.find_by(email: params[:session][:email].downcase)

@@ -35,8 +35,8 @@
           <li><label>Calendar</label></li>
             <li> <%= link_to "Lessons", lessons_path if signed_in? %> </li>
           <li><label> <%= "Get Help" if signed_in? %> </label></li>
-          <li> <%= forum_path if signed_in? %> </li>
-          <li> <%= link_to "Jobs", jobs_path if signed_in? %> </li>
+          <li> <%=link_to "Ask & Answer Questions", questions_path if signed_in? %> </li>
+          <li> <%= link_to "Find & Post Jobs", jobs_path if signed_in? %> </li>
           <li>
             <label> <%= "Other" if signed_in? %> </label>
           </li>

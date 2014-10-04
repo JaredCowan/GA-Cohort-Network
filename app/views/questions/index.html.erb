@@ -1,0 +1,64 @@
+<%= render :partial => "topnavforum" %>
+<div class="row">
+  <div class="small-9 small-centered columns">
+    
+    <% @questions.each do |question| %>
+      <% if can_display_question?(question) %>
+        <div class="panel" id="forum-index">
+        <strong><%= link_to question.user.full_name, profile_page_path(question.user) %></strong>
+          <ul class="no-bullet">
+          <li> <%= question.subject %> </li>
+          <%#= link_to status.id, status, method: :delete, class: "button alert" %>
+           <em><%= "Posted\s" + time_ago_in_words(question.created_at) + "\sago" %></em>
+           <%# end %>
+          </ul>
+        <!-- </div> -->
+         <div class="like-dislike">
+      <div class="icon-bar four-up">
+        <% if current_user.voted_up_on? question %>
+          <a href=" <%= "/questions/"+ question.id.to_s + "/dislike" %>" action="downvote" data-method="put" class="item like-dislike">
+          <i class="fi-heart" id="red"></i>
+          <label>Liked</label>
+        </a>
+        <% else %>
+        <a href=" <%= "/questions/"+ question.id.to_s + "/like" %>" action="upvote" data-method="put"  class="item like-dislike">
+          <i class="fi-heart"></i>
+          <label>Like</label>
+        </a>
+        <% end %>
+        <a href=" <%= "/questions/" + question.id.to_s %>" class="item like-dislike">
+          <i class="fi-info"></i>
+          <label>View Question</label>
+        </a>
+
+        <a href=" <%= "/questions/" + question.id.to_s %>" class="item like-dislike">
+          <i class="fi-comments"></i>
+          <label><%= pluralize(question.answers.length.to_s, 'Answer') %></label>
+        </a>
+
+        <a href="#" class="item like-dislike">
+          <i class="fi-lock"></i>
+          <label>Mark As Solved</label>
+        </a>
+      </div><br>
+        </div>
+        <ul class="inline-list">
+          <li> <%= "Liked by\s" + pluralize(question.get_likes.size, 'person') %> </li>
+        </ul>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="pagination-centered">
+  <ul class="pagination">
+  <%= paginate @questions %>
+  </ul>
+</div>
+
+  <!-- Reveal Modals begin -->
+  <div id="newhelp" class="reveal-modal" data-reveal>
+    <%= render :partial => "partials/question" %>
+  </div>
+  <!-- End Reveal Modals -->

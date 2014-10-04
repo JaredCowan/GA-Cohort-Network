@@ -17,8 +17,11 @@ Rails.application.routes.draw do
 
   resources :statuses do 
     resources :comments
+  end
+
+  resources :questions do 
+    resources :answers
   end  
-  
 
   resources :conversations do
     member do
@@ -60,6 +63,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :questions do
+    member do
+      put "like", to: "questions#upvote"
+      put "dislike", to: "questions#downvote"
+    end
+  end
+
   resources :user_friendships do
     member do
       put :accept
@@ -74,6 +84,7 @@ Rails.application.routes.draw do
   end
 
   resources :statuses
+  resources :questions
   get 'friends',      to: 'user_friendships#index', as: :friends
   get 'forum',        to: 'statuses#index',         as: :forum
   get '/profile/:id', to: 'profiles#show',          as: :profile_page
