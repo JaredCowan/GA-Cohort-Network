@@ -2,9 +2,9 @@
   <div class="small-9 small-centered columns">
     <h1>Activity Feed</h1>
     <!-- change the wording to reflect the correct posting words -->
-    <% if Rails.env.development? %>
+    <%# if Rails.env.development? %>
     <% @activities.each do |activity| %>
       <%= activity.targetable_type  %> <br>
 <% end %>
-<% end %>
+<%# end %>
 

@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-
   acts_as_messageable
   acts_as_voter
   before_save { self.email = email.downcase }
@@ -20,6 +19,8 @@ class User < ActiveRecord::Base
   has_many :pictures
   has_many :documents
   has_many :jobs
+  has_many :taggings
+  has_many :tags, through: :taggings
   has_secure_password
   paginates_per 20
   # has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"

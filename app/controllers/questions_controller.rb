@@ -82,7 +82,6 @@ class QuestionsController < ApplicationController
     redirect_to questions_path
   end
 
-  # Change to unliked
   def downvote
     @question = Question.find(params[:id])
     @question.downvote_from current_user
@@ -93,14 +92,33 @@ class QuestionsController < ApplicationController
   # Will be used to mark forum questions as answered
   # def solved
   #     @question = Question.find(params[:id])
-  #     @question.upvote_from current_user
+  #     @question.solved_by current_user
   #     redirect_to @question
   # end
+
+  def self.tagged_with(name)
+  Tag.find_by_name!(params[:name]).questions
+  end
+
+  def self.tag_counts
+    Tag.select("tags.*, count(taggings.tag_id) as count").
+      joins(:taggings).group("taggings.tag_id")
+  end
+
+  def tag_list
+    tags.map(&:name).join(", ")
+  end
+
+  def tag_list=(names)
+    self.tags = names.split(",").map do |n|
+      Tag.where(name: n.strip).first_or_create!
+    end
+  end
 
   private
 
   def question_params
-    params.require(:question).permit(:subject, :body, :id, :document_attributes, :attachment)
+    params.require(:question).permit(:subject, :body, :id, :document_attributes, :attachment, :content, :name, :tag_list)
     params.require(:question).permit!
   end
 
