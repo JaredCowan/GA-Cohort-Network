@@ -45,6 +45,7 @@
 #flash-alert {
   margin: 14px auto;
   max-width: 500px;
+  z-index: 1;
 }
 .alert-box .close {
   color: #fff;
@@ -54,6 +55,7 @@
   margin-top: -30px;
   margin-bottom: 30px;
   height: 40px;
+  z-index: 1;
 }
 .calendar-wrapper {
   height: 70%;
@@ -95,12 +97,15 @@ ul.off-canvas-list li a:hover {
 #mailbox li:hover {
   background-color: rgba(255, 60, 44, 1);
 }
-#convo-quick-bar,
-#convo-quick-bar:hover {
+#convo-quick-bar {
   top: -100px;
   position: inherit;
   border-bottom-right-radius: 16px;
   border-bottom-left-radius:  16px;
+  opacity: .3;
+}
+#convo-quick-bar:hover {
+  opacity: 1;
 }
 .item-1 {
   border-bottom-left-radius:  15px;
@@ -230,6 +235,14 @@ textarea {
   border-top-left-radius:  16px;
   border-top-right-radius: 16px;
 }
-// #flash-alert {
-//   max-width: 400px!important;
-// }
+#tag_cloud {
+  width: 600px;
+  height: 80px;
+  display: -webkit-inline-box;
+  margin: 2px 4px 24px;
+  line-height: 1.6em;
+  .s { font-size: 0.8em; background-color: rgba(76,76,76,1); padding: 2px 5px; border-radius: 12px; text-align: middle; }
+  .m { font-size: 1.2em; background-color: rgba(76,76,76,1); padding: 2px 5px; border-radius: 12px; text-align: middle; }
+  .l { font-size: 1.8em; background-color: rgba(76,76,76,1); padding: 2px 5px; border-radius: 12px; text-align: middle; }
+  h2 { display: -webkit-inline-box; }
+}

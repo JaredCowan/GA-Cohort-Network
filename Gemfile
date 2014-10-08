@@ -30,6 +30,7 @@ gem 'modernizr-rails'
 gem 'fullcalendar-rails'
 gem 'kaminari'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'acts-as-taggable-on'
 gem 'unicorn'
 
 group :test do

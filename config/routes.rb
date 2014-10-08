@@ -8,14 +8,16 @@ Rails.application.routes.draw do
   
   root :to => 'static_pages#dashboard'
 
-  match '/signup',         to: 'users#new',              via: 'get'
-  match '/users/:id/edit', to: 'users#edit',             via: 'get'
-  match '/signin',         to: 'sessions#new',           via: 'get'
-  match '/signout',        to: 'sessions#destroy',       via: 'delete'
-  match '/home',           to: 'static_pages#home',      via: 'get'
-  match '/dashboard',      to: 'static_pages#dashboard', via: 'get'
-  match '/jobs',           to: 'jobs#index',             via: 'get'
-  match '/newjobs',        to: 'jobs#new',               via: 'get'
+  match '/signup',           to: 'users#new',                   via: 'get'
+  match '/users/:id/edit',   to: 'users#edit',                  via: 'get'
+  match '/signin',           to: 'sessions#new',                via: 'get'
+  match '/signout',          to: 'sessions#destroy',            via: 'delete'
+  match '/home',             to: 'static_pages#home',           via: 'get'
+  match '/dashboard',        to: 'static_pages#dashboard',      via: 'get'
+  match '/jobs',             to: 'jobs#index',                  via: 'get'
+  match '/newjobs',          to: 'jobs#new',                    via: 'get'
+  match '/user_questions',   to: 'static_pages#user_questions', via: 'get'
+  get 'questions/tags/:tag', to: 'questions#index',              as: :tag
 
   resources :statuses do 
     resources :comments

@@ -4,7 +4,16 @@ class QuestionsController < ApplicationController
   # respond_to :html, :json
 
   def index
-    @questions = Question.all.reverse_order.page params[:page]
+    if params[:tag]
+      begin
+        @questions = Question.tagged_with(params[:tag])
+      rescue ActiveRecord::RecordNotFound  
+        flash[:error] = "Sorry, we couldn't find anything with that tag."
+        redirect_to questions_path 
+      end
+    else
+      @questions = Question.all.reverse_order.page params[:page]
+    end
   end
 
   def show
@@ -13,7 +22,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
-    @document.build_document
+    # @document.build_document
 
     respond_to do |format|
       format.html
@@ -48,8 +57,8 @@ class QuestionsController < ApplicationController
     #   @document = @status.document
     # else
       @question   = current_user.questions.find(params[:id])
-      @question.document.user_id = current_user.id
-      @document = @question.document
+      # @question.document.user_id = current_user.id
+      # @document = @question.document
     # end
       
     respond_to do |format|
@@ -98,7 +107,7 @@ class QuestionsController < ApplicationController
   # end
 
   def self.tagged_with(name)
-  Tag.find_by_name!(params[:name]).questions
+    Tag.find_by_name!(params[:name]).questions
   end
 
   def self.tag_counts
@@ -130,7 +139,7 @@ class QuestionsController < ApplicationController
   end
 
   def set_question
-    @question = Question.find(params[:id])
+    # @question = Question.find(params[:id])
   end
 
 end

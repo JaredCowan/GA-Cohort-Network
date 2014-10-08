@@ -10,5 +10,11 @@ class StaticPagesController < ApplicationController
       flash[:success] = "Click on a Day to add new event." 
     end
   end
+
+  def user_questions
+    if signed_in?
+      flash[:success] = "Here are the post made by you." 
+    end
+  end
   
 end

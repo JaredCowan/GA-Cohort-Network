@@ -1,7 +1,7 @@
-<%= render :partial => "topnavforum" %>
+<%= render :partial => "questions/topnavforum" %>
 <div class="row">
   <div class="small-9 small-centered columns">
-  <div id="tag_cloud">
+<div id="tag_cloud">
     <h2>Tag Cloud:</h2></center>
     <% tag_cloud Question.tag_counts, %w[s m l] do |tag, css_class| %>
       <%= link_to tag.name, tag_path(tag.name), class: css_class %>
@@ -9,7 +9,7 @@
   </div>
 
 
-    <% @questions.each do |question| %>
+    <% Question.all.where(user_id: current_user.id).reverse.each do |question| %>
       <%# if can_display_question?(question) %>
         <div class="panel" id="forum-index">
         <strong><%= link_to question.user.full_name, profile_page_path(question.user) %></strong>
