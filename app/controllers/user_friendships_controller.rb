@@ -1,10 +1,10 @@
 class UserFriendshipsController < ApplicationController
   before_action :signed_in_user
-  respond_to :html, :json
+  # respond_to :html, :json
 
   def index
     @user_friendships = UserFriendshipDecorator.decorate_collection(friendship_association.all)
-    respond_with @user_friendships
+    # respond_with @user_friendships
   end
 
   def accept

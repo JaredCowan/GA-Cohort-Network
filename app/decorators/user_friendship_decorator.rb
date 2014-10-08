@@ -6,9 +6,9 @@ class UserFriendshipDecorator < Draper::Decorator
     model.state.titleize
   end
 
-  def full_name
-    model.state.titleize
-  end
+  # def full_name
+  #   model.state.titleize
+  # end
 
   def sub_message
     case model.state
