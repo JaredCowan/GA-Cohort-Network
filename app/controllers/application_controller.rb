@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
   before_action :update_time
 
   def update_time
-    if current_user
-      current_user.update!(updated_at: Time.new)
-    end
+    # if current_user
+    #   current_user.update!(updated_at: Time.new)
+    # end
   end
 
   def can_administer?
