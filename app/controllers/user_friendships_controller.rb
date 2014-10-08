@@ -70,6 +70,15 @@ class UserFriendshipsController < ApplicationController
     @user_friendship = current_user.user_friendships.where(friend_id: @friend.id).first.decorate
   end
 
+  def show
+    @user_friendship = current_user.user_friendships.where(friend_id: 4)
+
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render json: @status }
+    # end
+  end
+
   def destroy
     # Activity.find_by(user_id: @user_Friendship.to_i, action: "accepted" ).destroy!
     @user_friendship = current_user.user_friendships.find(params[:id])
