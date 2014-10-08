@@ -4,41 +4,7 @@
       <h1>My Friends</h1>
     </div>
 
-    <dl class="sub-nav" id="friend-list-filter">
-    <dt>Filter:</dt>
-
-      <dd class="<%= 'active' if params[:list].blank? %>">
-        <%= link_to 'All', user_friendships_path %>
-      </dd>  
-
-      <dd class="<%= 'active' if params[:list] == "blocked" %>">
-        <%= link_to 'Blocked', user_friendships_path(list: 'blocked') %>
-      </dd>
-
-      <% if current_user.requested_user_friendships.length > 0 %>
-
-      <dd class="<%= 'active' if params[:list] == "requested" %>">
-        <%= link_to "Requested", user_friendships_path(list: 'requested') %><span class="label round">
-          <%= current_user.requested_user_friendships.length.to_s %></span>
-      </dd> 
-
-      <% else %>
-
-        <dd class="<%= 'active' if params[:list] == "requested" %>">
-          <%= link_to 'Requested', user_friendships_path(list: 'requested') %>
-        </dd> 
-
-      <% end %>
-
-      <dd class="<%= 'active' if params[:list] == "accepted" %>">
-        <%= link_to 'Accepted', user_friendships_path(list: 'accepted') %>
-      </dd>
-      <dd class="<%= 'active' if params[:list] == "pending" %>">
-        <%= link_to 'Pending', user_friendships_path(list: 'pending') %>
-      </dd>
-    </dl>
-
-    <hr />
+    
 
 
     <div id="friend-list">
