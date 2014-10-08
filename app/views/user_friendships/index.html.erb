@@ -44,7 +44,7 @@
     <div id="friend-list">
     <% @user_friendships.each do |friendship| %>
       <% friend = friendship.friend %>
-      <%= link_to friend.full_name, user_friendship_path(friend) %>
+      <%= link_to friendship.friend.full_name, user_friendship_path(friend) %>
       <div id="<%= dom_id(friendship) %>" class="media friend">
         <%= link_to avatar_url, user_friendship_path(friend) %>
         <div class="media-body">
