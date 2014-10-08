@@ -14,8 +14,8 @@
 
     <%= f.input :subject %>
     <%= f.input :body %>
-    <%= f.label :tag_list, "Tags (separated by commas)" %><br />
-    <%= f.input :tag_list %>
+    <%= f.input :tag_list, placeholder: "Tags (separated by commas)" %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
 
   <p>
 <b>body:</b>

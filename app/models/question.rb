@@ -26,7 +26,7 @@ class Question < ActiveRecord::Base
   def self.tagged_with(name)
     Tag.find_by_name!(name).questions
   end
-  
+
 
 def self.tag_counts
   Tag.select("tags.id, tags.name,count(taggings.tag_id) as count").
@@ -34,7 +34,7 @@ def self.tag_counts
 end   
 
   def tag_list
-    tags.map(&:name).join(", ")
+    tags.map(&:name).join(", ") + ",\s#{self.user.full_name}".downcase!
   end
 
   def tag_list=(names)
