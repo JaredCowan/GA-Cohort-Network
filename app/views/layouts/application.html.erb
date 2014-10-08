@@ -16,32 +16,131 @@
     <link rel="canonical" href="ga-cohorts.herokuapp.com" />
     <link rel="shortlink" href="ga-cohorts.herokuapp.com" />
     <link rel="shortcut icon" href="https://generalassemb.ly/online/assets/favicon-bb2f243f124d9d86bcf9f565dbd59dfc.ico" />
+<% if controller_name == "sessions" %>
+    <style type="text/css">body{font-family:'Raleway',sans-serif;font-size:18px;}hr{text-align:center;margin:0 auto;opacity:0.5;}ul{text-transform:uppercase;}ul.inline-list.right{text-transform:none;}ul.inline-list.right a{color:#000;}ul.inline-list.right a:hover{color:rgba(0,0,0,0.5);}h1{font-family:'American Typewriter','Courier New',Courier,Monaco,mono;font-size:32px;color:#fff;line-height:28px;margin-top:16px;margin-bottom:0px;text-align:center;}h2{font-family:'American Typewriter','Courier New',Courier,Monaco,mono;color:#fff;font-size:36px;line-height:34px;}h3{font-family:'American Typewriter','Courier New',Courier,Monaco,mono;font-size:24px;color:#fff;line-height:10px;text-align:center;font-weight:500;padding-bottom:10px;}h4{font-family:'American Typewriter','Courier New',Courier,Monaco,mono;color:#000;font-size:28px;padding-top:5px;}.columns.large-centered{padding-left:5px;padding-right:5px;}@media only screen and (max-width: 40em) {.columns.large-centered{font-size:13px;}}@media only screen and (min-width: 40.063em) {.columns.large-centered{font-size:14px;}}.about-box{color:#fff;}.black-box{background-color:rgba(0,0,0,0.55);padding:35px;font-weight:900;}.black-box p{font-weight:900;}.secondary.small.button{background-color:transparent;color:#fff;border:2px #fff solid;border-radius:5px;padding:15px 50px 15px 50px;margin:0;}.secondary.small.button:hover{background-color:rgba(255,255,255,0.5);}.row .main-wrapper{color:#fff;}.about-content{background-color:#000;box-shadow:2px 2px 10px rgba(0,0,0,0.1); height: 163px;}.button-group li .button{border:0!important;}.button{-webkit-appearance:none;background-color:transparent;border-width:0;text-align:center;box-shadow:0 0 0;}.button:hover{color:rgba(255,255,255,0.7);background-color:transparent;}footer p,footer a{font-size:14px;}.hero{padding-bottom:50px;background-image:url("assets/sg.JPG");background-size:cover;box-shadow:inset 0px 0px 0 2000px rgba(0,0,0,0.2); height: 100%;}.hero-content{padding-top:40px;padding-bottom:40px;background-color:#EAEAEA;}.panel{margin:40px 0 40px 0;box-shadow:2px 2px 10px rgba(0,0,0,0.2);border:none;background-color:#EAEAEA;}.large-4 img{box-shadow:2px 2px 10px rgba(0,0,0,0.1);}.radius.right.button{color:#000;border:2px #000 solid;border-radius:5px;padding:15px 50px 15px 50px;margin:0;font-size:0.8125em;}@media only screen and (min-width: 64.063em) {.radius.right.button{color:#000;border:2px #000 solid;border-radius:5px;padding:15px 50px 15px 50px;margin-top:25px;font-size:0.8125em;}}@media only screen and (min-width: 40.063em) {.radius.right.button{color:#000;border:2px #000 solid;border-radius:5px;padding:15px 50px 15px 50px;margin-top:25px;font-size:0.8125em;}}.radius.right.button:hover{background-color:rgba(0,0,0,0.1);}</style>
+<% end %>
   </head>
   <body>
-
+  <% if controller_name != "sessions" %>
     <%= render :partial => "partials/navbar" %>
-    
     <div id="alert-div">
       <%= render :partial => "partials/flash_alert" %>
     </div>
-
-    <div class="container">
-
       <%= yield %>
+      <% end %>
+      <% if controller_name == "sessions" %>
+    
+
+
+
+
+    
+
+    
+     
+    <section class="hero">
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="main-wrapper">
+            <h1>General Assembly</h1>
+            <h3>Cohort Network</h3>
+            <hr> <br> <br> <br> <br>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-8 small-6 columns about-box">
+          <div class="black-box">
+            <h2 style="background-color: transparent; text-align: center; text-shadow: 2px 1px 11px #000; color: #fff;">A place for personal <strong>development.</strong></h2>
+            <p>A place for connecting cohorts to instructors and one-another while sharing knowledge and developing personal growth. Before, during and after your cohort ends.
+            </p>
+            <p style="margin-top: 15px; height: 60px;"><!-- Interested in adopting? --></p> 
+            <a href="#" class="secondary small button">Learn More →</a>
+          </div>
+        </div>
+        <div class="large-4 small-6 columns about-box black-box">
+        <form data-abide accept-charset="UTF-8" action="/sessions" class="simple_form session" method="post" novalidate="novalidate">
+      <div style="display:none">
+        <input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="Z8om645E2k/dk6PFr7L7vg/ANYvbJBpTFAF1SmuE+WM=">
+      </div>
+      <div class="form-group email-field">
+        <label>Email <small>required</small>
+        <input class="form-control" id="session_email" name="session[email]" placeholder="your email address.." type="text" required>
+        <small class="error">An email address is required.</small>
+        </label>
+      </div>
+      <div class="form-group password-field">
+        <label>Password <small>required</small>
+        <input class="form-control" id="session_password" name="session[password]" placeholder="password ..." type="password" required pattern="[a-zA-Z0-9]+">
+        </label>
+        <small class="error">Your password must meet the requirements</small>
+      </div>
+      <div class="">
+        <div class="form-group">
+        <button type="submit" value="Log me in" class="button success">Submit</button>
+        <%= link_to("Sign Up", signup_path, class: 'button right') %>
+      </div>
+    </form>
+        </div>
+      </div>
+    </section>
+    
+    <section class="hero-content"> 
+    <div class="row">
+      
+      <div class="large-12 columns about-content">
+        <h4>Put some bacon content here!!</h4>
+        <article style="font-size: 11px;">Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon.</p>
+        </article>
+      </div>
+      </div>
+    </section>
+      <br> <br> 
+      <div class="row">
+      <div class="small-8 small-centered columns">
+        
+        <ul class="small-block-grid-2">
+          <li><a href="#"><img src="http://placehold.it/180x180"/></a></li>
+          <li><a href="#"><img src="http://placehold.it/180x180"/></a></li>
+          <li><a href="#"><img src="http://placehold.it/180x180"/></a></li>
+          <li><a href="#"><img src="http://placehold.it/180x180"/></a></li>
+        </ul>
+      </div>
+    </div>
           
-          <!-- This was fucking shit up -->
+    
+    
+     
+    <div class="row">
+      <div class="large-12 columns">
+      
+        <div class="panel">
+              
           <div class="row">
-            <div class="large-12 columns text-center">
-              <!-- <div id="myModal" class="reveal-modal" data-reveal>
-                <%#= render :partial => "partials/status" %>
-              </div> -->
+            <div class="large-9 columns">
+              <h4>Need help?</h4>
+              <p>Having problems or need help? We're all ears.</p>
+            </div>
+            <div class="large-3 columns">
+              <a href="#" class="radius button right">Contact Us</a>
             </div>
           </div>
+        </div>
+        
+      </div>
+    </div>
+  
+<% end %>
+    
+
+
+
+
+
+
 
       <%= javascript_include_tag "application" %>
-
       <%= render :partial => "partials/footer" %>
-        </div>
         <a class="exit-off-canvas"></a>
       </div> <!-- Do not remove. --> 
       <!--^^ Closes the partials/navbar div -->

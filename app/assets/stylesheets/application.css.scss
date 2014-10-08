@@ -248,3 +248,10 @@ textarea {
   .l { font-size: 1.8em; background-color: rgba(76,76,76,1); padding: 2px 5px; border-radius: 12px; text-align: middle; }
   h2 { display: -webkit-inline-box; }
 }
+
+.sessions {
+  // position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+}
