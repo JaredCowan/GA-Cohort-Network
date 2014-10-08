@@ -101,7 +101,7 @@ module ApplicationHelper
     if signed_in?
        link_to "Log Out", signout_path, method: "delete"
      else
-      link_to("Log In", new_session_path) <<
+      link_to("Log In", root_path) <<
       link_to("Sign Up", signup_path)
     end
   end
