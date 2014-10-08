@@ -79,6 +79,7 @@ class QuestionsController < ApplicationController
   def upvote
     @question = Question.find(params[:id])
     @question.liked_by current_user
+    current_user.create_activity @question, 'upvoted'
     redirect_to questions_path
   end
 

@@ -3,10 +3,10 @@
     <h1>Activity Feed</h1>
     <!-- change the wording to reflect the correct posting words -->
     <% @activities.each do |activity| %>
-    <%= User.find(activity.user_id).full_name if !current_user %>
+    <%= User.find(activity.user_id).full_name if current_user %>
       <%= activity.action + "\sa new\s" + activity.targetable_type  %> <br>
       <%= activity.created_at %> <br>
       <%= activity.targetable_type.constantize.find(activity.targetable_id).inspect %> <br>
-      <%#= activity.inspect  %> <br>
+    <br>
 <% end %>
 

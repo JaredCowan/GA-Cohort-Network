@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def update_time
     if current_user
-      current_user.update!(updated_at: Time.new)
+      current_user.update!(updated_at: Time.now)
     end
   end
 
