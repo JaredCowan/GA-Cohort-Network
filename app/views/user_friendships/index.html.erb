@@ -4,6 +4,8 @@
       <h1>My Friends</h1>
     </div>
 
-    
+    <% @user_friendships.each do |f| %>
+    <%= f.full_name %>
+    <% end %>
   </div>
 </div>
