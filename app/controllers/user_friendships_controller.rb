@@ -9,12 +9,12 @@ class UserFriendshipsController < ApplicationController
 
   def accept
     @user_friendship = current_user.user_friendships.find(params[:id])
-    # if @user_friendship.accept!
-      # current_user.create_activity @user_friendship, 'accepted'
+    if @user_friendship.accept!
+      current_user.create_activity @user_friendship, 'accepted'
       flash[:success] = "You are now friends with #{@user_friendship.friend.first_name}"
-    # else
-      # flash[:error] = "That friendship could not be accepted."
-    # end
+    else
+      flash[:error] = "That friendship could not be accepted."
+    end
     redirect_to user_friendships_path
   end
 
@@ -46,7 +46,7 @@ class UserFriendshipsController < ApplicationController
       @user_friendship = UserFriendship.request(current_user, @friend)
       respond_to do |format|
         if @user_friendship.new_record?
-          format.html do 
+          format.html do
             flash[:error] = "There was problem creating that friend request."
             redirect_to profile_path(@friend)
           end
@@ -71,11 +71,13 @@ class UserFriendshipsController < ApplicationController
   end
 
   def destroy
+    # Activity.find_by(user_id: @user_Friendship.to_i, action: "accepted" ).destroy!
     @user_friendship = current_user.user_friendships.find(params[:id])
+
     if @user_friendship.destroy
       flash[:success] = "Friendship destroyed"
     end
-    redirect_to user_friendships_path
+    redirect_to friends_path
   end
 
   def user_friendship

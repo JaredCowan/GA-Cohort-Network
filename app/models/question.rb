@@ -4,6 +4,7 @@ class Question < ActiveRecord::Base
   has_many :answers
   has_many :taggings
   has_many :tags, through: :taggings
+  before_destroy :delete_activity
   acts_as_votable
 
   paginates_per 10
@@ -17,5 +18,9 @@ class Question < ActiveRecord::Base
                       length: { minimum: 2 }
 
   validates :user_id, presence: true
+
+  def delete_activity
+    Activity.find_by(targetable_id: self.class.find(self.id)).destroy!
+  end 
 
 end

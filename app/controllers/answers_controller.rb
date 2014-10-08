@@ -7,7 +7,7 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.save
-        current_user.create_activity(@question, 'created')
+        current_user.create_activity(@answer, 'answered')
         format.html { redirect_to question_path(@question, location: @question)}
         format.json { render json: @question, question: :created }
       else

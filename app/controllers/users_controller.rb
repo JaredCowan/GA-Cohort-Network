@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :signed_in_user,
                 only: [:index, :edit, :update, :destroy]          
-
+  before_destroy :delete_activity            
+  
   def index
     @users = User.all.page params[:page]
 
@@ -43,6 +44,10 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+
+  def delete_activity
+    Activity.find_by(user_id: current_user.id).destroy!
+  end 
 
   def destroy
     User.find(params[:id]).destroy

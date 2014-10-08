@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :signed_in_user
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action  :signed_in_user
+  before_action  :set_question, only: [:show, :edit, :update, :destroy]
   # respond_to :html, :json
 
   def index
