@@ -15,6 +15,16 @@ class ApplicationController < ActionController::Base
     # current_user
   end
 
+  rescue_from ActionController::RoutingError, :with => :render_not_found
+
+def routing_error
+  raise ActionController::RoutingError.new(params[:path])
+end
+
+def render_not_found
+  render "public/404"
+end
+
   include SessionsHelper
 
 end # End controller

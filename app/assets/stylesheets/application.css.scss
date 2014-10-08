@@ -136,6 +136,7 @@ body {
   height: 100%;
   color: #fff!important;
   background-color: #262626;
+  // background-color: #e9eaed;
 }
   // text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
 .fc-widget-content:hover {
@@ -238,6 +239,7 @@ textarea {
 #tag_cloud {
   width: 600px;
   height: 80px;
+  word-wrap: word-break;
   display: -webkit-inline-box;
   margin: 2px 4px 24px;
   line-height: 1.6em;

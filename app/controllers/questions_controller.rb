@@ -63,6 +63,7 @@ class QuestionsController < ApplicationController
       
     respond_to do |format|
       if @question.update_attributes(question_params)
+        current_user.create_activity(@question, 'updated')
         format.html { redirect_to question_path(@question), notice: 'Question was successfully updated.' }
         format.json { head :no_content }
       else
@@ -128,7 +129,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:subject, :body, :id, :document_attributes, :attachment, :content, :name, :tag_list)
+    params.require(:question).permit(:subject, :body, :id, :document_attributes, :attachment, :content, :name, :tag_list, :user_id)
     params.require(:question).permit!
   end
 
@@ -139,7 +140,7 @@ class QuestionsController < ApplicationController
   end
 
   def set_question
-    # @question = Question.find(params[:id])
+    @question = Question.find(params[:id])
   end
 
 end
