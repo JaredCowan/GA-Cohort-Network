@@ -85,7 +85,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'friends',      to: 'user_friendships#index', as: :friends
+  get 'user_friendships',      to: 'user_friendships#index', as: :friends
   get 'forum',        to: 'statuses#index',         as: :forum
   get '/profile/:id', to: 'profiles#show',          as: :profile_page
 
