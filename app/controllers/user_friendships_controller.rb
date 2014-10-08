@@ -71,12 +71,12 @@ class UserFriendshipsController < ApplicationController
   end
 
   def show
-    @user_friendship = current_user.user_friendships.where(friend_id: 4)
+    @user_friendship = current_user.user_friendships.where(params[:id])
 
-    # respond_to do |format|
-    #   format.html
-    #   format.json { render json: @status }
-    # end
+    respond_to do |format|
+      format.html
+      format.json { render json: @user_friendships }
+    end
   end
 
   def destroy
