@@ -38,7 +38,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
-        current_user.create_activity(@job, 'created job')
+        current_user.create_activity(@job, 'created')
         format.html { redirect_to :jobs, notice: 'Job was successfully created.' }
         format.json { render json: @jobs }
       else
@@ -61,7 +61,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.update_attributes(job_params)
-        current_user.create_activity(@job, 'updated job')
+        current_user.create_activity(@job, 'updated')
         format.html { redirect_to jobs_path(@job), notice: 'Job was successfully updated.' }
         format.json { head :no_content }
       else
