@@ -37,6 +37,7 @@ class UsersController < ApplicationController
 
   def update
     if @current_user.update_attributes(user_params)
+      # current_user.create_activity @user, 'profile'
       flash[:success] = "Profile updated"
       redirect_to dashboard_url
     else

@@ -1,0 +1,14 @@
+<p><%#= Question.find(activity.targetable_id).user.full_name %> <!-- upvoted a --> 
+
+  <%= User.find(activity.user_id).full_name if current_user %>
+    <% if activity.action == "upvoted" && activity.user_id == current_user.id %>
+      <%= "favorited their own\s"  %>
+    <% elsif activity.action == "upvoted" %>
+      <%#= "Favorited\s" + Question.find(activity.targetable_id).user.full_name.pluralize + "\s" + activity.targetable_type  %>
+    <% end %>
+
+<%= link_to "\squestion", question_path(activity.targetable_id) %>.</p> 
+<p>Subject: <%= truncate( Question.find(activity.targetable_id).subject, length: 15) %> </p>
+<p>Question: <%= truncate( Question.find(activity.targetable_id).body, length: 15) %></p>
+<p> Tags: <%= raw Question.find(activity.targetable_id).tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %> </p>
+<br>

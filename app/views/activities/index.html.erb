@@ -1,6 +1,8 @@
 <div class="row">
   <div class="small-9 small-centered columns">
     <h1>Activity Feed</h1>
+    <sub>(Under construction)</sub>
+    <br> <br>
     <!-- change the wording to reflect the correct posting words -->
     <% @activities.each do |activity| %>
     <%= User.find(activity.user_id).full_name if current_user %>
@@ -12,10 +14,15 @@
        <br>
       <%= activity.inspect %> <br>
       <%= activity.created_at %> <br>
-      <%= activity.targetable_type.constantize.find(activity.targetable_id).inspect %> <br>
+      <%#= activity.targetable_type.constantize.find(activity.targetable_id).inspect %> <br>
     <br>
-    <%= render partial: "activities/#{activity.targetable_type.underscore}/#{activity.action}", 
+    <% if activity.action != "profile"  %>
+      <%= render partial: "activities/#{activity.targetable_type.underscore}/#{activity.action}", 
             locals: { activity: activity } %>
+        
+      <% else %>
+        
+      <% end %>
     <% end %>
   </div>
 </div>
