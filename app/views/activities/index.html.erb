@@ -14,7 +14,7 @@
       <%= activity.created_at %> <br>
       <%= activity.targetable_type.constantize.find(activity.targetable_id).inspect %> <br>
     <br>
-    <%#= render partial: "activities/#{activity.targetable_type.underscore}/#{activity.action}", 
+    <%= render partial: "activities/#{activity.targetable_type.underscore}/#{activity.action}", 
             locals: { activity: activity } %>
     <% end %>
   </div>
