@@ -95,6 +95,7 @@ class QuestionsController < ApplicationController
 
   def downvote
     @question = Question.find(params[:id])
+    # Need to delete activity that was created on like
     @question.downvote_from current_user
     redirect_to questions_path
   end

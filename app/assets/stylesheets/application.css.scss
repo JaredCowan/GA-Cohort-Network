@@ -246,9 +246,9 @@ textarea {
   display: -webkit-inline-box;
   margin: 2px 4px 24px;
   line-height: 1.6em;
-  .s { font-size: 0.8em; background-color: rgba(76,76,76,1); padding: 2px 5px; border-radius: 12px; text-align: middle; }
-  .m { font-size: 1.2em; background-color: rgba(76,76,76,1); padding: 2px 5px; border-radius: 12px; text-align: middle; }
-  .l { font-size: 1.8em; background-color: rgba(76,76,76,1); padding: 2px 5px; border-radius: 12px; text-align: middle; }
+  .s { font-size: 0.8em; background-color: rgba(76,76,76,1); padding: 2px 5px; border-radius: 9px; text-align: middle; }
+  .m { font-size: 1.2em; background-color: rgba(76,76,76,1); padding: 2px 5px; border-radius: 9px; text-align: middle; }
+  .l { font-size: 1.8em; background-color: rgba(76,76,76,1); padding: 2px 5px; border-radius: 9px; text-align: middle; }
   h2 { display: -webkit-inline-box; }
 }
 .sessions {
@@ -256,4 +256,9 @@ textarea {
   width: 100%;
   height: 100%;
   background-color: red;
+}
+.signin-page-image-text {
+  text-transform: none;
+  width: 250px;
+  text-align: center;
 }
