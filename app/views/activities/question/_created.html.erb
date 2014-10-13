@@ -1,5 +1,5 @@
-<p><%= Question.find(activity.targetable_id).user.full_name %> posted a new <%= link_to "\squestion", question_path(activity.targetable_id) %>.</p> 
-<p>Subject: <%= truncate( Question.find(activity.targetable_id).subject, length: 15) %> </p>
-<p>Question: <%= truncate( Question.find(activity.targetable_id).body, length: 15) %></p>
+<p><%= link_to Question.find(activity.targetable_id).user.full_name, user_path(activity.user) %> posted a new <%= link_to "\squestion", question_path(activity.targetable_id) %>.</p> 
+<p>Subject: <%= truncate( Question.find(activity.targetable_id).subject, length: 60) %> </p>
+<p>Question: <%= truncate( Question.find(activity.targetable_id).body, length: 60) %></p>
 <p> Tags: <%= raw Question.find(activity.targetable_id).tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %> </p>
-<br>
+<p class=" activity-time"> <%= "Posted on\s" + activity.created_at.strftime('%a %b %d %Y') + "\sat\s" + activity.created_at.strftime('%l:%M %P') %> </p>

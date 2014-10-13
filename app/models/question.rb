@@ -34,7 +34,7 @@ def self.tag_counts
 end   
 
   def tag_list
-    tags.map(&:name).join(", ") + ",\s#{self.user.full_name}".downcase!
+    tags.map(&:name).join(", ")
   end
 
   def tag_list=(names)

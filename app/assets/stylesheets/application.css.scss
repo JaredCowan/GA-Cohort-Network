@@ -78,7 +78,7 @@
   text-align: middle;
 }
 h1, h3 {
-  color: #fff;
+  color: #000;
 }
 #mailbox li:nth-child(odd) {
   background-color: rgb(59,59,59);
@@ -137,6 +137,7 @@ body {
   color: #fff!important;
   background-color: #262626;
   // background-color: #e9eaed;
+  background: url("../assets/bgnoise.png") repeat fixed #EAEAEA;
 }
   // text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
 .fc-widget-content:hover {
@@ -261,4 +262,23 @@ textarea {
   text-transform: none;
   width: 250px;
   text-align: center;
+}
+.questions, .activity {
+  background-color: #fff;
+  box-shadow: 0 0 3px #ddd;
+  padding-bottom: 15px;
+}
+.activity {
+  color: #000;
+}
+.activity-content {
+    box-shadow: 0 0 3px #ddd;
+  padding: 9px;
+  margin: 9px;
+}
+.activity-time {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 7px;
 }

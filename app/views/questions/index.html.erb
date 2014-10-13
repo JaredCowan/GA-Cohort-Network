@@ -1,6 +1,6 @@
 <%= render :partial => "topnavforum" %>
 <div class="row">
-  <div class="small-9 small-centered columns">
+  <div class="small-9 small-centered columns questions">
   <div id="tag_cloud">
     <h2>Tag Cloud:</h2></center>
     <% tag_cloud Question.tag_counts, %w[s m l] do |tag, css_class| %>
@@ -9,15 +9,12 @@
   </div>
 
     <% @questions.each do |question| %>
-      <%# if can_display_question?(question) %>
         <div class="panel" id="forum-index">
         <strong><%= link_to question.user.full_name, profile_page_path(question.user) %></strong>
           <ul class="no-bullet">
           <li> <%= question.subject %> </li>
     Tags: <%= raw question.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %> <br>
-          <%#= link_to status.id, status, method: :delete, class: "button alert" %>
            <em><%= "Posted\s" + time_ago_in_words(question.created_at) + "\sago" %></em>
-           <%# end %>
           </ul>
         <!-- </div> -->
          <div class="like-dislike">

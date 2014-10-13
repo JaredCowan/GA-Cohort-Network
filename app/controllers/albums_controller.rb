@@ -1,13 +1,13 @@
 class AlbumsController < ApplicationController
   # before_filter :authenticate_user!, only: [:create, :new, :update, :edit, :destroy]
-  # before_filter :find_user
+  before_filter :find_user
   before_filter :find_album, only: [:edit, :update, :destroy]
   before_filter :ensure_proper_user, only: [:edit, :new, :create, :update, :destroy]
   # before_filter :add_breadcrumbs
 
 
   def index
-    @albums = @user.albums.all
+    @albums = current_user.albums.all
 
     respond_to do |format|
       format.html 
@@ -33,7 +33,7 @@ class AlbumsController < ApplicationController
   # end
 
   def create
-    @album = current_user.albums.new(params[:album])
+    @album = current_user.albums.new(album_params)
 
     respond_to do |format|
       if @album.save
@@ -75,6 +75,12 @@ class AlbumsController < ApplicationController
   end
 
   private
+
+  def album_params
+    params.require(:album).permit(:title, :album, :id, :document_attributes, :attachment, :content, :name, :tag_list, :user_id)
+    params.require(:album).permit!
+  end
+
   def ensure_proper_user
     if current_user != @user
       flash[:error] = "You don't have permission to do that."
@@ -88,7 +94,7 @@ class AlbumsController < ApplicationController
   end
 
   def find_user
-    @user = User.find_by_user_name(params[:user_name])
+    @user = User.find(current_user.id)
   end
 
   def find_album

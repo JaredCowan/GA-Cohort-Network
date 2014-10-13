@@ -97,6 +97,7 @@ class StatusesController < ApplicationController
 
   def upvote
       @status = Status.find(params[:id])
+      current_user.create_activity(@status, 'liked')
       @status.liked_by current_user
       redirect_to :forum
   end

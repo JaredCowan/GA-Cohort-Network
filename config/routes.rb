@@ -87,7 +87,7 @@ Rails.application.routes.draw do
     end
   end
 
-  match '/friends',      to: 'user_friendships#index', as: :friends, via: "get"
+  match '/friends',   to: 'user_friendships#index', as: :friends, via: "get"
   get 'forum',        to: 'statuses#index',         as: :forum
   get '/profile/:id', to: 'profiles#show',          as: :profile_page
 

@@ -2,4 +2,3 @@
 <p>Subject: <%= truncate( Question.find(activity.targetable_id).subject, length: 15) %> </p>
 <p>Question: <%= truncate( Question.find(activity.targetable_id).body, length: 15) %></p>
 <p> Tags: <%= raw Question.find(activity.targetable_id).tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %> </p>
-<br>
