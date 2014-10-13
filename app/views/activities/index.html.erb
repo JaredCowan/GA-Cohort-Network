@@ -6,17 +6,17 @@
     <hr>
     </center>
     <br>
-    <div class="small-11 small-centered columns activity-content">
       <% if @activities.empty? %>
-      <%= "You don't have any activities just yet!" %><br>
-      <%= "Lurk around and stalk the people on the site" %><br>
-      <%= "and interact and you'll have some data to show." %><br>
-      <% else %>
-      <% @activities.each do |activity| %>
-      <div class="small-11 small-centered columns activity-content">
-        <%= render partial: "activities/#{activity.targetable_type.underscore}/#{activity.action}", locals: { activity: activity } %>
-        <% end %>
-      </div>
+        <div class="small-11 small-centered columns activity-content">
+          <%= "You don't have any activities just yet!" %><br>
+          <%= "Lurk around and stalk the people on the site" %><br>
+          <%= "and interact and you'll have some data to show." %><br>
+        <% else %>
+        <% @activities.each do |activity| %>
+        <div class="small-11 small-centered columns activity-content">
+          <%= render partial: "activities/#{activity.targetable_type.underscore}/#{activity.action}", locals: { activity: activity } %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
