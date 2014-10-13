@@ -1,25 +1,27 @@
-<div class="row">
+<!-- Pending delete. Deciding if I want this, inline or partial -->
+<!-- <div class="row">
   <div class="large-12 columns text-center">
-    <% @statuses.each do |status| %>
-      <% if can_display_status?(status) %>
-        <strong><%= link_to status.user.full_name, profile_page_path(status.user) %></strong>
+    <%# @statuses.each do |status| %>
+      <%# if can_display_status?(status) %>
+        <strong><%#= link_to status.user.full_name, profile_page_path(status.user) %></strong>
         <div class="panel">
           <ul class="no-bullet">
-          <li> <%= status.content %> </li>
+          <li> <%#= status.content %> </li>
 
-          <% if status.document %>
-            <p> <%= image_tag status.document.attachment.url %> </p>
-          <% end %>
+          <%# if status.document %>
+            <p> <%#= image_tag status.document.attachment.url %> </p>
+          <%# end %>
 
-          <% if status.user == current_user%>
-            <li><%= link_to 'Edit', edit_status_path(status) %></li>
-            <li><%= link_to 'Delete', status, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          <%# if status.user == current_user%>
+            <li><%#= link_to 'Edit', edit_status_path(status) %></li>
+            <li><%#= link_to 'Delete', status, method: :delete, data: { confirm: 'Are you sure?' } %></li>
 
-           <em><%= link_to time_ago_in_words(status.created_at) + " ago", status %></em>
-           <% end %>
+           <em><%#= link_to time_ago_in_words(status.created_at) + " ago", status %></em>
+           <%# end %>
           </ul>
         </div>
-      <% end %>
-    <% end %>
+      <%# end %>
+    <%# end %>
   </div>
 </div>
+ -->

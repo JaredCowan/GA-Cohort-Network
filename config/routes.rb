@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   match '/jobs',             to: 'jobs#index',                  via: 'get'
   match '/newjobs',          to: 'jobs#new',                    via: 'get'
   match '/user_questions',   to: 'static_pages#user_questions', via: 'get'
+  match '/user_statuses',    to: 'static_pages#user_statuses',  via: 'get'
   get 'questions/tags/:tag', to: 'questions#index',              as: :tag
 
   resources :statuses do 

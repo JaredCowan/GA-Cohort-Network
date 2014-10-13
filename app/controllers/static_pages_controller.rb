@@ -13,7 +13,13 @@ class StaticPagesController < ApplicationController
 
   def user_questions
     if signed_in?
-      flash[:success] = "Here are the post made by you." 
+      # flash[:success] = "Here are the post made by you." 
+    end
+  end
+
+  def user_statuses
+    if signed_in?
+      # flash[:success] = "Here are the post made by you." 
     end
   end
   

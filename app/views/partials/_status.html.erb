@@ -1,10 +1,7 @@
-<%#= debug(params[:id]).include? @user.id.to_s if !@user.nil? %>
-<%#= debug(@user.email.to_s)if !@user.nil? %>
-
 <%= simple_form_for(Status.new, :html => {:class => "form-horizontal", multipart: true}) do |f| %>
 
-  <%= f.input :subject  %>
-  <%= f.input :content  %>
+  <%= f.input :subject, placeholder: "Pending delete of column subject in status", disabled: true  %>
+  <%= f.input :content, placeholder: "Hey, guys!! I just wrote this awesome code. Check it out. github.com/example"  %>
 
   <div class="medium-6 columns">
     <input class="file optional" id="status_document_attributes_attachment" name="status[document_attributes][attachment]" type="file" value="Upload Photo"/> </input>

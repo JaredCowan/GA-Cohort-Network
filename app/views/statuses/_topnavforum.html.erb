@@ -1,10 +1,17 @@
 <div class="row">
   <div class="small-4 small-centered columns">
     <div class="icon-bar two-up" id="convo-quick-bar">
-      <a href="<%= :forum %>" class="item item-1">
-        <i class="fi-filter"></i>
-        <label>Your Questions</label>
+    <% if params[:action] == 'show' || controller_name == "static_pages" %>
+      <a href="<%= statuses_path %>" class="item item-1">
+        <i class="fi-previous"></i>
+        <label>Back</label>
       </a>
+    <% elsif params[:action] == "index" %>
+      <a href="<%= user_statuses_path %>" class="item item-1">
+        <i class="fi-filter"></i>
+        <label>Your Statuses</label>
+      </a>
+    <% end %>
       <a class="item item-2" href="#" data-reveal-id="newhelp">
         <i class="fi-plus"></i>
         <label>New Question</label>
@@ -12,3 +19,4 @@
     </div>
   </div>
 </div>
+

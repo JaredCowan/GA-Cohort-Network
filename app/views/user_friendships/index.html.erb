@@ -3,7 +3,9 @@
     <div class="page-header">
       <h1>My Friends</h1>
     </div>
-
+    <% if Rails.env == "production" %>
+      <h1> Hang tight. We're working on this </h1>
+    <% end %>
     <% @user_friendships.each do |f| %>
     <%= f.full_name %>
     <% end %>
