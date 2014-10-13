@@ -1,1 +1,59 @@
 <%= render :partial => "statuses/topnavforum" %>
+<div class="row">
+  <div class="small-9 small-centered columns">
+    <% Status.all.where(user_id: current_user.id).each do |status| %>
+      <% if can_display_status?(status) %>
+        <div class="panel" id="forum-index">
+          <strong><%= link_to status.user.full_name, profile_page_path(status.user) %></strong>
+          <ul class="no-bullet">
+           <em><%= link_to "Posted\s" + time_ago_in_words(status.created_at) + "\sago", status %></em>
+           <em> <br />
+             <%= link_to(status.comments.length.to_s + "\s comments", status) %>
+           </em>
+          </ul>
+          <div class="like-dislike">
+            <div class="icon-bar four-up">
+              <% if current_user.voted_up_on? status %>
+                <a href=" <%= "/statuses/"+ status.id.to_s + "/dislike" %>" action="downvote" data-method="put" class="item like-dislike">
+                <i class="fi-heart" id="red"></i>
+                <label>Liked</label>
+                </a>
+              <% else %>
+                <a href=" <%= "/statuses/"+ status.id.to_s + "/like" %>" action="upvote" data-method="put"  class="item like-dislike">
+                <i class="fi-heart"></i>
+                <label>Like</label>
+                </a>
+              <% end %>
+
+              <a href=" <%= "/statuses/" + status.id.to_s %>" class="item like-dislike">
+              <i class="fi-info"></i>
+              <label>View Question</label>
+              </a>
+
+              <a href=" <%= "/statuses/" + status.id.to_s %>" class="item like-dislike">
+                <i class="fi-comments"></i>
+                <label><%= pluralize(status.comments.length.to_s, 'comment') %></label>
+              </a>
+
+              <a href="#" class="item like-dislike">
+                <i class="fi-lock"></i>
+                <label>Mark As Solved</label>
+              </a>
+            </div>
+          </div>
+          <ul class="inline-list">
+            <li> <%= "Liked by\s" + pluralize(status.get_likes.size, 'person') %> </li>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+
+<!-- Reveal Modals begin -->
+<div id="newhelp" class="reveal-modal" data-reveal>
+  <%= render :partial => "partials/status" %>
+</div>
+<!-- End Reveal Modals -->

@@ -54,10 +54,12 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :user_name, :email, :password, :password_confirmation, :friend, :user_id, :friend_id, :state)
+    params.require(:user).permit(:first_name, :last_name, :user_name, :email, :password, :password_confirmation,
+      :friend, :user_id, :friend_id, :state, :phone, :cell_phone, :public_email, :birthday, :github, :linkedin,
+      :facebook, :website, :city, :state, :job_position, :job_start, :job_end, :job_description, :group, :admin, :job_name)
   end
 
-  #  def user_friendship
-  #   params.require(:user_friendship).permit(:user_id, :friend_id, :user, :friend, :state, :user_friendship)
-  # end  
+   def user_friendship
+    params.require(:user_friendship).permit(:user_id, :friend_id, :user, :friend, :state, :user_friendship)
+  end  
 end # End controller

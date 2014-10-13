@@ -121,7 +121,7 @@ div h2,
 #deleteModal,
 #lessonModal {
   color: rgba(255, 60, 44, 1);
-  background-color: #262626;
+  // background-color: #262626;
 }
 #lessonModal label {
   color: white;
@@ -207,7 +207,6 @@ textarea {
   background: -o-linear-gradient(-45deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 1%, rgba(43,43,43,1) 5%, rgba(102,102,102,1) 6%, rgba(71,71,71,1) 9%, rgba(17,17,17,1) 22%, rgba(44,44,44,1) 76%, rgba(35,35,35,1) 86%, rgba(28,28,28,1) 93%);
   background: -ms-linear-gradient(-45deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 1%, rgba(43,43,43,1) 5%, rgba(102,102,102,1) 6%, rgba(71,71,71,1) 9%, rgba(17,17,17,1) 22%, rgba(44,44,44,1) 76%, rgba(35,35,35,1) 86%, rgba(28,28,28,1) 93%);
   background: linear-gradient(135deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 1%, rgba(43,43,43,1) 5%, rgba(102,102,102,1) 6%, rgba(71,71,71,1) 9%, rgba(17,17,17,1) 22%, rgba(44,44,44,1) 76%, rgba(35,35,35,1) 86%, rgba(28,28,28,1) 93%);
-  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#1c1c1c', GradientType=1 );
   -webkit-box-shadow: -1px 2px 35px 0px rgba(255,255,255,0.62);
   -moz-box-shadow: -1px 2px 35px 0px rgba(255,255,255,0.62);
   box-shadow: -1px 2px 35px 0px rgba(255,255,255,0.62);
@@ -241,7 +240,7 @@ textarea {
   min-width: 818px;
 }
 #tag_cloud {
-  width: 600px;
+  width: initial;
   height: 80px;
   word-wrap: word-break;
   display: -webkit-inline-box;

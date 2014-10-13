@@ -111,7 +111,7 @@ class StatusesController < ApplicationController
   private
 
   def status_params
-    params.require(:status).permit(:subject, :content, :id, :document_attributes, :attachment)
+    params.require(:status).permit(:content, :id, :document_attributes, :attachment)
     params.require(:status).permit!
   end
 

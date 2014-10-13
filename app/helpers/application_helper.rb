@@ -20,11 +20,7 @@ module ApplicationHelper
   def friendship_path
     link_to "Friends", friends_path if signed_in?
   end
-
-  # def edit_user_path
-  #   link_to "Edit profile", edit_user_path(current_user)
-  # end 
-
+  
   def full_name
     first_name + '\s' + last_name
   end 
@@ -38,7 +34,6 @@ module ApplicationHelper
   end
 
   def user_profile
-    # user_profile_end = current_user.profile_name.split(' ').join('_')
     user_profile = request.original_url
   end
 
@@ -106,7 +101,7 @@ module ApplicationHelper
     end
   end
 
-  def js_email_regex
+  def js_email_regex # Javascript Email Reqex
     "([a-zA-Z0-9]){3,30}[.!#$%&'*+\/=?^_`{|}~-]{0,10}@[a-zA-Z0-9]{3,30}(?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9]){1,20}?)"
   end
 

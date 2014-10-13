@@ -1,12 +1,12 @@
 <%= render :partial => "topnavforum" %>
 <div class="row">
   <div class="small-9 small-centered columns questions">
-  <div id="tag_cloud">
-    <h2>Tag Cloud:</h2></center>
-    <% tag_cloud Question.tag_counts, %w[s m l] do |tag, css_class| %>
-      <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-    <% end %>
-  </div>
+    <div id="tag_cloud">
+      <h2>Tag Cloud:</h2></center>
+      <% tag_cloud Question.tag_counts, %w[s m l] do |tag, css_class| %>
+        <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+      <% end %>
+    </div>
 
     <% @questions.each do |question| %>
         <div class="panel" id="forum-index">

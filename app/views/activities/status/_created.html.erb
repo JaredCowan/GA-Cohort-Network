@@ -1,2 +1,2 @@
 <p><%= Status.find(activity.targetable_id).user.full_name %> posted a new <%= link_to "status", status_path(activity.targetable_id) %>.</p>
-<p>Subject: <%= Status.find(activity.targetable_id).subject %></p> <p>Question: <%= truncate( Status.find(activity.targetable_id).content, length: 60) %> <%= link_to "(Read more)", status_path(activity.targetable_id), id: 'activity-read-more-link' %></p>
+<p>Content: <%= truncate( Status.find(activity.targetable_id).content, length: 60) %> <%= link_to "(Read more)", status_path(activity.targetable_id), id: 'activity-read-more-link' %></p>

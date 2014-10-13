@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GA Cohort Network</title>
-    <%= stylesheet_link_tag    "application" %>
+    <title> <%= controller_name.camelize + " || " if controller_name != "sessions" %> GA Cohort Network </title>
+    <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag :modernizr %>
     <%= csrf_meta_tags %>
     <meta name="description" content="GA Cohort Network for developers attending General Assebmly" />
@@ -251,18 +251,6 @@
         </div>
       </div>
     </section>
-    
-    <!-- <section class="hero-content"> 
-    <div class="row">
-      
-      <div class="large-12 columns about-content">
-        <h4>Put some bacon content here!!</h4>
-        <article style="font-size: 11px;">Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon Bacon.</p>
-        </article>
-      </div>
-      </div>
-    </section> -->
-      <!-- <br> <br>   -->
       </div>
       <div class="row four-image">
         <h1>A few reasons why you'll love us.</h1><br>
@@ -296,26 +284,12 @@
       </div>
     </div>
   <% end %>
-    
-
-
-
-
-
-
-
       <%= javascript_include_tag "application" %>
       <%= render :partial => "partials/footer" %>
         <a class="exit-off-canvas"></a>
       </div> <!-- Do not remove. --> 
       <!--^^ Closes the partials/navbar div -->
-
        <!-- Javascripts for calender -->
       <%= render :partial => "layouts/script" %>
-      <%# if signed_in?  %>
-        <%#= javascript_tag do %>
-          <!-- window.current_user = '<%#= current_user.id %>' -->
-        <%# end %>
-      <%# end %>
     </body>
   </html>
