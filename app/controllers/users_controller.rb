@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       @user.user_id, @user.user_name = @user.id, @user.full_name if @user.user_name.blank?
       sign_in @user
       flash[:success] = "Welcome, " + current_user.full_name.to_s
-      render dashboard_url
+      redirect_to dashboard_url
     else
       render 'new'
     end

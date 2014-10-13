@@ -1,76 +1,147 @@
 <br /> <h1>Sign up</h1> <br />
-<%= form_for(@user) do |f| %>
+<%= simple_form_for(@user) do |f| %>
 
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name, placeholder: 'First Name' %>
 
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name, placeholder: 'Last Name' %>
+  <div class="row">
+        <div class="small-6 large-6 columns">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name %>
+        </div>
+        <div class="small-6 large-6 columns">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name %>
+        </div>
+      </div>
 
-  <%= f.label :user_name %>
-  <%= f.text_field :user_name, placeholder: 'User Name' %>
+      <div class="row">
+        <div class="small-6 large-6 columns">
+          <%= f.label :user_name %>
+          <%= f.text_field :user_name %>
+          </div>
+        <div class="small-6 large-6 columns">
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+        </div>
+      </div>
 
-  <%= f.label :email %>
-  <%= f.text_field :email, placeholder: 'Email' %>
+      <div class="row">
+        <div class="small-6 large-6 columns">
+          <%= f.label :phone %>
+          <%= f.text_field :phone %>
+        </div>
+        <div class="small-6 large-6 columns">
+          <%= f.label :cell_phone %>
+          <%= f.text_field :cell_phone %>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="small-6 large-6 columns">
+          <%= f.label :public_email %>
+          <%= f.text_field :public_email %>
+        </div>
+        <div class="small-6 large-6 columns">
+          <%= f.label :birthday %>
+          <%= f.text_field :birthday %>
+        </div>
+      </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password, placeholder: 'Password' %>
+      <div class="row">
+        <div class="small-6 large-6 columns">
+          <%= f.label :github %>
+          <%= f.text_field :github, :placeholder => "Just your username. e.g. 'JohnDoe'" %>
+        </div>
+        <div class="small-6 large-6 columns">
+          <%= f.label :linkedin %>
+          <%= f.text_field :linkedin, :placeholder => "Just your username. e.g. 'JohnDoe'" %>
+        </div>
+      </div>
 
-  <%= f.label :password_confirmation, "Confirm Password" %>
-  <%= f.password_field :password_confirmation, placeholder: 'Confirm Your Password' %>
+      <div class="row">
+        <div class="small-6 large-6 columns">
+          <%= f.label :facebook %>
+          <%= f.text_field :facebook, :placeholder => "Just your username. e.g. 'JohnDoe'" %>
+        </div>
+        <div class="small-6 large-6 columns">
+          <%= f.label :website %>
+          <%= f.text_field :website, :placeholder => "www.example.com" %>
+        </div>
+      </div>
 
-  <center><%= f.submit "Create my account", class: "button" %></center>
+      <div class="row">
+        <div class="small-6 large-6 columns">
+          <%= f.label :city %>
+          <%= f.text_field :city, :placeholder => "Los Angeles" %>
+        </div>
+        <div class="small-6 large-6 columns">
+          <%= f.label :state %>
+          <%= f.text_field :state, :placeholder => "CA" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-6 large-6 columns">
+          <%= f.label :job_position %>
+          <%= f.text_field :job_position, :placeholder => "Full Stack Developer" %>
+        </div>
+        <div class="small-6 large-6 columns">
+          <%= f.label :job_start %>
+          <%= f.text_field :job_start, :placeholder => "01/01/1990" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-6 large-6 columns">
+          <%= f.label :job_end %>
+          <%= f.text_field :job_end, :placeholder => "01/01/1990"  %>
+        </div>
+        <div class="small-6 large-6 columns">
+          <%= f.label :job_description  %>
+          <%= f.text_field :job_description, :placeholder => "I code the backend"  %>
+      </div> 
+        </div> 
+
+      <div class="row">
+        <div class="small-6 large-6 columns">
+          <%= f.label :job_name %>
+          <%= f.text_field :job_name, :placeholder => "Google"  %>
+        </div>
+        <div class="small-6 large-6 columns">
+          <%= f.label :group %>
+          <%= f.text_field :group, :placeholder => "student or teacher"  %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-6 large-6 columns">
+          <%= f.label :password %>
+          <%= f.password_field :password, placeholder: 'Password' %>
+        </div>
+        <div class="small-6 large-6 columns">
+          <%= f.label :password_confirmation, "Confirm Password" %>
+          <%= f.password_field :password_confirmation, placeholder: 'Confirm Your Password' %>
+          </div>
+        </div>
+      <div class="row">
+        <div class="small-3 large-2 columns">
+        </div>
+        <div class="small-3 large-3 columns">
+          <center>
+          <%= f.label :admin %>
+          <fieldset class="switch" tabindex="0">
+            <input id="user_admin" name="user[admin]" type="checkbox" value="1">
+            <label class="boolean optional" for="user_admin"></label>
+          </fieldset> 
+          </center>
+        </div>
+        <div class="small-6 large-7 columns">
+          <%= f.submit "Update my account", class: "button small" %>
+        </div>
+      </div>
+
+
+
 <% end %>
 
-<!-- <br /> <h1>Sign up</h1> <br />
-
-<form data-abide accept-charset="UTF-8" action="/users" class="simple_form new_user" id="new_user" method="post" novalidate="novalidate">
-  
-  <div style="display:none">
-    <input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="058cOyEVYaPaH8/n9ur1crDPz/5DnUyCoTCJ8Ed/C6E=">
-  </div>
-  
-  <div class="form-group first-name-field">
-    
-    <label>First name <small>required</small></label>
-    <input class="form-control" id="user_first_name" name="user[first_name]" placeholder="Your first name" type="text" pattern="([a-zA-Z0-9]){3,30}" required>
-    <small class="error">Your name must be longer than 3 characters</small>
-    </label>
-  </div>
-
-  <div class="form-group last-name-field">
-    
-    <label>First name <small>required</small></label>
-    <input class="form-control" id="user_last_name" name="user[last_name]" placeholder="Your first name" type="text" pattern="<%#= chr_length(3,30) %>" required>
-    <small class="error">Your name must be longer than 3 characters</small>
-    </label>
-  </div>
-
-  <div class="form-group email-field">
-    
-    <label>Email <small>required</small>
-    <input class="form-control" id="session_email" name="session[email]" placeholder="your email address.." type="text" pattern="<%= js_email_regex %>" required>
-    <small class="error">An email address is required.</small>
-    </label>
-  </div>
-  
-  <div class="form-group password-field">
-  
-    <label>Password <small>required</small>
-    <input class="form-control" id="user_password" name="user[password]" placeholder="password ..." type="password" required pattern="<%#= chr_length(3,30) %>">
-    </label>
-    <small class="error">Your password must be longer than 3 characters</small>
-  </div>
-
-  <div class="form-group password-confirmation-field">
-    
-    <label>Confirm Password <small>required</small>
-    <input id="user_password_confirmation" type="password" name="user[password_confirmation]" required pattern="<%#= chr_length(3,30) %>" data-equalto="user_password">
-    </label>
-    <small class="error">The password did not match</small>
-  </div>
-  
-  <div class="form-group">
-    <button type="submit" class="button expand" value="Create my account">Sign me up!</button>
-  </div> -->
 </form>
+
+
