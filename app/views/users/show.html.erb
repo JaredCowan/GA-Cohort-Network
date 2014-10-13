@@ -18,35 +18,79 @@
           <% else %>
         <%= link_to "Add Friend (coming soon)", '#', class: 'button alert radius tiny disabled' %>
       <% end %>
+        </section>
 
-
+        <section class="section">
+          <h5 class="title">Site: 
+          <% if @user.website.blank? %>
+            <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
+          <% else %>
+            <a href="http://<%= @user.website %>"><%= "Personal Website" unless @user.website.blank? %></a></h5>
+          <% end %>
         </section>
         <section class="section">
-          <h5 class="title">Site: <a href="http://<%= @user.website %>">Personal Website</a></h5>
+          <h5 class="title">Phone:
+          <% if @user.phone.blank? %>
+            <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
+          <% else %>
+            <a href="#"><%= @user.phone %></a></h5>
+          <% end %>
         </section>
         <section class="section">
-          <h5 class="title">Phone: <a href="#"><%= @user.phone %></a></h5>
+          <h5 class="title">Cell:
+          <% if @user.cell_phone.blank? %>
+            <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
+          <% else %>
+            <a href="#"><%= @user.cell_phone %></a></h5>
+          <% end %>
         </section>
         <section class="section">
-          <h5 class="title">Cell: <a href="#"><%= @user.cell_phone %></a></h5>
+          <h5 class="title">Birthday:
+          <% if @user.birthday.blank? %>
+            <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
+          <% else %>
+            <a href="#"><%= @user.birthday %></a></h5>
+          <% end %>
         </section>
         <section class="section">
-          <h5 class="title">Birthday: <a href="#"><%= @user.birthday %></a></h5>
+          <h5 class="title">Email: 
+          <% if @user.public_email.empty? %>
+            <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
+          <% else %>
+            <a href="mailto:<%= @user.public_email %>"><%= "Send #{@user.full_name} an email" unless @user.public_email.blank? %></a></h5>
+          <% end %>
         </section>
         <section class="section">
-          <h5 class="title">Email: <a href="mailto:<%= @user.public_email %>"><%= @user.public_email %></a></h5>
+          <h5 class="title">Github: 
+          <% if @user.github.empty? %>
+            <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
+          <% else %>
+            <a target="_blank" href="https://github.com/<%= @user.github %>"><%= @user.github.camelize %></a></h5>
+          <% end %>
         </section>
         <section class="section">
-          <h5 class="title">Github: <a target="_blank" href="https://github.com/<%= @user.github %>"><%= @user.github.camelize %></a></h5>
+          <h5 class="title">Linkedin: 
+          <% if @user.linkedin.empty? %>
+            <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
+          <% else %>
+            <a target="_blank" href="https://www.linkedin.com/in/<%= @user.linkedin %>"><%= @user.linkedin.camelize %></a></h5>
+          <% end %>
         </section>
         <section class="section">
-          <h5 class="title">Linkedin: <a target="_blank" href="https://www.linkedin.com/in/<%= @user.linkedin %>"><%= @user.linkedin.camelize %></a></h5>
+          <h5 class="title">Facebook: 
+          <% if  %>
+            <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
+          <% else %>
+            <a target="_blank" href="https://www.facebook.com/<%= @user.facebook %>"><%= @user.facebook.camelize %></a></h5>
+          <% end %>
         </section>
         <section class="section">
-          <h5 class="title">Facebook: <a target="_blank" href="https://www.facebook.com/<%= @user.facebook %>"><%= @user.facebook.camelize %></a></h5>
-        </section>
-        <section class="section">
-          <h5 class="title">Location: <a target="_blank" href="https://www.google.com/maps/place/<%= @user.city + ",\s" + @user.state %>"> <%= @user.city + "\s" + @user.state %></h5></a>
+          <h5 class="title">Location: 
+          <% if @user.facebook.empty? %>
+            <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
+          <% else %>
+            <a target="_blank" href="https://www.google.com/maps/place/<%= @user.city + ",\s" + @user.state %>"> <%= @user.city + "\s" + @user.state %></h5></a>
+          <% end %>
         </section>
         <section class="section">
           <h5 class="title"><a href="#" ><%#= @user.state %></a></h5>
@@ -80,12 +124,7 @@
   </div>
 </div>
 
-
-
-
-
-
-<!-- ====================================== -->
+<!--  -->
 <div id="noQuestionMessage" class="reveal-modal" data-reveal>
   <%= simple_form_for :conversation, url: :conversations do |f| %>
   
@@ -100,13 +139,35 @@
 <% end %>
   <a class="close-reveal-modal">&#215;</a>
 </div>
+<!--  -->
 
+
+<!--  -->
+<div id="updateMessage" class="reveal-modal" data-reveal>
+  <%= simple_form_for :conversation, url: :conversations do |f| %>
+  
+  <input class="string required" id="conversation_recipients" name="conversation[recipients]" placeholder="<%= @user.email %>" type="hidden" value="<%= @user.email %>">
+
+  <input class="string required" id="conversation_subject" name="conversation[subject]" type="text" value="Hey <%= @user.full_name %>, you should update your profile information." placeholder="Hey <%= @user.full_name %>, you haven't posted any questions yet.">
+
+  <textarea class="string required" id="conversation_body" name="conversation[body]" type="text" value="Hey <%= @user.full_name %>, you should update the information on your profile so your classmates can contact you and stay in touch" placeholder="Hey <%= @user.full_name %>, you should update the information on your profile so your classmates can contact you and stay in touch">Hey <%= @user.first_name %>,
+
+  It's <%= current_user.full_name %>, you should update the information on your profile so your classmates can contact you and stay in touch.</textarea>
+   
+  <%= f.button :submit, 'Send', class: 'button' %>
+  <%= f.button :submit, 'Clear Form', type: :reset, class: 'button alert' %>
+<% end %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+<!--  -->
+
+<!--  -->
 <div id="messageModal" class="reveal-modal" data-reveal>
   <%= render :partial => "partials/newmessage" %>
   <a class="close-reveal-modal">&#215;</a>
 </div>
-
+<!--  -->
 
  
- 
+ <!-- <a href="#" data-reveal-id="updateMessage"> Message <%#= @user.full_name %></a> -->
   
