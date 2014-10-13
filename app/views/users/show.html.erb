@@ -1,9 +1,13 @@
 <div class="row">
   <div class="large-5 columns ">
     <div class="panel">
-      <h1><center><%= @user.full_name %></center></h1>
+      <h1 id="profile-title"><center><%= @user.full_name.camelize %></center></h1>
+      <h4 id="profile-title"><center><%= @user.job_position.camelize %></center></h4>
       <img src="http://hospitalfranciscovilar.com.br/wp-content/uploads/2013/11/gravatar-60-grey.jpg"/>
         <div class="section-container vertical-nav" data-section data-options="deep_linking: false; one_up: true">
+        <section class="section">
+          <h5 class="title"><a href="#" data-reveal-id="messageModal" class="radius tiny button"> Message <%= @user.full_name %></a> <%= link_to "Add Friend (coming soon)", '#', class: 'button alert radius tiny disabled' %></h5>
+        </section>
         <section class="section">
           <h5 class="title">Site: <a href="http://<%= @user.website %>">Personal Website</a></h5>
         </section>
@@ -17,56 +21,62 @@
           <h5 class="title">Birthday: <a href="#"><%= @user.birthday %></a></h5>
         </section>
         <section class="section">
-          <h5 class="title">Email: <a href="#"><%= @user.public_email %></a></h5>
+          <h5 class="title">Email: <a href="mailto:<%= @user.public_email %>"><%= @user.public_email %></a></h5>
         </section>
         <section class="section">
-          <h5 class="title">Github: <a href="#"><%= @user.github.camelize %></a></h5>
+          <h5 class="title">Github: <a target="_blank" href="https://github.com/<%= @user.github %>"><%= @user.github.camelize %></a></h5>
         </section>
         <section class="section">
-          <h5 class="title">Linkedin: <a href="#"><%= @user.linkedin.camelize %></a></h5>
+          <h5 class="title">Linkedin: <a target="_blank" href="https://www.linkedin.com/in/<%= @user.linkedin %>"><%= @user.linkedin.camelize %></a></h5>
         </section>
         <section class="section">
-          <h5 class="title">Facebook: <a href="#"><%= @user.facebook.camelize %></a></h5>
+          <h5 class="title">Facebook: <a target="_blank" href="https://www.facebook.com/<%= @user.facebook %>"><%= @user.facebook.camelize %></a></h5>
         </section>
         <section class="section">
-          <h5 class="title">Location: <%= @user.city + ",\s" + @user.state %></h5>
+          <h5 class="title">Location: <a target="_blank" href="https://www.google.com/maps/place/<%= @user.city + ",\s" + @user.state %>"> <%= @user.city + ",\s" + @user.state %></h5></a>
         </section>
         <section class="section">
-          <h5 class="title"><a href="#"><%#= @user.state %></a></h5>
+          <h5 class="title"><a href="#" ><%#= @user.state %></a></h5>
         </section>
       </div>
     </div>
   </div>
     
      
-     
   <div class="large-7 columns">
-    <% if Question.all.where(user_id: @user.id).empty? %>
-        <div class="row">
-          <div class="large-2 columns">
-            <img src="http://androidandme.wpengine.netdna-cdn.com/wp-content/themes/android-and-me-v4/images/avatars/generic-gravatar-nerd.png"/></div>
-            <div class="large-10 columns">
-              <p><strong><%= @user.full_name + ":\s" %></strong> I haven't posted any questions yet!! Message <%= @user.full_name %> and ask them to get involved <a href="#" data-reveal-id="noQuestionMessage">here.</a></p>
-          </div>
-        </div>
-        <hr/>
-      <% else %>
-      <% Question.all.where(user_id: @user.id).each do |status| %>
-    <div class="row">
-      <div class="large-2 columns">
-      <img src="http://androidandme.wpengine.netdna-cdn.com/wp-content/themes/android-and-me-v4/images/avatars/generic-gravatar-nerd.png"/></div>
-      <div class="large-10 columns">
-        <p><strong>Some Person said:</strong> Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
+    <dl class="tabs" data-tab>
+      <dd class="active"><a href="#panel1">Wall Post</a></dd>
+      <dd><a href="#panel2">Statuses</a></dd>
+      <dd><a href="#panel3">Questions</a></dd>
+      <dd><a href="#panel4">Activity</a></dd>
+    </dl>
+    <div class="tabs-content">
+      <div class="content active" id="panel1">
+        <%= render "users/p/post" %>
       </div>
-    </div>
-    <hr/>
-          
-      <% end %>
-    <% end %>
+      <div class="content" id="panel2">
+        <%= render "users/p/statuses" %>
+      </div>
+      <div class="content" id="panel3">
+        <%= render "users/p/questions" %>
+      </div>
+      <div class="content" id="panel4">
+        <%= render "users/p/activities" %>
+      </div>
+      <div class="content" id="panel5">
+        <p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>
+      </div>
+    </div>    
   </div>
 </div>
 
- <div id="noQuestionMessage" class="reveal-modal" data-reveal>
+
+
+
+
+
+<!-- ====================================== -->
+<div id="noQuestionMessage" class="reveal-modal" data-reveal>
   <%= simple_form_for :conversation, url: :conversations do |f| %>
   
   <input class="string required" id="conversation_recipients" name="conversation[recipients]" placeholder="<%= @user.email %>" type="hidden" value="<%= @user.email %>">
@@ -85,6 +95,7 @@
   <%= render :partial => "partials/newmessage" %>
   <a class="close-reveal-modal">&#215;</a>
 </div>
+
 
  
  

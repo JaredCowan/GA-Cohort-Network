@@ -282,3 +282,22 @@ textarea {
   right: 0;
   padding: 7px;
 }
+.profile-question {
+  width: 100%;
+  height: 100%;
+}
+.tabs dd > * {
+  cursor: pointer;
+}
+.tabs *:focus {
+  outline: none;
+}
+.large-2 {
+  width: 100%;
+}
+section > .title {
+  color: #000!important;
+}
+#profile-title > * {
+  color: #000!important;
+}

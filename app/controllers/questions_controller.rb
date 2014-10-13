@@ -90,14 +90,14 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @question.liked_by current_user
     current_user.create_activity @question, 'upvoted'
-    redirect_to questions_path
+    redirect_to :back
   end
 
   def downvote
     @question = Question.find(params[:id])
     # Need to delete activity that was created on like
     @question.downvote_from current_user
-    redirect_to questions_path
+    redirect_to :back
   end
 
   # Not in use.
@@ -128,7 +128,7 @@ class QuestionsController < ApplicationController
   #     Tag.where(name: n.strip).first_or_create!
   #   end
   # end
-  
+
 # ========== END Pending deletion
 
   private

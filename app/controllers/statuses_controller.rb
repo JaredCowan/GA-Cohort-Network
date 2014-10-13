@@ -99,13 +99,13 @@ class StatusesController < ApplicationController
       @status = Status.find(params[:id])
       current_user.create_activity(@status, 'liked')
       @status.liked_by current_user
-      redirect_to :forum
+      redirect_to :back
   end
 
   def downvote
       @status = Status.find(params[:id])
       @status.downvote_from current_user
-      redirect_to :forum
+      redirect_to :back
   end
 
   private

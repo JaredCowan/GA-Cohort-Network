@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="large-2 columns activity">
+    <% Activity.all.where(user_id: @user.id).each do |activity| %>
+      <div class="small-11 small-centered columns activity-content">
+        <%= render partial: "activities/#{activity.targetable_type.underscore}/#{activity.action}", locals: { activity: activity } %>
+      </div>
+    <% end %>
+  </div>
+</div>
