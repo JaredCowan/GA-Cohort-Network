@@ -46,7 +46,7 @@
           <h5 class="title">Facebook: <a target="_blank" href="https://www.facebook.com/<%= @user.facebook %>"><%= @user.facebook.camelize %></a></h5>
         </section>
         <section class="section">
-          <h5 class="title">Location: <a target="_blank" href="https://www.google.com/maps/place/<%= @user.city + ",\s" + @user.state %>"> <%= @user.city + ",\s" + @user.state %></h5></a>
+          <h5 class="title">Location: <a target="_blank" href="https://www.google.com/maps/place/<%= @user.city + ",\s" + @user.state %>"> <%= @user.city + "\s" + @user.state %></h5></a>
         </section>
         <section class="section">
           <h5 class="title"><a href="#" ><%#= @user.state %></a></h5>
