@@ -8,12 +8,6 @@ class ApplicationController < ActionController::Base
   before_action :update_time
   include SessionsHelper
 
-  def render_500(exception)
-    @exception = exception
-    flash.now[:error] = 'There was a error with your last request'
-    render "public/500"
-  end
-
   def update_time
     if current_user
       current_user.update!(updated_at: Time.now)
@@ -23,6 +17,12 @@ class ApplicationController < ActionController::Base
   def can_administer?
     true
     # current_user
+  end
+
+  def render_500(exception)
+    @exception = exception
+    flash.now[:error] = 'There was a error with your last request'
+    render "public/500"
   end
 
   def routing_error

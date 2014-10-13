@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   acts_as_messageable
   acts_as_voter
   before_save { self.email = email.downcase }
-  before_save { user_id = self.id }
+  before_save { self.user_id = self.id }
   before_create :create_remember_token
   before_destroy :delete_activity 
   validates :first_name, presence: true, length: { maximum: 17 }
