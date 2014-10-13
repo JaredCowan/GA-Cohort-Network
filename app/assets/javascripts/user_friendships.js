@@ -1,4 +1,4 @@
-window.userFriendships = [];
+// window.userFriendships = [];
 // window.current_user    = Routes.users_path(current_user)
 
 $(document).ready(function() {
@@ -20,7 +20,7 @@ $(document).ready(function() {
       type: 'POST',
       success: function(e) {
         addFriendshipBtn.hide();
-        $('#friend-status').html("<a href='#' class='button success'>Friendship Requested</a>");
+        $('#friend-status').html("<a href='#' class='success radius tiny button'>Friendship Requested</a>");
       }
     });
   });

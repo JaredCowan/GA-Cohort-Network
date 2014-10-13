@@ -6,7 +6,20 @@
       <img src="http://hospitalfranciscovilar.com.br/wp-content/uploads/2013/11/gravatar-60-grey.jpg"/>
         <div class="section-container vertical-nav" data-section data-options="deep_linking: false; one_up: true">
         <section class="section">
-          <h5 class="title"><a href="#" data-reveal-id="messageModal" class="radius tiny button"> Message <%= @user.full_name %></a> <%= link_to "Add Friend (coming soon)", '#', class: 'button alert radius tiny disabled' %></h5>
+          <h5 class="title"><a href="#" data-reveal-id="messageModal" class="radius tiny button"> Message <%= @user.full_name %></a></h5>
+          <% if Rails.env == "development" %>
+            <span id="friend-status">
+              <% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
+              <%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: 'radius tiny button' %>
+              <% else %>
+               <%= link_to "Add Friend", new_user_friendship_path(friend_id: @user.id), class: 'radius tiny button', id: 'add-friendship', data: { friend_id: @user.id } %>
+              <% end %>
+            </span>
+          <% else %>
+        <%= link_to "Add Friend (coming soon)", '#', class: 'button alert radius tiny disabled' %>
+      <% end %>
+
+
         </section>
         <section class="section">
           <h5 class="title">Site: <a href="http://<%= @user.website %>">Personal Website</a></h5>

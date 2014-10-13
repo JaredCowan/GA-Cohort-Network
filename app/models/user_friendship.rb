@@ -2,7 +2,7 @@ class UserFriendship < ActiveRecord::Base
   belongs_to :user
   belongs_to :friend, class_name: 'User', foreign_key: 'friend_id'
 
-  before_destroy :delete_activity
+  # before_destroy :delete_activity
   after_destroy :delete_mutual_friendship!
 
   state_machine :state, initial: :pending do
@@ -36,7 +36,7 @@ class UserFriendship < ActiveRecord::Base
       # first setting up mail server.
       # You'll have a bad time.
       # friendship1.send_request_email if !friendship1.new_record?
-      friendship1
+      # friendship1
     end
   end
 
@@ -63,9 +63,9 @@ class UserFriendship < ActiveRecord::Base
     mutual_friendship.update_attribute(:state, 'accepted')
   end
 
-  def delete_activity
-    Activity.find_by(user_id: friend_id).destroy!
-  end
+  # def delete_activity
+  #   Activity.find_by(user_id: friend_id).destroy!
+  # end
 
   def delete_mutual_friendship!
     mutual_friendship.delete

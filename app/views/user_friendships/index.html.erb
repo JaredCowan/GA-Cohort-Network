@@ -6,8 +6,8 @@
     <% if Rails.env == "production" %>
       <h1> Hang tight. We're working on this </h1>
     <% end %>
-    <% @user_friendships.each do |f| %>
-    <%= f.full_name %>
+    <% @current_user.user_friendships.each do |f| %>
+    <%= User.find(f.friend_id).full_name %>
     <% end %>
   </div>
 </div>

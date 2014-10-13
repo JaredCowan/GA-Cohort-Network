@@ -1,11 +1,11 @@
 class UserFriendshipsController < ApplicationController
   before_action :signed_in_user
-  # respond_to :html, :json
+  respond_to :html, :json
 
   def index
-    # @user_friendships = UserFriendshipDecorator.decorate_collection(friendship_association.all)
+    @user_friendships = UserFriendshipDecorator.decorate_collection(friendship_association.all)
     @user_friendships = current_user.friends.all
-    # respond_with @user_friendships
+    respond_with @user_friendships
   end
 
   def accept
@@ -67,7 +67,7 @@ class UserFriendshipsController < ApplicationController
   end
 
   def edit
-    @friend = User.find(user_id: params[:id]).first
+    @friend = User.find_by(user_id: params[:user_id])
     @user_friendship = current_user.user_friendships.where(friend_id: @friend.id).first.decorate
   end
 
