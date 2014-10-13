@@ -48,7 +48,7 @@
       <% end %>
     <% end %>
     </div>
-  </div>
+  <!-- </div> --> <!-- Was causing error for the 'close-reveal-model' link on menu -->
 </div>
 
 
@@ -56,4 +56,5 @@
 <div id="newhelp" class="reveal-modal" data-reveal>
   <%= render :partial => "partials/status" %>
 </div>
+  <a class="close-reveal-modal">&#215;</a>
 <!-- End Reveal Modals -->
