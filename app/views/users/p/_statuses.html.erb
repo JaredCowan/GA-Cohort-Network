@@ -1,3 +1,12 @@
+<% if @user.statuses.empty? %>
+<div class="row">
+  <div class="large-2 columns activity">
+  <%= "You don't have any statuses just yet!" %><br>
+  <%= "Lurk around and stalk the people on the site" %><br>
+  <%= "and interact and you'll have some data to show." %><br>
+  </div>
+</div>
+<% else %>
 <% @user.statuses.reverse.each do |status| %>
       <% if can_display_status?(status) %>
         <div class="panel" id="forum-index">
@@ -48,3 +57,4 @@
         </div>
       <% end %>
     <% end %>
+  <% end %>

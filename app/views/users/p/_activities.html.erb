@@ -1,9 +1,16 @@
 <div class="row">
   <div class="large-2 columns activity">
-    <% Activity.all.where(user_id: @user.id).each do |activity| %>
-      <div class="small-11 small-centered columns activity-content">
-        <%= render partial: "activities/#{activity.targetable_type.underscore}/#{activity.action}", locals: { activity: activity } %>
-      </div>
+    <% if @user.activities.empty? %>
+      <%= "You don't have any activities just yet!" %><br>
+      <%= "Lurk around and stalk the people on the site" %><br>
+      <%= "and interact and you'll have some data to show." %><br>
+    <% else %>
+      <% Activity.all.where(user_id: @user.id).each do |activity| %>
+        <div class="small-11 small-centered columns activity-content">
+          <%= render partial: "activities/#{activity.targetable_type.underscore}/#{activity.action}", locals: { activity: activity } %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
+

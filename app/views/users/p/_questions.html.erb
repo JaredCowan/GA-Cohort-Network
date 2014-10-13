@@ -1,9 +1,9 @@
 <% if Question.all.where(user_id: @user.id).empty? %>
         <div class="row">
-          <div class="large-2 columns">
-            <img src="http://androidandme.wpengine.netdna-cdn.com/wp-content/themes/android-and-me-v4/images/avatars/generic-gravatar-nerd.png"/></div>
-            <div class="large-10 columns">
-              <p><strong><%= @user.full_name + ":\s" %></strong> I haven't posted any questions yet!! Message <%= @user.full_name %> and ask them to get involved <a href="#" data-reveal-id="noQuestionMessage">here.</a></p>
+       <!--    <div class="large-2 columns">
+            <img src="http://androidandme.wpengine.netdna-cdn.com/wp-content/themes/android-and-me-v4/images/avatars/generic-gravatar-nerd.png"/></div> -->
+            <div class="large-12 columns activity">
+              <p> I haven't posted any questions yet!! Message <%= @user.full_name %> and ask them to get involved <a href="#" data-reveal-id="noQuestionMessage">here.</a></p>
           </div>
         </div>
         <hr/>
