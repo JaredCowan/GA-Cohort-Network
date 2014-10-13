@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     if @current_user.update_attributes(user_params)
       # current_user.create_activity @user, 'profile'
       flash[:success] = "Profile updated"
-      redirect_to dashboard_url
+      redirect_to user_path(current_user)
     else
       render 'edit'
     end
