@@ -1,0 +1,39 @@
+<div class="container">
+  <%= simple_form_for(@post, :html => {:class => "form-horizontal", multipart: true}) do |f| %>
+    <% if @post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+        <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <%= f.input :body %>
+    <%#= f.input :created_at, as: :date,
+                start_year: Date.today.year,
+                end_year: Date.today.year - 12, discard_day: false,
+                order: [:month, :day, :year] %>
+
+  <p>
+<b>Content:</b>
+  <%= @post.body %>
+  <% if @post.document && @post.document.attachment? && @post.document.valid? %>
+    <ul class="clearing-thumbs" data-clearing>
+      <li><a href="<%= @post.document.attachment.url %>">
+        <span class="label label-info">Click To View Attachment</span><br><img id="thumbnail" src="<%= @post.document.attachment.url %>"/></a></li>
+    </ul>
+  <% end %>
+</p>                          
+    <%= f.fields_for :document do |document_fields| %>
+      <%= document_fields.input :attachment, as: :file %>
+    <% end %>
+
+    <span class="actions">
+      <%= f.button :submit, :value => 'Update Post', class: 'button round success' %>
+    </span>
+  <% end %>
+</div>

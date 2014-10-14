@@ -27,7 +27,6 @@ class Question < ActiveRecord::Base
     Tag.find_by_name!(name).questions
   end
 
-
   def self.tag_counts
     Tag.select("tags.id, tags.name,count(taggings.tag_id) as count").
       joins(:taggings).group("taggings.tag_id, tags.id, tags.name")

@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   has_many :pictures
   has_many :documents
   has_many :jobs
+  has_many :posts
   has_many :taggings
   has_many :tags, through: :taggings
   has_secure_password
