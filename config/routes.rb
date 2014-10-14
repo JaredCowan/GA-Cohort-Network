@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
   
+  get 'posts/index'
+
+  get 'posts/show'
+
+  get 'posts/edit'
+
+  get 'posts/new'
+
+  get 'posts/create'
+
+  get 'posts/destroy'
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :activities

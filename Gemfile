@@ -10,7 +10,7 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'draper'
 gem 'js-routes'
 gem 'haml'
-gem 'haml-rails'
+# gem 'haml-rails'
 gem 'autoprefixer-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem 'httparty'

@@ -7,10 +7,10 @@ module ApplicationHelper
   end
 
   def tour(text)
-    if signed_in? && current_user.created_at > 1.minutes.ago
-    tag(:li, data: {id: "firstStop", options: "tip_location: bottom; prev_button: false; next_button: false"}) + 
-    "<h5>".html_safe + text.html_safe + "</h5>".html_safe
-    end
+  #   if signed_in? && current_user.created_at > 1.minutes.ago
+  #   tag(:li, data: {id: "firstStop", options: "tip_location: bottom; prev_button: false; next_button: false"}) + 
+  #   "<h5>".html_safe + text.html_safe + "</h5>".html_safe
+  #   end
   end
   
   def signup_form
