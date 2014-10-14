@@ -1,15 +1,20 @@
 class User < ActiveRecord::Base
   acts_as_messageable
   acts_as_voter
-  before_save { self.email = email.downcase }
+  before_save { self.email   = email.downcase }
   before_save { self.user_id = self.id }
+  before_create :strip_whitespace
   before_create :create_remember_token
   before_destroy :delete_activity 
   validates :first_name, presence: true, length: { maximum: 17 }
   validates :last_name, presence: true, length: { maximum: 17 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }
+                                    uniqueness: { case_sensitive: false }
+  validates :user_name, presence: true, 
+            length: { minimum: 3, maximum: 17 },
+            uniqueness: { case_sensitive: false }
+
   has_many :statuses
   has_many :questions
   has_many :comments
@@ -26,7 +31,6 @@ class User < ActiveRecord::Base
   paginates_per 20
   # has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   # validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
-  # validates :password, length: { minimum: 6 }
   has_many :user_friendships
   has_many :friends, -> { where user_friendships: { state: 'accepted'} }, through: :user_friendships
 
@@ -96,7 +100,6 @@ class User < ActiveRecord::Base
     Activity.find_by(user_id: current_user.id).destroy!
   end 
 
-
   def create_activity(item, action)
     activity            = activities.new
     activity.targetable = item
@@ -106,6 +109,16 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def strip_whitespace
+    self.first_name = self.first_name.strip
+    self.last_name  = self.last_name.strip
+    self.email      = self.email.strip
+    self.user_name  = self.user_name.strip
+    self.github     = self.github.strip
+    self.linkedin   = self.linkedin.strip
+    self.facebook   = self.facebook.strip
+  end
 
   def create_remember_token
     self.remember_token = User.digest(User.new_remember_token)

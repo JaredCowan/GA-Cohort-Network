@@ -1,51 +1,51 @@
 <div class="row">
-  <div class="small-7 small-centered columns">
+  <div class="small-12 large-10 small-centered larg-centered columns">
     <%= simple_form_for(@current_user) do |f| %>
       <%#= render 'shared/error_messages', object: f.object %>
 
       <div class="row">
-        <div class="small-6 large-6 columns">
-          <%= f.label :first_name %>
-          <%= f.text_field :first_name %>
-        </div>
-        <div class="small-6 large-6 columns">
-          <%= f.label :last_name %>
-          <%= f.text_field :last_name %>
-        </div>
-      </div>
+    <div class="small-6 large-6 columns">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, :placeholder => "Your first name" %>
+    </div>
+    <div class="small-6 large-6 columns">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, :placeholder => "Your last name" %>
+    </div>
+  </div>
 
-      <div class="row">
-        <div class="small-6 large-6 columns">
-          <%= f.label :user_name %>
-          <%= f.text_field :user_name %>
-          </div>
-        <div class="small-6 large-6 columns">
-          <%= f.label :email %>
-          <%= f.text_field :email %>
-        </div>
+  <div class="row">
+    <div class="small-6 large-6 columns">
+      <%= f.label :user_name %>
+      <%= f.text_field :user_name, :placeholder => "Username. ( No spaces or characters )" %>
       </div>
+    <div class="small-6 large-6 columns">
+      <%= f.label :email %>
+      <%= f.text_field :email, :placeholder => "Your main email" %>
+    </div>
+  </div>
 
-      <div class="row">
-        <div class="small-6 large-6 columns">
-          <%= f.label :phone %>
-          <%= f.text_field :phone %>
-        </div>
-        <div class="small-6 large-6 columns">
-          <%= f.label :cell_phone %>
-          <%= f.text_field :cell_phone %>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="small-6 large-6 columns">
-          <%= f.label :public_email %>
-          <%= f.text_field :public_email %>
-        </div>
-        <div class="small-6 large-6 columns">
-          <%= f.label :birthday %>
-          <%= f.text_field :birthday %>
-        </div>
-      </div>
+  <div class="row">
+    <div class="small-6 large-6 columns">
+      <%= f.label :phone %>
+      <%= f.text_field :phone, :placeholder => "Phone number" %>
+    </div>
+    <div class="small-6 large-6 columns">
+      <%= f.label :cell_phone %>
+      <%= f.text_field :cell_phone, :placeholder => "Cell phone number" %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="small-6 large-6 columns">
+      <%= f.label :public_email %>
+      <%= f.text_field :public_email, :placeholder => "Public email" %>
+    </div>
+    <div class="small-6 large-6 columns">
+      <%= f.label :birthday %>
+      <%= f.text_field :birthday, :placeholder => "Birthday 01/01/180" %>
+    </div>
+  </div>
 
       <div class="row">
         <div class="small-6 large-6 columns">
@@ -113,9 +113,7 @@
       </div>
 
       <div class="row">
-        <div class="small-3 large-2 columns">
-        </div>
-        <div class="small-3 large-3 columns">
+        <div class="small-3 large-3 small-centered larg-centered columns">
           <center>
           <%= f.label :admin %>
           <fieldset class="switch" tabindex="0">
@@ -124,8 +122,10 @@
           </fieldset> 
           </center>
         </div>
-        <div class="small-6 large-7 columns">
-          <%= f.submit "Update my account", class: "button small" %>
+        </div>
+        <div class="row">
+        <div class="small-3 small-centered larg-centered columns">
+          <%= f.submit "Update my account", class: "button small radius success" %>
         </div>
       </div>
 
