@@ -4,14 +4,14 @@
 
 <div class="row">
   <div class="avatar span2">
-    <%= link_to @user_friendship.user.first_name, user_friendship_path(@user_friendship.user) %><br />
-    <%= link_to avatar_url, user_friendship_path(@user_friendship.user) %>
+    <%= link_to @user_friendship.user.full_name, user_path(@user_friendship.user) %><br />
+    <%= link_to avatar_url, user_path(@user_friendship.user) %>
   </div>
   <br />
   <div class="avatar span2">
-    <%= link_to @user_friendship.friend.first_name, user_friendship_path(@user_friendship.friend) %>
+    <%= link_to @user_friendship.friend.full_name, user_path(@user_friendship.friend) %>
     <br>
-    <%= link_to avatar_url, user_friendship_path(@user_friendship.friend) %><br>
+    <%= link_to avatar_url, user_path(@user_friendship.friend) %><br>
   </div>
 </div>
 <hr />
@@ -23,7 +23,7 @@
 
 <div id="editFriendModal" class="reveal-modal" data-reveal>
 <center><strong>
-  <h2>Are you sure? This can't be undone.</h2>
+  <h2>Are you sure?</h2>
 </center></strong>
 <hr>
 <div class="form-actions">

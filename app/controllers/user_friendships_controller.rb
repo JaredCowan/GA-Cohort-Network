@@ -4,7 +4,7 @@ class UserFriendshipsController < ApplicationController
   
   def index
     @user_friendships = UserFriendshipDecorator.decorate_collection(friendship_association.all)
-    @user_friendships = current_user.friends.all
+    # @user_friendships = current_user.friends.all
     respond_with @user_friendships
   end
 

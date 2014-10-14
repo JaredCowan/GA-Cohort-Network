@@ -6,10 +6,6 @@ class UserFriendshipDecorator < Draper::Decorator
     model.state.titleize
   end
 
-  # def full_name
-  #   model.state.titleize
-  # end
-
   def sub_message
     case model.state
     when 'pending'
@@ -22,13 +18,26 @@ class UserFriendshipDecorator < Draper::Decorator
   def update_action_verbiage
     case model.state
     when 'pending'
-      'Delete'
+      'Update Request'
     when 'requested'
-      'Accept'
+      'Accept Request'
     when 'accepted'
-      'Update'
+      'Update Friendship'
     when 'blocked'
-      'Unblock'
+      'Unblock Friend'
+    end
+  end
+
+  def update_class
+    case model.state
+    when 'pending'
+      'default'
+    when 'requested'
+      'success'
+    when 'accepted'
+      'success'
+    when 'blocked'
+      'alert'
     end
   end
 
