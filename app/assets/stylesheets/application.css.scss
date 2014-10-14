@@ -98,11 +98,14 @@ h1, h3 {
 #convo-quick-bar .fi-mail:hover {
   color: rgba(255, 60, 44, 1);
 }
+ul.off-canvas-list li a {
+  color: #fff;
+}
 ul.off-canvas-list li a:hover {
-  background-color: rgba(255, 60, 44, 1);
+  background-color: rgba(107, 107, 107, 1);
 }
 #mailbox li:hover {
-  background-color: rgba(255, 60, 44, 1);
+  background-color: rgba(255,60,44,1);
 }
 #convo-quick-bar {
   top: -100px;
@@ -143,7 +146,7 @@ body {
   height: 100%;
   color: #fff!important;
   background-color: #262626;
-  // background-color: #e9eaed;
+  /*background-color: #e9eaed;*/
   background: url("../assets/bgnoise.png") repeat fixed #EAEAEA;
 }
   // text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
@@ -416,4 +419,16 @@ section > .title {
 }
 .friends-list .column, .friends-list .columns {
   padding: 2px!important;
+}
+ul.off-canvas-list li a {
+  height: 35px;
+}
+ul.off-canvas-list li {
+  line-height: 16px;
+}
+.tab-bar {
+  background: #373434;
+}
+.left-off-canvas-menu, .right-off-canvas-menu {
+  background: #373434;
 }
