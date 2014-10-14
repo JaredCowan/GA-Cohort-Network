@@ -17,11 +17,7 @@ class Question < ActiveRecord::Base
   validates :body, presence: true,
                       length: { minimum: 2 }
 
-  validates :user_id, presence: true
-
-  # def delete_activity
-  #   Activity.find_by(targetable_id: self.class.find(self.id)).destroy!
-  # end
+  # validates :user_id, presence: true
 
   def self.tagged_with(name)
     Tag.find_by_name!(name).questions

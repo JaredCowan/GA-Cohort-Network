@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @document.build_document
+    # @document.build_document
 
     respond_to do |format|
       format.html
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-    # @document.user_id = current_user.id
+    # @document.user_id = @post.user_id
 
     respond_to do |format|
       if @post.save
@@ -52,9 +52,9 @@ class PostsController < ApplicationController
       @document = @post.document
     end
       
-    if params[:post] && params[:post].has_key?(:user_id)
-      params[:post].delete(:user_id) 
-    end
+    # if params[:post] && params[:post].has_key?(:user_id)
+    #   params[:post].delete(:user_id) 
+    # end
 
     respond_to do |format|
       if @post.update_attributes(post_params)

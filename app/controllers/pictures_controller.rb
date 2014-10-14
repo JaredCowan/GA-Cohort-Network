@@ -87,12 +87,6 @@ class PicturesController < ApplicationController
     end
   end
 
-  # def add_breadcrumbs
-  #   add_breadcrumb @user.first_name, profile_path(@user)
-  #   add_breadcrumb "Albums", albums_path
-  #   add_breadcrumb "Pictures", album_pictures_path(@album)
-  # end
-
   def find_user
     @user = User.find_by_profile_name(params[:profile_name])
   end

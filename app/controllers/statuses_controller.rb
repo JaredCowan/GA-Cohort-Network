@@ -27,7 +27,7 @@ class StatusesController < ApplicationController
   def new
     @status = Status.new
     # @status = current_user.statuses.new
-    @document.build_document
+    # @document.build_document
 
     respond_to do |format|
       format.html

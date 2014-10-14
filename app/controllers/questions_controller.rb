@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
-    # @document.build_document
+    @document.build_document
 
     respond_to do |format|
       format.html
@@ -36,7 +36,6 @@ class QuestionsController < ApplicationController
 
   def create
     @question = current_user.questions.new(question_params)
-    # @document.user_id = current_user.id
 
     respond_to do |format|
       if @question.save

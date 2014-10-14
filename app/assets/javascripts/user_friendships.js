@@ -1,6 +1,5 @@
 window.userFriendships = [];
 
-
 $(document).ready(function() {
   $.ajax({
     url: Routes.user_friendships_path({format: 'json'}),
