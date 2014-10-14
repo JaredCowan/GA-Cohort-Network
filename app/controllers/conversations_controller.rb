@@ -8,7 +8,8 @@ class ConversationsController < ApplicationController
     conversation = current_user.
       send_message(recipients, *conversation_params(:body, :subject)).conversation
 
-    redirect_to :conversations
+    # redirect_to :conversations
+    redirect_to :back
   end
 
   def reply

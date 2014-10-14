@@ -1,4 +1,23 @@
-<p><%= Question.find(activity.targetable_id).user.full_name %> updated their <%= link_to "\squestion", question_path(activity.targetable_id) %>.</p> 
+<p><a href="<%= user_path(activity.user_id) %> " data-dropdown="hover<%=activity.id%>" data-options="is_hover:true"><%= Question.find(activity.targetable_id).user.full_name %></a><%#= link_to Question.find(activity.targetable_id).user.full_name, User.find(activity.user_id) %> updated their <%= link_to "\squestion", question_path(activity.targetable_id) %>.</p> 
 <p>Subject: <%= truncate( Question.find(activity.targetable_id).subject, length: 15) %> </p>
 <p>Question: <%= truncate( Question.find(activity.targetable_id).body, length: 15) %></p>
 <p> Tags: <%= raw Question.find(activity.targetable_id).tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %> </p>
+
+<div id="hover<%=activity.id%>" class="f-dropdown content small" data-dropdown-content="" aria-hidden="true" tabindex="-1">
+  <section><%= avatar_url %></section>
+  <li>asdfasdfa</li>
+  <li>asdfasdfa</li>
+  <%#= render :partial => "partials/status" %>
+  <%= simple_form_for :conversation, url: :conversations do |f| %>
+  
+  <input class="string required" id="conversation_recipients" name="conversation[recipients]" placeholder="<%= User.find(activity.user_id).email %>" type="hidden" value="<%= User.find(activity.user_id).email %>">
+
+  <%= f.input :subject %>
+  <%= f.input :body, as: :text %>
+   
+   
+  <%= f.button :submit, 'Send', class: 'button radius' %>
+  <%= f.button :submit, 'Clear form', type: :reset, class: 'button alert radius' %>
+<% end %>
+  </div>
+

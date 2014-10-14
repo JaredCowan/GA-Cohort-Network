@@ -47,7 +47,7 @@ class StatusesController < ApplicationController
     respond_to do |format|
       if @status.save
         current_user.create_activity(@status, 'created')
-        format.html { redirect_to :forum, notice: 'Status was successfully created.' }
+        format.html { redirect_to :back, notice: 'Status was successfully created.' }
         format.json { render json: @status, status: :created, location: @status }
       else
         format.html { redirect_to :back, notice: "#{@status.errors.count} error(s) prohibited this status from being saved: #{@status.errors.full_messages.join(', ')}" }
@@ -87,7 +87,7 @@ class StatusesController < ApplicationController
 
     respond_to do |format|
       if @status.destroy
-        format.html { redirect_to forum_url, notice: 'Status was successfully deleted.' }
+        format.html { redirect_to :back, notice: 'Status was successfully deleted.' }
         format.json { head :no_content }
       else
         format_generic_error("index")
