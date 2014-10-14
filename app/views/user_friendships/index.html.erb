@@ -35,11 +35,12 @@
     </dl>
     <hr />
     </div>
+  </div>
     <div class="row">
       <div class="large-12 medium-12 small-12 large-centered medium-centered small-centered columns">
         <% @user_friendships.each do |friendship| %>
           <% friend = friendship.friend %>
-          <div class="row" data-equalizer>
+          <div class="row friends-list" data-equalizer>
             <div class="large-3 medium-4 small-6 columns">
               <ul class="pricing-table" data-equalizer-watch>
                 <li class="title"><%= link_to User.find(friendship.friend_id).full_name, user_path(friendship.friend_id) %></li>
@@ -51,5 +52,5 @@
         <% end %>
       </div>
     </div>
-    </div>
-    </div>
+  </div>
+</div>

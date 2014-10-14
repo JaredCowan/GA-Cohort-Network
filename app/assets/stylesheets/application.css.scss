@@ -410,5 +410,10 @@ section > .title {
   border-radius:               15px;
   margin:                       3px;
   box-shadow: 0 5px 3px #ddd;
-
+}
+.friends-list {
+  margin: 0!important;
+}
+.friends-list .column, .friends-list .columns {
+  padding: 2px!important;
 }
