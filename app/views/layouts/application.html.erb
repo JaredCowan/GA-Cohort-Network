@@ -289,7 +289,7 @@
         <a class="exit-off-canvas"></a>
       </div> <!-- Do not remove. --> 
       <!--^^ Closes the partials/navbar div -->
-        <% if controller_name == "users" %>
+        <% if controller_name == "users" && params[:action] == "show" %>
          <%= javascript_tag do %>
            window.user_id = "<%= @user.id %>"
          <% end %>

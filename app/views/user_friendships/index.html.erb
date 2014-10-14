@@ -38,28 +38,35 @@
 
 
     <div class="row">
-  <div class="small-11 small-centered columns">
-    <div class="page-header">
-      <h1>My Friends</h1>
-    </div>
-
-    
-
-
-    <div id="friend-list">
+  <div class="small-12 small-centered columns">
     <% @user_friendships.each do |friendship| %>
       <% friend = friendship.friend %>
-      <%= link_to User.find(friendship.friend_id).full_name, user_friendship_path(friendship.friend_id) %>
-      <div id="<%= dom_id(friendship) %>" class="media friend">
-        <%= link_to avatar_url, user_friendship_path(friendship.friend_id) %>
-        <div class="media-body">
-          <em>Friendship is <%= friendship.state %></em>. <br />
-          <%= link_to "#{friendship.update_action_verbiage}", edit_user_friendship_path(friend), class: "button small radius #{friendship.update_class}" %>
+      <div class="row" data-equalizer>
+        <div class="large-3 columns">
+          <ul class="pricing-table" data-equalizer-watch>
+            <li class="title"><%= link_to User.find(friendship.friend_id).full_name, user_path(friendship.friend_id) %></li>
+            <li class="price"><span class="<%= friendship.update_label%> label radius"><em>Friendship is <%= friendship.state %></em>.</span></li>
+            <li class="price"><%= link_to avatar_url, user_path(friendship.friend_id) %></li>
+            <li class="cta-button"><%= link_to "#{friendship.update_action_verbiage}", edit_user_friendship_path(friend), class: "button small radius #{friendship.update_class}" %></li>
+          </ul>    
+        </div>
+      </div>
+
+
+    <!-- <div id="friend-list"> -->
+    <%# @user_friendships.each do |friendship| %>
+      <%# friend = friendship.friend %>
+      <%#= link_to User.find(friendship.friend_id).full_name, user_path(friendship.friend_id) %>
+      <!-- <div id="<%#= dom_id(friendship) %>" class="media friend"> -->
+        <%#= link_to avatar_url, user_path(friendship.friend_id) %>
+        <!-- <div class="media-body"> -->
+          <!-- <span class="<%#= friendship.update_label%> label radius"><em>Friendship is <%= friendship.state %></em>.</span><br><br> -->
+          <%#= link_to "#{friendship.update_action_verbiage}", edit_user_friendship_path(friend), class: "button small radius #{friendship.update_class}" %>
         </div>
       </div>
     <% end %>
     </div>
-  </div>
+  <!-- </div> -->
 </div>
   </div>
 </div>

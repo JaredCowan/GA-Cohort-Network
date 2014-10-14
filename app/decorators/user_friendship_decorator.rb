@@ -41,4 +41,17 @@ class UserFriendshipDecorator < Draper::Decorator
     end
   end
 
+  def update_label
+    case model.state
+    when 'pending'
+      'warning'
+    when 'requested'
+      'warning'
+    when 'accepted'
+      'success'
+    when 'blocked'
+      'alert'
+    end
+  end
+
 end
