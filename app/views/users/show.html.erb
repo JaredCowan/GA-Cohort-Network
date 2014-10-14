@@ -15,7 +15,7 @@
           
           <span id="friend-status">
             <% if current_user.friends.include?(@user) %>
-            <%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: 'button radius tiny success' %>
+            <%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user.id), class: 'button radius tiny success' %>
             <% elsif current_user.pending_friends.include?(@user) %>
               <%= link_to "Friendship Requested", edit_user_friendship_path(friend_id: @user), class: 'button radius tiny success' %>
             <% else %>

@@ -290,6 +290,9 @@
       </div> <!-- Do not remove. --> 
       <!--^^ Closes the partials/navbar div -->
        <!-- Javascripts for calender -->
+       <%= javascript_tag do %>
+         window.user_id = "<%= current_user.id %>"
+       <% end %>
       <%= render :partial => "layouts/script" %>
     </body>
   </html>

@@ -11,7 +11,7 @@ class UserFriendshipsController < ApplicationController
   def accept
     @user_friendship = current_user.user_friendships.find(params[:id])
     if @user_friendship.accept!
-      current_user.create_activity @user_friendship, 'accepted'
+      current_user.create_activity(@user_friendship, 'accepted')
       flash[:success] = "You are now friends with #{@user_friendship.friend.first_name}"
     else
       flash[:error] = "That friendship could not be accepted."
@@ -81,9 +81,7 @@ class UserFriendshipsController < ApplicationController
   end
 
   def destroy
-    # Activity.find_by(user_id: @user_Friendship.to_i, action: "accepted" ).destroy!
     @user_friendship = current_user.user_friendships.find(params[:id])
-
     if @user_friendship.destroy
       flash[:success] = "Friendship destroyed"
     end

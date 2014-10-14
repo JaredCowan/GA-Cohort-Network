@@ -1,5 +1,5 @@
 window.userFriendships = [];
-// window.current_user    = Routes.users_path(current_user)
+
 
 $(document).ready(function() {
   $.ajax({
@@ -20,7 +20,7 @@ $(document).ready(function() {
       type: 'POST',
       success: function(e) {
         addFriendshipBtn.hide();
-        $('#friend-status').html("<a href='/user_friendships/2/edit?friend_id=#{current_user.id}' class='success radius tiny button'>Friendship Requested</a>");
+        $('#friend-status').html("<a href='/user_friendships/2/edit?friend_id=" + window.user_id + "'" + " class='success radius tiny button'>Friendship Requested</a>");
       }
     });
   });
