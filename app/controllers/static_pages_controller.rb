@@ -7,7 +7,8 @@ class StaticPagesController < ApplicationController
 
   def dashboard
     if signed_in? && current_user.created_at > 1.days.ago
-      flash[:success] = "Click on a Day to add new event." 
+      # This notice is kind of annoying. Let delete it?
+      # flash[:success] = "Click on a Day to add new event." 
     end
   end
 

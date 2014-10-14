@@ -7,6 +7,9 @@
 @import 'foundation-icons';
 @import "foundation/components/offcanvas";
 
+html {
+  -webkit-font-smoothing: antialiased;
+}
 /* Override for menu to be full height */
 .off-canvas-wrap, .inner-wrap { min-height: 900px; }
 .icon-bar > * {
@@ -236,8 +239,20 @@ textarea {
   border-top-left-radius:  16px;
   border-top-right-radius: 16px;
 }
-.login-block, .hero, .hero-content {
-  min-width: 818px;
+// .login-block, .hero, .hero-content {
+//   min-width: 818px;
+// }
+.hero label {
+  color: #fff;
+}
+.hero label small {
+  color: #f00
+}
+.login-block {
+  margin-bottom: 9px;
+}
+.page-title {
+  height: 140px;
 }
 #tag_cloud {
   width: initial;
@@ -252,16 +267,54 @@ textarea {
   h2 { display: -webkit-inline-box; }
 }
 .sessions {
-  // position: fixed;
   width: 100%;
   height: 100%;
   background-color: red;
 }
 .signin-page-image-text {
   text-transform: none;
-  width: 265px;
+  width: 80%;
   text-align: center;
-  padding-left: 28px;
+  word-wrap: break-word;
+  padding-left: 66px;
+}
+@media only screen and (max-width: 1070px) {
+  .signin-page-image-text {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 913px) {
+  .login-text {
+    font-family: inherit;
+    font-size: 80%;
+  }
+}
+@media only screen and (max-width: 840px) {
+  .login-text {
+    font-family: inherit;
+    font-size: 78%;
+  }
+}
+@media only screen and (max-width: 810px) {
+  .signin-page-image-text {
+    font-size: 11px;
+    width: 100%;
+    padding-left: 0;
+  }
+  .login-header {
+    font-size: 151.9%;
+  }
+  .login-text {
+    font-family: inherit;
+    font-size: 70%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .four-image-header {
+    font-size: 99.9%;
+    font-family: inherit;
+    -webkit-font-smoothing: antialiased;
+  }
 }
 .questions, .activity {
   background-color: #fff;

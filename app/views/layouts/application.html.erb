@@ -140,7 +140,6 @@
           background-image: url("assets/sg.JPG");
           background-size: cover;
           box-shadow: inset 0px 0px 0 2000px rgba(0, 0, 0, 0.2);
-          height:  100%;
         }
         .hero-content {
           padding-top: 0;
@@ -167,6 +166,7 @@
         .four-image {
           padding-bottom: 40px;
           background-color: #2980b9!important;
+          padding-top: 37px;
         }
         @media only screen and (min-width: 64.063em)  {
           .radius.right.button {
@@ -206,8 +206,8 @@
       <% if controller_name == "sessions" %>
     
     <section class="hero">
-      <div class="row">
-        <div class="large-12 columns">
+      <div class="row page-title">
+        <div class="large-12 medium-12 columns">
           <div class="main-wrapper">
             <h1>General Assembly</h1>
             <h3>Cohort Network</h3>
@@ -216,16 +216,16 @@
         </div>
       </div>
       <div class="row login-block">
-        <div class="large-8 small-6 columns about-box">
+        <div class="large-8 medium-6 columns about-box">
           <div class="black-box">
-            <h2 style="background-color: transparent; text-align: center; text-shadow: 2px 1px 11px #000; color: #fff;">A place for personal <strong>development.</strong></h2>
-            <p>A place for connecting cohorts to instructors and one-another while sharing knowledge and developing personal growth. Before, during and after your cohort ends.
+            <h2 class="login-header" style="background-color: transparent; text-align: center; text-shadow: 2px 1px 11px #000; color: #fff;">A place for personal <strong>development.</strong></h2>
+            <p class="login-text">A place for connecting cohorts to instructors and one-another while sharing knowledge and developing personal growth. Before, during and after your cohort ends.
             </p>
-            <p style="margin-top: 15px; height: 60px;"><!-- MMMM BACON --></p> 
+            <p style="margin-top: 15px; height: 60px;"></p> 
             <center><a href="/users/new" class="secondary small button">Sign Me Up! →</a></center>
           </div>
         </div>
-        <div class="large-4 small-6 columns about-box black-box">
+        <div class="large-4 medium-6 columns about-box black-box">
         <form data-abide accept-charset="UTF-8" action="/sessions" class="simple_form session" method="post" novalidate="novalidate">
       <div style="display:none">
         <input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="Z8om645E2k/dk6PFr7L7vg/ANYvbJBpTFAF1SmuE+WM=">
@@ -244,7 +244,7 @@
       </div>
       <div class="">
         <div class="form-group">
-        <button type="submit" value="Log me in" class="button success">Submit</button>
+        <button type="submit" value="Log me in" class="button small radius success">Submit</button>
         <%= link_to("Sign Up", signup_path, class: 'button right') %>
       </div>
     </form>
@@ -252,8 +252,8 @@
       </div>
     </section>
       </div>
-      <div class="row four-image">
-        <h1>A few reasons why you'll love us.</h1><br>
+      <div class="four-image">
+        <h1 class="four-image-header">A few reasons why you'll love us.</h1><br>
       <div class="small-8 small-centered columns">
         <ul class="small-block-grid-2">
           <li>

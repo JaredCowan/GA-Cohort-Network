@@ -1,5 +1,5 @@
 module ApplicationHelper
-
+  
   def login_form
     if !signed_in?
        render :partial => "partials/loginform"
