@@ -110,7 +110,7 @@ class User < ActiveRecord::Base
     self.first_name = self.first_name.strip
     self.last_name  = self.last_name.strip
     self.email      = self.email.strip
-    self.user_name  = self.user_name.strip
+    self.user_name  = self.user_name.downcase.strip
     self.github     = self.github.strip
     self.linkedin   = self.linkedin.strip
     self.facebook   = self.facebook.strip

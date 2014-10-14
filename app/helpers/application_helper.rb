@@ -18,7 +18,7 @@ module ApplicationHelper
   end
 
   def friendship_path
-    link_to "Friends", friends_path if signed_in?
+    link_to "Friends", user_friendships_path if signed_in?
   end
   
   def full_name
