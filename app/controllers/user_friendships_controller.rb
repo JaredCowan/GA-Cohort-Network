@@ -1,7 +1,7 @@
 class UserFriendshipsController < ApplicationController
   before_action :signed_in_user
   respond_to :html, :json
-
+  
   def index
     @user_friendships = UserFriendshipDecorator.decorate_collection(friendship_association.all)
     @user_friendships = current_user.friends.all
@@ -67,8 +67,8 @@ class UserFriendshipsController < ApplicationController
   end
 
   def edit
-    @friend = User.find_by(user_id: params[:user_id])
-    @user_friendship = current_user.user_friendships.where(friend_id: @friend.id).first.decorate
+    @friend = User.find_by(user_id: params[:id])
+    @user_friendship = current_user.user_friendships.where(friend_id: @friend).first.decorate
   end
 
   def show
@@ -87,7 +87,7 @@ class UserFriendshipsController < ApplicationController
     if @user_friendship.destroy
       flash[:success] = "Friendship destroyed"
     end
-    redirect_to friends_path
+    redirect_to user_friendships_path
   end
 
   def user_friendship

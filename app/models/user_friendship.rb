@@ -2,7 +2,7 @@ class UserFriendship < ActiveRecord::Base
   belongs_to :user
   belongs_to :friend, class_name: 'User', foreign_key: 'friend_id'
 
-  # before_destroy :delete_activity
+  has_many :activities, :as => :targetable, :dependent => :destroy
   after_destroy :delete_mutual_friendship!
 
   state_machine :state, initial: :pending do
@@ -63,12 +63,8 @@ class UserFriendship < ActiveRecord::Base
     mutual_friendship.update_attribute(:state, 'accepted')
   end
 
-  # def delete_activity
-  #   Activity.find_by(user_id: friend_id).destroy!
-  # end
-
   def delete_mutual_friendship!
-    mutual_friendship.delete
+    # mutual_friendship.delete
   end
 
   def block_mutual_friendship!

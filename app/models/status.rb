@@ -2,7 +2,7 @@ class Status < ActiveRecord::Base
   belongs_to :user
   belongs_to :document
   has_many :comments
-  before_destroy :delete_activity
+  has_many :activities, :as => :targetable, :dependent => :destroy
   acts_as_votable
 
   paginates_per 10
@@ -17,9 +17,5 @@ class Status < ActiveRecord::Base
   def name_with_initial
     "#{subject}"
   end
-
-  def delete_activity
-    Activity.find_by(targetable_id: self.class.find(self.id)).destroy!
-  end  
 
 end

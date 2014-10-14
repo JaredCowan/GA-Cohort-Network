@@ -10,6 +10,10 @@
 html {
   -webkit-font-smoothing: antialiased;
 }
+*:focus {
+  outline: none;
+}
+::selection { background-color: rgba(0, 0, 0, .3);}
 /* Override for menu to be full height */
 .off-canvas-wrap, .inner-wrap { min-height: 900px; }
 .icon-bar > * {
@@ -341,6 +345,11 @@ textarea {
 }
 .tabs dd > * {
   cursor: pointer;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  margin-right: 3px;
+  height: 48px;
+  box-shadow: 1px -1px 5px -1px grey;
 }
 .tabs *:focus {
   outline: none;
@@ -349,17 +358,26 @@ textarea {
   width: 100%;
 }
 section > .title {
-  color: #000!important;
+  color: #fff!important;
   display: inline-block;
 }
 #profile-title > * {
   color: #000!important;
 }
+.post-upload-icon.fi-upload:before {
+  /*color: red;*/
+}
+.fileUpload.button {
+  padding: 14px!important;
+  background-color: #2daebf!important;
+}
 .wall-post-form {
   padding: 8px;
-  margin-bottom: 6px!important;
-  background-color: grey;
+  margin-top: 16px!important;
+  margin-bottom:  6px!important;
+  background-color: #fff;
   border-radius: 6px;
+  box-shadow: 0 0 3px #ddd;
 }
 .fileUpload {
   position:                relative;
@@ -391,4 +409,6 @@ section > .title {
   background-position:      0 -20px;
   border-radius:               15px;
   margin:                       3px;
+  box-shadow: 0 5px 3px #ddd;
+
 }

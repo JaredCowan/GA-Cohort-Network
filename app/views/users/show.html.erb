@@ -1,5 +1,10 @@
 <div class="row">
   <div class="large-5 columns ">
+    <% if current_user == @user %>
+      <center>
+      <%= link_to "Edit Profile",edit_user_path(current_user), class: "button small radius" %>
+      </center>
+    <% end %>
     <div class="panel">
       <h1 id="profile-title"><center><%= @user.full_name.camelize %></center></h1>
       <h4 id="profile-title"><center><%= @user.job_position.camelize %></center></h4>
@@ -7,17 +12,16 @@
         <div class="section-container vertical-nav" data-section data-options="deep_linking: false; one_up: true">
         <section class="section">
           <h5 class="title"><a href="#" data-reveal-id="messageModal" class="radius tiny button"> Message <%= @user.full_name %></a></h5>
-          <% if Rails.env == "development" %>
-            <span id="friend-status">
-              <% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
-              <%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: 'radius tiny button' %>
-              <% else %>
-               <%= link_to "Add Friend", new_user_friendship_path(friend_id: @user.id), class: 'radius tiny button', id: 'add-friendship', data: { friend_id: @user.id } %>
-              <% end %>
-            </span>
-          <% else %>
-        <%= link_to "Add Friend (coming soon)", '#', class: 'button alert radius tiny disabled' %>
-      <% end %>
+          
+          <span id="friend-status">
+            <% if current_user.friends.include?(@user) %>
+            <%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: 'button radius tiny success' %>
+            <% elsif current_user.pending_friends.include?(@user) %>
+              <%= link_to "Friendship Requested", edit_user_friendship_path(friend_id: @user), class: 'button radius tiny success' %>
+            <% else %>
+             <%= link_to "Add Friend", new_user_friendship_path(friend_id: @user.id), class: 'radius tiny button', id: 'add-friendship', data: { friend_id: @user.id } %>
+            <% end %>
+          </span>
         </section>
 
         <section class="section">
@@ -107,6 +111,7 @@
       <dd><a href="#panel3">Questions</a></dd>
       <dd><a href="#panel4">Activity</a></dd>
     </dl>
+    <%= render :partial => "users/p/post_form" %>
     <div class="tabs-content">
       <div class="content active" id="panel1">
         <%= render "users/p/post" %>

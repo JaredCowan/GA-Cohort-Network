@@ -1,6 +1,7 @@
 class Picture < ActiveRecord::Base
   belongs_to :album
   belongs_to :user
+  has_many :activities, :as => :targetable, :dependent => :destroy
   # attr_accessible :caption, :description, :asset
 
   has_attached_file :asset, styles: {

@@ -50,7 +50,7 @@ class StatusesController < ApplicationController
         format.html { redirect_to :forum, notice: 'Status was successfully created.' }
         format.json { render json: @status, status: :created, location: @status }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to :back, notice: "#{@status.errors.count} error(s) prohibited this status from being saved: #{@status.errors.full_messages.join(', ')}" }
         format.json { render json: @status.errors, status: :unprocessable_entity }
       end
     end
@@ -96,16 +96,18 @@ class StatusesController < ApplicationController
   end
 
   def upvote
-      @status = Status.find(params[:id])
-      current_user.create_activity(@status, 'liked')
-      @status.liked_by current_user
-      redirect_to :back
+    @status = Status.find(params[:id])
+    current_user.create_activity(@status, 'liked')
+    @status.liked_by current_user
+    redirect_to :back
   end
 
   def downvote
-      @status = Status.find(params[:id])
-      @status.downvote_from current_user
-      redirect_to :back
+    @status = Status.find(params[:id])
+    @activity = Activity.find_by(targetable_id: @status)
+    @activity.destroy!
+    @status.downvote_from current_user
+    redirect_to :back
   end
 
   private

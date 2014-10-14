@@ -35,7 +35,7 @@ class PostsController < ApplicationController
         format.html { redirect_to :back, notice: 'Post was successfully created.' }
         format.json { render json: @post, post: :created, location: @post }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to :back, notice: "#{@post.errors.count} error(s) prohibited this post from being saved: #{@post.errors.full_messages.join(', ')}  " }
         format.json { render json: @post.errors, post: :unprocessable_entity }
       end
     end
@@ -89,6 +89,8 @@ class PostsController < ApplicationController
 
   # def downvote
   #     @post = Post.find(params[:id])
+  #     @activity = Activity.find_by(targetable_id: @post)
+  #     @activity.destroy!
   #     @post.downvote_from current_user
   #     redirect_to :back
   # end

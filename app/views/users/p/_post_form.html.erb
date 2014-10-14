@@ -1,0 +1,25 @@
+<div class="row wall-post-form">
+  <div class="large-12 medium-12 small-12 columns">
+    <%= simple_form_for(Post.new, :html => {:class => "form-horizontal", multipart: true}) do |f| %>
+
+      <%= f.text_area :body, placeholder: "Leave #{@user.full_name} a personal comment." %>
+
+      <%= f.input :friend_id, :as => :hidden, :input_html => { :value => @user.id }  %>
+
+      <div class="large-6 medium-6 small-3 columns">
+        <input class="button small radius" name="commit" type="submit" value="Post">
+      </div>
+
+      <div class="large-3 medium-3 small-3 columns">
+        <div class="fileUpload button radius">
+          <span>Upload <i class="fi-upload post-upload-icon"></i></span>
+          <input class="upload" onchange="readURL(this);" id="post_document_attributes_attachment" name="post[document_attributes][attachment]" type="file"/></input>
+        </div>
+      </div>
+
+      <div class="large-3 medium-3 small-5 columns">
+        <img id="img_prev" src=""/>
+      </div>
+    <% end %>
+  </div>
+</div>

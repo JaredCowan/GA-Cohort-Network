@@ -1,5 +1,6 @@
 class Job < ActiveRecord::Base
   belongs_to :user
+  has_many :activities, :as => :targetable, :dependent => :destroy
   acts_as_votable
   before_destroy
   
@@ -23,10 +24,6 @@ class Job < ActiveRecord::Base
     followed_user_ids = user.followed_user_ids
     where("user_id IN (:followed_user_ids) OR user_id = :user_id",
           followed_user_ids: followed_user_ids, user_id: user)
-  end
-
-  def delete_activity
-    Activity.find_by(targetable_id: self.class.find(self.id)).destroy!
   end
 
 end

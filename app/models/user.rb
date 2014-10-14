@@ -4,8 +4,7 @@ class User < ActiveRecord::Base
   before_save { self.email   = email.downcase }
   before_save { self.user_id = self.id }
   before_create :strip_whitespace
-  before_create :create_remember_token
-  before_destroy :delete_activity 
+  before_create :create_remember_token 
   validates :first_name, presence: true, length: { maximum: 17 }
   validates :last_name, presence: true, length: { maximum: 17 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
@@ -20,7 +19,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :answers
   has_many :lessons
-  has_many :activities
+  has_many :activities, :dependent => :destroy
   has_many :albums
   has_many :pictures
   has_many :documents
@@ -97,9 +96,9 @@ class User < ActiveRecord::Base
     blocked_friends.include?(other_user)
   end
 
-  def delete_activity
-    Activity.find_by(user_id: current_user.id).destroy!
-  end 
+  # def delete_activity
+    # Activity.find_by(user_id: self.id).destroy!
+  # end 
 
   def create_activity(item, action)
     activity            = activities.new

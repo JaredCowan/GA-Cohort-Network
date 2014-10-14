@@ -1,6 +1,7 @@
 class Lesson < ActiveRecord::Base
   belongs_to :user
-
+  has_many :activities, :as => :targetable, :dependent => :destroy
+  
   paginates_per 6
 
   # validates :instructor, presence: true

@@ -82,6 +82,14 @@ Rails.application.routes.draw do
       put :block
     end
   end
+  
+  # scope ":user_name" do
+  #   resources :albums do
+  #     resources :pictures
+  #   end
+  # end
+
+  # get '/:id', to: 'profiles#show', as: 'profile'
 
   scope "/profile/:id" do
     resources :albums do

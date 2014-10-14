@@ -44,7 +44,7 @@ class QuestionsController < ApplicationController
         format.html { redirect_to questions_path, notice: 'Question was successfully created.' }
         format.json { render json: questions_path, question: :created, location: @question }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to :back, notice: "#{@question.errors.count} error(s) prohibited this question from being saved: #{@question.errors.full_messages.join(', ')}" }
         format.json { render json: @question.errors, question: :unprocessable_entity }
       end
     end
@@ -95,7 +95,8 @@ class QuestionsController < ApplicationController
 
   def downvote
     @question = Question.find(params[:id])
-    # Need to delete activity that was created on like
+    @activity = Activity.find_by(targetable_id: @question)
+    @activity.destroy!
     @question.downvote_from current_user
     redirect_to :back
   end

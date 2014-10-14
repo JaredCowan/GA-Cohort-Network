@@ -85,15 +85,17 @@ class JobsController < ApplicationController
   end
 
   def upvote
-      @job = Job.find(params[:id])
-      @job.liked_by current_user
-      redirect_to jobs_path
+    @job = Job.find(params[:id])
+    @job.liked_by current_user
+    redirect_to jobs_path
   end
 
   def downvote
-      @job = Job.find(params[:id])
-      @job.downvote_from current_user
-      redirect_to jobs_path
+    @job = Job.find(params[:id])
+    @activity = Activity.find_by(targetable_id: @job)
+    @activity.destroy!
+    @job.downvote_from current_user
+    redirect_to jobs_path
   end
 
   private
