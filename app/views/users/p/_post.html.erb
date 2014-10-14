@@ -1,9 +1,14 @@
 <div class="row">
   <div class="large-2 columns activity">
-  <% Post.all.where(friend_id: @user.id).reverse.each do |p| %>
-  <div class="small-11 small-centered columns activity-content">
-    <%= p.inspect %>
-    </div>
-  <% end %>
+    <% if !Post.all.where(friend_id: @user.id).empty? %>
+        <%= "#{@user.full_name} doesn't have any post just yet!" %><br>
+        <%= "#{current_user.full_name}, you should be the first to leave me a personal comment." %><br>
+    <% else %>
+      <% Post.all.where(friend_id: @user.id).reverse.each do |p| %>
+        <div class="small-11 small-centered columns activity-content">
+          <%= p.inspect %>
+          </div>
+      <% end %>
+    <% end %>
   </div>
 </div>

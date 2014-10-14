@@ -96,10 +96,6 @@ class User < ActiveRecord::Base
     blocked_friends.include?(other_user)
   end
 
-  # def delete_activity
-    # Activity.find_by(user_id: self.id).destroy!
-  # end 
-
   def create_activity(item, action)
     activity            = activities.new
     activity.targetable = item
