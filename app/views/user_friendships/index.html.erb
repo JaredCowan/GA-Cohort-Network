@@ -1,61 +1,64 @@
- <!-- <a class="exit-off-canvas"></a> -->
 <div class="row">
-  <div class="large-12 medium-12 small-12 large-centered medium-centered small-centered columns">
-    <dl class="sub-nav" id="friend-list-filter">
-    <dt>Filter:</dt>
-
-      <dd class="<%= 'active' if params[:list].blank? %>">
-        <%= link_to 'All', user_friendships_path %>
-      </dd>  
-
-      <dd class="<%= 'active' if params[:list] == "blocked" %>">
-        <%= link_to 'Blocked', user_friendships_path(list: 'blocked') %>
-      </dd>
-
-      <% if current_user.requested_user_friendships.length > 0 %>
-
-      <dd class="<%= 'active' if params[:list] == "requested" %>">
-        <%= link_to "Requested", user_friendships_path(list: 'requested') %><span class="label round">
-          <%= current_user.requested_user_friendships.length.to_s %></span>
-      </dd> 
-
-      <% else %>
-
-        <dd class="<%= 'active' if params[:list] == "requested" %>">
-          <%= link_to 'Requested', user_friendships_path(list: 'requested') %>
-        </dd> 
-
-      <% end %>
-
-      <dd class="<%= 'active' if params[:list] == "accepted" %>">
-        <%= link_to 'Accepted', user_friendships_path(list: 'accepted') %>
-      </dd>
-      <dd class="<%= 'active' if params[:list] == "pending" %>">
-        <%= link_to 'Pending', user_friendships_path(list: 'pending') %>
-      </dd>
-    </dl>
-    <hr />
-     <!-- <a class="exit-off-canvas"></a> -->
-    </div>
-  <!-- </div> -->
-    <div class="row">
+  <div class="small-11 small-centered columns activity">
+    <!-- <div class="row"> -->
       <div class="large-12 medium-12 small-12 large-centered medium-centered small-centered columns">
-        <% @user_friendships.each do |friendship| %>
-          <% friend = friendship.friend %>
-          <div class="row friends-list" data-equalizer>
-            <div class="large-3 medium-4 small-6 columns">
-              <ul class="pricing-table" data-equalizer-watch>
-                <li class="title"><%= link_to User.find(friendship.friend_id).full_name, user_path(friendship.friend_id) %></li>
-                <li class="price"><span class="<%= friendship.update_label%> label radius"><em>Friendship is <%= friendship.state %></em>.</span></li>
-                <li class="price"><%= link_to avatar_url, user_path(friendship.friend_id) %></li>
-                <li class="cta-button"><%= link_to "#{friendship.update_action_verbiage}", edit_user_friendship_path(friend), class: "button small radius #{friendship.update_class}" %></li>
-              </ul>    
+        <center><dl class="sub-nav" id="friend-list-filter">
+        <dt>Filter:</dt>
+
+          <dd class="<%= 'active' if params[:list].blank? %>">
+            <%= link_to 'All', user_friendships_path %>
+          </dd>  
+
+          <dd class="<%= 'active' if params[:list] == "blocked" %>">
+            <%= link_to 'Blocked', user_friendships_path(list: 'blocked') %>
+          </dd>
+
+          <% if current_user.requested_user_friendships.length > 0 %>
+
+          <dd class="<%= 'active' if params[:list] == "requested" %>">
+            <%= link_to "Requested", user_friendships_path(list: 'requested') %><span class="label round">
+              <%= current_user.requested_user_friendships.length.to_s %></span>
+          </dd> 
+
+          <% else %>
+
+            <dd class="<%= 'active' if params[:list] == "requested" %>">
+              <%= link_to 'Requested', user_friendships_path(list: 'requested') %>
+            </dd> 
+
+          <% end %>
+
+          <dd class="<%= 'active' if params[:list] == "accepted" %>">
+            <%= link_to 'Accepted', user_friendships_path(list: 'accepted') %>
+          </dd>
+          <dd class="<%= 'active' if params[:list] == "pending" %>">
+            <%= link_to 'Pending', user_friendships_path(list: 'pending') %>
+          </dd>
+        </dl>
+        </center>
+        <hr />
+         <!-- <a class="exit-off-canvas"></a> -->
+        </div>
+      <!-- </div> -->
+        <div class="row">
+          <div class="large-12 medium-12 small-12 large-centered medium-centered small-centered columns">
+            <% @user_friendships.each do |friendship| %>
+              <% friend = friendship.friend %>
+              <div class="row friends-list" data-equalizer>
+                <div class="large-3 medium-4 small-6 columns">
+                  <ul class="pricing-table" data-equalizer-watch>
+                    <li class="title"><%= link_to User.find(friendship.friend_id).full_name, user_path(friendship.friend_id) %></li>
+                    <li class="price"><span class="<%= friendship.update_label%> label radius"><em>Friendship is <%= friendship.state %></em>.</span></li>
+                    <li class="price"><%= link_to avatar_url, user_path(friendship.friend_id) %></li>
+                    <li class="cta-button"><%= link_to "#{friendship.update_action_verbiage}", edit_user_friendship_path(friend), class: "button small radius #{friendship.update_class}" %></li>
+                  </ul>    
+                </div>
+              <% end %>
             </div>
-        <% end %>
-      </div>
-             <a class="exit-off-canvas"></a>
+          </div>
+        <!-- </div> -->
       </div>
     </div>
+    <a class="exit-off-canvas"></a>
   </div>
-   <a class="exit-off-canvas"></a>
 </div>

@@ -2,22 +2,24 @@
   <div class="small-11 small-centered columns activity">
     <center>
     <h1>Activity Feed</h1>
-    <sub>(Under construction)</sub>
-    <hr>
     </center>
-    <br>
-      <% if @activities.empty? %>
-        <div class="small-11 small-centered columns activity-content">
-          <%= "You don't have any activities just yet!" %><br>
-          <%= "Lurk around and stalk the people on the site" %><br>
-          <%= "and interact and you'll have some data to show." %><br>
-        <% else %>
-        <% @activities.each do |activity| %>
-        <div class="small-11 small-centered columns activity-content">
-          <%= render partial: "activities/#{activity.targetable_type.underscore}/#{activity.action}", locals: { activity: activity } %>
-        </div>
-      <% end %>
-    <% end %>
+    <hr>
+    <div class="main">
+      <ul class="cbp_tmtimeline">
+      <% @activities.each do |activity| %>
+        <li>
+          <time class="cbp_tmtime" datetime="<%= activity.created_at %>"><span><%= activity.created_at.strftime('%a %m/%d/%Y') %></span> <span><%= activity.created_at.strftime('%l:%M%p') %></span></time>
+          <div class="cbp_tmicon cbp_tmicon-phone">
+          <%= small_avatar %>
+            <!-- <i class="fi-heart"></i> -->
+          </div>
+          <div class="cbp_tmlabel">
+            <h2><%= activity.user.full_name %></h2>
+            <%= render partial: "activities/#{activity.targetable_type.underscore}/#{activity.action}", locals: { activity: activity } %>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
-

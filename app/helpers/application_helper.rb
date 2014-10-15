@@ -67,13 +67,23 @@ module ApplicationHelper
   end
 
   def avatar_url
-  image = ["http://www.gravatar.com/avatar/#{hash}d=identicon",
-           "http://hospitalfranciscovilar.com.br/wp-content/uploads/2013/11/gravatar-60-grey.jpg",
-           "http://androidandme.wpengine.netdna-cdn.com/wp-content/themes/android-and-me-v4/images/avatars/generic-gravatar-nerd.png",
-           "http://primarytech.global2.vic.edu.au/files/2010/04/gravatar.jpg",
-           "http://the14thgod.com/images/users/guest.jpg"
-           ]
+    image = ["http://www.gravatar.com/avatar/#{hash}d=identicon",
+             "http://hospitalfranciscovilar.com.br/wp-content/uploads/2013/11/gravatar-60-grey.jpg",
+             "http://androidandme.wpengine.netdna-cdn.com/wp-content/themes/android-and-me-v4/images/avatars/generic-gravatar-nerd.png",
+             "http://primarytech.global2.vic.edu.au/files/2010/04/gravatar.jpg",
+             "http://the14thgod.com/images/users/guest.jpg"
+             ]
     image_tag image.sample, width: '100px'
+  end
+
+  def small_avatar
+    image = ["http://www.gravatar.com/avatar/#{hash}d=identicon",
+             "http://hospitalfranciscovilar.com.br/wp-content/uploads/2013/11/gravatar-60-grey.jpg",
+             "http://androidandme.wpengine.netdna-cdn.com/wp-content/themes/android-and-me-v4/images/avatars/generic-gravatar-nerd.png",
+             "http://primarytech.global2.vic.edu.au/files/2010/04/gravatar.jpg",
+             "http://the14thgod.com/images/users/guest.jpg"
+             ]
+    image_tag image.sample, width: '100px', class: "avatar"
   end
 
   def can_display_status?(status) 

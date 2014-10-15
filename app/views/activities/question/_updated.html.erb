@@ -3,21 +3,21 @@
 <p>Question: <%= truncate( Question.find(activity.targetable_id).body, length: 15) %></p>
 <p> Tags: <%= raw Question.find(activity.targetable_id).tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %> </p>
 
-<div id="hover<%=activity.id%>" class="f-dropdown content small" data-dropdown-content="" aria-hidden="true" tabindex="-1">
-  <section><%= avatar_url %></section>
+<!-- <div id="hover<%#=activity.id%>" class="f-dropdown content small" data-dropdown-content="" aria-hidden="true" tabindex="-1">
+  <section><%#= avatar_url %></section>
   <li>asdfasdfa</li>
   <li>asdfasdfa</li>
   <%#= render :partial => "partials/status" %>
-  <%= simple_form_for :conversation, url: :conversations do |f| %>
+  <%#= simple_form_for :conversation, url: :conversations do |f| %>
   
-  <input class="string required" id="conversation_recipients" name="conversation[recipients]" placeholder="<%= User.find(activity.user_id).email %>" type="hidden" value="<%= User.find(activity.user_id).email %>">
+  <input class="string required" id="conversation_recipients" name="conversation[recipients]" placeholder="<%#= User.find(activity.user_id).email %>" type="hidden" value="<%#= User.find(activity.user_id).email %>">
 
-  <%= f.input :subject %>
-  <%= f.input :body, as: :text %>
+  <%#= f.input :subject %>
+  <%#= f.input :body, as: :text %>
    
    
-  <%= f.button :submit, 'Send', class: 'button radius' %>
-  <%= f.button :submit, 'Clear form', type: :reset, class: 'button alert radius' %>
-<% end %>
-  </div>
+  <%#= f.button :submit, 'Send', class: 'button radius' %>
+  <%#= f.button :submit, 'Clear form', type: :reset, class: 'button alert radius' %>
+<%# end %>
+  </div> -->
 
