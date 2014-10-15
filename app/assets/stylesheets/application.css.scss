@@ -279,7 +279,7 @@ textarea {
   }
 }
 .questions-tag-feed {
-  margin-top: 60px;
+  margin: 60px 0 10px;
   border-radius: 10px;
   box-shadow: 0 0 3px #ddd;
   h2 {
@@ -372,6 +372,14 @@ textarea {
 .questions-title {
   border-radius: 10px 10px 0 10px;
   box-shadow: 0 0 3px #ddd;
+}
+@media only screen and (max-width: 1026px) {
+  .questions {
+    border-radius: 10px;
+  }
+  .questions-feed {
+    padding-top: 22px;
+  }
 }
 .activity {
   color: #000;
