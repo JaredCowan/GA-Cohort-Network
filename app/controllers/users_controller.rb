@@ -51,7 +51,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User destroyed."
+    flash[:warning] = "User destroyed."
     redirect_to new_session_path
   end
 

@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
       begin
         @questions = Question.tagged_with(params[:tag])
       rescue ActiveRecord::RecordNotFound  
-        flash[:error] = "Sorry, we couldn't find anything with that tag."
+        flash[:alert] = "Sorry, we couldn't find anything with that tag."
         redirect_to questions_path 
       end
     else
@@ -40,8 +40,9 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @question.save
         current_user.create_activity(@question, 'created')
-        format.html { redirect_to questions_path, notice: 'Question was successfully created.' }
+        format.html { redirect_to questions_path }
         format.json { render json: questions_path, question: :created, location: @question }
+        flash[:success] = "Question was successfully created."
       else
         format.html { redirect_to :back, notice: "#{@question.errors.count} error(s) prohibited this question from being saved: #{@question.errors.full_messages.join(', ')}" }
         format.json { render json: @question.errors, question: :unprocessable_entity }
@@ -63,8 +64,9 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @question.update_attributes(question_params)
         current_user.create_activity(@question, 'updated')
-        format.html { redirect_to question_path(@question), notice: 'Question was successfully updated.' }
+        format.html { redirect_to question_path(@question) }
         format.json { head :no_content }
+        flash[:success] = "Question was successfully updated."
       else
         redirect_to question_path(@question)
         format_generic_error("edit")
