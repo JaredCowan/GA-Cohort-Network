@@ -1,8 +1,15 @@
 class User < ActiveRecord::Base
   acts_as_messageable
   acts_as_voter
-  before_save { self.email   = email.downcase }
-  before_save { self.user_id = self.id }
+  before_save { self.email      = self.email.downcase.strip     }
+  before_save { self.user_id    = self.id                       }
+  before_save { self.first_name = self.first_name.strip         }
+  before_save { self.last_name  = self.last_name.strip          }
+  before_save { self.email      = self.email.strip              }
+  before_save { self.user_name  = self.user_name.downcase.strip }
+  before_save { self.github     = self.github.strip             }
+  before_save { self.linkedin   = self.linkedin.strip           }
+  before_save { self.facebook   = self.facebook.strip           }
   before_create :strip_whitespace
   before_create :create_remember_token 
   validates :first_name, presence: true, length: { maximum: 17 }
@@ -107,6 +114,7 @@ class User < ActiveRecord::Base
   private
 
   def strip_whitespace
+    self.email      = self.email.downcase.strip
     self.first_name = self.first_name.strip
     self.last_name  = self.last_name.strip
     self.email      = self.email.strip

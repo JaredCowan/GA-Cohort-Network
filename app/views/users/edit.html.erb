@@ -1,136 +1,146 @@
-<div class="row">
-  <div class="small-12 large-10 small-centered larg-centered columns">
-    <%= simple_form_for(@current_user) do |f| %>
-      <%#= render 'shared/error_messages', object: f.object %>
-
-      <div class="row">
-    <div class="small-6 large-6 columns">
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name, :placeholder => "Your first name" %>
-    </div>
-    <div class="small-6 large-6 columns">
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name, :placeholder => "Your last name" %>
-    </div>
-  </div>
-
+<%= simple_form_for(@current_user) do |f| %>
   <div class="row">
-    <div class="small-6 large-6 columns">
-      <%= f.label :user_name %>
-      <%= f.text_field :user_name, :placeholder => "Username. ( No spaces or characters )" %>
-      </div>
-    <div class="small-6 large-6 columns">
-      <%= f.label :email %>
-      <%= f.text_field :email, :placeholder => "Your main email" %>
+    <div class="small-3 small-centered larg-centered columns">
+    <%= f.submit "Save Changes", class: "button small radius success" %>
     </div>
   </div>
-
   <div class="row">
-    <div class="small-6 large-6 columns">
-      <%= f.label :phone %>
-      <%= f.text_field :phone, :placeholder => "Phone number" %>
-    </div>
-    <div class="small-6 large-6 columns">
-      <%= f.label :cell_phone %>
-      <%= f.text_field :cell_phone, :placeholder => "Cell phone number" %>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="small-6 large-6 columns">
-      <%= f.label :public_email %>
-      <%= f.text_field :public_email, :placeholder => "Public email" %>
-    </div>
-    <div class="small-6 large-6 columns">
-      <%= f.label :birthday %>
-      <%= f.text_field :birthday, :placeholder => "Birthday 01/01/180" %>
-    </div>
-  </div>
-
-      <div class="row">
-        <div class="small-6 large-6 columns">
-          <%= f.label :github %>
-          <%= f.text_field :github, :placeholder => "Just your username. e.g. 'JohnDoe'" %>
-        </div>
-        <div class="small-6 large-6 columns">
-          <%= f.label :linkedin %>
-          <%= f.text_field :linkedin, :placeholder => "Just your username. e.g. 'JohnDoe'" %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-6 large-6 columns">
-          <%= f.label :facebook %>
-          <%= f.text_field :facebook, :placeholder => "Just your username. e.g. 'JohnDoe'" %>
-        </div>
-        <div class="small-6 large-6 columns">
-          <%= f.label :website %>
-          <%= f.text_field :website, :placeholder => "www.example.com" %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-6 large-6 columns">
-          <%= f.label :city %>
-          <%= f.text_field :city, :placeholder => "Los Angeles" %>
-        </div>
-        <div class="small-6 large-6 columns">
-          <%= f.label :state %>
-          <%= f.text_field :state, :placeholder => "CA" %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-6 large-6 columns">
-          <%= f.label :job_position %>
-          <%= f.text_field :job_position, :placeholder => "Full Stack Developer" %>
-        </div>
-        <div class="small-6 large-6 columns">
-          <%= f.label :job_start %>
-          <%= f.text_field :job_start, :placeholder => "01/01/1990" %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-6 large-6 columns">
-          <%= f.label :job_end %>
-          <%= f.text_field :job_end, :placeholder => "01/01/1990"  %>
-        </div>
-        <div class="small-6 large-6 columns">
-          <%= f.input :job_description, :placeholder => "I code the backend"  %>
-      </div> 
-        </div> 
-
-      <div class="row">
-        <div class="small-6 large-6 columns">
-          <%= f.label :job_name %>
-          <%= f.text_field :job_name, :placeholder => "Google"  %>
-        </div>
-        <div class="small-6 large-6 columns">
-          <%= f.label :group %>
-          <%= f.text_field :group, :placeholder => "student or teacher"  %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 large-3 small-centered larg-centered columns">
-          <center>
-          <%= f.label :admin %>
-          <fieldset class="switch" tabindex="0">
-            <input id="user_admin" name="user[admin]" type="checkbox" value="1">
-            <label class="boolean optional" for="user_admin"></label>
-          </fieldset> 
-          </center>
-        </div>
+    <div class="large-5 columns ">
+      <div class="panel">
+        <% @user = current_user %>
+        <div class="row">
+          <div class="small-6 large-6 columns">
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name, :placeholder => "Your first name" %>
+          </div>
+          <div class="small-6 large-6 columns">
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name, :placeholder => "Your last name" %>
+          </div>
         </div>
         <div class="row">
-        <div class="small-3 small-centered larg-centered columns">
-          <%= f.submit "Update my account", class: "button small radius success" %>
+          <div class="small-6 large-6 columns">
+            <%= f.label :user_name %>
+            <%= f.text_field :user_name, :placeholder => "Username. ( No spaces or characters )" %>
+          </div>
+          <div class="small-6 large-6 columns">
+            <%= f.label :email %>
+            <%= f.text_field :email, :placeholder => "Your main email" %>
+          </div>
+        </div>
+        <div class="row>">
+          <div class="small-12 columns">
+            <%= f.input :job_description, :placeholder => "Job Description"  %>
+          </div> 
+        </div>
+        <img src="http://hospitalfranciscovilar.com.br/wp-content/uploads/2013/11/gravatar-60-grey.jpg"/>
+          <div class="section-container vertical-nav" data-section data-options="deep_linking: false; one_up: true">
+          <br>
+          <section class="section">
+            <div class="row">
+              <div class="small-12 columns">
+                <%= f.label :website %>
+                <%= f.text_field :website, :placeholder => "www.example.com" %>
+              </div>
+            </div>
+          </section>
+          <section class="section">
+            <div class="row">
+              <div class="small-12 columns">
+                <%= f.label :phone %>
+                <%= f.text_field :phone, :placeholder => "Phone number" %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 columns">
+                <%= f.label :cell_phone %>
+                <%= f.text_field :cell_phone, :placeholder => "Cell phone number" %>
+              </div>
+            </div>
+          </section>
+          <section class="section">
+            <div class="row">
+              <div class="small-12 columns">
+                <%= f.label :public_email %>
+                <%= f.text_field :public_email, :placeholder => "Public email" %>
+              </div>
+            </div>
+          </section>
+          <section class="section">
+            <div class="row">
+              <div class="small-12 columns">
+                <%= f.label :birthday %>
+                <%= f.text_field :birthday, :placeholder => "Birthday 01/01/1980" %>
+              </div>
+            </div>
+          </section>
+          <section class="section">
+            <div class="row">
+              <div class="small-12 columns">
+                <%= f.label :github %>
+                <%= f.text_field :github, :placeholder => "Just your username. e.g. 'JohnDoe'" %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 columns">
+                <%= f.label :linkedin %>
+                <%= f.text_field :linkedin, :placeholder => "Just your username. e.g. 'JohnDoe'" %>
+              </div>
+            </div>
+          </section>
+          <section class="section">
+            <div class="row">
+              <div class="small-12 columns">
+                <%= f.label :facebook %>
+                <%= f.text_field :facebook, :placeholder => "Just your username. e.g. 'JohnDoe'" %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 columns">
+                <%= f.label :job_name %>
+                <%= f.text_field :job_name, :placeholder => "Google" %>
+              </div>
+            </div>
+          </section>
+          <section class="section">
+            <div class="row">
+              <div class="small-12 columns">
+                <%= f.label :city %>
+                <%= f.text_field :city, :placeholder => "Los Angeles" %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 columns">
+                <%= f.label :state %>
+                <%= f.text_field :state, :placeholder => "CA" %>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
-
-        <!-- <center> -->
-        <!-- </center> -->
+    </div>
+    <div class="large-7 columns">
+      <dl class="tabs" data-tab>
+        <dd class="active"><a href="#panel1">Wall Post</a></dd>
+        <dd><a href="#panel2">Statuses</a></dd>
+        <dd><a href="#panel3">Questions</a></dd>
+        <dd><a href="#panel4">Activity</a></dd>
+      </dl>
+      <%#= render :partial => "users/p/post_form" %>
+      <div class="tabs-content">
+        <div class="content active" id="panel1">
+          <%= render "users/p/post" %>
+        </div>
+        <div class="content" id="panel2">
+          <%= render "users/p/statuses" %>
+        </div>
+        <div class="content" id="panel3">
+          <%= render "users/p/questions" %>
+        </div>
+        <div class="content" id="panel4">
+          <%= render "users/p/activities" %>
+        </div>
+      </div>    
     <% end %>
   </div>
-</div>
+</div> 
