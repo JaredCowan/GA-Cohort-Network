@@ -198,14 +198,12 @@
   <body>
   <% if controller_name != "sessions" %>
     <%= render :partial => "partials/navbar" %>
-    <center><%#= render :partial => "partials/dropdown" %></center>
     <div id="alert-div">
       <%= render :partial => "partials/flash_alert" %>
     </div>
-      <%= yield %>
-      <% end %>
-      <% if controller_name == "sessions" %>
-    
+    <%= yield %>
+  <% end %>
+  <% if controller_name == "sessions" %>
     <section class="hero">
       <div class="row page-title">
         <div class="large-12 medium-12 columns">
@@ -255,52 +253,47 @@
       </div>
       <div class="four-image">
         <h1 class="four-image-header">A few reasons why you'll love us.</h1><br>
-      <div class="small-8 small-centered columns">
-        <ul class="small-block-grid-2">
-          <li>
-            <a href="#"><img src="assets/speaker.png"/></a>
-            <p class="signin-page-image-text">
-              Share updates with friends, classmates and instructors.
-            </p>
-          </li>
-          <li>
-            <a href="#"><img src="assets/computer.png"/></a>
-            <p class="signin-page-image-text">
-              Ask and answer questions on the forum.
-            </p>
-          </li>
-          <li>
-            <a href="#"><img src="assets/work.png"/></a>
-            <p class="signin-page-image-text">
-              Post jobs you know of to give friends the leading edge.
-            </p>
-          </li>
-          <li>
-            <a href="#"><img src="assets/inbox.png"/></a>
-            <p class="signin-page-image-text">
-              Send and receive private messages to and from anyone.
-            </p>
-          </li>
-        </ul>
+        <div class="small-8 small-centered columns">
+          <ul class="small-block-grid-2">
+            <li>
+              <a href="#"><img src="assets/speaker.png"/></a>
+              <p class="signin-page-image-text">
+                Share updates with friends, classmates and instructors.
+              </p>
+            </li>
+            <li>
+              <a href="#"><img src="assets/computer.png"/></a>
+              <p class="signin-page-image-text">
+                Ask and answer questions on the forum.
+              </p>
+            </li>
+            <li>
+              <a href="#"><img src="assets/work.png"/></a>
+              <p class="signin-page-image-text">
+                Post jobs you know of to give friends the leading edge.
+              </p>
+            </li>
+            <li>
+              <a href="#"><img src="assets/inbox.png"/></a>
+              <p class="signin-page-image-text">
+                Send and receive private messages to and from anyone.
+              </p>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  <% end %>
-      <%= javascript_include_tag "application" %>
-      <%= render :partial => "partials/footer" %>
-        <a class="exit-off-canvas"></a>
-      </div> <!-- Do not remove. --> 
-      <!--^^ Closes the partials/navbar div -->
-        <% if controller_name == "users" && params[:action] == "show" %>
-         <%= javascript_tag do %>
-           window.user_id = "<%= @user.id %>"
-         <% end %>
-       <% end %>
-       <!-- Javascripts for calender -->
-      <%= render :partial => "layouts/script" %>
-      <script>
-        // $(function() {
-        //   cbpHorizontalMenu.init();
-        // });
-      </script>
-    </body>
-  </html>
+    <% end %>
+    <%= javascript_include_tag "application" %>
+    <%= render :partial => "partials/footer" %>
+      <a class="exit-off-canvas"></a>
+    </div> <!-- Do not remove. --> 
+    <!--^^ Closes the partials/navbar div -->
+      <% if controller_name == "users" && params[:action] == "show" %>
+        <%= javascript_tag do %>
+          window.user_id = "<%= @user.id %>"
+        <% end %>
+      <% end %>
+     <!-- Javascripts for calender -->
+    <%= render :partial => "layouts/script" %>
+  </body>
+</html>

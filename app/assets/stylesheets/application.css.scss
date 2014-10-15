@@ -263,16 +263,33 @@ textarea {
   height: 140px;
 }
 #tag_cloud {
-  width: initial;
-  height: 80px;
-  word-wrap: word-break;
+  word-wrap: break-word;
   display: -webkit-inline-box;
-  margin: 2px 4px 24px;
-  line-height: 1.6em;
-  .s { font-size: 0.8em; background-color: rgba(76,76,76,1); padding: 2px 5px; border-radius: 9px; text-align: middle; }
-  .m { font-size: 1.2em; background-color: rgba(76,76,76,1); padding: 2px 5px; border-radius: 9px; text-align: middle; }
-  .l { font-size: 1.8em; background-color: rgba(76,76,76,1); padding: 2px 5px; border-radius: 9px; text-align: middle; }
+  margin: 2px 1px 24px;
+  padding: 1px;
+  line-height: 1.9em;
+  .s { font-size: 0.8em; background-color: #C80D0D; padding: 2px 5px 4.3px; border-radius: 3px; text-align: middle; }
+  .m { font-size: 1.2em; background-color: #C80D0D; padding: 2px 5px 4.3px; border-radius: 3px; text-align: middle; }
+  .l { font-size: 1.8em; background-color: #C80D0D; padding: 2px 5px 4.3px; border-radius: 3px; text-align: middle; }
   h2 { display: -webkit-inline-box; }
+  a  { color: #fff; }
+  a:hover { color: #000; }
+  .s:hover,.m:hover,.l:hover {
+    background-color: #B01C1C;
+  }
+}
+.questions-tag-feed {
+  margin-top: 60px;
+  border-radius: 10px;
+  box-shadow: 0 0 3px #ddd;
+  h2 {
+    color: #000;
+    font-family: 'Cinzel', serif;
+    text-shadow: 1px 1px 1px grey;
+  }
+  hr {
+    margin-top: -4px;
+  }
 }
 .sessions {
   width: 100%;
@@ -326,13 +343,32 @@ textarea {
 }
 .questions, .activity {
   background-color: rgba(255,255,255,1);
-  box-shadow: 0 0 3px #ddd;
+  // box-shadow: 0 0 3px #ddd;
   padding-bottom: 15px;
+  // margin-bottom: 60px;
+  // border-radius: 10px;
+}
+.questions {
+  padding: 8px;
+  h1 {
+    font-family: 'Cinzel', serif;
+    padding-top: 14px;
+    text-shadow: 1px 1px 1px grey;
+  }
+  .questions.questions-feed {
+    margin-bottom: -10px;
+  }
+}
+.questions-feed {
+  box-shadow: 6px 0px 5px -5px #ddd, -6px 0px 5px -5px #ddd;
+  border-radius: 0 0 10px 10px;
+}
+.questions-title {
+  border-radius: 10px 10px 0 10px;
+  box-shadow: 0 0 3px #ddd;
 }
 .activity {
   color: #000;
-  border-radius: 10px;
-  margin-bottom: 60px;
   h1 {
     font-family: 'Cinzel', serif;
     padding-top: 14px;
@@ -370,11 +406,16 @@ textarea {
   width: 100%;
 }
 section > .title {
-  color: #fff!important;
+  color: #000!important;
   display: inline-block;
 }
 #profile-title > * {
   color: #000!important;
+  font-family: 'Cinzel', serif;
+  text-shadow: 1px 1px 1px grey;
+}
+.tab-bar-section > h1 {
+  color: #fff!important;
 }
 .post-upload-icon.fi-upload:before {
   /*color: red;*/
