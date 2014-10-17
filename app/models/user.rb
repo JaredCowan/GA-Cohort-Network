@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   before_save { self.github     = self.github.strip             }
   before_save { self.linkedin   = self.linkedin.strip           }
   before_save { self.facebook   = self.facebook.strip           }
-  before_create :strip_whitespace
+  before_save :strip_whitespace
   before_create :create_remember_token 
   validates :first_name, presence: true, length: { maximum: 17 }
   validates :last_name, presence: true, length: { maximum: 17 }
@@ -96,7 +96,7 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    first_name + "\s" + last_name
+    "#{first_name} #{last_name}".titleize
   end
 
   def has_blocked?(other_user)

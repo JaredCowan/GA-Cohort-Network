@@ -17,12 +17,16 @@ module ApplicationHelper
     render :partial => "partials/signupform"
   end
 
+  def ask(user)
+    link_to "Ask #{user.full_name}", user_path(user)
+  end
+
   def friendship_path
     link_to "Friends", user_friendships_path if signed_in?
   end
   
   def full_name
-    first_name + '\s' + last_name
+    "#{first_name} + '\s' + #{last_name}"
   end 
 
   def forum_path

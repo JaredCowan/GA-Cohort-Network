@@ -6,8 +6,10 @@
           <li><a href="#section-tzoid-1" class=""><span>Dashboard</span></a></li>
           <li><a href="#section-tzoid-2" class=""><span>Calendar</span></a></li>
           <li><a href="#section-tzoid-3" class=""><span>Contacts</span></a></li>
-          <li><a href="#section-tzoid-4" class=""><span>Discover</span></a></li>
-          <li><a href="#section-tzoid-5" class=""><span>Settings</span></a></li>
+          <li><a href="#section-tzoid-4" class=""><span>Notes</span></a></li>
+          <li><a href="#section-tzoid-5" class=""><span>Call Tracker</span></a></li>
+          <li><a href="#section-tzoid-6" class=""><span>Discover</span></a></li>
+          <li><a href="#section-tzoid-7" class=""><span>Settings</span></a></li>
         </ul>
       </nav>
       <div class="row"> 
@@ -22,16 +24,31 @@
             </p>
             </section>
             <section id="section-tzoid-2"><p>Calendar</p>
+            <% @lessons.each do |l| %>
+              <%= l.inspect %>
+            <br> <br> <br> <br>
+            <% end %>
             </section>
-            <section id="section-tzoid-3"><p>Contacts</p></section>
-            <section id="section-tzoid-4"><p>Discover</p><p>Coming Soon!</p>
+            <section id="section-tzoid-3"><p>Contacts</p>
+              <% @contacts.each do |c| %>
+              <%= c.full_name %><br>
+              <%= c.phone.blank? ? ask(c) : c.phone %><br>
+              <%= c.cell_phone %><br>
+                <br> <br>
+              <% end %>
+            </section>
+            <section id="section-tzoid-4"><p>Notes</p><p>Coming Soon!</p>
+            </section>
+            <section id="section-tzoid-5"><p>Call Tracker</p><p>Coming Soon!</p>
+            </section>
+            <section id="section-tzoid-6"><p>Discover</p><p>Coming Soon!</p>
             <% @discover.each do |d| %>
               <%= d.inspect %>
               <br>
               <br>
             <% end %>
             </section>
-            <section id="section-tzoid-5"><p>Settings</p><p>Coming Soon!</p></section>
+            <section id="section-tzoid-7"><p>Settings</p><p>Coming Soon!</p></section>
           </div>
         </div>
       </div>
