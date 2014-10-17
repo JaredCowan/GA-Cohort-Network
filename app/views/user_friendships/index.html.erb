@@ -19,7 +19,7 @@
             <%= link_to "Requested", user_friendships_path(list: 'requested') %><span class="label round">
               <%= current_user.requested_user_friendships.length.to_s %></span>
           </dd> 
-
+          
           <% else %>
 
             <dd class="<%= 'active' if params[:list] == "requested" %>">
@@ -36,7 +36,7 @@
           </dd>
         </dl>
         </center>
-        <hr />
+        <!-- <hr /> -->
          <!-- <a class="exit-off-canvas"></a> -->
         </div>
       <!-- </div> -->
@@ -61,4 +61,4 @@
     </div>
     <!-- <a class="exit-off-canvas"></a> -->
   </div>
-</div>
+<!-- </div> -->
