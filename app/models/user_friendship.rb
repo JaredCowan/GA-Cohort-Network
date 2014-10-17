@@ -3,7 +3,7 @@ class UserFriendship < ActiveRecord::Base
   belongs_to :friend, class_name: 'User', foreign_key: 'friend_id'
 
   has_many :activities, :as => :targetable, :dependent => :destroy
-  after_destroy :delete_mutual_friendship!
+  before_destroy :delete_mutual_friendship!
 
   state_machine :state, initial: :pending do
     after_transition on: :accept, do: [:send_acceptance_email, :accept_mutual_friendship!]

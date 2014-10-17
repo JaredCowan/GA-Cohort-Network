@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user,
-                only: [:index, :edit, :update, :destroy]           
+  before_action :signed_in_user
   
   def index
     @users = User.all.page params[:page]
@@ -8,7 +7,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @users.to_json(only: [:id],
-         include: [:statuses]) }
+         include: [:statuses, :questions, :answers, 
+                   :activities, :posts, :user_friendships]
+                  )}
     end
   end
 
@@ -41,7 +42,11 @@ class UsersController < ApplicationController
 
   def update
     if @current_user.update_attributes(user_params)
-      # current_user.create_activity @user, 'profile'
+      # Only create activity for profile updates
+      # every 2 hours to prevent flooding
+      if current_user.activities.where(targetable_type: "profile").last.created_at < 2.hours.ago
+        Activity.create!(user_id: current_user.id, action: 'updated', targetable_id: current_user.id, targetable_type: "profile")
+      end
       flash[:success] = "Profile updated"
       redirect_to user_path(current_user)
     else

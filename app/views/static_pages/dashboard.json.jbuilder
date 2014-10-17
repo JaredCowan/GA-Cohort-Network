@@ -1,4 +1,5 @@
 json.array!(current_user.lessons) do |user|
+  json.allDay user.all_day
   json.id user.id
   json.title user.subject
   json.description user.description

@@ -6,10 +6,7 @@ class StaticPagesController < ApplicationController
   end
 
   def dashboard
-    if signed_in? && current_user.created_at > 1.days.ago
-      # This notice is kind of annoying. Let delete it?
-      # flash[:success] = "Click on a Day to add new event." 
-    end
+    @discover = Question.find_by_sql("SELECT * FROM questions AS q INNER JOIN taggings AS t ON q.id = t.question_id INNER JOIN tags AS ta ON ta.id = t.tag_id WHERE ta.name IN ('#{current_user.first_name.downcase}', '#{current_user.last_name.downcase}', '#{current_user.full_name.downcase}', '#{current_user.user_name.downcase}');")
   end
 
   def user_questions

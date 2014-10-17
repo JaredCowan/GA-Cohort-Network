@@ -1,38 +1,68 @@
-<%= render :partial => "partials/lessonstopnav" %>
-
-
 <div class="row">
-  <div class="large-12 small-centered columns">
-    <div id="firstStop"></div>
-    <br>
-      <h3> <%= "Your lessons for today,\s" + Time.zone.now.strftime('%a %b %d %Y') %> </h3>
+  <div class="large-12 medium-12 small-12 columns">
+    <div class="tabs tabs-style-tzoid">
+      <nav>
+        <ul>
+          <li><a href="#section-tzoid-1" class=""><span>Dashboard</span></a></li>
+          <li><a href="#section-tzoid-2" class=""><span>Calendar</span></a></li>
+          <li><a href="#section-tzoid-3" class=""><span>Contacts</span></a></li>
+          <li><a href="#section-tzoid-4" class=""><span>Discover</span></a></li>
+          <li><a href="#section-tzoid-5" class=""><span>Settings</span></a></li>
+        </ul>
+      </nav>
+      <div class="row"> 
+        <div class="large-12 columns">
 
-    <hr><br>
-
-    <div class="row">
-      <div class="small-9 columns">
-        <div id="calendar"></div>
+        </div>
       </div>
-      <div class="small-3 columns" id="lesson-scroller">
-        <% Lesson.all.where("user_id = ?", current_user.id).order('start DESC').all.each do |l| %>
-      <%= l.title %> <br />
-      <%= l.subject %> <br />
-      <%= l.start.strftime('%m/%d/%Y %I:%M %p') %> <br />
-      safasd
-      <hr>
-    <% end %>
+      <div class="row"> 
+        <div class="large-12 columns"> 
+          <div class="content-wrap activity">
+            <section id="section-tzoid-1"><p>Dashboard
+            </p>
+            </section>
+            <section id="section-tzoid-2"><p>Calendar</p>
+            </section>
+            <section id="section-tzoid-3"><p>Contacts</p></section>
+            <section id="section-tzoid-4"><p>Discover</p><p>Coming Soon!</p>
+            <% @discover.each do |d| %>
+              <%= d.inspect %>
+              <br>
+              <br>
+            <% end %>
+            </section>
+            <section id="section-tzoid-5"><p>Settings</p><p>Coming Soon!</p></section>
+          </div>
+        </div>
       </div>
     </div>
-    
-    <div class="calendar-wrapper"></div>
-
-    <ol class="joyride-list" data-joyride>
-      <%= tour("Take the tour!" + "<hr/> Click a day to add events <br /> Click events to go to view page") %>
-    </ol>
   </div>
 </div>
 
-<div id="lessonModal" class="reveal-modal" data-reveal>
-   <%= render 'lessons/form' %>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
+
+<%# hello = Tag.all.map(&:name) & User.first.full_name.split(' ') %>
+<%#= hello %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

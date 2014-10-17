@@ -293,6 +293,15 @@
           window.user_id = "<%= @user.id %>"
         <% end %>
       <% end %>
+          <script>
+      (function() {
+
+        [].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
+          new CBPFWTabs( el );
+        });
+
+      })();
+    </script>
      <!-- Javascripts for calender -->
     <%= render :partial => "layouts/script" %>
   </body>

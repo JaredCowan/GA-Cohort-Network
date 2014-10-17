@@ -14,7 +14,7 @@
 
     <%= f.input :subject %>
     <%= f.input :body %>
-    <%= f.input :tag_list, placeholder: "Tags (separated by commas)" %>
+    <%= f.input :tag_list, placeholder: "Tags (separated by commas) Tag users by their name. e.g., john, jane" %>
     <%= f.hidden_field :user_id, value: current_user.id %>
 
   <p>
@@ -30,6 +30,8 @@
     <%= f.fields_for :document do |document_fields| %>
       <%= document_fields.input :attachment, as: :file %>
     <% end %>
+    <div class="medium-6 columns">
+    <input class="file optional" id="question_document_attributes_attachment" name="question[document_attributes][attachment]" type="file" value="Upload Photo"/> </input>
 
     <span class="actions">
       <%= f.button :submit, :value => 'Update Post', class: 'button round success' %>

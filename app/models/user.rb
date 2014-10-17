@@ -115,8 +115,8 @@ class User < ActiveRecord::Base
 
   def strip_whitespace
     self.email      = self.email.downcase.strip
-    self.first_name = self.first_name.strip
-    self.last_name  = self.last_name.strip
+    self.first_name = self.first_name.downcase.strip
+    self.last_name  = self.last_name.downcase.strip
     self.email      = self.email.strip
     self.user_name  = self.user_name.downcase.strip
     self.github     = self.github.strip

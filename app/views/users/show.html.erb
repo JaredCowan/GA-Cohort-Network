@@ -1,131 +1,133 @@
 <div class="row">
-  <div class="large-5 columns ">
-    <% if current_user == @user %>
-      <center>
-      <%= link_to "Edit Profile",edit_user_path(current_user), class: "button small radius" %>
-      </center>
-    <% end %>
-    <div class="panel">
-      <h1 id="profile-title"><center><%= @user.full_name.camelize %></center></h1>
-      <h4 id="profile-title"><center><%= @user.job_position.camelize %></center></h4>
-      <img src="http://hospitalfranciscovilar.com.br/wp-content/uploads/2013/11/gravatar-60-grey.jpg"/>
-        <div class="section-container vertical-nav" data-section data-options="deep_linking: false; one_up: true">
-        <section class="section">
-          <h5 class="title"><a href="#" data-reveal-id="messageModal" class="radius tiny button"> Message <%= @user.full_name %></a></h5>
-          
-          <span id="friend-status">
-            <% if current_user.friends.include?(@user) %>
-            <%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user.id), class: 'button radius tiny success' %>
-            <% elsif current_user.pending_friends.include?(@user) %>
-              <%= link_to "Friendship Requested", edit_user_friendship_path(friend_id: @user), class: 'button radius tiny success' %>
-            <% else %>
-             <%= link_to "Add Friend", new_user_friendship_path(friend_id: @user.id), class: 'radius tiny button', id: 'add-friendship', data: { friend_id: @user.id } %>
-            <% end %>
-          </span>
-        </section>
+  <div class="large-12 columns ">
+    <div class="large-5 columns ">
+      <% if current_user == @user %>
+        <center>
+        <%= link_to "Edit Profile",edit_user_path(current_user), class: "button small radius" %>
+        </center>
+      <% end %>
+      <div class="panel profile-panel">
+        <h1 id="profile-title"><center><%= @user.full_name.camelize %></center></h1>
+        <h4 id="profile-title"><center><%= @user.job_position.camelize %></center></h4><hr>
+        <img src="http://hospitalfranciscovilar.com.br/wp-content/uploads/2013/11/gravatar-60-grey.jpg"/>
+          <div class="section-container vertical-nav" data-section data-options="deep_linking: false; one_up: true">
+          <section class="section">
+            <h5 class="title"><a href="#" data-reveal-id="messageModal" class="radius tiny button"> Message <%= @user.full_name %></a></h5>
+            
+            <span id="friend-status">
+              <% if current_user.friends.include?(@user) %>
+              <%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user.id), class: 'button radius tiny success' %>
+              <% elsif current_user.pending_friends.include?(@user) %>
+                <%= link_to "Friendship Requested", edit_user_friendship_path(friend_id: @user), class: 'button radius tiny success' %>
+              <% else %>
+               <%= link_to "Add Friend", new_user_friendship_path(friend_id: @user.id), class: 'radius tiny button', id: 'add-friendship', data: { friend_id: @user.id } %>
+              <% end %>
+            </span>
+          </section>
 
-        <section class="section">
-          <h5 class="title">Site: 
-          <% if @user.website.blank? %>
-            <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
-          <% else %>
-            <a href="http://<%= @user.website %>"><%= "Personal Website" unless @user.website.blank? %></a></h5>
-          <% end %>
-        </section>
-        <section class="section">
-          <h5 class="title">Phone:
-          <% if @user.phone.blank? %>
-            <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
-          <% else %>
-            <a href="#"><%= @user.phone %></a></h5>
-          <% end %>
-        </section>
-        <section class="section">
-          <h5 class="title">Cell:
-          <% if @user.cell_phone.blank? %>
-            <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
-          <% else %>
-            <a href="#"><%= @user.cell_phone %></a></h5>
-          <% end %>
-        </section>
-        <section class="section">
-          <h5 class="title">Birthday:
-          <% if @user.birthday.blank? %>
-            <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
-          <% else %>
-            <a href="#"><%= @user.birthday %></a></h5>
-          <% end %>
-        </section>
-        <section class="section">
-          <h5 class="title">Email: 
-          <% if @user.public_email.empty? %>
-            <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
-          <% else %>
-            <a href="mailto:<%= @user.public_email %>"><%= "Send #{@user.full_name} an email" unless @user.public_email.blank? %></a></h5>
-          <% end %>
-        </section>
-        <section class="section">
-          <h5 class="title">Github: 
-          <% if @user.github.empty? %>
-            <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
-          <% else %>
-            <a target="_blank" href="https://github.com/<%= @user.github %>"><%= @user.github.camelize %></a></h5>
-          <% end %>
-        </section>
-        <section class="section">
-          <h5 class="title">Linkedin: 
-          <% if @user.linkedin.empty? %>
-            <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
-          <% else %>
-            <a target="_blank" href="https://www.linkedin.com/in/<%= @user.linkedin %>"><%= @user.linkedin.camelize %></a></h5>
-          <% end %>
-        </section>
-        <section class="section">
-          <h5 class="title">Facebook: 
-          <% if  %>
-            <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
-          <% else %>
-            <a target="_blank" href="https://www.facebook.com/<%= @user.facebook %>"><%= @user.facebook.camelize %></a></h5>
-          <% end %>
-        </section>
-        <section class="section">
-          <h5 class="title">Location: 
-          <% if @user.facebook.empty? %>
-            <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
-          <% else %>
-            <a target="_blank" href="https://www.google.com/maps/place/<%= @user.city + ",\s" + @user.state %>"> <%= @user.city + "\s" + @user.state %></h5></a>
-          <% end %>
-        </section>
-        <section class="section">
-          <h5 class="title"><a href="#" ><%#= @user.state %></a></h5>
-        </section>
+          <section class="section">
+            <h5 class="title">Site: 
+            <% if @user.website.blank? %>
+              <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
+            <% else %>
+              <a href="http://<%= @user.website %>"><%= "Personal Website" unless @user.website.blank? %></a></h5>
+            <% end %>
+          </section>
+          <section class="section">
+            <h5 class="title">Phone:
+            <% if @user.phone.blank? %>
+              <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
+            <% else %>
+              <a href="#"><%= @user.phone %></a></h5>
+            <% end %>
+          </section>
+          <section class="section">
+            <h5 class="title">Cell:
+            <% if @user.cell_phone.blank? %>
+              <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
+            <% else %>
+              <a href="#"><%= @user.cell_phone %></a></h5>
+            <% end %>
+          </section>
+          <section class="section">
+            <h5 class="title">Birthday:
+            <% if @user.birthday.blank? %>
+              <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
+            <% else %>
+              <a href="#"><%= @user.birthday %></a></h5>
+            <% end %>
+          </section>
+          <section class="section">
+            <h5 class="title">Email: 
+            <% if @user.public_email.empty? %>
+              <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
+            <% else %>
+              <a href="mailto:<%= @user.public_email %>"><%= "Send #{@user.full_name} an email" unless @user.public_email.blank? %></a></h5>
+            <% end %>
+          </section>
+          <section class="section">
+            <h5 class="title">Github: 
+            <% if @user.github.empty? %>
+              <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
+            <% else %>
+              <a target="_blank" href="https://github.com/<%= @user.github %>"><%= @user.github.camelize %></a></h5>
+            <% end %>
+          </section>
+          <section class="section">
+            <h5 class="title">Linkedin: 
+            <% if @user.linkedin.empty? %>
+              <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
+            <% else %>
+              <a target="_blank" href="https://www.linkedin.com/in/<%= @user.linkedin %>"><%= @user.linkedin.camelize %></a></h5>
+            <% end %>
+          </section>
+          <section class="section">
+            <h5 class="title">Facebook: 
+            <% if  %>
+              <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
+            <% else %>
+              <a target="_blank" href="https://www.facebook.com/<%= @user.facebook %>"><%= @user.facebook.camelize %></a></h5>
+            <% end %>
+          </section>
+          <section class="section">
+            <h5 class="title">Location: 
+            <% if @user.facebook.empty? %>
+              <a href="#" data-reveal-id="updateMessage"> Ask <%= @user.full_name %></a>
+            <% else %>
+              <a target="_blank" href="https://www.google.com/maps/place/<%= @user.city + ",\s" + @user.state %>"> <%= @user.city + "\s" + @user.state %></h5></a>
+            <% end %>
+          </section>
+          <section class="section">
+            <h5 class="title"><a href="#" ><%#= @user.state %></a></h5>
+          </section>
+        </div>
       </div>
     </div>
-  </div>
-    
-     
-  <div class="large-7 columns">
-    <dl class="tabs" data-tab>
-      <dd class="active"><a href="#panel1">Wall Post</a></dd>
-      <dd><a href="#panel2">Statuses</a></dd>
-      <dd><a href="#panel3">Questions</a></dd>
-      <dd><a href="#panel4">Activity</a></dd>
-    </dl>
-    <%= render :partial => "users/p/post_form" %>
-    <div class="tabs-content">
-      <div class="content active" id="panel1">
-        <%= render "users/p/post" %>
-      </div>
-      <div class="content" id="panel2">
-        <%= render "users/p/statuses" %>
-      </div>
-      <div class="content" id="panel3">
-        <%= render "users/p/questions" %>
-      </div>
-      <div class="content" id="panel4">
-        <%= render "users/p/activities" %>
-      </div>
-    </div>    
+      
+       
+    <div class="large-7 columns">
+      <dl class="tabs" data-tab>
+        <dd class="active"><a href="#panel1">Wall Post</a></dd>
+        <dd><a href="#panel2">Statuses</a></dd>
+        <dd><a href="#panel3">Questions</a></dd>
+        <dd><a href="#panel4">Activity</a></dd>
+      </dl>
+      <%= render :partial => "users/p/post_form" %>
+      <div class="tabs-content">
+        <div class="content active" id="panel1">
+          <%= render "users/p/post" %>
+        </div>
+        <div class="content" id="panel2">
+          <%= render "users/p/statuses" %>
+        </div>
+        <div class="content" id="panel3">
+          <%= render "users/p/questions" %>
+        </div>
+        <div class="content" id="panel4">
+          <%= render "users/p/activities" %>
+        </div>
+      </div>    
+    </div>
   </div>
 </div>
 
@@ -137,8 +139,7 @@
 
   <input class="string required" id="conversation_subject" name="conversation[subject]" type="text" value="Hey <%= @user.full_name %>, you haven't posted any questions yet." placeholder="Hey <%= @user.full_name %>, you haven't posted any questions yet.">
   <%= f.input :body, as: :text %>
-   
-   
+
   <%= f.button :submit, 'Send', class: 'button' %>
 <% end %>
   <a class="close-reveal-modal">&#215;</a>

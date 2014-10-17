@@ -93,5 +93,4 @@ class LessonsController < ApplicationController
     redirect_to :lesson
     format.json { render json: @lesson.errors, lesson: :unprocessable_entity }
   end
-
-end
+end # End controller
