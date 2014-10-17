@@ -39,10 +39,12 @@ class LessonsController < ApplicationController
 
     respond_to do |format|
       if @lesson.save
-        format.html { redirect_to :lessons, notice: 'Lesson was successfully created.' }
+        format.html { redirect_to :lessons }
         format.json { render json: @lesson }
+        flash[:success] = "Lesson was successfully created."
       else
-        format.html { redirect_to :lessons, notice: "Error: Lesson is blank." }
+        format.html { redirect_to :lessons }
+        flash[:error] = "Error: Lesson is blank."
       end
     end
   end
@@ -61,11 +63,13 @@ class LessonsController < ApplicationController
 
     respond_to do |format|
       if @lesson.update_attributes(lesson_params)
-        format.html { redirect_to lessons_path(@lesson), notice: 'Lesson was successfully updated.' }
+        format.html { redirect_to lessons_path(@lesson) }
         format.json { head :no_content }
+        flash[:success] = "Lesson was successfully updated."
       else
         redirect_to :lessons
         format_generic_error("edit")
+        flash[:error] = "Error updating lesson."
       end
     end
   end
@@ -75,8 +79,9 @@ class LessonsController < ApplicationController
 
     respond_to do |format|
       if @lesson.destroy
-        format.html { redirect_to lessons_url, notice: 'Lesson was successfully deleted.' }
+        format.html { redirect_to lessons_url }
         format.json { head :no_content }
+        flash[:success] = "Lesson was successfully deleted."
       else
         format_generic_error("index")
       end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141017064722) do
+ActiveRecord::Schema.define(version: 20141017071528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -264,12 +264,12 @@ ActiveRecord::Schema.define(version: 20141017064722) do
     t.string   "city",            default: ""
     t.string   "state",           default: ""
     t.string   "job_position",    default: ""
-    t.date     "job_start",       default: '-4711-01-01'
-    t.date     "job_end",         default: '-4711-01-01'
     t.string   "job_description", default: ""
-    t.string   "group",           default: "student",     null: false
-    t.boolean  "admin",           default: false,         null: false
+    t.string   "group",           default: "student", null: false
+    t.boolean  "admin",           default: false,     null: false
     t.string   "job_name"
+    t.date     "job_start"
+    t.date     "job_end"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
