@@ -176,22 +176,20 @@ if ($('.joyride-tip-guide').length >= 0) {
 // End fade alert box
 // =================================
 
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+    $('#img_prev')
+      .attr('src', e.target.result)
+      .width(90)
+      .height(100);
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
 
-
-    function readURL(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-        $('#img_prev')
-          .attr('src', e.target.result)
-          .width(90)
-          .height(100);
-        };
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-
-  $(document).on('change', '.upload :file', function() {
+$(document).on('change', '.upload :file', function() {
   var input = $(this),
       numFiles = input.get(0).files ? input.get(0).files.length : 1,
       label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
@@ -199,18 +197,10 @@ if ($('.joyride-tip-guide').length >= 0) {
 });
 
 $(document).ready( function() {
-    $('.upload :file').on('fileselect', function(event, numFiles, label) {
-        
-        var input = $(this).parents('.input-group').find(':text'),
-            log = numFiles > 1 ? numFiles + ' files selected' : label;
-        
-        // if( input.length ) {
-        //     input.val(log);
-        // } else {
-        //     if( log ) alert(log);
-        // }
-        
-    });
+  $('.upload :file').on('fileselect', function(event, numFiles, label) { 
+    var input = $(this).parents('.input-group').find(':text'),
+      log = numFiles > 1 ? numFiles + ' files selected' : label;
+  });
 });
 
 ;( function( window ) {
@@ -253,7 +243,8 @@ $(document).ready( function() {
   CBPFWTabs.prototype._initEvents = function() {
     var self = this;
     this.tabs.forEach( function( tab, idx ) {
-      tab.addEventListener( 'click', function( ev ) {
+      tab.addEventListener( 'mouseover', function( ev ) {
+        $('#calendar').fullCalendar('render');
         ev.preventDefault();
         self._show( idx );
       } );
@@ -274,3 +265,4 @@ $(document).ready( function() {
   window.CBPFWTabs = CBPFWTabs;
 
 })( window );
+

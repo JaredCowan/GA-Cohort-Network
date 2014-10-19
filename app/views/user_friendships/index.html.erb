@@ -52,10 +52,10 @@
                     </li>
                     <li class="cta-button">
                       <% if friendship.requested? %>
-          <%= form_for friendship, url: accept_user_friendship_path(friendship), method: :put do |form| %>
-            <%= submit_tag "Accept Friendship", class: 'button radius success expand' %>
-          <% end %>
-        <% end %>
+                        <%= form_for friendship, url: accept_user_friendship_path(friendship), method: :put do |form| %>
+                          <%= submit_tag "Accept Friendship", class: 'button radius success expand' %>
+                        <% end %>
+                      <% end %>
                     </li>
                   </ul>
                 </div>

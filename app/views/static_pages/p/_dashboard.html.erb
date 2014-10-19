@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="large-12 medium-12 small-12 columns">
+    <div class="large-6 medium-6 small-6 columns">
+      <h1>Recent Answers</h1>
+      <hr>
+      <!-- current_user.questions.empty? ||  -->
+        <%# if !current_user.questions.empty? %>
+          <div class="alert-box radius alert">
+            Ask some questions and when someone post an answer you'll see them here. <br><br>
+            <%= link_to("Join the community and ask!", questions_url, class: "button radius") %>
+          </div>
+        <%# end %>
+      <% current_user.questions.limit(3).each do |question| %>
+        <% question.answers.order("created_at DESC").limit(3).each do |ans| %>
+          <div class="panel callout radius" id="dashboard-answer-title">
+            <h5><%= link_to ans.user.full_name, user_path(ans.user) %> commented on <%= link_to "your question", Question.find(ans.question_id) %>
+            </h5>
+            <hr>
+            <article id="dashboard-answer-body">
+              <%= truncate(ans.body, length: 140) { link_to "...Read More", question_path(Question.find(ans.question_id))} %>
+            </article>
+          </div>
+          <hr>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="large-6 medium-6 small-6 columns">
+      <h1>Discover</h1>
+      <hr>
+      <div class="panel radius" id="tag_cloud">
+        <b><sub>Recent Tags: </b></sub>
+        <% tag_cloud Question.tag_counts.limit(10), %w[s m l] do |tag, css_class| %>
+          <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+        <% end %>
+      </div>
+      <div class="panel callout radius" id="dashboard-answer-title">
+        <h5>This is a callout panel.</h5>
+        <hr>
+        <article>It's a little ostentatious, but useful for important content.</article>
+      </div>
+      <% @discover.each do |d| %>
+        <%= d.inspect %>
+        <br>
+        <br>
+      <% end %>
+      <hr>
+    </div>
+  </div>
+</div>

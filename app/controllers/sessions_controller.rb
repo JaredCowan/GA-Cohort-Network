@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
+      session[:current_user_id] = user.id
       sign_in user
       redirect_to dashboard_url
     else
@@ -18,5 +19,4 @@ class SessionsController < ApplicationController
     sign_out
     redirect_to root_url
   end # End destroy
-
 end # End controller
