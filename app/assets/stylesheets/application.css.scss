@@ -11,6 +11,9 @@
 html {
   -webkit-font-smoothing: antialiased;
 }
+.reveal-modal {
+  border-radius: 12px;
+}
 *:focus {
   outline: none;
 }
@@ -109,11 +112,11 @@ ul.off-canvas-list li a:hover {
   background-color: rgba(255,60,44,1);
 }
 #convo-quick-bar {
-  top: -100px;
+  top: -80px;
   position: inherit;
   border-bottom-right-radius: 16px;
   border-bottom-left-radius:  16px;
-  opacity: .3;
+  opacity: .4;
 }
 #convo-quick-bar:hover {
   opacity: 1;
@@ -127,16 +130,13 @@ ul.off-canvas-list li a:hover {
 .inline-list li:nth-child(odd) {
   margin-right: 10px;
 }
-div h2,
-#editModal,
-#deleteModal,
-#lessonModal {
-  color: rgba(255, 60, 44, 1);
-  // background-color: #262626;
-}
-#lessonModal label {
-  color: white;
-}
+// div h2,
+// #editModal,
+// #deleteModal,
+// #lessonModal {
+//   color: rgba(255, 60, 44, 1);
+//   // background-color: #262626;
+// }
 .switch {
   width: 30px;
 }
@@ -533,4 +533,12 @@ ul.off-canvas-list li {
 }
 .left-off-canvas-menu, .right-off-canvas-menu {
   background: #373434;
+}
+@media only screen and (max-width: 525px) {
+  #img_prev {
+    display: none;
+  }
+  .wall-post-form textarea {
+    width: 288px;
+  }
 }

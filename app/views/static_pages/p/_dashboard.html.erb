@@ -1,6 +1,6 @@
 <div class="row">
   <div class="large-12 medium-12 small-12 columns">
-    <div class="large-6 medium-6 small-6 columns">
+    <div class="large-6 medium-6 small-12 columns">
       <h1>Recent Answers</h1>
       <hr>
       <!-- current_user.questions.empty? ||  -->
@@ -25,7 +25,7 @@
         <% end %>
       <% end %>
     </div>
-    <div class="large-6 medium-6 small-6 columns">
+    <div class="large-6 medium-6 small-12 columns">
       <h1>Discover</h1>
       <hr>
       <div class="panel radius" id="tag_cloud">
@@ -34,13 +34,13 @@
           <%= link_to tag.name, tag_path(tag.name), class: css_class %>
         <% end %>
       </div>
-      <div class="panel callout radius" id="dashboard-answer-title">
-        <h5>This is a callout panel.</h5>
-        <hr>
-        <article>It's a little ostentatious, but useful for important content.</article>
-      </div>
-      <% @discover.each do |d| %>
-        <%= d.inspect %>
+      <% @questions.each do |q| %>
+        <div class="panel callout radius" id="dashboard-answer-title">
+          <h5><%= link_to q.user.full_name, user_path(q.user) %> asked a question <%= link_to "new question", question_path(q) %></h5>
+          <hr>
+          <article>It's a little ostentatious, but useful for important content.</article>
+        </div>
+        
         <br>
         <br>
       <% end %>

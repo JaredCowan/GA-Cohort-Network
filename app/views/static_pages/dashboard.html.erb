@@ -13,19 +13,22 @@
         </ul>
       </nav>
       <div class="content-wrap activity">
+
         <section id="section-tzoid-1">
           <%= render :partial => "static_pages/p/dashboard" %>
         </section>
+
         <section id="section-tzoid-2">
           <p>Calendar</p>
-        <div class="large-9 medium-9 small-12 large-centered medium-centered small-centered columns">
+          <div class="large-9 medium-9 small-12 large-centered medium-centered small-centered columns">
           <div id="calendar"></div>
         </div>
-        <% @lessons.each do |l| %>
+          <% @lessons.each do |l| %>
           <%= l.inspect %>
-        <br> <br> <br> <br>
-        <% end %>
+          <br> <br> <br> <br>
+          <% end %>
         </section>
+
         <section id="section-tzoid-3"><p>Contacts</p>
           <% @contacts.each do |c| %>
           <%= c.full_name %><br>
@@ -34,26 +37,28 @@
             <br> <br>
           <% end %>
         </section>
-        <section id="section-tzoid-4"><p>Notes</p><p>Coming Soon!</p>
+
+        <section id="section-tzoid-4">
+          <p>Coming Soon!</p>
         </section>
-        <section id="section-tzoid-5"><p>Call Tracker</p><p>Coming Soon!</p>
+        
+        <section id="section-tzoid-5">
+          <p>Coming Soon!</p>
         </section>
-        <section id="section-tzoid-6"><p>Discover</p><p>Coming Soon!</p>
-        <% @discover.each do |d| %>
-          <%= d.inspect %>
-          <br>
-          <br>
-        <% end %>
+        <!-- <section id="section-tzoid-6"><p>Discover</p><p>Coming Soon!</p> -->
+          <%# @discover.each do |d| %>
+            <%#= d.inspect %>
+          <%# end %>
+        <!-- </section> -->
+
+        <section id="section-tzoid-7">
+          <p>Coming Soon!</p>
         </section>
-        <section id="section-tzoid-7"><p>Settings</p><p>Coming Soon!</p></section>
       </div>
-      <!--   </div>
-      </div> -->
     </div>
   </div>
-</div>
+
 
 <div id="lessonModal" class="reveal-modal" data-reveal>
   <%= render :partial => "lessons/form" %>
-  <a class="close-reveal-modal">&#215;</a>
 </div>

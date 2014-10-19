@@ -1,65 +1,72 @@
 <div class="row">
-<div class="large-9 columns">
-<center> <h2> New Lesson Form </h2> </center>
-<%= simple_form_for(Lesson.new, :html => {:class => "form-horizontal", multipart: true}) do |f| %>
+  <div class="large-12 medium-12 small-12 large-centered medium-centered small-centered columns">
+    <center><h2> 
+      <% if params[:action] == "edit" %>
+        <%= "Edit Lesson Form" %>
+      <% else %>
+        <%= "New Lesson Form" %>
+      <% end %> 
+    </h2><hr></center>
+    <%= simple_form_for(Lesson.new, :html => {:class => "form-horizontal", multipart: true}) do |f| %>
 
-  <div class="row">
-    <div class="small-2 large-2 columns">
-      <%= f.input :classroom, collection: 1..5, label: 'Rm#', required: true, default: 1 %>
-    </div>
-    <div class="small-5 large-6 columns">
-      <%= f.input :title, placeholder: 'Title of class to display in calendar.', required: true %>
-    </div>
-    <div class="small-5 large-2 columns">
-      <%= f.input :subject, placeholder: 'Subject of class. i.e. Javascript, Ruby, Rails', required: true %>
-    </div>
-  </div> 
+      <div class="row">
+        <div class="large-3 medium-3 small-3 columns">
+          <%= f.input :classroom, collection: 1..5, label: 'Rm#', required: true, default: 1 %>
+        </div>
+        <div class="large-9 medium-9 small-9 columns">
+          <%= f.input :title, placeholder: 'Title of class to display in calendar.', required: true %>
+        </div>
+      </div>
 
-  <div class="row">
-    <div class="small-6 large-5 columns">
-      <%= f.label :instructor %>
-      <%= collection_select(:lesson, :instructor, User.all, :id, :name_with_initial, prompt: true) %>
-    </div>
-    <div class="small-6 large-7 columns">
-      <%= f.label :assistant %>
-      <%= collection_select(:lesson, :assistant, User.all, :id, :name_with_initial, prompt: true) %>
+      <div class="row">  
+        <div class="large-12 medium-12 small-12 columns">
+          <%= f.input :subject, placeholder: 'Subject of class. e.g., Javascript, Ruby, Rails', required: true %>
+        </div>
+      </div> 
+
+      <div class="row">
+        <div class="small-6 large-5 columns">
+          <%= f.label :instructor %>
+          <%= collection_select(:lesson, :instructor, User.all, :id, :name_with_initial, prompt: true) %>
+        </div>
+        <div class="small-6 large-7 columns">
+          <%= f.label :assistant %>
+          <%= collection_select(:lesson, :assistant, User.all, :id, :name_with_initial, prompt: true) %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 large-12 columns">
+          <%= f.input :description, placeholder: 'Description of class or notes.', required: true %>
+        </div>
+      </div>
+      <br>
+      <br>
+
+      <%= f.label "All day event?" %>
+      <fieldset class="switch" tabindex="0">
+        <input id="lesson_all_day" name="lesson[all_day]" type="checkbox" value="1">
+        <label class="boolean optional" for="lesson_all_day"></label>
+      </fieldset> 
+
+      <div class="row">
+        <div class="small-4 large-5 columns">
+          <%=f.datetime_select :start, :ampm => true, :minute_step => 15, :default => Time.now %>
+        </div>
+        <div class="small-4 large-7 columns">
+          <%=f.datetime_select :end, :ampm => true, :minute_step => 15, :default => Time.now+1.hours %>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="large-4 medium-3 small-4 columns">
+           <%= link_to "Back", :back, class: "button radius alert" %>
+        </div>
+        <div class="large-4 medium-7 small-8 columns">
+          <%= f.button :submit, value: "Save Lesson", class: 'button radius expand success' %>
+        </div>
+      </div>
+    <% end %>
     </div>
   </div>
-  <div class="row">
-    <div class="small-12 large-12 columns">
-      <%= f.input :description, placeholder: 'Description of class or notes.', required: true %>
-    </div>
-  </div>
-
-  <br />
-  <br />
-
-  <%= f.label "All day event?" %>
-  <fieldset class="switch" tabindex="0">
-    <input id="lesson_all_day" name="lesson[all_day]" type="checkbox" value="1">
-    <label class="boolean optional" for="lesson_all_day"></label>
-  </fieldset> 
-
-
-  <div class="row">
-    <div class="small-4 large-5 columns">
-      <%=f.datetime_select :start, :ampm => true, :minute_step => 15, :default => Time.now %>
-      <%#= f.input :start, label: "Start date and time. yyyy/mm/dd - Hour : Minute" %>
-    </div>
-    <div class="small-4 large-7 columns">
-      <%=f.datetime_select :end, :ampm => true, :minute_step => 15, :default => Time.now+1.hours %>
-      <%#= f.input :end, label: "End date and time. yyyy/mm/dd - Hour : Minute" %>
-    </div>
-  </div>
-
-  <hr />
-  <div class="row">
-    <div class="small-3 small-centered columns">
-      <span class="actions">
-        <%= f.button :submit, class: 'button round success' %>
-      </span>
-    </div>
-  </div>
-  <% end %>
-  </div>
-  </div>
+</div>

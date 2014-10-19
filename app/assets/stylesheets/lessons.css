@@ -1,0 +1,26 @@
+select {
+  border-radius: 6px;
+}
+.lesson-edit { 
+  background-color: #f08a24;
+}
+.lesson-edit:hover {
+  background-color: rgb(224,122,20);
+}
+.f-dropdown.lesson-edit-dropdown {
+  border-radius:           5px;
+  width:                 100px;
+  box-shadow: 4px 5px 3px #ddd;
+}
+#lessonModal label {
+  color: #000;
+}
+#lessonModal label.select.required, 
+#lessonModal label.string.required {
+  color: red!important;
+}
+#lessonModal h2 {
+  color: #000;
+  font-family: 'Cinzel', serif;
+  text-shadow: 1px 1px 1px grey;
+}
