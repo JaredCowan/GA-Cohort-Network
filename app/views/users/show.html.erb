@@ -15,6 +15,7 @@
             <h5 class="title"><a href="#" data-reveal-id="messageModal" class="radius tiny button"> Message <%= @user.full_name %></a></h5>
             
             <span id="friend-status">
+            <% if current_user != @user %>
               <% if current_user.friends.include?(@user) %>
               <%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user.id), class: 'button radius tiny success' %>
               <% elsif current_user.pending_friends.include?(@user) %>
@@ -22,6 +23,7 @@
               <% else %>
                <%= link_to "Add Friend", new_user_friendship_path(friend_id: @user.id), class: 'radius tiny button', id: 'add-friendship', data: { friend_id: @user.id } %>
               <% end %>
+            <% end %>
             </span>
           </section>
 
