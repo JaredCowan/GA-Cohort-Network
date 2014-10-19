@@ -26,7 +26,7 @@
       <div class="content" id="panel2">
         <div id="mailbox">
           <%= render collection: mailbox.trash, partial: 'conversation' %>
-          <%= "Nothing to see here. Move along.." if current_user.mailbox.trash.count <= 0 %>
+          <%= "You have no delete conversations" if current_user.mailbox.trash.count <= 0 %>
         </div>
       </div>
     </div>

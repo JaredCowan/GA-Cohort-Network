@@ -11,7 +11,7 @@ class UserFriendshipDecorator < Draper::Decorator
     when 'pending'
       "Friend request pending."
     when 'accepted'
-      "You are friends with #{model.friend.first_name}."
+      "You are friends with #{model.friend.full_name}."
     end
   end
 
@@ -51,6 +51,32 @@ class UserFriendshipDecorator < Draper::Decorator
       'success'
     when 'blocked'
       'alert'
+    end
+  end
+
+  def update_state
+    case model.state
+    when 'pending'
+      'Friendship Pending'
+    when 'requested'
+      'Friendship Requested'
+    when 'accepted'
+      'Friends'
+    when 'blocked'
+      'Blocked'
+    end
+  end
+
+  def friendship_header
+    case model.state
+    when 'pending'
+      "Pending Friendship With #{model.friend.full_name}"
+    when 'requested'
+      "Requested Friendship With #{model.friend.full_name}"
+    when 'accepted'
+      "Viewing Friendship With <br> #{model.friend.full_name}"
+    when 'blocked'
+      "You have blocked #{model.friend.full_name}"
     end
   end
 

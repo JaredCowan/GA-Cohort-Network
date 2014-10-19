@@ -1,47 +1,39 @@
-<div class="page-header">
-  <h1>Viewing Friendship With <%= @user_friendship.friend.full_name %> </h1>
-</div>
-
 <div class="row">
-  <div class="avatar span2">
-    <%= link_to @user_friendship.user.full_name, user_path(@user_friendship.user) %><br />
-    <%= link_to avatar_url, user_path(@user_friendship.user) %>
+  <div class="small-11 small-centered columns activity">
+    <center> <h1><%= raw @user_friendship.friendship_header %></h1> </center>
+    <hr>
+    <div class="row">
+      <div class="large-12 medium-12 small-12 large-centered medium-centered small-centered columns">
+        <div class="row friends-list" data-equalizer>
+          <div class="large-6 medium-6 small-6 columns">
+            <ul class="pricing-table" data-equalizer-watch>
+              <li class="title"><%= link_to @user_friendship.user.full_name, user_path(@user_friendship.user) %><br />
+              </li>
+              <li class="price"><span class="<%= @user_friendship.update_label%> label radius"><em><%= @user_friendship.update_state %></em></span></li>
+              <li class="price"><%= link_to avatar_url, user_path(@user_friendship.user) %></li>
+            </ul>   
+          </div>
+          <div class="large-6 medium-6 small-6 columns">
+            <ul class="pricing-table" data-equalizer-watch>
+              <li class="title"><%= link_to @user_friendship.friend.full_name, user_path(@user_friendship.friend) %><br />
+              </li>
+              <li class="price"><span class="<%= @user_friendship.update_label%> label radius"><em><%= @user_friendship.update_state %></em></span></li>
+              <li class="price"><%= link_to avatar_url, user_path(@user_friendship.friend) %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="small-5 small-centered columns">
+        <a href="#" data-reveal-id="editFriendModal" class="radius button alert expand">Edit Friendship</a>
+        <% if @user_friendship.requested? %>
+          <%= form_for @user_friendship, url: accept_user_friendship_path(@user_friendship), method: :put do |form| %>
+            <%= submit_tag "Accept Friendship", class: 'button radius success expand' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <br />
-  <div class="avatar span2">
-    <%= link_to @user_friendship.friend.full_name, user_path(@user_friendship.friend) %>
-    <br>
-    <%= link_to avatar_url, user_path(@user_friendship.friend) %><br>
-  </div>
 </div>
-<hr />
+<%= render :partial => "edit" %>
 
-<h3><%= @user_friendship.sub_message %></h3>
-
-<a href="#" data-reveal-id="editFriendModal" class="radius button alert">Edit Friendship</a>
-
-
-<div id="editFriendModal" class="reveal-modal" data-reveal>
-<center><strong>
-  <h2>Are you sure?</h2>
-</center></strong>
-<hr>
-<div class="form-actions">
-<center>
-  <% if @user_friendship.requested? %>
-    <%= form_for @user_friendship, url: accept_user_friendship_path(@user_friendship), method: :put do |form| %>
-      <%= submit_tag "Accept Friendship", class: 'button' %>
-    <% end %>
-  <% end %>
-
-  <%= form_for @user_friendship, url: block_user_friendship_path(@user_friendship), method: :put do |form| %>
-    <%= submit_tag "Block Friendship", class: 'button alert' %>
-  <% end %>
-
-  <%= form_for @user_friendship, url: user_friendship_path(@user_friendship), method: :delete do |form| %>
-      <%= submit_tag "Delete Friendship", class: 'button alert' %>
-  <% end %>
-</div>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-</center>
+<%#= link_to "Add Friend", new_user_friendship_path(friend_id: @user.id), class: 'radius tiny button', id: 'add-friendship', data: { friend_id: @user.id } %>

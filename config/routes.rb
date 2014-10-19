@@ -91,7 +91,7 @@ Rails.application.routes.draw do
 
   # get '/:id', to: 'profiles#show', as: 'profile'
 
-  scope "/profile/:id" do
+  scope "/users/:id" do
     resources :albums do
       resources :pictures
     end

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.1.5'
 gem 'pg'
-gem 'turbolinks'
+# gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 gem 'state_machine', :git => 'https://github.com/seuros/state_machine.git'
@@ -32,6 +32,7 @@ gem 'kaminari'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'acts-as-taggable-on'
 gem 'unicorn'
+gem 'faker'
 
 group :test do
   gem 'minitest'
