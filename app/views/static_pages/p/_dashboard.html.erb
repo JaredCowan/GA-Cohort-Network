@@ -38,13 +38,13 @@
         <div class="panel callout radius" id="dashboard-answer-title">
           <h5><%= link_to q.user.full_name, user_path(q.user) %> asked a question <%= link_to "new question", question_path(q) %></h5>
           <hr>
-          <article>It's a little ostentatious, but useful for important content.</article>
+          <article class="question-text">
+            <%= truncate("Subject:\s" + q.subject, length: 40) %><br><hr>
+            <%= truncate("Body:\s" + q.body, length: 140) { link_to "...Read More", question_path(Question.find(ans.question_id))} %>
+          </article>
         </div>
-        
-        <br>
-        <br>
+          <hr>
       <% end %>
-      <hr>
     </div>
   </div>
 </div>

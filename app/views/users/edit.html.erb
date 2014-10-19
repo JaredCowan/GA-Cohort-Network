@@ -1,7 +1,11 @@
 <%= simple_form_for(@current_user) do |f| %>
   <div class="row">
-    <div class="small-3 small-centered larg-centered columns">
-    <%= f.submit "Save Changes", class: "button small radius success" %>
+    <div class="small-12 columns">
+    <div class="small-3 columns">
+    <%= link_to "Back", :back, class: "button radius alert" %>
+    </div>
+    <div class="small-7 columns">
+    <%= f.submit "Save Changes", class: "button small radius success expand" %>
     </div>
   </div>
   <div class="row">

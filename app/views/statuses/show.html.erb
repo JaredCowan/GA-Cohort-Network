@@ -1,6 +1,6 @@
 <%= render :partial => "topnavforum" %>
  <div class="row">
-  <div class="small-9 small-centered columns">
+  <div class="small-9 small-centered columns activity">
     <p><b>Name:</b>
       <%= @status.user.full_name %>
     </p>
@@ -21,10 +21,6 @@
         </ul>
       <% end %>
     </p>
-  </div>
-
-  <div class="small-9 small-centered columns">
-
     <% if @status.user == current_user %>
       <div class="btn-group pull-right">
         <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button round dropdown tiny">Edit</button><br>
@@ -41,11 +37,13 @@
     <% end %>
   <hr>
   </div>
+  </div>
+
   <br>
   <br>
 
   <div class="row">
-    <div class="small-9 small-centered columns">
+    <div class="small-9 small-centered columns activity">
       <hr>
       <% if @status.comments.length > 0 %>
         <% @status.comments.each do |comment| %>
@@ -56,15 +54,15 @@
           <hr>
         <% end %>
       <% end %>
-      <h2>Comments Form</h2>
     <div>
 
     <%= simple_form_for([@status, @status.comments.build]) do |f| %>
 
       <%= f.text_area :body %>
       <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }  %>
-
-      <input class="button alert" name="commit" type="submit" value="Post comment">
+      <center>
+        <input class="button radius" name="commit" type="submit" value="Post comment">
+      </center>
     <% end %>
   </div>
 </div>

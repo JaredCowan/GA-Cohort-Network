@@ -86,6 +86,7 @@ class JobsController < ApplicationController
 
   def upvote
     @job = Job.find(params[:id])
+    current_user.create_activity(@job, 'upvoted')
     @job.liked_by current_user
     redirect_to jobs_path
   end

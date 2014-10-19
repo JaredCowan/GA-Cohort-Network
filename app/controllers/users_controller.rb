@@ -48,7 +48,7 @@ class UsersController < ApplicationController
         (!current_user.activities.where(targetable_type: "profile").empty? && current_user.activities.where(targetable_type: "profile").last.created_at < 2.hours.ago)
         Activity.create!(user_id: current_user.id, action: 'updated', targetable_id: current_user.id, targetable_type: "profile")
       end
-      flash[:success] = "Profile updated"
+      flash[:success] = "#{current_user.full_name}, your profile has been updated."
       redirect_to user_path(current_user)
     else
       render 'edit'
