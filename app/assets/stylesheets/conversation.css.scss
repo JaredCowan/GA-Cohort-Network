@@ -1,0 +1,68 @@
+.conversation-font {
+  font-family: sans-serif;
+}
+#convo {
+  margin-bottom: 65px;
+  border-radius: 6px;
+  height: 500px;
+  overflow-x: hidden; 
+  overflow: visible;
+  section {
+    padding: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.table-no-border {
+  border: none!important;
+  border-collapse: collapse;
+}
+.conversation-table-row {
+  background-color: #D3D3D3;
+  white-space: nowrap;
+  overflow: hidden;
+  td {
+    margin: 0 2px;
+    border-bottom: 1px solid #D3D3D3;
+    border-top:    1px solid #D3D3D3;
+  }
+  a {
+    padding-left: 3px;
+    color: #000;
+  }
+  a:hover {
+    color: #fff;
+  }
+}
+.conversation-table-row:nth-child(odd) {
+  background-color: #D3D3D3;
+}
+.conversation-table-row:nth-child(even) {
+  background-color: #bdbdbd;
+}
+.conversation-table-row:hover {
+  background-color: #949494;
+  a {
+    color: #fff;
+  }
+}
+#unread {
+  background-color: #FFFFE0;
+  font-weight: 500;
+}
+#unread:hover {
+  background-color: #FFFFc7;
+}
+#subject {
+  width: 90%;
+  overflow: hidden;
+  text-align: left;
+}
+table thead tr th, table tfoot tr th,
+table tfoot tr td, table tbody tr th,
+table tbody tr td, table tr td {
+  text-align: inherit;
+}
+.conversation-form {
+  margin-top: 30px;
+}

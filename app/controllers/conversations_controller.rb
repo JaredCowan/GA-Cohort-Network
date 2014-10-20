@@ -1,6 +1,10 @@
 class ConversationsController < ApplicationController
   helper_method :mailbox, :conversation
 
+  def index
+    @inbox ||= current_user.mailbox.inbox
+  end
+
   def create
     recipient_emails = conversation_params(:recipients).split(',')
     recipients = User.where(email: recipient_emails).all
@@ -14,6 +18,7 @@ class ConversationsController < ApplicationController
 
   def reply
     current_user.reply_to_conversation(conversation, *message_params(:body, :subject))
+    conversation.mark_as_read(current_user)
     redirect_to :conversation
   end
 
@@ -24,7 +29,7 @@ class ConversationsController < ApplicationController
   end
 
   def untrash
-    conversation.mark_as_unread(current_user)
+    # conversation.mark_as_unread(current_user)
     conversation.untrash(current_user)
     redirect_to :conversations
   end

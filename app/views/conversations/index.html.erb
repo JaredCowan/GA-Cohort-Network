@@ -1,33 +1,70 @@
-<%= render 'convo_top_navbar' %>
-
 <div class="row">
-  <div class="small-6 large-6 columns">
-    <% if has_unread? %>
-    <h2> Inbox <span class="label"><%= unread_message_count %> unread</span></h2>
-    <% else %>
-    <h2> Inbox </h2>
-    <% end %>
-    <div id="mailbox">
-      <%= render collection: mailbox.inbox, partial: 'conversation' %>
-    </div>
-  </div>
+  <div class="large-12 medium-12 small-12 columns">
+    <div class="tabs tabs-style-tzoid">
+      <nav>
+        <ul>
+          <li>
+            <a href="#section-tzoid-1" class="">
+              <span>
+                <% if has_unread? %>
+                  <%= "Inbox" %>
+                  <span class="label alert radius">
+                    <%= unread_message_count %>
+                    <%= "Unread" %>
+                  </span>
+                <% else %>
+                  <%= "Inbox" %>
+                <% end %>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#section-tzoid-2" class="">
+              <span>Sent</span>
+            </a>
+          </li>
+          <li>
+            <a href="#section-tzoid-3" class="">
+              <span>Trash</span>
+            </a>
+          </li>
+          <li>
+            <a href="#section-tzoid-4" class="">
+              <span>Compose</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="content-wrap activity" id="convo">
 
-  <div class="small-6 large-6 columns">
-    <dl class="tabs" data-tab>
-      <dd class="active"><a href="#panel1">Sentbox</a></dd>
-      <dd><a href="#panel2">Trash</a></dd>
-    </dl>
-    <div class="tabs-content">
-      <div class="content active" id="panel1">
-        <div id="mailbox">
-          <%= render collection: mailbox.sentbox, partial: 'conversation' %>
-        </div>
-      </div>
-      <div class="content" id="panel2">
-        <div id="mailbox">
-          <%= render collection: mailbox.trash, partial: 'conversation' %>
-          <%= "You have no delete conversations" if current_user.mailbox.trash.count <= 0 %>
-        </div>
+        <section id="section-tzoid-1">
+            <%= render "conversation" %>
+          <% if current_user.mailbox.inbox.count <= 0 %>
+            <div class="alert-box alert radius">
+              <%= "You have no conversations" %>
+            </div>
+          <% end %>
+        </section>
+
+        <section id="section-tzoid-2">
+            <%= render "sent" %>
+          <% if current_user.mailbox.sentbox.count <= 0 %>
+            <div class="alert-box alert radius">
+              <%= "You have no conversations" %>
+            </div>
+          <% end %>
+        </section>
+
+        <section id="section-tzoid-3">
+          <%= render "trash" %>
+          <div class="alert-box alert radius">
+            <%= "You have no deleted conversations" if current_user.mailbox.trash.count <= 0 %>
+          </div>
+        </section>
+
+        <section id="section-tzoid-4">
+          <%= render "form" %>
+        </section>
       </div>
     </div>
   </div>

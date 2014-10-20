@@ -152,4 +152,14 @@ module ApplicationHelper
     end
   end
 
+  def convo_subject(convo)
+    convo.subject.titleize
+  end
+
+  def convo_link(convo)
+    conversation_path(convo)
+  end
+
+
+
 end

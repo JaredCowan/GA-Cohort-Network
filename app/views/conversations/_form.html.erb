@@ -1,7 +1,11 @@
-<%= simple_form_for :conversation, url: :conversations do |f| %>
-  <%= collection_select(:conversation, :recipients, User.all, :email, :name_with_initial, prompt: true) %>
-  <%= f.input :subject %>
-  <%= f.input :body, as: :text %>
-  <%= f.button :submit, class: 'button' %>
-  <%= f.button :submit, 'Clear Form', type: :reset, class: 'button alert' %>
-<% end %>
+<div class="row">
+  <div class="large-9 medium-9 small-11 large-centered medium-centered small-centered columns conversation-form">
+    <%= simple_form_for :conversation, url: :conversations do |f| %>
+      <%= collection_select(:conversation, :recipients, User.all, :email, :name_with_initial, prompt: true) %>
+      <%= f.input :subject %>
+      <%= f.input :body, as: :text %>
+      <%= f.button :submit, class: 'button' %>
+      <%= f.button :submit, 'Clear Form', type: :reset, class: 'button alert' %>
+    <% end %>
+  </div>
+</div>
