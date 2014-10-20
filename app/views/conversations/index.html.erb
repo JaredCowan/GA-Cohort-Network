@@ -57,9 +57,11 @@
 
         <section id="section-tzoid-3">
           <%= render "trash" %>
-          <div class="alert-box alert radius">
-            <%= "You have no deleted conversations" if current_user.mailbox.trash.count <= 0 %>
-          </div>
+          <% if current_user.mailbox.trash.count <= 0 %>
+            <div class="alert-box alert radius">
+              <%= "You have no deleted conversations" %>
+            </div>
+          <% end %>
         </section>
 
         <section id="section-tzoid-4">

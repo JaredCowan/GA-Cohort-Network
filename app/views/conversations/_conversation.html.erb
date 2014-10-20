@@ -4,7 +4,7 @@
       <th width="75">From</th>
       <th width="325">Subject</th>
       <th width="40">Time</th>
-      <th width="50">Delete</th>
+      <th width="50">Options</th>
     </tr>
   </thead>
   <tbody>
@@ -27,7 +27,7 @@
           <% if Date.today > convo.messages.last.created_at %>
             <%=  convo.messages.last.created_at.strftime("%D") %>
           <% else %>
-           <%=  convo.messages.last.created_at.strftime("%l:%M %p") %>  
+           <%=  convo.messages.last.created_at.strftime("%l:%M %p") %>   
           <% end %>
         </td>
         <td>

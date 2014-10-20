@@ -4,12 +4,11 @@
       <th width="75">From</th>
       <th width="325">Subject</th>
       <th width="40">Time</th>
-      <th width="50">Delete</th>
+      <th width="50">Options</th>
     </tr>
   </thead>
   <tbody>
     <% current_user.mailbox.trash.each do |convo| %>
-      <%# convo.receipts.where(trashed: true).each do |sent| %>
 
         <tr class="conversation-table-row" id="<%= convo.receipts.where(is_read: false, receiver_id: current_user.id).count > 0 ? "unread" : "read" %>">
           <td class="conversation-font"><%= convo.recipients.first.full_name %>
@@ -34,8 +33,12 @@
           </td>
           <td>
             <% if convo.is_completely_trashed?(current_user) %>
-              <%= link_to 'Un', untrash_conversation_path(convo), method: :post %>
-              <%= link_to 'DE', perm_trash_conversation_path(convo), method: :post %>
+            <span data-tooltip aria-haspopup="true" class="has-tip tip-left radius" title="Move back to inbox.">
+              <%= link_to '<i class="fi-plus"></i>'.html_safe, untrash_conversation_path(convo), method: :post %>
+            </span>
+            <span data-tooltip aria-haspopup="true" class="has-tip tip-left radius" title="Permently delete this message.">
+              <%= link_to '<i class="fi-x-circle"></i>'.html_safe, perm_trash_conversation_path(convo), method: :post %>
+           </span>
             <% else %>
               <%= link_to '<i class="fi-trash"></i>'.html_safe, trash_conversation_path(convo), class: 'move-to-trash conversation-font', method: :post %> 
             <% end %>
@@ -44,7 +47,6 @@
         <ul id="hover<%= convo.id %>" class="f-dropdown" data-dropdown-content>
           <li><a href="#">DropDown</a></li>
         </ul>
-      <%# end %>
     <% end %>
   </tbody>
 </table>
