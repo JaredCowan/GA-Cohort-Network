@@ -1,5 +1,5 @@
 
-@font-face {
+/*@font-face {
   font-weight: normal;
   font-style: normal;
   font-family: 'stroke7pixeden';
@@ -8,7 +8,7 @@
     url('../fonts/stroke7pixeden/stroke7pixeden.woff?u58ytb') format('woff'),
     url('../fonts/stroke7pixeden/stroke7pixeden.ttf?u58ytb') format('truetype'),
     url('../fonts/stroke7pixeden/stroke7pixeden.svg?u58ytb#stroke7pixeden') format('svg');
-}
+}*/
 
 .tabs {
   position: relative;
@@ -1056,11 +1056,11 @@
   transition: color 0.2s;
 }
 
-@media screen and (max-width: 54em) {
+/*@media screen and (max-width: 54em) {
   .tabs-style-tzoid nav ul li a {
     padding: 0 0.5em 0 0.3em;
   }
-}
+}*/
 
 .tabs-style-tzoid nav ul li a:hover,
 .tabs-style-tzoid nav ul li a:focus {

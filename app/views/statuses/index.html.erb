@@ -1,58 +1,92 @@
 <%= render :partial => "topnavforum" %>
 <div class="row">
-  <div class="small-9 small-centered columns">
+  <div class="large-9 medium-9 small-12 small-centered columns">
     <% @statuses.each do |status| %>
       <% if can_display_status?(status) %>
-        <div class="panel" id="forum-index">
-          <strong><%= link_to status.user.full_name, profile_page_path(status.user) %></strong>
-          <ul class="no-bullet">
-           <em><%= link_to "Posted\s" + time_ago_in_words(status.created_at) + "\sago", status %></em>
-           <em> <br />
-             <%= link_to(status.comments.length.to_s + "\s comments", status) %>
-           </em>
-          </ul>
-          <div class="like-dislike">
-            <div class="icon-bar four-up">
+        <div class="status-div">
+          <div class="status-div-content">
+            <%= link_to avatar_url, user_path(status.user) %>
+            <span class="status-div-user-top-span">
+              <%= link_to status.user.full_name, user_path(status.user), class: "status-user-name" %>
+              <span class="status-time-ago">
+                <%= time_ago_in_words(status.created_at) + "\sago" %>
+              </span>
+              <span class="status-posted-time">
+                <%= status.created_at.strftime("%D at %l:%H %P") %>
+              </span>
+            </span>
+          </div>
+          <div class="large-12 medium-12 small-11 user-status-post-content">
+            <article>
+              <%= truncate(status.content, length: 400){ link_to "Read More", status_path(status) } %>
+            </article>
+            <% if status.document && status.document.attachment? && status.document.valid? %>
+              <hr>
+              <div class="row">
+                <div class="large-7 medium-7 small-10 large-centered medium-centered small-centered columns">
+                  <ul class="clearing-thumbs" data-clearing>
+                    <li>
+                      <a href="<%= status.document.attachment.url %>">
+                        <img id="status-images" src="<%= status.document.attachment.url %>"/>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <span class="status-icon-bar">
+            <div class="icon-bar three-up">
               <% if current_user.voted_up_on? status %>
-
-                <a href=" <%= "/statuses/"+ status.id.to_s + "/dislike" %>" action="downvote" data-method="put" class="item like-dislike">
-                <i class="fi-heart" id="red"></i>
-                <label>Liked</label>
-                </a>
-
-              <% else %>
-
-                <a href=" <%= "/statuses/"+ status.id.to_s + "/like" %>" action="upvote" data-method="put"  class="item like-dislike">
-                  <i class="fi-heart"></i>
-                  <label>Like</label>
-                </a>
-
+                <span id="view-heart">
+                  <a href=" <%= "/statuses/"+ status.id.to_s + "/dislike" %>" action="downvote" data-method="put" class="item like-dislike">
+                  <i class="fi-heart" id="red"></i>
+                  <label>Liked</label>
+                  </a>
+                </span>
+                <% else %>
+                <span id="view-heart">
+                  <a href=" <%= "/statuses/"+ status.id.to_s + "/like" %>" action="upvote" data-method="put"  class="item like-dislike">
+                    <i class="fi-heart"></i>
+                    <label>Like</label>
+                  </a>
+                </span>
               <% end %>
-
-              <a href=" <%= "/statuses/" + status.id.to_s %>" class="item like-dislike">
-                <i class="fi-info"></i>
-                <label>View Question</label>
-              </a>
-
-              <a href=" <%= "/statuses/" + status.id.to_s %>" class="item like-dislike">
-                <i class="fi-comments"></i>
-                <label><%= pluralize(status.comments.length.to_s, 'comment') %></label>
-              </a>
-
-              <a href="#" class="item like-dislike">
-                <i class="fi-lock"></i>
-                <label>Mark As Solved</label>
-              </a>
+              <span id="view-eye">
+                <a href=" <%= "/statuses/" + status.id.to_s %>" class="item like-dislike">
+                  <i class="fi-eye"></i>
+                  <label>View Status</label>
+                </a>
+              </span>
+              <span id="view-comments">
+                <a href=" <%= "/statuses/" + status.id.to_s %>" class="item like-dislike">
+                  <i class="fi-comments"></i>
+                  <label><%= pluralize(status.comments.length.to_s, 'comment') %></label>
+                </a>
+              </span>
+            </div>
+          </span>
+        </div>
+          <div class="status-div-comment-form">
+        <div class="row">
+          <div class="large-12 medium-12 small-12 columns">
+              <%= simple_form_for([status, status.comments.build]) do |f| %>
+                <div class="large-9 medium-9 small-12 columns">
+                  <%= f.text_area :body, class: "status-div-textarea" %>
+                  <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }  %>
+                </div>
+                   <div class="large-3 medium-3 small-7 columns">
+                    <input class="button radius" name="commit" type="submit" value="Comment">
+                  </div>
+              <% end %>
             </div>
           </div>
-          <ul class="inline-list">
-            <li> <%= "Liked by\s" + pluralize(status.get_likes.size, 'person') %> </li>
-          </ul>
         </div>
       <% end %>
     <% end %>
   </div>
 </div>
+
 
 <div class="pagination-centered">
   <ul class="pagination">

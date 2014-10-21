@@ -47,13 +47,11 @@ module ApplicationHelper
 
   def message_name
     if conversation.recipients.length >= 2
-      if current_user.first_name != nil && conversation.recipients[0].first_name == current_user.first_name
-         "Your conversation with\s" + conversation.recipients[1].first_name +
-                               "\s" + conversation.recipients[1].last_name
-                               
-       elsif current_user.first_name != nil && conversation.recipients[1].first_name == current_user.first_name
-         "Your conversation with\s" + conversation.recipients[0].first_name +
-                               "\s" + conversation.recipients[0].last_name
+      if current_user.full_name != nil && conversation.recipients[0].full_name == current_user.full_name
+         "Your conversation with<br>".html_safe + conversation.recipients[1].full_name
+
+      elsif current_user.full_name != nil && conversation.recipients[1].full_name == current_user.full_name
+         "Your conversation with<br>".html_safe + conversation.recipients[0].full_name
       end
     else
       # Display none if no recipients of message

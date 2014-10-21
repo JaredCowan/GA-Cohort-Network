@@ -5,6 +5,8 @@
 //= require fullcalendar
 //= require_tree .
 
+
+
 // =================================
 // Start activities API
 // =================================
@@ -129,19 +131,19 @@ var id; // instantiate the variable for our mobile navbar menu fix
 // });
 
 function isMobile() {
-  if(window.innerWidth <= 600) {
+  // if(window.innerWidth <= 600) {
 
-    $(".left-off-canvas-toggle").tap(function() {
-    $(".off-canvas-wrap").addClass("move-right");
+  //   $(".left-off-canvas-toggle").tap(function() {
+  //   $(".off-canvas-wrap").addClass("move-right");
 
-  });
+  // });
 
-    $(".right-off-canvas-toggle").tap(function() {
-    $(".off-canvas-wrap").addClass("move-left");
+  //   $(".right-off-canvas-toggle").tap(function() {
+  //   $(".off-canvas-wrap").addClass("move-left");
 
-  });
+  // });
 
-  } else {
+  // } else {
 
     $(".left-off-canvas-toggle").hover(function() {
     $(".off-canvas-wrap").addClass("move-right");
@@ -151,8 +153,12 @@ function isMobile() {
     $(".right-off-canvas-toggle").hover(function() {
     $(".off-canvas-wrap").addClass("move-left");
   });
-}};
+// }
+};
 isMobile();
+
+// statusTime();
+
 
 // =================================
 // End mobile navbar fix
@@ -243,7 +249,7 @@ $(document).ready( function() {
   CBPFWTabs.prototype._initEvents = function() {
     var self = this;
     this.tabs.forEach( function( tab, idx ) {
-      tab.addEventListener( 'mouseover', function( ev ) {
+      tab.addEventListener( 'click', function( ev ) {
         $('#calendar').fullCalendar('render');
         ev.preventDefault();
         self._show( idx );
@@ -267,3 +273,4 @@ $(document).ready( function() {
 })( window );
 
 //=============================================== 
+

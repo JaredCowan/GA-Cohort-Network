@@ -47,11 +47,13 @@ class StatusesController < ApplicationController
     respond_to do |format|
       if @status.save
         current_user.create_activity(@status, 'created')
-        format.html { redirect_to :back, notice: 'Status was successfully created.' }
+        format.html { redirect_to :back }
         format.json { render json: @status, status: :created, location: @status }
+        flash[:success] = "Status was successfully created."
       else
-        format.html { redirect_to :back, notice: "#{@status.errors.count} error(s) prohibited this status from being saved: #{@status.errors.full_messages.join(', ')}" }
+        format.html { redirect_to :back }
         format.json { render json: @status.errors, status: :unprocessable_entity }
+        flash[:alert] = "#{@status.errors.count} error(s) prohibited this status from being saved: #{@status.errors.full_messages.join(', ')}"
       end
     end
   end
@@ -87,8 +89,9 @@ class StatusesController < ApplicationController
 
     respond_to do |format|
       if @status.destroy
-        format.html { redirect_to :back, notice: 'Status was successfully deleted.' }
+        format.html { redirect_to :back }
         format.json { head :no_content }
+        flash[:success] = "Status was successfully deleted."
       else
         format_generic_error("index")
       end

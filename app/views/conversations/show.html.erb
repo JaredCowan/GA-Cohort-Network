@@ -1,19 +1,21 @@
-<%= render 'convo_top_navbar' %>
-<%= render 'reply', conversation: conversation %>
-
 <div class="row">
-  <div class="small-10 small-centered columns">
+  <div class="large-9 medium-10 small-12 small-centered columns activity">
+    <%= render 'convo_top_navbar' %>
+    <%= render 'reply', conversation: conversation %>
     <div class="panel">
       <%= content_tag_for(:li, conversation.receipts_for(current_user), class: 'inline-list') do |receipt| %>
       <%= content_tag_for(:li, message = receipt.message, class: 'inline-list') %>
         <% message = receipt.message %>
         <% receipt.mark_as_read %> 
-        <h3> <%= "From:\s" + message.sender.full_name.titleize %> </h3>
-        <h3> <%= "Subject:\t" + message.subject.titleize %> </h3>
-        <h3> <%#= message.is_read?(current_user) %>  </h3>
+        <h3>
+          <%= avatar_url %>
+          <%= link_to message.sender.full_name, user_path(message.sender.id) %> 
+        </h3>
         <hr>
-        <h3> <%= "Body:\n\t" %> </h3>
-        <p> <%= message.body %>  </p>
+        <article id="message-body">
+          <%= message.body %>
+        </article>
+          <%= message.created_at.strftime("%l:%H %P %D") %>
         <hr>
       <% end %>
     </div>

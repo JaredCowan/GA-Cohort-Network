@@ -50,14 +50,15 @@
           <%= link_to comment.user.full_name, comment.user %> <br />
           <%= avatar_url %>
           <%= comment.body %> <br />
-          <%= time_ago_in_words(@status.created_at).titleize + "\sAgo On\s" + @status.created_at.strftime('%a %b %d %Y') %> <br />
+          <%= time_ago_in_words(comment.created_at).titleize + "\sAgo On\s" + @status.created_at.strftime('%a %b %d %Y') %> <br />
           <hr>
+
+    <!--       <a class="button alert" data-method="delete" href="/statuses/<%#= @status.id %>/comments/<%#= comment.id %>" rel="nofollow">Delete Post</a> -->
+
         <% end %>
       <% end %>
     <div>
-
     <%= simple_form_for([@status, @status.comments.build]) do |f| %>
-
       <%= f.text_area :body %>
       <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }  %>
       <center>
@@ -66,6 +67,7 @@
     <% end %>
   </div>
 </div>
+
 <!-- Start Edit Modal  -->
   <%= render 'edit_modal' %>
 <!-- End Edit Modal -->
@@ -73,3 +75,7 @@
 <!-- Start Delete Modal -->
   <%= render 'delete_modal' %>
 <!-- End Delete Modal -->
+
+<!-- Reveal Modals begin -->
+  <%= render 'new_modal' %>
+<!-- End Reveal Modals -->

@@ -16,6 +16,20 @@ class CommentsController < ApplicationController
     end
   end
 
+   def destroy
+    @comment = current_user.comments.find(params[:id])
+
+    respond_to do |format|
+      if @comment.destroy
+        format.html { redirect_to :back }
+        format.json { head :no_content }
+        flash[:success] = "Comment was successfully deleted."
+      else
+        format_generic_error("index")
+      end
+    end
+  end
+
   private 
     def comment_params
       params.require(:comment).permit(:body, :user_id, :id, :question_id, :status_id)

@@ -110,7 +110,7 @@ $font-smoothing: antialiased;
 $text-direction: ltr;
 $opposite-direction: right;
 $default-float: left;
-$last-child-float: $opposite-direction;
+// $last-child-float: $opposite-direction;
 
 // We use these as default colors throughout
 $primary-color: #008CBA;
@@ -1296,22 +1296,22 @@ $alert-transition-ease: ease-out;
 // 31. Tabs
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-$include-html-tabs-classes: $include-html-classes;
+// $include-html-tabs-classes: $include-html-classes;
 
-$tabs-navigation-padding: rem-calc(16);
-$tabs-navigation-bg-color: $white;
-$tabs-navigation-active-bg-color: $aluminum;
-$tabs-navigation-hover-bg-color: scale-color($tabs-navigation-bg-color, $lightness: -6%);
-$tabs-navigation-font-color: $jet;
-$tabs-navigation-active-font-color: $tabs-navigation-font-color;
-$tabs-navigation-font-size: rem-calc(16);
-$tabs-navigation-font-family: $body-font-family;
+// $tabs-navigation-padding: rem-calc(16);
+// $tabs-navigation-bg-color: $white;
+// $tabs-navigation-active-bg-color: $aluminum;
+// $tabs-navigation-hover-bg-color: scale-color($tabs-navigation-bg-color, $lightness: -6%);
+// $tabs-navigation-font-color: $jet;
+// $tabs-navigation-active-font-color: $tabs-navigation-font-color;
+// $tabs-navigation-font-size: rem-calc(16);
+// $tabs-navigation-font-family: $body-font-family;
 
 
-$tabs-content-margin-bottom: rem-calc(24);
+// $tabs-content-margin-bottom: rem-calc(24);
 // $tabs-content-padding: $column-gutter/2;
 
-$tabs-vertical-navigation-margin-bottom: 1.25rem;
+// $tabs-vertical-navigation-margin-bottom: 1.25rem;
 
 // 32. Thumbnails
 // - - - - - - - - - - - - - - - - - - - - - - - - -
