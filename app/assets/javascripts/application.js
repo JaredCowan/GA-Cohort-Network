@@ -157,7 +157,21 @@ function isMobile() {
 };
 isMobile();
 
-// statusTime();
+
+
+$("#view-heart").click(function() {
+  var id = this.getElementsByTagName('sub')[0].innerHTML
+
+  if ($( "#test" ).hasClass( "red" )) {
+    $(this).replaceWith('<span id="view-heart"><a href="' + window.location.href + "/" + id + "/like" + '" action="upvote" data-method="put" class="item like-dislike" data-type="json" data-remote="true"><i class="fi-heart" id="test"></i><label>Like</label></a></span>');
+    $( "#test" ).removeClass( 'red' );
+  } else {
+    $(this).replaceWith('<span id="view-heart"><a href="' + window.location.href + "/" + id + "/dislike" + '" action="downvote" data-method="put" class="item like-dislike" data-type="json" data-remote="true"><i class="fi-heart red" id="test"></i><label>Liked</label></a></span>');
+    // $( "#test" ).addClass( 'red' );
+  }
+// $( "#test" ).toggleClass( 'red', 'red' );
+// $(this).replaceWith('<span id="view-heart"><a href="' + window.location.href + "/" + id + "/dislike" + '" action="downvote" data-method="put" class="item like-dislike" data-type="json" data-remote="true"><i class="fi-heart red" id="test"></i><label>Liked</label></a></span>');
+});
 
 
 // =================================
