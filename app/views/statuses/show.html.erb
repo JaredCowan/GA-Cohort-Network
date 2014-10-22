@@ -36,17 +36,16 @@
       </div>
     <% end %>
   <hr>
-  </div>
-  </div>
-
-  <br>
-  <br>
-
-  <div class="row">
-    <div class="small-9 small-centered columns activity">
-      <hr>
+  <form accept-charset="UTF-8" action="/statuses/5/comments" class="simple_form new_comment" id="new_comment" method="post" novalidate="novalidate"><div style="display:none"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value=""></div>
+      <textarea id="comment_body" name="comment[body]"></textarea>
+      <div class="input hidden comment_user_id"><input class="hidden" id="comment_user_id" name="comment[user_id]" type="hidden" value="17"></div>
+      <center>
+        <input class="button radius" name="commit" type="submit" value="Post comment">
+      </center>
+</form>
+  
       <% if @status.comments.length > 0 %>
-        <% @status.comments.each do |comment| %>
+        <% @status.comments.reverse.each do |comment| %>
           <%= link_to comment.user.full_name, comment.user %> <br />
           <%= avatar_url %>
           <%= comment.body %> <br />
@@ -57,14 +56,15 @@
 
         <% end %>
       <% end %>
-    <div>
-    <%= simple_form_for([@status, @status.comments.build]) do |f| %>
-      <%= f.text_area :body %>
-      <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }  %>
-      <center>
+<%#= simple_form_for([@status, @status.comments.build]) do |f| %>
+      <%#= f.text_area :body %>
+      <%#= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }  %>
+<!--       <center>
         <input class="button radius" name="commit" type="submit" value="Post comment">
-      </center>
-    <% end %>
+      </center> -->
+    <%# end %>
+    <div>
+    
   </div>
 </div>
 

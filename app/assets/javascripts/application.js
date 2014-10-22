@@ -157,43 +157,34 @@ function isMobile() {
 };
 isMobile();
 
+// =================================
+// End mobile navbar fix
+// =================================
 
 
-$("#view-heart a").click(function() {
-  var id = this.getElementsByTagName('sub')[0].innerHTML
-
-  if ($( "#test" ).hasClass( "red" )) {
-    $( "#test" ).removeClass( 'red' );
-    $(this).replaceWith('<span id="view-heart"><a href="' + window.location.href + "/" + id + "/like" + '" action="upvote" data-method="put" class="item like-dislike" data-type="json" data-remote="true"><i class="fi-heart" id="test"></i><label>Like</label></a></span>');
-  } else {
-    $(this).replaceWith('<span id="view-heart"><a href="' + window.location.href + "/" + id + "/dislike" + '" action="downvote" data-method="put" class="item like-dislike" data-type="json" data-remote="true"><i class="fi-heart red" id="test"></i><label>Liked</label></a></span>');
-  }
-
-});
-
-
-// $('#view-heart').on("click", "a", function(event) {
-//   console.log(this);
+// $("#view-heart a").click(function() {
 //   var id = this.getElementsByTagName('sub')[0].innerHTML
-//   event.preventDefault();
-//   $('#view-heart').replaceWith('<span id="view-heart"><a href="' + window.location.href + "/" + id + "/dislike" + '" action="downvote" data-method="put" class="item like-dislike" data-type="json" data-remote="true"><i class="fi-heart red" id="test"></i><label>Liked</label></a></span>');
-// });
 
+//   if ($( "#test" ).hasClass( "red" )) {
+//     $( "#test" ).removeClass( 'red' );
+//     $(this).replaceWith('<span id="view-heart"><a href="' + window.location.href + "/" + id + "/like" + '" action="upvote" data-method="put" class="item like-dislike" data-type="json" data-remote="true"><i class="fi-heart" id="test"></i><label>Like</label></a></span>');
+//   } else {
+//     $(this).replaceWith('<span id="view-heart"><a href="' + window.location.href + "/" + id + "/dislike" + '" action="downvote" data-method="put" class="item like-dislike" data-type="json" data-remote="true"><i class="fi-heart red" id="test"></i><label>Liked</label></a></span>');
+//   }
+
+// });
 
 
 //  ===============================================
 
-$( ".new_comment" ).submit(function( event ) {
-  setTimeout(function () {
-    $( "textarea" ).val( ' ' ).delay( 800 ).fadeIn( 400 );
-    event.preventDefault();
-  }, 100);
-});
+// $( ".new_comment" ).submit(function( event ) {
+//   setTimeout(function () {
+//     $( "textarea" ).val( ' ' ).delay( 100 ).fadeIn( 400 );
+//     event.preventDefault();
+//   }, 1100);
+// });
 
 
-// =================================
-// End mobile navbar fix
-// =================================
 
 // =================================
 // Fade alert box

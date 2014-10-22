@@ -19,14 +19,7 @@
           <div class="large-12 medium-12 small-11 user-status-post-content">
             <article>
               <%= truncate(status.content, length: 400){ link_to "Read More", status_path(status) } %>
-              <!-- Just testing -->
-               <%#= link_to 'like post', like_status_path(status.id), method: :put, remote: true %>
-               <%#= link_to 'like post', dislike_status_path(status.id), method: :put, remote: true %>
-               <!--  -->
             </article>
-            <!-- Just testing -->
-            <%#= link_to "Upvote", {:controller =>"statuses", :action => "upvote", :id => status.id}, :class => 'button', method: :put, remote: true, data: { type: :json } %>
-            <!--  -->
             <% if status.document && status.document.attachment? && status.document.valid? %>
               <hr>
               <div class="row">
@@ -46,7 +39,7 @@
             <div class="icon-bar three-up">
               <% if current_user.voted_up_on? status %>
                 <span id="view-heart">
-                  <a href=" <%= "/statuses/"+ status.id.to_s + "/dislike" %>" action="downvote" data-method="put" class="item like-dislike" data-type="json" data-remote="true">
+                  <a href=" <%= "/statuses/"+ status.id.to_s + "/dislike" %>" action="downvote" data-method="put" class="item like-dislike">
                   <i class="fi-heart red" id="test"></i>
                   <label>Liked</label>
                   <sub><%= status.id %></sub>
@@ -54,7 +47,7 @@
                 </span>
                 <% else %>
                 <span id="view-heart">
-                  <a href=" <%= "/statuses/"+ status.id.to_s + "/like" %>" action="upvote" data-method="put" class="item like-dislike" data-type="json" data-remote="true">
+                  <a href=" <%= "/statuses/"+ status.id.to_s + "/like" %>" action="upvote" data-method="put" class="item like-dislike">
                     <i class="fi-heart" id="test"></i>
                     <label>Like</label>
                     <sub><%= status.id %></sub>
@@ -70,7 +63,7 @@
               <span id="view-comments">
                 <a href=" <%= "/statuses/" + status.id.to_s %>" class="item like-dislike">
                   <i class="fi-comments"></i>
-                  <label id="comments-count"><%= pluralize(status.comments.length.to_s, 'comment') %></label>
+                  <label><%= pluralize(status.comments.length.to_s, 'comment') %></label>
                 </a>
               </span>
             </div>
@@ -79,13 +72,13 @@
           <div class="status-div-comment-form">
         <div class="row">
           <div class="large-12 medium-12 small-12 columns status-div-textarea">
-              <%= simple_form_for([status, status.comments.build], remote: true) do |f| %>
+              <%= simple_form_for([status, status.comments.build]) do |f| %>
                 <div class="large-9 medium-9 small-12 columns">
                   <%= f.text_area :body, placeholder: "Leave a comment..", class: "status-div-textarea" %>
                   <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }  %>
                 </div>
                    <div class="large-3 medium-3 small-7 columns">
-                    <input id="status-button" class="button radius" name="commit" type="submit" value="Comment" data-type="json" data-remote="true" data-method="put">
+                    <input id="status-button" class="button radius" name="commit" type="submit" value="Comment" data-method="put">
                   </div>
               <% end %>
             </div>
