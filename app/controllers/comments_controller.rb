@@ -10,8 +10,10 @@ class CommentsController < ApplicationController
         current_user.create_activity(@comment, 'created')
         format.html { redirect_to status_path(@status, location: @comment)}
         format.json { render json: @status, comment: :created }
+        flash[:success] = "Comment was added."
       else
         format.html { redirect_to status_path(@status)}
+        flash[:alert] = "There was a problem with submitting your comment."
       end
     end
   end
@@ -26,6 +28,7 @@ class CommentsController < ApplicationController
         flash[:success] = "Comment was successfully deleted."
       else
         format_generic_error("index")
+        flash[:alert] = "There was a problem with submitting your comment."
       end
     end
   end

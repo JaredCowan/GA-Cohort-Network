@@ -70,7 +70,7 @@
               <span id="view-comments">
                 <a href=" <%= "/statuses/" + status.id.to_s %>" class="item like-dislike">
                   <i class="fi-comments"></i>
-                  <label><%= pluralize(status.comments.length.to_s, 'comment') %></label>
+                  <label id="comments-count"><%= pluralize(status.comments.length.to_s, 'comment') %></label>
                 </a>
               </span>
             </div>
@@ -78,14 +78,14 @@
         </div>
           <div class="status-div-comment-form">
         <div class="row">
-          <div class="large-12 medium-12 small-12 columns">
-              <%= simple_form_for([status, status.comments.build]) do |f| %>
+          <div class="large-12 medium-12 small-12 columns status-div-textarea">
+              <%= simple_form_for([status, status.comments.build], remote: true) do |f| %>
                 <div class="large-9 medium-9 small-12 columns">
                   <%= f.text_area :body, placeholder: "Leave a comment..", class: "status-div-textarea" %>
                   <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }  %>
                 </div>
                    <div class="large-3 medium-3 small-7 columns">
-                    <input class="button radius" name="commit" type="submit" value="Comment">
+                    <input id="status-button" class="button radius" name="commit" type="submit" value="Comment" data-type="json" data-remote="true" data-method="put">
                   </div>
               <% end %>
             </div>
