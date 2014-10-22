@@ -28,6 +28,9 @@ html {
 .tab-bar {
   margin-bottom: 60px;
 }
+.fi-plus:before, .fi-x-circle:before {
+  zoom: 1.5;
+}
 .clearing-close {
   right: 70px;
 }

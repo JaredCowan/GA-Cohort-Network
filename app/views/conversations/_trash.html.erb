@@ -33,10 +33,10 @@
           </td>
           <td>
             <% if convo.is_completely_trashed?(current_user) %>
-            <span data-tooltip aria-haspopup="true" class="has-tip tip-left radius" title="Move back to inbox.">
+            <span data-tooltip aria-haspopup="true" class="has-tip tip-top radius" title="Move back to inbox.">
               <%= link_to '<i class="fi-plus"></i>'.html_safe, untrash_conversation_path(convo), method: :post %>
             </span>
-            <span data-tooltip aria-haspopup="true" class="has-tip tip-left radius" title="Permently delete this message.">
+            <span data-tooltip aria-haspopup="true" class="has-tip tip-top radius" title="Permently delete this message.">
               <%= link_to '<i class="fi-x-circle"></i>'.html_safe, perm_trash_conversation_path(convo), method: :post %>
            </span>
             <% else %>
