@@ -12,7 +12,7 @@
       <%= link_to User.find(l.instructor).full_name, user_path(l.instructor) %> is teaching  <%= link_to l.title, lesson_path(l) %> in classroom <%= l.classroom %> <%= l.start.strftime("at %l:%M%p on %D") %>
     </span>
     <article class="calendar-body">
-    Assistant: <%= link_to User.find(l.assistant).full_name %>
+    Assistant: <%= link_to User.find(l.assistant).full_name, user_path(l.assistant) %>
     <br>
       Subject: <%= l.subject %>
     <br>

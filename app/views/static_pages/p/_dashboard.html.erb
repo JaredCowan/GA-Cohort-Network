@@ -56,7 +56,7 @@
           <%= link_to tag.name, tag_path(tag.name), class: css_class %>
         <% end %>
       </div>
-      <% @questions.each do |q| %>
+      <% @questions.limit(9).each do |q| %>
         <div class="dashboard-content-wrapper" id="dashboard-answer-title">
           <span class="dashboard-content-title">
             <h5><%= link_to q.user.full_name, user_path(q.user) %> asked a <%= link_to "new question", question_path(q) %></h5>
