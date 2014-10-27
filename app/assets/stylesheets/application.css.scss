@@ -748,7 +748,27 @@ ul.off-canvas-list li {
 #answer-edit-button {
   float: right;
 }
-
+// Custom button styles
+.btn-black {
+  color: #000;
+  background-color: #e1e2e3;
+}
+.btn-black:hover {
+  color: #fff;
+  background-color: #333333;
+}
+.btn-warning { 
+  background-color: #f08a24;
+}
+.btn-warning:hover {
+  background-color: rgb(224,122,20);
+}
+.f-dropdown {
+  width: auto;
+  border-radius: 5px;
+  box-shadow: 4px 5px 3px #ddd;
+}
+// End custom button styles
 
 
 
