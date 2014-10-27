@@ -158,6 +158,8 @@ module ApplicationHelper
     conversation_path(convo)
   end
 
-
+  def dashboard_questions_count(question)
+    pluralize(question.answers.count.to_s, "Answer" )
+  end
 
 end

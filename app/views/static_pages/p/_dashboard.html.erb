@@ -5,21 +5,43 @@
       <hr>
       <!-- current_user.questions.empty? ||  -->
         <%# if !current_user.questions.empty? %>
-          <div data-alert class="alert-box radius alert">
-            <!-- <a href="#" class="close"></a> -->
-            Ask some questions and when someone post an answer you'll see them here. <br><br>
-            <%= link_to("Join the community and ask!", questions_url, class: "button radius") %>
+          <div data-alert class="alert-box radius alert dashboard-alert">
+            <span class="dashboard-alert-text"> Ask some questions and when someone post an answer, you'll see them here. <br><br>
+            </span>
+            <%= link_to("Join the community and ask!", questions_url, class: "button radius dashboard-join-button") %>
           </div>
         <%# end %>
       <% current_user.questions.limit(3).each do |question| %>
         <% question.answers.order("created_at DESC").limit(3).each do |ans| %>
-          <div class="panel callout radius" id="dashboard-answer-title">
-            <h5><%= link_to ans.user.full_name, user_path(ans.user) %> commented on <%= link_to "your question", Question.find(ans.question_id) %>
-            </h5>
-            <hr>
-            <article id="dashboard-answer-body">
-              <%= truncate(ans.body, length: 140) { link_to "...Read More", question_path(Question.find(ans.question_id))} %>
-            </article>
+          <div class="dashboard-content-wrapper" id="dashboard-answer-title">
+            <span class="dashboard-content-title">
+              <h5><%= link_to ans.user.full_name, user_path(ans.user) %> commented on <%= link_to "your question", Question.find(ans.question_id) %>
+              </h5>
+              </span>
+              <article id="dashboard-answer-body">
+                <span class="dashboard-answer">Answer: </span>
+                  <%= truncate(ans.body, length: 140) { link_to "...Read More", question_path(Question.find(ans.question_id))} %>
+              </article>
+            </span>
+            <span class="status-icon-bar">
+            <div class="icon-bar three-up">
+                <span id="view-eye">
+                  <a href="<%= question_path(ans.question_id) %>" class="item like-dislike">
+                    <i class="fi-eye"></i>
+                    <label>View Question</label>
+                  </a>
+                </span>
+                <span id="view-comments">
+                  <a href="<%= question_path(ans.question_id) %>" class="item like-dislike">
+                    <i class="fi-comments"></i>
+                    <label>
+                      <%= dashboard_questions_count(Question.find(ans.question_id)) %> 
+                    </label>
+                  </a>
+                </span>
+              </div>
+          <!-- </div> -->
+        <!-- </span> -->
           </div>
           <hr>
         <% end %>
@@ -35,14 +57,35 @@
         <% end %>
       </div>
       <% @questions.each do |q| %>
-        <div class="panel callout radius" id="dashboard-answer-title">
-          <h5><%= link_to q.user.full_name, user_path(q.user) %> asked a question <%= link_to "new question", question_path(q) %></h5>
-          <hr>
+        <div class="dashboard-content-wrapper" id="dashboard-answer-title">
+          <span class="dashboard-content-title">
+            <h5><%= link_to q.user.full_name, user_path(q.user) %> asked a <%= link_to "new question", question_path(q) %></h5>
+          </span>
           <article class="question-text">
-            <%= truncate("Subject:\s" + q.subject, length: 40) %><br><hr>
-            <%= truncate("Body:\s" + q.body, length: 140) { link_to "...Read More", question_path(Question.find(ans.question_id))} %>
+          <span class="dashboard-subject">Subject: </span>
+            <%= truncate(q.subject, length: 40) %><br><hr>
+          <span class="dashboard-body">Body: </span>
+            <%= truncate(q.body, length: 140) { link_to "...Read More", question_path(Question.find(ans.question_id))} %>
           </article>
-        </div>
+          <span class="status-icon-bar">
+            <div class="icon-bar three-up">
+                <span id="view-eye">
+                  <a href="<%= question_path(q) %>" class="item like-dislike">
+                    <i class="fi-eye"></i>
+                    <label>View Question</label>
+                  </a>
+                </span>
+                <span id="view-comments">
+                  <a href="<%= question_path(q) %>" class="item like-dislike">
+                    <i class="fi-comments"></i>
+                    <label>
+                      <%= dashboard_questions_count(q) %> 
+                    </label>
+                  </a>
+                </span>
+              </div>
+          </div>
+        </span>
           <hr>
       <% end %>
     </div>

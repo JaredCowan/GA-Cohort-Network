@@ -1,15 +1,3 @@
-
-/*@font-face {
-  font-weight: normal;
-  font-style: normal;
-  font-family: 'stroke7pixeden';
-  src:url('../fonts/stroke7pixeden/stroke7pixeden.eot?u58ytb');
-  src:url('../fonts/stroke7pixeden/stroke7pixeden.eot?#iefixu58ytb') format('embedded-opentype'),
-    url('../fonts/stroke7pixeden/stroke7pixeden.woff?u58ytb') format('woff'),
-    url('../fonts/stroke7pixeden/stroke7pixeden.ttf?u58ytb') format('truetype'),
-    url('../fonts/stroke7pixeden/stroke7pixeden.svg?u58ytb#stroke7pixeden') format('svg');
-}*/
-
 .tabs {
   position: relative;
   overflow: hidden;
@@ -897,6 +885,9 @@
     -webkit-flex: none;
     flex: none;
   }
+  .tabs-style-tzoid nav ul {
+    display: list-item;
+  }
 }
 
 /*****************************/
@@ -1173,4 +1164,62 @@
 
 .tabs-style-circlefill .content-wrap {
   border-top: 1px solid #2CC185;
+}
+.dashboard-content-wrapper {
+  background-color: #fff;
+  border: 1px solid #e1e2e3;
+  border-radius: 3px;
+  // min-height: 230px;
+  padding: 60px 4px 77px;
+  position: relative;
+}
+.dashboard-content-title {
+  background-color: #f6f7f8;
+  border-bottom: 1px solid #e1e2e3;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 6px;
+  min-height: 42px;
+  max-height: 60px;
+}
+/* Inherits some styles from application.css for status styles */
+.dashboard-content-wrapper > .status-icon-bar {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  span  {
+    width: 42%!important;
+  }
+}
+.dashboard-subject, .dashboard-body, 
+.dashboard-answer {
+  margin-right: 3px;
+  font-weight: 400;
+}
+#dashboard-answer-title h5{
+  color: #000!important;
+  float: left;
+}
+#dashboard-answer-body {
+  text-align: left;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+a.dashboard-join-button {
+  background-color: #e1e2e3;
+  font-weight: 400;
+  color: #000;
+}
+a.dashboard-join-button:hover {
+  background-color: #333333;
+  color: #fff;
+}
+.dashboard-alert {
+  font-size: 16px!important;
+}
+.dashboard-alert-text {
+  text-shadow: 1px 1px 1px #000;
 }
