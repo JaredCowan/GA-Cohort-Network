@@ -1194,6 +1194,16 @@
     width: 42%!important;
   }
 }
+.dashboard-content-footer {
+  position: absolute;
+  background-color: #f6f7f8;
+  border-top: 1px solid #e1e2e3;
+  padding: 10px 6px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 42px;
+}
 .dashboard-subject, .dashboard-body, 
 .dashboard-answer {
   margin-right: 3px;
@@ -1221,5 +1231,20 @@ a.dashboard-join-button:hover {
   font-size: 16px!important;
 }
 .dashboard-alert-text {
-  text-shadow: 1px 1px 1px #000;
+  text-shadow: 0 1px 1px #000;
+}
+#lesson-back {
+  font-size: 14px;
+}
+// ==================
+// Calendar
+#calendar-title {
+  color: #000;
+  font-size: 17px;
+  padding-top: 9px;
+  text-align: left;
+}
+.calendar-body {
+  text-align: left;
+  line-height: 1.6;
 }

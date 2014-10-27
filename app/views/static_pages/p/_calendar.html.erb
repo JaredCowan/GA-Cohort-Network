@@ -1,0 +1,32 @@
+<div class="large-10 medium-10 small-12 large-centered medium-centered small-centered columns">
+ <div id="calendar"></div>
+</div>
+    <div class="large-10 medium-10 small-12 large-centered medium-centered small-centered columns">
+    <h1>Lessons</h1>
+    <hr>
+    </div>
+    <br>
+<% @lessons.each do |l| %>
+  <div class="dashboard-content-wrapper">
+    <span class="dashboard-content-title" id="calendar-title">
+      <%= link_to User.find(l.instructor).full_name, user_path(l.instructor) %> is teaching  <%= link_to l.title, lesson_path(l) %> in classroom <%= l.classroom %> <%= l.start.strftime("at %l:%M%p on %D") %>
+    </span>
+    <article class="calendar-body">
+    Assistant: <%= link_to User.find(l.assistant).full_name %>
+    <br>
+      Subject: <%= l.subject %>
+    <br>
+      Title: <%= l.title %>
+    <br>
+      Description: <%= l.description %>
+    <br>
+      Start: <%= l.start.strftime("%l:%M%p %D") %>
+    <br>
+      End: <%= l.start.strftime("%l:%M%p %D") %>
+    <span class="dashboard-content-footer">
+      Created At: <%= l.created_at.strftime("%l:%M%p %D by ") %>
+      <%= link_to User.find(l.user_id).full_name, user_path(l.user_id) %>
+    </span>
+  </div>
+  <hr>
+<% end %>

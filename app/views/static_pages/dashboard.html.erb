@@ -13,20 +13,13 @@
         </ul>
       </nav>
       <div class="content-wrap activity">
-
         <section id="section-tzoid-1">
           <%= render :partial => "static_pages/p/dashboard" %>
         </section>
 
         <section id="section-tzoid-2">
           <p>Calendar</p>
-          <div class="large-9 medium-9 small-12 large-centered medium-centered small-centered columns">
-          <div id="calendar"></div>
-        </div>
-          <% @lessons.each do |l| %>
-          <%= l.inspect %>
-          <br> <br> <br> <br>
-          <% end %>
+          <%= render partial: "static_pages/p/calendar" %>
         </section>
 
         <section id="section-tzoid-3">
@@ -45,14 +38,12 @@
         <section id="section-tzoid-5">
           <p>Coming Soon!</p>
         </section>
-        <!-- <section id="section-tzoid-6"><p>Discover</p><p>Coming Soon!</p> -->
-          <%# @discover.each do |d| %>
-            <%#= d.inspect %>
-          <%# end %>
-        <!-- </section> -->
+        <!-- <section id="section-tzoid-6">
+        <p>Coming Soon!</p>
+        </section> -->
 
-        <!-- <section id="section-tzoid-7"> -->
-          <!-- <p>Coming Soon!</p>
+        <!-- <section id="section-tzoid-7">
+        <p>Coming Soon!</p>
         </section> -->
       </div>
     </div>
