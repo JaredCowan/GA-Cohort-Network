@@ -26,6 +26,22 @@
     <span class="dashboard-content-footer">
       Created At: <%= l.created_at.strftime("%l:%M%p %D by ") %>
       <%= link_to User.find(l.user_id).full_name, user_path(l.user_id) %>
+      <% if l.user_id == current_user.id %>
+        <div class="btn-group pull-right">
+          <button href="#" data-dropdown="drop<%= l.id %>" aria-controls="drop<%= l.id %>" aria-expanded="false" class="button radius dropdown tiny lesson-edit" id="dashboard-calendar-lesson-edit-button">Edit</button><br>
+          <ul id="drop<%= l.id %>" data-dropdown-content class="f-dropdown lesson-edit-dropdown" aria-hidden="true" tabindex="-1">
+            <li>
+              <%= link_to "View", lesson_path(l) %>
+            </li>
+            <li>
+              <%= link_to "Edit", edit_lesson_path(l) %>
+            </li>
+            <li>
+              <%= link_to 'Delete', l, method: :delete, :data => {:confirm => 'Are you sure you want to delete this lesson?'} %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
     </span>
   </div>
   <hr>

@@ -1,7 +1,7 @@
 <%= render :partial => "topnavforum" %>
 <div class="row">
-  <div class="large-12 medium-12 columns">
-    <div class="large-12 medium-12 columns questions questions-title">
+  <div class="large-12 medium-12 small-12 columns">
+    <div class="large-12 medium-12 small-12 columns questions questions-title">
       <center>
     <h1>Questions</h1>
     </center>
@@ -14,7 +14,7 @@
         <% end %>
       </div>
     </div>
-    <div class="large-8 medium-8 columns questions questions-feed">
+    <div class="large-8 medium-8 small-12 columns questions questions-feed">
 
       <% @questions.each do |question| %>
           <div class="panel" id="forum-index">
@@ -22,8 +22,7 @@
             <ul class="no-bullet">
             <li> <%= question.subject %> </li>
       Tags: <%= raw question.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %> <br>
-             <em><%= "Posted\s" + time_ago_in_words(question.created_at) + "\sago" %></em>
-            </ul>
+             <em><%= "Posted\s" + time_ago_in_words(question.created_at) + "\sago\sat\s" + question.created_at.strftime("%l:%H%P on %D")  %>
           <!-- </div> -->
            <div class="like-dislike">
         <div class="icon-bar four-up">

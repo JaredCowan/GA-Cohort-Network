@@ -16,6 +16,21 @@ class AnswersController < ApplicationController
     end
   end
 
+  def destroy
+    @answer = current_user.answers.find(params[:id])
+
+    respond_to do |format|
+      if @answer.destroy
+        format.html { redirect_to :back }
+        format.json { head :no_content }
+        flash[:success] = "Answer was successfully deleted."
+      else
+        format_generic_error("index")
+        flash[:alert] = "There was a problem with deleting your answer."
+      end
+    end
+  end
+
   private 
     def answer_params
       params.require(:answer).permit(:body, :user_id)

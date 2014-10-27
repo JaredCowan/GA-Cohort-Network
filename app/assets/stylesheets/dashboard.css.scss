@@ -1202,7 +1202,9 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 42px;
+  min-height: 42px;
+  max-height: 75px;
+  display: -webkit-inline-box;
 }
 .dashboard-subject, .dashboard-body, 
 .dashboard-answer {
@@ -1247,4 +1249,9 @@ a.dashboard-join-button:hover {
 .calendar-body {
   text-align: left;
   line-height: 1.6;
+}
+#dashboard-calendar-lesson-edit-button {
+  position: absolute;
+  right: 6px;
+  bottom: -11px;
 }

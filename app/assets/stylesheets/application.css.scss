@@ -29,7 +29,7 @@ html {
   margin-bottom: 60px;
 }
 .fi-plus:before, .fi-x-circle:before {
-  zoom: 1.5;
+  // zoom: 1.5;
 }
 .clearing-close {
   right: 70px;
@@ -176,7 +176,7 @@ div .fc-event-inner {
 
 textarea {
   min-height: 43px;
-  resize: none;
+  resize: vertical;
   // min-height: 120px;
   border-radius: 3px;
 }
@@ -184,7 +184,7 @@ input, input[type="text"] {
   border-radius: 3px;
 }
 textarea:focus {
-  resize: none;
+  resize: vertical;
 }
 .wall-post-form, .status-div-comment-form {
   textarea {
@@ -230,7 +230,7 @@ textarea:focus {
 }
 #mailbox > li:hover .move-to-trash {
   color: #fff;
-  -webkit-transform: rotate(-30deg); /* Chrome, Safari, Opera */
+  -webkit-transform: rotate(-30deg);
   transform: rotate(-30deg);
 }
 .subject {
@@ -298,6 +298,7 @@ textarea:focus {
   height: 140px;
 }
 #tag_cloud {
+  // background-color: #F9F9F9;
   word-wrap: break-word;
   display: -webkit-inline-box;
   margin: 2px 1px 24px;
@@ -336,7 +337,7 @@ textarea:focus {
 // hide top navbar for now
 .top-nav {
   margin-bottom: -45px;
-  display: none;
+  // display: none;
 }
 .sessions {
   width: 100%;
@@ -409,6 +410,8 @@ textarea:focus {
 .questions-feed {
   box-shadow: 6px 0px 5px -5px #ddd, -6px 0px 5px -5px #ddd;
   border-radius: 0 0 10px 10px;
+  margin: 60px 0 10px;
+  float: right;
 }
 .questions-title {
   border-radius: 10px 10px 0 10px;
@@ -560,6 +563,9 @@ ul.off-canvas-list li {
   .wall-post-form textarea {
     width: 288px;
   }
+  .questions-feed, .questions-tag-feed {
+    margin-top: 7px;
+  }
 }
 // Status icon bar
 #view-eye:hover .fi-heart {
@@ -707,8 +713,41 @@ ul.off-canvas-list li {
   width: 300px;
   height: 300px;
 }
-
-
+.main-content-wrapper {
+  background-color: #fff;
+  border: 1px solid #e1e2e3;
+  border-radius: 3px;
+  // min-height: 230px;
+  padding: 60px 4px 77px;
+  position: relative;
+}
+.main-content-title {
+  background-color: #f6f7f8;
+  border-bottom: 1px solid #e1e2e3;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 6px;
+  min-height: 42px;
+  max-height: 60px;
+}
+.main-content-footer {
+  position: absolute;
+  background-color: #f6f7f8;
+  border-top: 1px solid #e1e2e3;
+  padding: 10px 6px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  min-height: 42px;
+  max-height: 75px;
+  display: -webkit-inline-box;
+}
+#answer-edit-button {
+  float: right;
+}
 
 
 

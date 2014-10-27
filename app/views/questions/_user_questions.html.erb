@@ -1,7 +1,7 @@
 <%= render :partial => "questions/topnavforum" %>
 <div class="row">
   <div class="small-9 small-centered columns">
-<div id="tag_cloud">
+<div class="questions-tag-feed activity" id="tag_cloud">
     <h2>Tag Cloud:</h2></center>
     <% tag_cloud Question.tag_counts, %w[s m l] do |tag, css_class| %>
       <%= link_to tag.name, tag_path(tag.name), class: css_class %>
@@ -17,7 +17,7 @@
           <li> <%= question.subject %> </li>
     Tags: <%= raw question.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %> <br>
           <%#= link_to status.id, status, method: :delete, class: "button alert" %>
-           <em><%= "Posted\s" + time_ago_in_words(question.created_at) + "\sago" %></em>
+           <em><%= "Posted\s" + time_ago_in_words(question.created_at) + "\sago\sat\s" + question.created_at.strftime("%l:%H%P on %D")  %></em>
            <%# end %>
           </ul>
         <!-- </div> -->

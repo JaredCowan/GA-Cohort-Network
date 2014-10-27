@@ -1,22 +1,34 @@
 <%= render "lessonstopnav" %>
 <div class="row">
-  <div class="large-12 small-centered columns">
+  <div class="large-12 medium-10 small-12 large-centered medium-centered small-centered columns activity">
      <div class="calendar-wrapper">
       <div id="calendar"></div>
 
-    <br>
-
+    <br><hr>
     <% @lessons.order('start DESC').each do |l| %>
-      <%= l.title %> <br />
-      <%= l.subject %> <br />
-      <%= User.find(l.user_id).full_name %> <br />
-      <%= l.start %> <br />
-      <div class="col-md-11">
+      <div class="main-content-wrapper">
+    <span class="main-content-title" id="calendar-title">
+      <%= link_to User.find(l.instructor).full_name, user_path(l.instructor) %> is teaching  <%= link_to l.title, lesson_path(l) %> in classroom <%= l.classroom %> <%= l.start.strftime("at %l:%M%p on %D") %>
+    </span>
+    <article class="calendar-body">
+    Assistant: <%= link_to User.find(l.assistant).full_name, user_path(l.assistant) %>
+    <br>
+      Subject: <%= l.subject %>
+    <br>
+      Title: <%= l.title %>
+    <br>
+      Description: <%= l.description %>
+    <br>
+      Start: <%= l.start.strftime("%l:%M%p %D") %>
+    <br>
+      End: <%= l.start.strftime("%l:%M%p %D") %>
+    <span class="main-content-footer">
+      Created At: <%= l.created_at.strftime("%l:%M%p %D by ") %>
+      <%= link_to User.find(l.user_id).full_name, user_path(l.user_id) %>
       <% if l.user_id == current_user.id %>
         <div class="btn-group pull-right">
-          <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button radius dropdown tiny lesson-edit">Edit</button><br>
-
-          <ul id="drop1" data-dropdown-content class="f-dropdown lesson-edit-dropdown" aria-hidden="true" tabindex="-1">
+          <button href="#" data-dropdown="drop<%= l.id %>" aria-controls="drop<%= l.id %>" aria-expanded="false" class="button radius dropdown tiny lesson-edit" id="lessons-calendar-lesson-edit-button">Edit</button><br>
+          <ul id="drop<%= l.id %>" data-dropdown-content class="f-dropdown lesson-edit-dropdown" aria-hidden="true" tabindex="-1">
             <li>
               <%= link_to "View", lesson_path(l) %>
             </li>
@@ -29,9 +41,12 @@
           </ul>
         </div>
       <% end %>
-    </div>
-      <hr>
-    <% end %>
+    </span>
+  </div>
+  <hr>
+<% end %>
+    <!-- </div> -->
+    <%# end %>
 
     <div class="pagination-centered">
       <ul class="pagination">

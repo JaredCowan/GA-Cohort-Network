@@ -1,6 +1,13 @@
 select {
   border-radius: 6px;
 }
+.activity {
+  border-radius: 6px;
+  border: 1px solid #e1e2e3;
+}
+.calendar-wrapper {
+  padding-top: 13px;
+}
 .lesson-edit { 
   background-color: #f08a24;
 }
@@ -26,4 +33,9 @@ select {
 }
 .question-text {
   text-align: justify;
+}
+#lessons-calendar-lesson-edit-button {
+  position: absolute;
+  right: 6px;
+  bottom: -14px;
 }

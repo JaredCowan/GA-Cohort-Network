@@ -18,8 +18,6 @@
     <%= f.hidden_field :user_id, value: current_user.id %>
 
   <p>
-<b>body:</b>
-  <%= @question.body %>
   <% if @question.document && @question.document.attachment? && @question.document.valid? %>
     <ul class="clearing-thumbs" data-clearing>
       <li><a href="<%= @question.document.attachment.url %>">
@@ -34,7 +32,7 @@
     <input class="file optional" id="question_document_attributes_attachment" name="question[document_attributes][attachment]" type="file" value="Upload Photo"/> </input>
 
     <span class="actions">
-      <%= f.button :submit, :value => 'Update Post', class: 'button round success' %>
+      <%= f.button :submit, :value => 'Update Post', class: 'button radius success' %>
     </span>
   <% end %>
 </div>
