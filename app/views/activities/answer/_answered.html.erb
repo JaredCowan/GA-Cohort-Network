@@ -1,1 +1,47 @@
-"Answer created template
+<% a  = activity %>
+<% tu = Question.find(Answer.find(a.targetable_id).question_id) %>
+<% ua = Question.find(Answer.find(a.targetable_id).question_id).answers.where(id: a.targetable_id).first %>
+<p>
+  <div class="row">
+    <div class="large-12 medium-12 small-12 columns">
+      <span class="activity-answer-question-subject">
+        <%= tu.subject %>
+      </span>
+      <span class="activity-answer-question-body">
+        <%= tu.body %>
+      </span>
+      <span class="activity-answer-question-time">
+        <%= tu.created_at.strftime("Posted on %D at %l:%H%P") %>
+      </span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12 medium-12 small-12 columns main-content-wrapper">
+      <span class="activity-answer-body">  
+        Answer: <%= ua.body %>
+      </span>
+      <div class="large-12 medium-12 small-12 columns main-content-title">
+        <span class="activity-answer-avatar">
+          <%= avatar_url %>
+        </span>
+
+        <span class="activity-answer-title">
+          <%= link_to User.find(a.user_id).full_name, user_path(a.user_id) %> answered 
+
+          <% if a.user_id == tu.user_id %>
+              their own <%= link_to "Question", question_path(tu.id) %>
+          <% else %>
+            <%= link_to tu.user.full_name + "'s", user_path(tu.user_id) %>
+            <%= link_to "Question", question_path(tu.id) %>
+          <% end %>
+        </span>
+        
+      </div>
+
+      <div class="large-12 medium-12 small-12 columns main-content-footer">
+        <%= a.created_at.strftime("Answered at %l:%H%P on %D") %>
+      </div>
+    </div>
+  </div>
+</p>

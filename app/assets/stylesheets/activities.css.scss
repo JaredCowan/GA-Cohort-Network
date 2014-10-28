@@ -199,3 +199,33 @@ h4, h5 { color: white!important;}
     margin: -55px 5px 0 0px;
   } 
 }
+.activity-answer-body {
+  color: #000;
+  padding: 5px;
+  text-align: left;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+.activity-answer-title {
+  position: absolute;
+  font-weight: 400;
+  top:  10px;
+  left:  43px;
+  color: #000;
+}
+.activity-answer-avatar img {
+  position: absolute;
+  padding: 3px;
+  width: 40px;
+  top:  0;
+  left: 0;
+}
+.activity-answer-question-subject {
+  // 
+}
+.activity-answer-question-body {
+  // 
+}
+.activity-answer-question-time {
+// 
+}

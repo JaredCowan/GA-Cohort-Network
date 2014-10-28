@@ -27,12 +27,7 @@
         </section>
 
         <section id="section-tzoid-4"><p>Contacts</p>
-          <% @contacts.each do |c| %>
-          <%= c.full_name %><br>
-          <%= c.phone.blank? ? ask(c) : c.phone %><br>
-          <%= c.cell_phone %><br>
-            <br> <br>
-          <% end %>
+          <%= render :partial => "static_pages/p/contacts" %>
         </section>
         
 <!--         <section id="section-tzoid-5">

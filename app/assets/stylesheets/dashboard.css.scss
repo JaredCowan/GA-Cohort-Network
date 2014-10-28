@@ -1240,6 +1240,7 @@ a.dashboard-join-button:hover {
 }
 // ==================
 // Calendar
+// ==================
 #calendar-title {
   color: #000;
   font-size: 17px;
@@ -1255,3 +1256,71 @@ a.dashboard-join-button:hover {
   right: 6px;
   bottom: -11px;
 }
+// ==================
+// Contacts
+// ==================
+.contacts-list {
+  *:before {
+    font-weight: 400!important;
+  }
+}
+.contacts-body {
+  overflow: hidden;
+  padding: 6px;
+  float: left;
+}
+.avatar > img {
+  position: absolute;
+  top:    -2px;
+  left:      0;
+  padding: 6px;
+  width:  44px;
+}
+.user-full-name {
+  color: #000;
+  vertical-align: -webkit-baseline-middle;
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  overflow: hidden;
+  word-wrap: break-word;
+  text-shadow: 1px 1px 1px grey;
+}
+.phone:before {
+  content: "Phone: ";
+  text-align: left;
+}
+.email:before {
+  content: "Email: ";
+  text-align: left;
+}
+.cell-phone:before {
+  content: "Cell Phone: ";
+  text-align: left;
+}
+.github:before {
+  content: "Github: ";
+  text-align: left;
+}
+.linkedin:before {
+  content: "Linkedin: ";
+  text-align: left;
+}
+.site:before {
+  content: "Site: ";
+  text-align: left;
+}
+.facebook:before {
+  content: "Facebook: ";
+  text-align: left;
+}
+.birthday:before {
+  content: "Birthday: ";
+  text-align: left;
+}
+.city:before {
+  content: "City: ";
+  text-align: left;
+}
+// ==================
+// End Contacts
+// ==================
