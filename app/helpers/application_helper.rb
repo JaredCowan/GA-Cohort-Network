@@ -71,7 +71,9 @@ module ApplicationHelper
   def avatar_url
     image = ["http://www.gravatar.com/avatar/#{hash}d=identicon",
              "http://hospitalfranciscovilar.com.br/wp-content/uploads/2013/11/gravatar-60-grey.jpg",
-             "http://androidandme.wpengine.netdna-cdn.com/wp-content/themes/android-and-me-v4/images/avatars/generic-gravatar-nerd.png",
+             "http://sarahealy.com/wp-content/uploads/2009/01/illustration.jpg",
+             "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT9YE7L6xuG02as4qbFVAsK6Htrep3c1XB9EBFzDlw-r9ywdPVp",
+             "http://1.bp.blogspot.com/_uOjdqRYi_HM/TM81wfeZ79I/AAAAAAAAAYI/o9S91JOXr1M/s1600/TRU-ANIMATED-SPRITE-B5.gif",
              "http://primarytech.global2.vic.edu.au/files/2010/04/gravatar.jpg",
              "http://the14thgod.com/images/users/guest.jpg"
              ]
@@ -81,7 +83,9 @@ module ApplicationHelper
   def small_avatar
     image = ["http://www.gravatar.com/avatar/#{hash}d=identicon",
              "http://hospitalfranciscovilar.com.br/wp-content/uploads/2013/11/gravatar-60-grey.jpg",
-             "http://androidandme.wpengine.netdna-cdn.com/wp-content/themes/android-and-me-v4/images/avatars/generic-gravatar-nerd.png",
+             "http://sarahealy.com/wp-content/uploads/2009/01/illustration.jpg",
+             "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT9YE7L6xuG02as4qbFVAsK6Htrep3c1XB9EBFzDlw-r9ywdPVp",
+             "http://1.bp.blogspot.com/_uOjdqRYi_HM/TM81wfeZ79I/AAAAAAAAAYI/o9S91JOXr1M/s1600/TRU-ANIMATED-SPRITE-B5.gif",
              "http://primarytech.global2.vic.edu.au/files/2010/04/gravatar.jpg",
              "http://the14thgod.com/images/users/guest.jpg"
              ]

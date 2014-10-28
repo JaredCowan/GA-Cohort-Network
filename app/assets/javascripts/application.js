@@ -5,7 +5,9 @@
 //= require fullcalendar
 //= require_tree .
 
-
+$("img").error(function () {
+  $(this).unbind("error").attr("src", "http://hospitalfranciscovilar.com.br/wp-content/uploads/2013/11/gravatar-60-grey.jpg");
+});
 
 // =================================
 // Start activities API

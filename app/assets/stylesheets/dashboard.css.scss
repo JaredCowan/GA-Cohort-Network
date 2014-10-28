@@ -1260,6 +1260,7 @@ a.dashboard-join-button:hover {
 // Contacts
 // ==================
 .contacts-list {
+  margin: 5px;
   *:before {
     font-weight: 400!important;
   }
@@ -1267,6 +1268,8 @@ a.dashboard-join-button:hover {
 .contacts-body {
   overflow: hidden;
   padding: 6px;
+  width: 100%;
+  text-align: left;
   float: left;
 }
 .avatar > img {
