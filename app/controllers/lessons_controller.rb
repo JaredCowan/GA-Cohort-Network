@@ -39,7 +39,7 @@ class LessonsController < ApplicationController
 
     respond_to do |format|
       if @lesson.save
-        format.html { redirect_to :lessons }
+        format.html { redirect_to :back }
         format.json { render json: @lesson }
         flash[:success] = "Lesson was successfully created."
       else
