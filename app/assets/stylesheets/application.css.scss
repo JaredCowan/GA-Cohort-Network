@@ -257,37 +257,6 @@ textarea:focus {
   color: #000!important;
   background-color: #fff!important;
 }
-#forum-index {
-  background: #fff;
-  box-shadow: -1px 2px 35px rgb(27,26,26);
-  border: none;
-  padding-bottom: 0;
-  border-radius: 16px;
-}
-#forum-index .inline-list {
-  background-color: yellow;
-  margin-left: -1.2rem;
-  margin-right: -1.2rem;
-  border-bottom-right-radius: 16px;
-  border-bottom-left-radius: 16px;
-}
-#forum-index > .inline-list li {
-  color: black;
-}
-#forum-index a,
-#forum-index li {
-  color: #000;
-}
-#forum-index .icon-bar > * .fi-heart:hover {
-  color: red;
-}
-#red {
-  color: red;
-}
-#forum-index .icon-bar {
-  border-top-left-radius:  16px;
-  border-top-right-radius: 16px;
-}
 .hero label {
   color: #fff;
 }
@@ -320,24 +289,6 @@ textarea:focus {
     background-color: #B01C1C;
   }
 }
-.questions-tag-feed {
-  margin: 60px 0 10px;
-  border-radius: 10px;
-  box-shadow: 0 0 3px #ddd;
-  text-align: center;
-  h2 {
-    color: #000;
-    font-family: 'Cinzel', serif;
-    text-shadow: 1px 1px 1px grey;
-  }
-  hr {
-    margin-top: -4px;
-  }
-}
-.questions-activity-feed {
-  // 
-}
-// hide top navbar for now
 .top-nav {
   margin-bottom: -45px;
   // display: none;
@@ -392,42 +343,7 @@ textarea:focus {
     -webkit-font-smoothing: antialiased;
   }
 }
-.questions, .activity {
-  background-color: rgba(255,255,255,1);
-  // box-shadow: 0 0 3px #ddd;
-  padding-bottom: 15px;
-  // margin-bottom: 60px;
-  // border-radius: 10px;
-}
-.questions {
-  padding: 8px;
-  h1 {
-    font-family: 'Cinzel', serif;
-    padding-top: 14px;
-    text-shadow: 1px 1px 1px grey;
-  }
-  .questions.questions-feed {
-    margin-bottom: -10px;
-  }
-}
-.questions-feed {
-  box-shadow: 6px 0px 5px -5px #ddd, -6px 0px 5px -5px #ddd;
-  border-radius: 0 0 10px 10px;
-  margin: 60px 0 10px;
-  float: right;
-}
-.questions-title {
-  border-radius: 10px 10px 0 10px;
-  box-shadow: 0 0 3px #ddd;
-}
-@media only screen and (max-width: 1026px) {
-  .questions {
-    border-radius: 10px;
-  }
-  .questions-feed {
-    padding-top: 22px;
-  }
-}
+
 .activity {
   color: #000;
   background-color: #F9F9F9;
@@ -605,6 +521,7 @@ ul.off-canvas-list li {
   padding: 6px;
   img {
     width: 58px;
+    height: 58px;
     margin-right: 10px;
   }
 }

@@ -1,5 +1,13 @@
 module ApplicationHelper
   
+  def all_column_style_centered(l=12,m=12,s=12)
+    "large-#{l} medium-#{m} small-#{s} large-centered medium-centered small-centered columns"
+  end
+
+  def all_column_style(l=12,m=12,s=12)
+    "large-#{l} medium-#{m} small-#{s} columns"
+  end
+
   def login_form
     if !signed_in?
        render :partial => "partials/loginform"

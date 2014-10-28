@@ -1,64 +1,104 @@
 <%= render :partial => "topnavforum" %>
-<div class="row">
+
+<div class="row questions-master">
+
   <div class="large-12 medium-12 small-12 columns">
     <div class="large-12 medium-12 small-12 columns questions questions-title">
-      <center>
-    <h1>Questions</h1>
-    </center>
+      <center> <h1>Questions</h1> </center>
     </div>
+
     <div class="large-3 medium-3 columns questions questions-tag-feed">
-        <h2><center>Tag Cloud</center></h2><hr>
+      <h2> <center>Tag Cloud</center> </h2> <hr>
       <div id="tag_cloud">
         <% tag_cloud Question.tag_counts, %w[s m l] do |tag, css_class| %>
           <%= link_to tag.name, tag_path(tag.name), class: css_class %>
         <% end %>
       </div>
     </div>
-    <div class="large-8 medium-8 small-12 columns questions questions-feed">
+
+    <div class="large-8 medium-8 small-12 columns questions-feed">
 
       <% @questions.each do |question| %>
-          <div class="panel" id="forum-index">
-          <strong><%= link_to question.user.full_name, profile_page_path(question.user) %></strong>
-            <ul class="no-bullet">
-            <li> <%= question.subject %> </li>
-      Tags: <%= raw question.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %> <br>
-             <em><%= "Posted\s" + time_ago_in_words(question.created_at) + "\sago\sat\s" + question.created_at.strftime("%l:%H%P on %D")  %>
-          <!-- </div> -->
-           <div class="like-dislike">
-        <div class="icon-bar four-up">
-          <% if current_user.voted_up_on? question %>
-            <a href=" <%= "/questions/"+ question.id.to_s + "/dislike" %>" action="downvote" data-method="put" class="item like-dislike">
-            <i class="fi-heart" id="red"></i>
-            <label>Liked</label>
-          </a>
-          <% else %>
-          <a href=" <%= "/questions/"+ question.id.to_s + "/like" %>" action="upvote" data-method="put" class="item like-dislike">
-            <i class="fi-heart"></i>
-            <label>Like</label>
-          </a>
-          <% end %>
-          <a href=" <%= "/questions/" + question.id.to_s %>" class="item like-dislike">
-            <i class="fi-info"></i>
-            <label>View Question</label>
-          </a>
-
-          <a href=" <%= "/questions/" + question.id.to_s %>" class="item like-dislike">
-            <i class="fi-comments"></i>
-            <label><%= pluralize(question.answers.length.to_s, 'Answer') %></label>
-          </a>
-
-          <a href="#" class="item like-dislike">
-            <i class="fi-lock"></i>
-            <label>Mark As Solved</label>
-          </a>
-        </div><br>
+        <div class="questions-div">
+          <div class="questions-div-content">
+            <%= image_user_path(question.user) %>
+            <span class="questions-div-user-top-span">
+              <%= question_user_name(question, class: "questions-user-name") %>
+              <span class="questions-time-ago">
+                <%= time_ago(question.created_at) %>
+              </span>
+              <span class="questions-posted-time">
+                <%= time_date(question) %>
+              </span>
+            </span>
           </div>
-          <ul class="inline-list">
-            <li> <%= "Liked by\s" + pluralize(question.get_likes.size, 'person') %> </li>
-          </ul>
-        </div>
-        <% end %>
-      <%# end %>
+
+          <div class="large-12 medium-12 small-11 user-questions-post-content">
+            <article class="question-subject-article">
+              <%= question.subject %>
+            </article>
+            <article class="question-body-article">
+              <%= limit_length(question) %>
+            </article>
+            <% if question_document_valid?(question) %>
+              <hr>
+              <div class="row">
+                <div class="<%= all_column_style_centered(7,7,10) %>">
+                  <ul class="clearing-thumbs" data-clearing>
+                    <li>
+                      <a href="<%= document_url(question) %>">
+                        <img id="questions-images" src="<%= document_url(question) %>"/>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+          <span class="questions-icon-bar">
+            <div class="icon-bar four-up">
+              <% if current_user.voted_up_on? question %>
+                <span id="questions-heart">
+                  <a href=" <%= "/questions/"+ question.id.to_s + "/dislike" %>" action="downvote" data-method="put" class="item">
+                    <i class="fi-heart" id="red"></i>
+                    <label>Liked</label>
+                  </a>
+                </span>
+              <% else %>
+                <span id="questions-heart">
+                  <a href=" <%= "/questions/"+ question.id.to_s + "/like" %>" action="upvote" data-method="put" class="item">
+                    <i class="fi-heart"></i>
+                    <label>Like</label>
+                  </a>
+                </span>  
+              <% end %>
+              <span id="questions-info">
+                <a href=" <%= "/questions/" + question.id.to_s %>" class="item">
+                  <i class="fi-info"></i>
+                  <label>View Question</label>
+                </a>
+              </span>  
+              <span id="questions-comments">
+                <a href=" <%= "/questions/" + question.id.to_s %>" class="item">
+                  <i class="fi-comments"></i>
+                  <label><%= pluralize(question.answers.length.to_s, 'Answer') %></label>
+                </a>
+              </span>  
+              <span id="questions-lock">
+                <a href="#" class="item">
+                  <i class="fi-lock"></i>
+                  <label id="questions-lock-label"></label>
+                </a>
+              </span>  
+            </div> <!-- icon-bar -->
+          </span> <!-- questions-icon-bar -->
+          <span class="questions-likes">
+            <i class="fi-heart"> </i> 
+            <%= "Liked by\s" + pluralize(question.get_likes.size, 'person') %>
+          </span>            
+        </div> <!-- questions-div -->
+      <% end %>
     </div>
   </div>
 </div>
