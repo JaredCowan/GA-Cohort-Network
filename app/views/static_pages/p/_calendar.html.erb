@@ -6,7 +6,7 @@
     <hr>
     </div>
     <br>
-<% Lesson.all.where("start >= ?", Date.today).each do |l| %>
+<% @lessons.each do |l| %>
   <div class="dashboard-content-wrapper">
     <span class="dashboard-content-title" id="calendar-title">
       <%= link_to User.find(l.instructor).full_name, user_path(l.instructor) %> is teaching  <%= link_to l.title, lesson_path(l) %> in classroom <%= l.classroom %> <%= l.start.strftime("at %l:%M%p on %D") %>
