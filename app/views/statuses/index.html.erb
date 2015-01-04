@@ -39,7 +39,7 @@
             <div class="icon-bar three-up <%= if current_user.voted_up_on? status; 'liked'; else 'likeable'; end %>">
               <% if current_user.voted_up_on? status %>
                 <span id="view-heart" class="like-status">
-                  <%= link_to dislike_status_path(status.id), method: 'put', remote: true, id: "like-heart", action: 'downvote', data: { id: status.id, voter: current_user.id, vote: "bad" } do %>
+                  <%= link_to dislike_status_path(status.id), method: 'put', remote: true, id: "like-heart", action: 'downvote', data: { id: status.id, voter: current_user.id, vote: "unlike" } do %>
                     <i class="fi-heart red" id="test"></i>
                     <label>Liked</label>
                     <sub><%= status.id %></sub>
