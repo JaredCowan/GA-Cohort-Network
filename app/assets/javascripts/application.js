@@ -298,5 +298,44 @@ $(document).ready( function() {
 
 //=============================================== 
 
+// $(".status-button").on("click", function(event) {
+//   event.preventDefault();
 
+//   var $commentBtn = $(this)
+//     , $textarea   = $(this).parent().parent().find("textarea");
+
+//   console.log($commentBtn.data('id'));
+//   console.log($textarea.val());
+//   $textarea.val("")
+  // console.log($(this).closest("textarea").val());
+  // console.log($("textarea").val());
+// });
+
+
+$(document).ready(function() {
+
+  $(".status-button").on("click", function(event) {
+    event.preventDefault();
+
+    var $commentBtn = $(this)
+      , $textarea   = $(this).parent().parent().find("textarea");
+    console.log($textarea.val());
+    $textarea.val("")
+
+    $.ajax({
+      url: Routes.comments_path(status_id: $commentBtn.data('statusId'), user_id: $commentBtn.data('userId'), body: $textarea.val()),
+      dataType: 'json',
+      type: 'PUT',
+      error: function(e) {
+        console.error("There was an error.");
+        console.log($commentBtn.data('userId'));
+        // alert("There was an error.");
+      },
+      success: function(e) {
+        $textarea.val("")
+        return true
+      }
+    });
+  });
+});
 

@@ -36,7 +36,7 @@
             <% end %>
           </div>
           <span class="status-icon-bar">
-            <div class="icon-bar three-up <%= if current_user.voted_up_on? status; 'liked'; else 'likeable'; end %>">
+            <div class="icon-bar three-up">
               <% if current_user.voted_up_on? status %>
                 <span id="view-heart" class="like-status">
                   <%= link_to dislike_status_path(status.id), method: 'put', remote: true, id: "like-heart", action: 'downvote', data: { id: status.id, voter: current_user.id, vote: "unlike" } do %>
@@ -72,13 +72,13 @@
           <div class="status-div-comment-form">
         <div class="row">
           <div class="large-12 medium-12 small-12 columns status-div-textarea">
-              <%= simple_form_for([status, status.comments.build]) do |f| %>
+              <%= simple_form_for([status, status.comments.build], remote: true) do |f| %>
                 <div class="large-9 medium-9 small-12 columns">
                   <%= f.text_area :body, placeholder: "Leave a comment..", class: "status-div-textarea" %>
                   <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }  %>
                 </div>
                    <div class="large-3 medium-3 small-7 columns">
-                    <input id="status-button" class="button radius" name="commit" type="submit" value="Comment" data-method="put">
+                    <input id="status-button" class="button radius status-button" name="commit" type="submit" value="<%= new_status_comment_path(14) %>" data-method="put" data-status-id="<%= status.id %>" data-user-id="<%= current_user.id %>" data-remote="true">
                   </div>
               <% end %>
             </div>
