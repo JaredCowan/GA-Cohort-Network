@@ -104,7 +104,8 @@ class StatusesController < ApplicationController
     @status.liked_by current_user
     # redirect_to :back
     respond_to do |format|
-      format.html {redirect_to statuses_path }
+      # format.html {redirect_to statuses_path }
+      format.html {redirect_to :back }
       format.json { render json: @status, include: [:get_upvotes, :comments] }
     end
   end

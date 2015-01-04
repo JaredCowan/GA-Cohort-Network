@@ -16,8 +16,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'httparty'
 gem 'mailboxer', git: 'git://github.com/ging/mailboxer.git'
 gem 'rails4-autocomplete'
-gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'spring',        group: :development
+gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'spring', group: :development
 gem 'jquery-rails'
 gem 'coveralls', require: false
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.1'
@@ -55,5 +55,4 @@ group :production do
 end
 
 gem 'rails_12factor', group: :production
-ruby '2.1.2'
-
+ruby '2.1.5'

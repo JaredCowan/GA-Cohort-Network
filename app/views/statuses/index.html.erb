@@ -36,22 +36,22 @@
             <% end %>
           </div>
           <span class="status-icon-bar">
-            <div class="icon-bar three-up">
+            <div class="icon-bar three-up <%= if current_user.voted_up_on? status; 'liked'; else 'likeable'; end %>">
               <% if current_user.voted_up_on? status %>
-                <span id="view-heart">
-                  <a href=" <%= "/statuses/"+ status.id.to_s + "/dislike" %>" action="downvote" data-method="put" class="item like-dislike">
-                  <i class="fi-heart red" id="test"></i>
-                  <label>Liked</label>
-                  <sub><%= status.id %></sub>
-                  </a>
+                <span id="view-heart" class="like-status">
+                  <%= link_to dislike_status_path(status.id), method: 'put', remote: true, id: "like-heart", action: 'downvote', data: { id: status.id, voter: current_user.id, vote: "bad" } do %>
+                    <i class="fi-heart red" id="test"></i>
+                    <label>Liked</label>
+                    <sub><%= status.id %></sub>
+                    <% end %>
                 </span>
                 <% else %>
-                <span id="view-heart">
-                  <a href=" <%= "/statuses/"+ status.id.to_s + "/like" %>" action="upvote" data-method="put" class="item like-dislike">
+                <span id="view-heart" class="like-status">
+                  <%= link_to like_status_path(status.id), method: 'put', remote: true, id: "like-heart", action: 'upvote', data: { id: status.id, voter: current_user.id, vote: "like" } do %>
                     <i class="fi-heart" id="test"></i>
                     <label>Like</label>
                     <sub><%= status.id %></sub>
-                  </a>
+                    <% end %>
                 </span>
               <% end %>
               <span id="view-eye">
