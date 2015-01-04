@@ -1,6 +1,10 @@
+<%# Comment.all.each do |c| %>
+  <%#= c.inspect %> <br>
+<%# end %>
+
 <%= simple_form_for(Comment.create, remote: true, class: "comment-form") do |f| %>
   <%= f.input :body %>
   <%= f.input :status_id %>
   <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }  %>
-  <%= f.button :submit, :value => 'Update Post', class: 'button round success comment-submit' %>
+  <%= f.button :submit, :value => 'Update Post', class: 'button round success' %>
 <% end %>

@@ -314,16 +314,18 @@ $(document).ready( function() {
 
 $(document).ready(function() {
 
-  $(".status-button").on("click", function(event) {
+  $(".comment-submit").on("click", function(event) {
     event.preventDefault();
 
     var $commentBtn = $(this)
       , $textarea   = $(this).parent().parent().find("textarea");
     console.log($textarea.val());
     $textarea.val("")
+    // $("#comment_body").val("");
 
     $.ajax({
-      url: Routes.comments_path(status_id: $commentBtn.data('statusId'), user_id: $commentBtn.data('userId'), body: $textarea.val()),
+      // url: Routes.comment_path({status_id: $commentBtn.data('statusId'), user_id: $commentBtn.data('userId'), body: $textarea.val()}),
+      url: '/comments/new',
       dataType: 'json',
       type: 'PUT',
       error: function(e) {
@@ -333,7 +335,7 @@ $(document).ready(function() {
       },
       success: function(e) {
         $textarea.val("")
-        return true
+        $("#comment_body").val("");
       }
     });
   });

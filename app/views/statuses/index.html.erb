@@ -72,7 +72,7 @@
           <div class="status-div-comment-form">
         <div class="row">
           <div class="large-12 medium-12 small-12 columns status-div-textarea">
-              <%= simple_form_for([status, status.comments.build], remote: true) do |f| %>
+              <%= simple_form_for([status, status.comments.build], :remote => true) do |f| %>
                 <div class="large-9 medium-9 small-12 columns">
                   <%= f.text_area :body, placeholder: "Leave a comment..", class: "status-div-textarea" %>
                   <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }  %>

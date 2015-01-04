@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   match '/statuses',         to: 'statuses#upvote',             via: 'put'
   match '/statuses/:id/like',         to: 'statuses#upvote',             via: 'put'
   match '/statuses/:id/dislike',         to: 'statuses#downvote',             via: 'put'
-  match '/comments/new',         to: 'comments#create',             via: 'put'
+  # match '/comments/new',         to: 'comments#create',             via: 'put'
   get 'questions/tags/:tag', to: 'questions#index',              as: :tag
 
   resources :statuses do 
