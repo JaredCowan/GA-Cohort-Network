@@ -20,21 +20,20 @@
           <div class="like-dislike">
             <div class="icon-bar four-up">
               <% if current_user.voted_up_on? status %>
-
-                <a href=" <%= "/statuses/"+ status.id.to_s + "/dislike" %>" action="downvote" data-method="put" class="item like-dislike">
-                <i class="fi-heart" id="red"></i>
-                <label>Liked</label>
-                </a>
-
-              <% else %>
-
-                <a href=" <%= "/statuses/"+ status.id.to_s + "/like" %>" action="upvote" data-method="put"  class="item like-dislike">
-                  <i class="fi-heart"></i>
-                  <label>Like</label>
-                </a>
-
+                <span id="view-heart" class="like-status">
+                  <%= link_to dislike_status_path(status.id), method: 'put', remote: true, id: "like-heart", action: 'downvote', data: { id: status.id, voter: current_user.id, vote: "unlike" } do %>
+                    <i class="fi-heart red" id="test"></i>
+                    <label>Liked</label>
+                    <% end %>
+                </span>
+                <% else %>
+                <span id="view-heart" class="like-status">
+                  <%= link_to like_status_path(status.id), method: 'put', remote: true, id: "like-heart", action: 'upvote', data: { id: status.id, voter: current_user.id, vote: "like" } do %>
+                    <i class="fi-heart" id="test"></i>
+                    <label>Like</label>
+                    <% end %>
+                </span>
               <% end %>
-
               <a href=" <%= "/statuses/" + status.id.to_s %>" class="item like-dislike">
                 <i class="fi-info"></i>
                 <label>View Question</label>

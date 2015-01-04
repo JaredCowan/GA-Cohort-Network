@@ -7,24 +7,27 @@ Rails.application.routes.draw do
   resources :questions
   resources :posts
   resources :comments
+  resources :jobs
   
   root :to => 'static_pages#dashboard'
 
-  match '/signup',           to: 'users#new',                   via: 'get'
-  match '/users/:id/edit',   to: 'users#edit',                  via: 'get'
-  match '/signin',           to: 'sessions#new',                via: 'get'
-  match '/signout',          to: 'sessions#destroy',            via: 'delete'
-  match '/home',             to: 'static_pages#home',           via: 'get'
-  match '/dashboard',        to: 'static_pages#dashboard',      via: 'get'
-  match '/jobs',             to: 'jobs#index',                  via: 'get'
-  match '/newjobs',          to: 'jobs#new',                    via: 'get'
-  match '/user_questions',   to: 'static_pages#user_questions', via: 'get'
-  match '/user_statuses',    to: 'static_pages#user_statuses',  via: 'get'
-  match '/statuses',         to: 'statuses#upvote',             via: 'put'
-  match '/statuses/:id/like',         to: 'statuses#upvote',             via: 'put'
-  match '/statuses/:id/dislike',         to: 'statuses#downvote',             via: 'put'
-  # match '/comments/new',         to: 'comments#create',             via: 'put'
-  get 'questions/tags/:tag', to: 'questions#index',              as: :tag
+  match '/signup',                to: 'users#new',                   via: 'get'
+  match '/users/:id/edit',        to: 'users#edit',                  via: 'get'
+  match '/signin',                to: 'sessions#new',                via: 'get'
+  match '/signout',               to: 'sessions#destroy',            via: 'delete'
+  match '/home',                  to: 'static_pages#home',           via: 'get'
+  match '/dashboard',             to: 'static_pages#dashboard',      via: 'get'
+  match '/jobs',                  to: 'jobs#index',                  via: 'get'
+  match '/newjobs',               to: 'jobs#new',                    via: 'get'
+  match '/user_questions',        to: 'static_pages#user_questions', via: 'get'
+  match '/user_statuses',         to: 'static_pages#user_statuses',  via: 'get'
+  match '/statuses',              to: 'statuses#upvote',             via: 'put'
+  match '/statuses/:id/like',     to: 'statuses#upvote',             via: 'put'
+  match '/statuses/:id/dislike',  to: 'statuses#downvote',           via: 'put'
+  match '/jobs',                  to: 'jobs#upvote',                 via: 'put'
+  match '/jobs/:id/like',         to: 'jobs#upvote',                 via: 'put'
+  match '/jobs/:id/dislike',      to: 'jobs#downvote',               via: 'put'
+  get   'questions/tags/:tag',    to: 'questions#index',              as: :tag
 
   resources :statuses do 
     resources :comments
@@ -44,7 +47,7 @@ Rails.application.routes.draw do
   end
 
   resources :lessons
-  resources :jobs
+
 
   resources :users do
    member do

@@ -59,19 +59,19 @@
           <span class="questions-icon-bar">
             <div class="icon-bar four-up">
               <% if current_user.voted_up_on? question %>
-                <span id="questions-heart">
-                  <a href=" <%= "/questions/"+ question.id.to_s + "/dislike" %>" action="downvote" data-method="put" class="item">
-                    <i class="fi-heart" id="red"></i>
+                <span id="view-heart" class="like-question">
+                  <%= link_to dislike_question_path(question.id), method: 'put', remote: true, id: "like-heart", action: 'downvote', data: { id: question.id, voter: current_user.id, vote: "unlike" } do %>
+                    <i class="fi-heart red" id="test"></i>
                     <label>Liked</label>
-                  </a>
+                    <% end %>
                 </span>
-              <% else %>
-                <span id="questions-heart">
-                  <a href=" <%= "/questions/"+ question.id.to_s + "/like" %>" action="upvote" data-method="put" class="item">
-                    <i class="fi-heart"></i>
+                <% else %>
+                <span id="view-heart" class="like-question">
+                  <%= link_to like_question_path(question.id), method: 'put', remote: true, id: "like-heart", action: 'upvote', data: { id: question.id, voter: current_user.id, vote: "like" } do %>
+                    <i class="fi-heart" id="test"></i>
                     <label>Like</label>
-                  </a>
-                </span>  
+                    <% end %>
+                </span>
               <% end %>
               <span id="questions-info">
                 <a href=" <%= "/questions/" + question.id.to_s %>" class="item">

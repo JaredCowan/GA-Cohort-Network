@@ -86,17 +86,25 @@ class JobsController < ApplicationController
 
   def upvote
     @job = Job.find(params[:id])
-    current_user.create_activity(@job, 'upvoted')
     @job.liked_by current_user
-    redirect_to jobs_path
+    current_user.create_activity(@job, 'upvoted')
+
+    respond_to do |format|
+      format.html {redirect_to :back }
+      format.json { render json: @job }
+    end
   end
 
   def downvote
     @job = Job.find(params[:id])
     @activity = Activity.find_by(targetable_id: @job)
-    @activity.destroy!
+    @activity.destroy
     @job.downvote_from current_user
-    redirect_to jobs_path
+
+    respond_to do |format|
+      format.html {redirect_to :back }
+      format.json { render json: @job, include: [:get_upvotes] }
+    end
   end
 
   private

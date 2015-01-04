@@ -90,25 +90,25 @@ class QuestionsController < ApplicationController
   def upvote
     @question = Question.find(params[:id])
     @question.liked_by current_user
-    current_user.create_activity @question, 'upvoted'
-    redirect_to :back
+    # current_user.create_activity(@question, 'liked')
+
+    respond_to do |format|
+      format.html {redirect_to :back }
+      format.json { render json: @question, include: [:get_upvotes, :answers] }
+    end
   end
 
   def downvote
     @question = Question.find(params[:id])
-    @activity = Activity.find_by(targetable_id: @question)
-    @activity.destroy!
+    # @activity = Activity.find_by(targetable_id: @question)
+    # @activity.destroy
     @question.downvote_from current_user
-    redirect_to :back
-  end
 
-  # Not in use.
-  # Will be used to mark forum questions as answered
-  # def solved
-  #     @question = Question.find(params[:id])
-  #     @question.solved_by current_user
-  #     redirect_to @question
-  # end
+    respond_to do |format|
+      format.html {redirect_to :back }
+      format.json { render json: @question, include: [:get_upvotes, :answers] }
+    end
+  end
 
   private
 

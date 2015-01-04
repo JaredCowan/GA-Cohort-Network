@@ -26,15 +26,19 @@
     <div class="like-dislike">
       <div class="icon-bar two-up">
         <% if current_user.voted_up_on? j %>
-          <a href=" <%= "/jobs/"+ j.id.to_s + "/dislike" %>" action="downvote" data-method="put" class="item like-dislike">
-          <i class="fi-dislike"></i>
-          <label>Dislike</label>
-        </a>
-        <% else %>
-        <a href=" <%= "/jobs/"+ j.id.to_s + "/like" %>" action="upvote" data-method="put"  class="item like-dislike">
-          <i class="fi-like"></i>
-          <label>Like</label>
-        </a>
+          <span id="view-heart" class="like-j">
+            <%= link_to dislike_job_path(j.id), method: 'put', remote: true, id: "like-heart", action: 'downvote', data: { id: j.id, voter: current_user.id, vote: "unlike" } do %>
+              <i class="fi-heart red" id="test"></i>
+              <label>Liked</label>
+              <% end %>
+          </span>
+          <% else %>
+          <span id="view-heart" class="like-j">
+            <%= link_to like_job_path(j.id), method: 'put', remote: true, id: "like-heart", action: 'upvote', data: { id: j.id, voter: current_user.id, vote: "upvote" } do %>
+              <i class="fi-heart" id="test"></i>
+              <label>Like</label>
+              <% end %>
+          </span>
         <% end %>
         <a href=" <%= "/jobs/" + j.id.to_s %>" class="item like-dislike">
           <i class="fi-info"></i>
@@ -46,7 +50,7 @@
         <%# if signed_in? && current_user.voted_on? j %>
         <%# else %>
         <%# end %>
-      <li> <%= "Liked by\s" + pluralize(j.get_likes.size, 'person') %> </li>
+      <li class="like-count"> <%= "Liked by\s" + pluralize(j.get_likes.size, 'person') %> </li>
       <li> <%= "Disliked by\s" + pluralize(j.get_dislikes.size, 'person') %> </li>
       </ul>
       <hr>
