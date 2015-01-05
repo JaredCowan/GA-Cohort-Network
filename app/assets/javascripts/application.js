@@ -298,19 +298,6 @@ $(document).ready( function() {
 
 //=============================================== 
 
-// $(".status-button").on("click", function(event) {
-//   event.preventDefault();
-
-//   var $commentBtn = $(this)
-//     , $textarea   = $(this).parent().parent().find("textarea");
-
-//   console.log($commentBtn.data('id'));
-//   console.log($textarea.val());
-//   $textarea.val("")
-  // console.log($(this).closest("textarea").val());
-  // console.log($("textarea").val());
-// });
-
 
 $(document).ready(function() {
 
