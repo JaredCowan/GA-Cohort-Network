@@ -321,11 +321,12 @@ $(document).ready(function() {
       , $textarea   = $(this).parent().parent().find("textarea");
     console.log($textarea.val());
     $textarea.val("")
+    $('#test-ajax').load(document.URL + ' #test-ajax')
     // $("#comment_body").val("");
 
     $.ajax({
       // url: Routes.comment_path({status_id: $commentBtn.data('statusId'), user_id: $commentBtn.data('userId'), body: $textarea.val()}),
-      url: '/comments/new',
+      url: '/comments',
       dataType: 'json',
       type: 'PUT',
       error: function(e) {

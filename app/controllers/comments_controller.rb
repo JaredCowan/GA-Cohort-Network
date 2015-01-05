@@ -26,9 +26,8 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         current_user.create_activity(@comment, 'created')
-        # format.html { redirect_to status_path(@status, location: @comment)}
         format.html { redirect_to :back}
-        format.json { render json: @status, comment: :created }
+        format.json { render json: @comment, comment: :created }
         flash[:success] = "Comment was added."
       else
         format.html { redirect_to :back}
