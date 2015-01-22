@@ -299,10 +299,10 @@ $(document).ready( function() {
 //=============================================== 
 
 
-$(document).ready(function() {
+// $(document).ready(function() {
 
-  $(".edit_comment").on("submit", function(event) {
-    event.preventDefault();
+  $(".comment").on("click", function(event) {
+    // event.preventDefault();
 
     var $commentBtn = $(this)
       , $textarea   = $(this).parent().parent().find("textarea");
@@ -322,11 +322,13 @@ $(document).ready(function() {
         // alert("There was an error.");
       },
       success: function() {
-        $textarea.val("")
-        $("textarea, #comment_status_id").val("")
+        // $textarea.val("")
+        $("textarea").val("")
+        $("#comment_body").val("")
+        $('#test-ajax-two').load("<div id='test-ajax-two'>" + "<%= escape_javascript(render('status/commentform')) %>" + "</div>")
         $('#test-ajax').load(document.URL + ' #test-ajax')
       }
     });
   });
-});
+// });
 

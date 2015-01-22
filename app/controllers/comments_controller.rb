@@ -32,6 +32,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html
+      format.js
       format.json
       flash[:success] = "Comment was added."
     end
@@ -42,10 +43,11 @@ class CommentsController < ApplicationController
     @status = Status.find(params[:status_id])
     # @comment = @status.comments.build(comment_params)
     @comment = Comment.create(comment_params)
-      respond_to do |format|
-    if @comment.save
+    respond_to do |format|
+      if @comment.save
         current_user.create_activity(@comment, 'created')
-        format.html { redirect_to :back}
+        format.html { redirect_to @status }
+        format.js
         format.json { render json: @comment, comment: :created }
         flash[:success] = "Comment was added."
       else
