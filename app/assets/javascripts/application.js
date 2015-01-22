@@ -309,21 +309,21 @@ $(document).ready(function() {
     console.log($textarea.val());
     $textarea.val("")
     $('#test-ajax').load(document.URL + ' #test-ajax')
-    // $("#comment_body").val("");
+    $("textarea, #comment_status_id").val("")
 
     $.ajax({
       // url: Routes.comment_path({status_id: $commentBtn.data('statusId'), user_id: $commentBtn.data('userId'), body: $textarea.val()}),
-      url: '/comments',
+      url: '/comments/new',
       dataType: 'json',
-      type: 'PUT',
-      error: function(e) {
+      type: 'POST',
+      error: function() {
         console.error("There was an error.");
         console.log($commentBtn.data('userId'));
         // alert("There was an error.");
       },
-      success: function(e) {
+      success: function() {
         $textarea.val("")
-        $("#comment_body").val("");
+        $("textarea, #comment_status_id").val("")
       }
     });
   });

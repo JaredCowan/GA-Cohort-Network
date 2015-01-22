@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :statuses
   resources :questions
   resources :posts
-  resources :comments
   resources :jobs
   
   root :to => 'static_pages#dashboard'
@@ -25,10 +24,13 @@ Rails.application.routes.draw do
   match '/statuses/:id/like',     to: 'statuses#upvote',             via: 'put'
   match '/statuses/:id/dislike',  to: 'statuses#downvote',           via: 'put'
   match '/jobs',                  to: 'jobs#upvote',                 via: 'put'
-  match '/comments',              to: 'comments#create',             via: 'put'
+  # match '/comments/new',          to: 'comments#new',                via: "[:get, :post, :put]", as: :comment_path
+  # match '/comments',              to: 'comments#create',             via: 'put'
   match '/jobs/:id/like',         to: 'jobs#upvote',                 via: 'put'
   match '/jobs/:id/dislike',      to: 'jobs#downvote',               via: 'put'
   get   'questions/tags/:tag',    to: 'questions#index',              as: :tag
+
+  resources :comments
 
   resources :statuses do 
     resources :comments

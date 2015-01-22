@@ -3,10 +3,15 @@ class CommentsController < ApplicationController
 
   def index
     @comments = Comment.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @comments}
+    end
   end
 
   def update
-      @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:id])
 
     respond_to do |format|
       if @comment.update_attributes(comment_params)
@@ -15,6 +20,20 @@ class CommentsController < ApplicationController
       else
         redirect_to :back
       end
+    end
+  end
+
+   def show
+    @comment = Comment.find(params[:id])
+  end
+
+  def new
+    @comment = Comment.new
+
+    respond_to do |format|
+      format.html
+      format.json
+      flash[:success] = "Comment was added."
     end
   end
 
@@ -53,6 +72,6 @@ class CommentsController < ApplicationController
 
   private 
     def comment_params
-      params.require(:comment).permit(:body, :user_id, :id, :question_id, :status_id)
+      params.require(:comment).permit(:body, :user_id, :status_id)
     end
 end
