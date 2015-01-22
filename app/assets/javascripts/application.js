@@ -324,6 +324,7 @@ $(document).ready(function() {
       success: function() {
         $textarea.val("")
         $("textarea, #comment_status_id").val("")
+        $('#test-ajax').load(document.URL + ' #test-ajax')
       }
     });
   });
