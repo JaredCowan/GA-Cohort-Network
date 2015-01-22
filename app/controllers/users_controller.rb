@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def show
     # Check if the URL param passed was :user_name or :id
-    type = User.find_by_user_name(params[:id]) ? true : false
+    type = User.find_by_user_name(params[:id].downcase!) ? true : false
 
     case type
       when true # Param passed was :user_name
