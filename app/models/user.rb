@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   before_save { self.first_name = self.first_name.strip         }
   before_save { self.last_name  = self.last_name.strip          }
   before_save { self.email      = self.email.strip              }
-  before_save { self.user_name  = self.user_name.downcase.strip }
+  before_save { self.user_name  = self.user_name.downcase.strip.parameterize }
   before_save { self.github     = self.github.strip             }
   before_save { self.linkedin   = self.linkedin.strip           }
   before_save { self.facebook   = self.facebook.strip           }
@@ -61,6 +61,10 @@ class User < ActiveRecord::Base
                                       foreign_key: :user_id
   has_many :accepted_friends, through: :accepted_user_friendships, source: :friend
   
+  def to_param
+    user_name
+  end
+
   def self.get_gravatars
     all.each do |user|
       if user

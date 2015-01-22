@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  # before_action :params_class, only: [:show]
   before_action :signed_in_user, only: [:edit, :update, :destroy, :index]
   def index
     @users = User.all.page params[:page]
@@ -14,10 +15,28 @@ class UsersController < ApplicationController
   end
 
   def show
-    if params[:id]
-      @user = User.find(params[:id])
-    elsif params[:user_name]
-      @user = User.find_by_user_name params[:user_name]
+    # Check if the URL param passed was :user_name or :id
+    type = User.find_by_user_name(params[:id]) ? true : false
+
+    case type
+      when true # Param passed was :user_name
+        finding_user_by_name = User.find_by_user_name(params[:id])
+        @user = finding_user_by_name ? finding_user_by_name : found_user_by_id
+      when false # Param passed was :id - Convert :id to :user_name
+        try_user_id = params[:id].to_i # Convert :id to Fixnum
+        if User.exists?(id: try_user_id) # Check if the user with this :id exists
+          find_user_name   = User.where(id: try_user_id).first # Assign found user
+          found_user_by_id = User.find_by_user_name(find_user_name[:user_name])
+          params[:id]      = find_user_name[:user_name]
+          # Render page with :user_name as URL param
+          redirect_to user_path(params[:id])
+          @user = finding_user_by_name ? finding_user_by_name : found_user_by_id
+        else
+          flash[:alert] = "We couldn't find that user."
+          render file: "public/404" # Error page if nothing is found
+        end
+      else
+        render nothing: true # Render nothing if error
     end
   end
 
@@ -64,9 +83,12 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :user_name, :email, :password, :password_confirmation,
-      :user_id, :phone, :cell_phone, :public_email, :birthday, :github, :linkedin,
-      :facebook, :website, :city, :state, :job_position, :job_start, :job_end, :job_description, :group, :admin, :job_name)
+    params.require(:user).permit(:first_name, :last_name, :user_name, :email, :password,
+                                 :password_confirmation, :user_id, :phone, :cell_phone,
+                                 :public_email, :birthday, :github, :linkedin, :facebook,
+                                 :website, :city, :state, :job_position, :job_start,
+                                 :job_end, :job_description, :group, :admin, :job_name
+                                )
   end
 
    def user_friendship
