@@ -17,6 +17,8 @@ class StatusesController < ApplicationController
 
   def show
     @status = Status.find(params[:id])
+    # @comments = @status.comments
+    # @new_comment = @status.comments.new
 
     # respond_to do |format|
     #   format.html

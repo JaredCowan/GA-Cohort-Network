@@ -301,24 +301,24 @@ $(document).ready( function() {
 
 $(document).ready(function() {
 
-  $(".comment-submit").on("click", function(event) {
+  $(".edit_comment").on("submit", function(event) {
     event.preventDefault();
 
     var $commentBtn = $(this)
       , $textarea   = $(this).parent().parent().find("textarea");
-    console.log($textarea.val());
-    $textarea.val("")
-    $('#test-ajax').load(document.URL + ' #test-ajax')
-    $("textarea, #comment_status_id").val("")
+    // console.log($textarea.val());
+    // $textarea.val("")
+    // $('#test-ajax').load(document.URL + ' #test-ajax')
+    // $("textarea, #comment_status_id").val("")
 
     $.ajax({
       // url: Routes.comment_path({status_id: $commentBtn.data('statusId'), user_id: $commentBtn.data('userId'), body: $textarea.val()}),
-      url: '/comments/new',
-      dataType: 'json',
+      url: '/comments',
+      dataType: 'html',
       type: 'POST',
       error: function() {
         console.error("There was an error.");
-        console.log($commentBtn.data('userId'));
+        // console.log($commentBtn.data('userId'));
         // alert("There was an error.");
       },
       success: function() {

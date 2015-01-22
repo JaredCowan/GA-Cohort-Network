@@ -39,11 +39,11 @@ class CommentsController < ApplicationController
 
   def create 
 
-    # @status = Status.find(params[:status_id])
-    # @comment = @status.comments.create(comment_params)
+    @status = Status.find(params[:status_id])
+    # @comment = @status.comments.build(comment_params)
     @comment = Comment.create(comment_params)
-    respond_to do |format|
-      if @comment.save
+      respond_to do |format|
+    if @comment.save
         current_user.create_activity(@comment, 'created')
         format.html { redirect_to :back}
         format.json { render json: @comment, comment: :created }
