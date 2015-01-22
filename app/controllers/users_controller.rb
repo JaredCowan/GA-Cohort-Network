@@ -16,11 +16,11 @@ class UsersController < ApplicationController
 
   def show
     # Check if the URL param passed was :user_name or :id
-    type = User.find_by_user_name(params[:id].downcase!) ? true : false
+    type = User.find_by_user_name(params[:id].downcase) ? true : false
 
     case type
       when true # Param passed was :user_name
-        finding_user_by_name = User.find_by_user_name(params[:id])
+        finding_user_by_name = User.find_by_user_name(params[:id].downcase)
         @user = finding_user_by_name ? finding_user_by_name : found_user_by_id
       when false # Param passed was :id - Convert :id to :user_name
         try_user_id = params[:id].to_i # Convert :id to Fixnum
