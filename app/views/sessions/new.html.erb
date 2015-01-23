@@ -2,7 +2,7 @@
   <div class="small-8 small-centered columns" >
     <!-- <h1>Log in</h1> -->
 
-    <%#= simple_form_for(:session, url: sessions_path) do |f| %>
+    <%= simple_form_for(:session, url: sessions_path) do |f| %>
       <!-- <div class="form-group"> -->
         <%#= f.text_field :email, placeholder: "your email address..",
           class: 'form-control' %>
@@ -14,9 +14,9 @@
       <!-- <div class="form-group"> -->
         <%#= f.submit 'Log me in', class: 'btn btn-primary' %>
       <!-- </div> -->
-    <%# end %>
+    <% end %>
     <!-- <p>New user? <%#= link_to "Sign up now!", signup_path %></p> -->
-<%= render :partial => "partials/loginform" %>
+<%#= render :partial => "partials/loginform" %>
   </div>
 
 </div>

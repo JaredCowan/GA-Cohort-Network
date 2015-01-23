@@ -9,9 +9,8 @@ gem 'state_machine', :git => 'https://github.com/seuros/state_machine.git'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'draper'
 gem 'js-routes'
-gem 'haml'
-# gem 'haml-rails'
 gem 'autoprefixer-rails'
+gem "font-awesome-rails"
 gem 'bcrypt', '~> 3.1.7'
 gem 'httparty'
 gem 'mailboxer', git: 'git://github.com/ging/mailboxer.git'

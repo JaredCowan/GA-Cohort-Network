@@ -7,7 +7,7 @@
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag :modernizr %>
     <%= csrf_meta_tags %>
-    <meta name="description" content="GA Cohort Network for developers attending General Assebmly" />
+    <meta name="description" content="GA Cohort Network for developers attending General Assembly" />
     <meta property="og:site_name" content="GA Cohort Network" />
     <meta property="og:title" content="GA Cohort Network" />
     <meta property="og:type" content="website" />
@@ -16,184 +16,14 @@
     <link rel="canonical" href="ga-cohorts.herokuapp.com" />
     <link rel="shortlink" href="ga-cohorts.herokuapp.com" />
     <link rel="shortcut icon" href="https://generalassemb.ly/online/assets/favicon-bb2f243f124d9d86bcf9f565dbd59dfc.ico" />
-    <% if controller_name == "sessions" %>
-      <style>
-        body {
-          font-family: 'Raleway', sans-serif;
-          font-size: 18px;
-          /*background-color: #2980b9!important;*/
-        }
-        hr {
-          text-align: center;
-          margin: 0 auto;
-          opacity: 0.5;
-        }
-        ul {
-          text-transform: uppercase;
-        }
-        ul.inline-list.right {
-          text-transform: none;
-        }
-        ul.inline-list.right a {
-          color: #000;
-        }
-        ul.inline-list.right a:hover {
-          color: rgba(0, 0, 0, 0.5);
-        }
-        h1 {
-          font-family: 'American Typewriter', 'Courier New', Courier, Monaco, mono;
-          font-size: 32px;
-          color: #fff;
-          line-height: 28px;
-          margin-top: 16px;
-          margin-bottom: 0px;
-          text-align: center;
-        }
-        h2 {
-          font-family: 'American Typewriter', 'Courier New', Courier, Monaco, mono;
-          color: #fff;
-          font-size: 36px;
-          line-height: 34px;
-        }
-        h3 {
-          font-family: 'American Typewriter', 'Courier New', Courier, Monaco, mono;
-          font-size: 24px;
-          color: #fff;
-          line-height: 10px;
-          text-align: center;
-          font-weight: 500;
-          padding-bottom: 10px;
-        }
-        h4 {
-          font-family: 'American Typewriter', 'Courier New', Courier, Monaco, mono;
-          /*color: #000;*/
-          font-size: 28px;
-          padding-top: 5px;
-        }
-        .columns.large-centered {
-          padding-left: 5px;
-          padding-right: 5px;
-        }
-        @media only screen and (max-width: 40em)  {
-          .columns.large-centered {
-            font-size: 13px;
-          }
-        }
-        @media only screen and (min-width: 40.063em)  {
-          .columns.large-centered {
-            font-size: 14px;
-          }
-        }
-        .about-box {
-          color: #fff;
-        }
-        .black-box {
-          background-color: rgba(0, 0, 0, 0.55);
-          padding: 35px;
-          font-weight: 900;
-        }
-        .black-box p {
-          font-weight: 900;
-        }
-        .secondary.small.button {
-          background-color: transparent;
-          color: #fff;
-          border: 2px #fff solid;
-          border-radius: 5px;
-          padding: 15px 50px 15px 50px;
-          margin: 0;
-        }
-        .secondary.small.button:hover {
-          background-color: rgba(255, 255, 255, 0.5);
-        }
-        .row .main-wrapper {
-          color: #fff;
-          color: #000;
-        }
-        .about-content {
-          background-color: #fff;
-          box-shadow: 6px 5px 20px rgba(234, 234, 234, 1);
-          height:  163px;
-        }
-        .about-content * {
-          color: #000!important;
-        }
-        .button-group li .button {
-          border: 0!important;
-        }
-        .button {
-          -webkit-appearance: none;
-          background-color: transparent;
-          border-width: 0;
-          text-align: center;
-          box-shadow: 0 0 0;
-        }
-        .button:hover {
-          color: rgba(255, 255, 255, 0.7);
-          background-color: transparent;
-        }
-        footer p, footer a {
-          font-size: 14px;
-        }
-        .hero {
+    <style type="text/css" media="screen">
+      .hero {
           padding-bottom: 50px;
           background-image: url("assets/sg.JPG");
           background-size: cover;
           box-shadow: inset 0px 0px 0 2000px rgba(0, 0, 0, 0.2);
         }
-        .hero-content {
-          padding-top: 0;
-          padding-bottom: 30px;
-          /*background-color: #666;*/
-        }
-        .panel {
-          margin: 40px 0 40px 0;
-          box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-          border: none;
-          background-color: #EAEAEA;
-        }
-        .large-4 img {
-          box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .radius.right.button {
-          color: #000;
-          border: 2px #000 solid;
-          border-radius: 5px;
-          padding: 15px 50px 15px 50px;
-          margin: 0;
-          font-size: 0.8125em;
-        }
-        .four-image {
-          padding-bottom: 40px;
-          background-color: #2980b9!important;
-          padding-top: 37px;
-        }
-        @media only screen and (min-width: 64.063em)  {
-          .radius.right.button {
-            color: #000;
-            border: 2px #000 solid;
-            border-radius: 5px;
-            padding: 15px 50px 15px 50px;
-            margin-top: 25px;
-            font-size: 0.8125em;
-          }
-        }
-        @media only screen and (min-width: 40.063em) {
-          .radius.right.button {
-            color: #000;
-            border: 2px #000 solid;
-            border-radius: 5px;
-            padding: 15px 50px 15px 50px;
-            margin-top: 25px;
-            font-size: 0.8125em;
-          }
-        }
-        .radius.right.button:hover {
-          background-color: rgba(0, 0, 0, 0.1);
-        }
-
-      </style>
-    <% end %>
+    </style>
   </head>
   <body>
   <% if controller_name != "sessions" %>
@@ -204,52 +34,49 @@
     <%= yield %>
   <% end %>
   <% if controller_name == "sessions" %>
-    <section class="hero">
-      <div class="row page-title">
-        <div class="large-12 medium-12 columns">
-          <div class="main-wrapper">
-            <h1>General Assembly</h1>
-            <h3>Cohort Network</h3>
-            <hr> <br> <br> <br> <br>
+  <section class="hero">
+    <div class="row page-title">
+      <div class="xs-12 columns">
+        <div class="main-wrapper">
+          <h1>General Assembly</h1>
+          <h3>Cohort Network</h3>
+          <hr> <br> <br> <br> <br>
+        </div>
+      </div>
+    </div>
+    <div class="row login-block">
+      <div class="large-8 medium-6 columns about-box">
+        <div class="black-box">
+          <h2 class="login-header" style="background-color: transparent; text-align: center; text-shadow: 2px 1px 11px #000; color: #fff;">A place for personal <strong>development.</strong></h2>
+          <p class="login-text">A place for connecting cohorts to instructors and one-another while sharing knowledge and developing personal growth. Before, during and after your cohort ends.
+          </p>
+          <p style="margin-top: 15px; height: 60px;"></p> 
+          <center><a href="/users/new" class="secondary small button">Sign Me Up! →</a></center>
+        </div>
+      </div>
+      <div class="large-4 medium-6 columns about-box black-box">
+
+        <%= simple_form_for(:session, url: sessions_path, html: { class: "form-signin" }) do |f| %>
+        <h2 class="form-signin-heading">sign in now</h2>
+        <div class="login-wrap">
+          <%= f.label :email %>
+          <%= f.input_field :email, placeholder: "Email Address", class: 'form-control', autofocus: true %>
+          <%= f.label :password %>
+          <%= f.password_field :password, placeholder: "password", class: 'form-control'  %>
+          <!-- </div> -->
+          <!-- <div class="form-group"> -->
+          <%= f.input :Remember_me, as: :boolean, checked_value: true, unchecked_value: false %>
+          <%= f.submit 'Log me in', class: 'btn btn-lg btn-login btn-block' %>
+          <div class="registration">
+            Don't have an account yet? <br>
+            <%= link_to("Create an account", signup_path, class: '') %>
           </div>
-        </div>
+        </div> <!-- END login-wrap -->
+        <% end %>
       </div>
-      <div class="row login-block">
-        <div class="large-8 medium-6 columns about-box">
-          <div class="black-box">
-            <h2 class="login-header" style="background-color: transparent; text-align: center; text-shadow: 2px 1px 11px #000; color: #fff;">A place for personal <strong>development.</strong></h2>
-            <p class="login-text">A place for connecting cohorts to instructors and one-another while sharing knowledge and developing personal growth. Before, during and after your cohort ends.
-            </p>
-            <p style="margin-top: 15px; height: 60px;"></p> 
-            <center><a href="/users/new" class="secondary small button">Sign Me Up! →</a></center>
-          </div>
-        </div>
-        <div class="large-4 medium-6 columns about-box black-box">
-        <form data-abide accept-charset="UTF-8" action="/sessions" class="simple_form session" method="post" novalidate="novalidate">
-      <div style="display:none">
-        <input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="Z8om645E2k/dk6PFr7L7vg/ANYvbJBpTFAF1SmuE+WM=">
-      </div>
-      <div class="form-group email-field">
-        <label>Email <small>required</small>
-        <input class="form-control" id="session_email" name="session[email]" placeholder="your email address.." type="text" required>
-        <small class="error">An email address is required.</small>
-        </label>
-      </div>
-      <div class="form-group password-field">
-        <label>Password <small>required</small>
-        <input class="form-control" id="session_password" name="session[password]" placeholder="password ..." type="password" required pattern="[a-zA-Z0-9]+">
-        </label>
-        <small class="error">Your password must meet the requirements</small>
-      </div>
-      <div class="">
-        <div class="form-group">
-        <button type="submit" value="Log me in" class="button small radius success">Submit</button>
-        <%= link_to("Sign Up", signup_path, class: 'button right') %>
-      </div>
-    </form>
-        </div>
-      </div>
-    </section>
+    </div>
+  </section>
+
       </div>
       <div class="four-image">
         <h1 class="four-image-header">A few reasons why you'll love us.</h1><br>
@@ -296,9 +123,9 @@
       <br>
     </div>
       <% if controller_name == "users" && params[:action] == "show" %>
-        <%#= javascript_tag do %>
-          <!-- window.user_id = "<%#= @user.id %>" -->
-        <%# end %>
+        <%= javascript_tag do %>
+          window.user_id = "<%#= @user.id %>"
+        <% end %>
       <% end %>
           <script>
       (function() {

@@ -325,10 +325,16 @@ $(document).ready( function() {
         // $textarea.val("")
         $("textarea").val("")
         $("#comment_body").val("")
-        $('#test-ajax-two').load("<div id='test-ajax-two'>" + "<%= escape_javascript(render('status/commentform')) %>" + "</div>")
+        $("form").find("#comment_body").val("")
+        $('#test-ajax-two').load(document.URL + ' #test-ajax-two')
         $('#test-ajax').load(document.URL + ' #test-ajax')
       }
     });
   });
+  // $(".comment").on("click", function(event) {
+  //   $("form").find("#comment_body").val("")
+  //   document.getElementById('comment_body').value = ""
+  //   $('#test-ajax-two').load(document.URL + ' #test-ajax-two')
+  // });
 // });
 

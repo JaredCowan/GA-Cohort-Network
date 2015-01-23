@@ -31,10 +31,10 @@ class StatusesController < ApplicationController
     # @status = current_user.statuses.new
     # @document.build_document
 
-    respond_to do |format|
-      format.html
-      format.json { render json: @status }
-    end
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render json: @status }
+    # end
   end
 
   def edit
