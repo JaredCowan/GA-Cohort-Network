@@ -12,8 +12,8 @@ class AddPublicInfoToUsers < ActiveRecord::Migration
     add_column :users, :state, :string, :default => ""
     add_column :users, :job, :string, :default => ""
     add_column :users, :job_position, :string, :default => ""
-    add_column :users, :job_start, :date, :default => Date.new
-    add_column :users, :job_end, :date, :default => Date.new
+    add_column :users, :job_start, :date
+    add_column :users, :job_end, :date
     add_column :users, :job_description, :string, :default => ""
     add_column :users, :group, :string, :null => false, :default => "student"
     add_column :users, :admin, :boolean, :null => false, :default => false

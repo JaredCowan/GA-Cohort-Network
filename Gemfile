@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.1.5'
 gem 'pg'
+gem 'rake', '>=10.3.2'
 # gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
@@ -32,6 +33,7 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'acts-as-taggable-on'
 gem 'unicorn'
 gem 'faker'
+gem 'mysql2'
 
 group :test do
   gem 'minitest'
@@ -43,6 +45,7 @@ group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
   gem "rspec-rails"
+  
 end
 
 group :test do

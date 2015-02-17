@@ -9,8 +9,8 @@ class CreateLessons < ActiveRecord::Migration
       t.text :description
       t.boolean :all_day, :default => false
       t.integer :user_id
-      t.datetime :start, :null => false, :default => Time.now
-      t.datetime :end, :null => false, :default => Time.now
+      t.datetime :start
+      t.datetime :end
       t.references :user, index: true
       
       t.timestamps

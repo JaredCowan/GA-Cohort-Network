@@ -6,8 +6,8 @@ class Document < ActiveRecord::Base
   belongs_to :user
   belongs_to :post
   has_many :activities, :as => :targetable, :dependent => :destroy
-  has_attached_file :attachment, :styles => { :medium => "300x300>", :thumb => "100x100>" }
-  validates_attachment_file_name :attachment, :matches => [/png\Z/, /jpe?g\Z/, /gif\Z/]
+  has_attached_file :attachment
+  validates_attachment_file_name :attachment, :matches => [/png\Z/, /jpg\Z/, /gif\Z/, /jpeg\Z/]
   # validates :user_id, presence: true
 
   attr_accessor :remove_attachment

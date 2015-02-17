@@ -164,6 +164,7 @@ GEM
     modernizr-rails (2.7.1)
     multi_json (1.10.1)
     multi_xml (0.5.5)
+    mysql2 (0.3.18)
     netrc (0.7.7)
     pg (0.17.1)
     polyamorous (1.1.0)
@@ -294,11 +295,13 @@ DEPENDENCIES
   mailboxer!
   minitest
   modernizr-rails
+  mysql2
   paperclip!
   pg
   rails (= 4.1.5)
   rails4-autocomplete
   rails_12factor
+  rake (>= 10.3.2)
   ransack!
   rspec-rails
   sass-rails (~> 4.0.3)
