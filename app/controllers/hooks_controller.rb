@@ -6,7 +6,7 @@ class HooksController < ApplicationController
     request.body.rewind
     payload = JSON.parse(request.body.read)
     action = "#{payload['action']}"
-    number = "#{payload['number']}"
+    number = "#{payload['issue']['number']}"
     $name = ENV['verdebotname']
     $token = ENV['verdebottoken']
     $bot = "#{payload['comment']['user']['login']}"
