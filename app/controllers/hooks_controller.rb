@@ -23,11 +23,17 @@ class HooksController < ApplicationController
       issuebody = payload['issue']['body']
       addon = %(<a href="#"><img src="http://www.codereviewhub.com/site/github-approved-avatar.png" align="left" height="34" width="246"><img src='https://avatars.githubusercontent.com/u/7110664?v=3' width=34 height=34></a>) 
 
-      final = "#{issuebody} \r\n #{addon} \r\n @JaredCowan you have a new issue." <<
+      final = "#{issuebody} \r\n #{addon} \r\n @JaredCowan you have a new issue." +
       "This is a fully automated comment."
 
+      test = <<FREE
+      #{issuebody} \r\n #{addon} \r\n @JaredCowan you have a new issue.
+
+      This is a fully automated comment.
+FREE
+
       # post = HTTParty.POST("https://api.github.com/repos/JaredCowan/Ga-Cohort-Network/issues/1/comments", :headers => { "User-Agent" => usr[:username], "Authorization" => "#{token}" }, :body => { :body => final}.to_json) 
-      post = HTTParty.post("https://api.github.com/repos/JaredCowan/Ga-Cohort-Network/issues/1/comments", :headers => { "User-Agent" => "#{$name}", "Authorization" => "#{$token}" }, :body => { :body => "#{final}"}.to_json)
+      post = HTTParty.post("https://api.github.com/repos/JaredCowan/Ga-Cohort-Network/issues/1/comments", :headers => { "User-Agent" => "#{$name}", "Authorization" => "#{$token}" }, :body => { :body => "#{test}"}.to_json)
 
       puts payload['comment']['user']['login']
     end
