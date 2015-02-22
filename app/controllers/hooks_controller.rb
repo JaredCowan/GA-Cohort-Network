@@ -13,14 +13,6 @@ class HooksController < ApplicationController
     $name = ENV['verdebotname']
     $token = ENV['verdebottoken']
     $bot = "#{payload['comment']['user']['login']}"
-    # if action == "created"
-    #   comment = payload['comment']
-
-
-    #   usr = {:username => ENV['GH_VALUE']}
-    #   issuebody = %(<a href="#"><img src="http://www.codereviewhub.com/site/github-approved-avatar.png" align="left" height="34" width="246"><img src='https://avatars.githubusercontent.com/u/7110664?v=3' width=34 height=34></a>) 
-    #   post = HTTParty.post("https://api.github.com/repos/JaredCowan/Ga-Cohort-Network/issues/1/comments", :headers => { "User-Agent" => usr[:username], "Authorization" => ENV['GH_TOKEN'] }, :body => { :body => issuebody}.to_json) 
-    # end
 
     puts "#{$bot}" == "VerdeCircle-Bot"
     puts count.to_i <= 1
