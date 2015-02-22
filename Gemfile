@@ -33,6 +33,7 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'acts-as-taggable-on'
 gem 'unicorn'
 gem 'faker'
+gem 'mysql2'
 
 group :test do
   gem 'minitest'

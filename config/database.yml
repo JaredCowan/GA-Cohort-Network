@@ -13,8 +13,11 @@ test:
   database: ga_test
 
 production:
-  <<: *default
-  database: <%= ENV['DATABASEURL'] %>
-  username: <%= ENV['HOSTUSERNAME'] %>
-  password: <%= ENV['HOSTPASSWORD'] %>
+   hostname: <%= ENV['HOSTNAME'] %>
+   port: 3306
+   username: <%= ENV['HOSTUSERNAME'] %>
+   password: <%= ENV['HOSTPASSWORD'] %>
+   database: <%= ENV['DATABASENAME'] %>
+   adapter: mysql2
+   encoding: utf8
 
