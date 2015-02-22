@@ -9,7 +9,7 @@ class HooksController < ApplicationController
     number = "#{payload['issue']['number']}"
     url = "#{payload['issue']['html_url']}"
     user = "#{payload['issue']['user']['login']}"
-    count = "#{payload['comments']}"
+    count = "#{payload['issue']['comments']}"
     $name = ENV['verdebotname']
     $token = ENV['verdebottoken']
     $bot = "#{payload['comment']['user']['login']}"
