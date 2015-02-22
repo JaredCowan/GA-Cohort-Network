@@ -5,7 +5,7 @@ class HooksController < ApplicationController
   def post_callback
     request.body.rewind
     pay = JSON.parse(request.body.read)
-    puts pay
+    puts pay['action']
     puts params
 
     if payload['action'] == "post_callback"
