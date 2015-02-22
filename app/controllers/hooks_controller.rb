@@ -8,6 +8,8 @@ class HooksController < ApplicationController
     # puts "status code: #{post.code}, status message: #{post.message}"
     # puts pretty(body)
     # puts request.inspect
+    puts "here is the response"
+    puts HTTParty.response
     puts post
     render :nothing => true
   end
