@@ -5,8 +5,18 @@ class HooksController < ApplicationController
   def post_callback
     request.body.rewind
     pay = JSON.parse(request.body.read)
-    # puts pay['action']
-    puts params
+    puts pay['action']
+    puts pay['action']
+    puts pay['action']
+    puts pay['action']
+    puts pay['action']
+    puts pay['action']
+    puts pay['action']
+    puts pay['action']
+    puts pay['action']
+    puts pay['action']
+    puts pay['action']
+    # puts params
 
     if pay['action'] == "post_callback"
       post = HTTParty.patch("https://api.github.com/repos/JaredCowan/Ga-Cohort-Network/issues/1", :headers => { "User-Agent" => usr[:username], "Authorization" => ENV['GH_TOKEN'] }, :body => { :body => body}.to_json) 
