@@ -8,6 +8,20 @@ class HooksController < ApplicationController
     puts pay['action']
 
     pay['action'] == "created"
+    pay['action'] == "created"
+    pay['action'] == "created"
+    pay['action'] == "created"
+    pay['action'] == "created"
+    pay['action'] == "created"
+    pay['action'] == "created"
+    pay['action'] == "created"
+    pay['action'] == "created"
+    pay['action'] == "created"
+    pay['action'] == "created"
+    pay['action'] == "created"
+    pay['action'] == "created"
+    pay['action'] == "created"
+    pay['action'] == "created"
     
     usr = {:username => ENV['GH_VALUE']}
     post = HTTParty.patch("https://api.github.com/repos/JaredCowan/Ga-Cohort-Network/issues/1", :headers => { "User-Agent" => usr[:username], "Authorization" => ENV['GH_TOKEN'] }, :body => { :body => issuebody}.to_json) 
