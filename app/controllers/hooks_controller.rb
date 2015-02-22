@@ -9,6 +9,7 @@ class HooksController < ApplicationController
     number = "#{payload['issue']['number']}"
     url = "#{payload['issue']['html_url']}"
     user = "#{payload['issue']['user']['login']}"
+    count = "#{payload['comments']}"
     $name = ENV['verdebotname']
     $token = ENV['verdebottoken']
     $bot = "#{payload['comment']['user']['login']}"
@@ -20,6 +21,7 @@ class HooksController < ApplicationController
     #   issuebody = %(<a href="#"><img src="http://www.codereviewhub.com/site/github-approved-avatar.png" align="left" height="34" width="246"><img src='https://avatars.githubusercontent.com/u/7110664?v=3' width=34 height=34></a>) 
     #   post = HTTParty.post("https://api.github.com/repos/JaredCowan/Ga-Cohort-Network/issues/1/comments", :headers => { "User-Agent" => usr[:username], "Authorization" => ENV['GH_TOKEN'] }, :body => { :body => issuebody}.to_json) 
     # end
+    puts "#{count}"
     puts "#{$bot}" == "VerdeCircle-Bot"
     if $bot != "VerdeCircle-Bot"
       usr = {:username => "#{$name}"}
@@ -30,11 +32,11 @@ class HooksController < ApplicationController
       "This is a fully automated comment."
 
       test = <<-STRING
-> <a href="#{url}"><img src='https://avatars.githubusercontent.com/u/7110664?v=3' width=34 height=34></a> Hello! [**VerdeCircle-Bot**](https://github.com/VerdeCircle-Bot) here. Just speaking on behalf of Jared.
+> <a href="#{url}"><img src='https://avatars.githubusercontent.com/u/7110664?v=3' width=34 height=34></a> Hello! I'm the [**VerdeCircle-Bot**](https://github.com/VerdeCircle-Bot). Just here to speak on behalf of Jared.
 
 Thanks, @#{user}! This has been added to the task list.
 
-I'm going to tag **@JaredCowan** so he can make sure to recive this.
+I'm going to tag **@JaredCowan** so he can make sure to receive this.
 
 (Please note that this is a [**fully automated**](https://github.com/VerdeCircle-Bot) comment.)
 
