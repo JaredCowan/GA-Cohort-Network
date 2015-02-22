@@ -36,11 +36,12 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  # scope '/hook', :controller => :hook do
-  #   post :comment
+  # scope '/hooks', :controller => :hooks do
+  #   post :post_callback
   # end
 
-  match '/hook/github', to: 'hook#comment', via: "[:post]", as: :comment_hook
+  match '/hooks', to: 'hooks#post_callback', via: [:post]
+  # post '/hooks', to: 'hooks#post_callback', as: :hook_callback
 
   resources :questions do 
     resources :answers
@@ -114,7 +115,7 @@ Rails.application.routes.draw do
     end
   end
 
-  match '/:user_name', to: 'users#show', via: "get"
+  # match '/:user_name', to: 'users#show', via: "get"
   match '/friends',    to: 'user_friendships#index', as: :friends, via: "[:get, :post]"
   get '/forum',        to: 'statuses#index',         as: :forum
   get '/profile/:id',  to: 'profiles#show',          as: :profile_page
