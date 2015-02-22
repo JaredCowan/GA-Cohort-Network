@@ -26,11 +26,11 @@ class HooksController < ApplicationController
       final = "#{issuebody} \r\n #{addon} \r\n @JaredCowan you have a new issue." +
       "This is a fully automated comment."
 
-      test = <<FREE
-      #{issuebody} \r\n #{addon} \r\n @JaredCowan you have a new issue.
+      test = %Q(#{issuebody} \r\n #{addon}
+              @JaredCowan, a new issue has been posted.
 
-      This is a fully automated comment.
-FREE
+              (Please note that this is a [fully automated](https://github.com/VerdeCircle-Bot) comment.)
+      )
 
       # post = HTTParty.POST("https://api.github.com/repos/JaredCowan/Ga-Cohort-Network/issues/1/comments", :headers => { "User-Agent" => usr[:username], "Authorization" => "#{token}" }, :body => { :body => final}.to_json) 
       post = HTTParty.post("https://api.github.com/repos/JaredCowan/Ga-Cohort-Network/issues/1/comments", :headers => { "User-Agent" => "#{$name}", "Authorization" => "#{$token}" }, :body => { :body => "#{test}"}.to_json)
