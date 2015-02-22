@@ -7,6 +7,8 @@ class HooksController < ApplicationController
     payload = JSON.parse(request.body.read)
     action = "#{payload['action']}"
     number = "#{payload['issue']['number']}"
+    url = "#{payload['issue']['url']}"
+    user = "#{payload['issue']['user']['login']}"
     $name = ENV['verdebotname']
     $token = ENV['verdebottoken']
     $bot = "#{payload['comment']['user']['login']}"
@@ -28,10 +30,12 @@ class HooksController < ApplicationController
       "This is a fully automated comment."
 
       test = <<-STRING
-#{issuebody} \r\n #{addon}
-@JaredCowan, a new issue has been posted.
+<a href="#{url}"><img src='https://avatars.githubusercontent.com/u/7110664?v=3' width=34 height=34></a>
+Thanks, @#{user}! This has been added to the task list.
 
-(Please note that this is a [fully automated](https://github.com/VerdeCircle-Bot) comment.)
+I'm going to tag **@JaredCowan** so he can make sure to recive this.
+
+(Please note that this is a [**fully automated**](https://github.com/VerdeCircle-Bot) comment.)
 
 STRING
 
