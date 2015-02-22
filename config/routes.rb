@@ -41,7 +41,6 @@ Rails.application.routes.draw do
   # end
 
   match '/hooks', to: 'hooks#post_callback', via: [:post]
-  # post '/hooks', to: 'hooks#post_callback', as: :hook_callback
 
   resources :questions do 
     resources :answers
