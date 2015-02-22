@@ -5,33 +5,16 @@ default: &default
   host: localhost
 
 development:
-  hostname: <%= ENV['HOSTDBNAME'] %>
-  port: 3306
-  username: <%= ENV['HOSTDBUSERNAME'] %>
-  password: <%= ENV['HOSTDBPASSWORD'] %>
-  database: gacohorts
-  adapter: mysql2
-  encoding: utf8
-
-# development:
-#   <<: *default
-#   database: ga_development
+  <<: *default
+  database: ga_development
 
 test:
   <<: *default
   database: ga_test
 
-# production:
-#   <<: *default
-#   database: ga_production
-#   username: ga
-#   password: <%= ENV['GA_DATABASE_PASSWORD'] %>
-
 production:
-  hostname: <%= ENV['HOSTNAME'] %>
-  port: 3306
+  <<: *default
+  database: <%= ENV['DATABASEURL'] %>
   username: <%= ENV['HOSTUSERNAME'] %>
   password: <%= ENV['HOSTPASSWORD'] %>
-  database: <%= ENV['DATABASENAME'] %>
-  adapter: mysql2
-  encoding: utf8
+

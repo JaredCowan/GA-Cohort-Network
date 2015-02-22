@@ -36,6 +36,10 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  scope '/hooks', :controller => :hook do
+    post :comment
+  end
+
   resources :questions do 
     resources :answers
   end  
