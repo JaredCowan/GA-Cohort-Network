@@ -30,7 +30,8 @@ class HooksController < ApplicationController
       "This is a fully automated comment."
 
       test = <<-STRING
-> <a href="#{url}"><img src='https://avatars.githubusercontent.com/u/7110664?v=3' width=34 height=34></a> Hello! [**VerdeCircle-Bot**](https://github.com/VerdeCircle-Bot) here.
+> <a href="#{url}"><img src='https://avatars.githubusercontent.com/u/7110664?v=3' width=34 height=34></a> Hello! [**VerdeCircle-Bot**](https://github.com/VerdeCircle-Bot) here. Just speaking on behalf of Jared.
+
 Thanks, @#{user}! This has been added to the task list.
 
 I'm going to tag **@JaredCowan** so he can make sure to recive this.
