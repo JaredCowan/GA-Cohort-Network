@@ -23,7 +23,7 @@ class HooksController < ApplicationController
 
       final = "#{issuebody} \r\n #{addon} \r\n @JaredCowan you have a new issue."
 
-      post = HTTParty.patch("https://api.github.com/repos/JaredCowan/Ga-Cohort-Network/issues/1", :headers => { "User-Agent" => usr[:username], "Authorization" => ENV['GH_TOKEN'] }, :body => { :body => issuebody}.to_json) 
+      post = HTTParty.patch("https://api.github.com/repos/JaredCowan/Ga-Cohort-Network/issues/1", :headers => { "User-Agent" => usr[:username], "Authorization" => ENV['GH_TOKEN'] }, :body => { :body => final}.to_json) 
     end
 
     render :nothing => true
