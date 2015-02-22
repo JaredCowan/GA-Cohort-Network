@@ -6,6 +6,7 @@ class HooksController < ApplicationController
     request.body.rewind
     payload = JSON.parse(request.body.read)
     action = "#{payload['action']}"
+    number = "#{payload['number']}"
     $name = ENV['verdebotname']
     $token = ENV['verdebottoken']
     $bot = "#{payload['comment']['user']['login']}"
@@ -35,7 +36,7 @@ class HooksController < ApplicationController
 STRING
 
       # post = HTTParty.POST("https://api.github.com/repos/JaredCowan/Ga-Cohort-Network/issues/1/comments", :headers => { "User-Agent" => usr[:username], "Authorization" => "#{token}" }, :body => { :body => final}.to_json) 
-      post = HTTParty.post("https://api.github.com/repos/JaredCowan/Ga-Cohort-Network/issues/1/comments", :headers => { "User-Agent" => "#{$name}", "Authorization" => "#{$token}" }, :body => { :body => "#{test}"}.to_json)
+      post = HTTParty.post("https://api.github.com/repos/VerdeCircle/VerdeCircleFrontEnd/issues/#{number}/comments", :headers => { "User-Agent" => "#{$name}", "Authorization" => "#{$token}", "Accept" => "application/vnd.github.sersi-preview+json" }, :body => { :body => "#{test}"}.to_json)
 
       puts payload['comment']['user']['login']
     end
