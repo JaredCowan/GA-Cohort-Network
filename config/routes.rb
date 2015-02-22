@@ -36,9 +36,11 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  scope '/hooks', :controller => :hook do
-    post :comment
-  end
+  # scope '/hook', :controller => :hook do
+  #   post :comment
+  # end
+
+  match '/hook/github', to: 'hook#comment', via: "[:post]", as: :comment_hook
 
   resources :questions do 
     resources :answers
