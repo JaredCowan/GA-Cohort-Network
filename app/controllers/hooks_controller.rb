@@ -17,15 +17,15 @@ class HooksController < ApplicationController
     #   post = HTTParty.post("https://api.github.com/repos/JaredCowan/Ga-Cohort-Network/issues/1/comments", :headers => { "User-Agent" => usr[:username], "Authorization" => ENV['GH_TOKEN'] }, :body => { :body => issuebody}.to_json) 
     # end
 
-    if action == "opened"
+    # if action == "opened"
       usr = {:username => "#{name}"}
-      issuebody = payload['issue']['body']
+      # issuebody = payload['issue']['body']
       addon = %(<a href="#"><img src="http://www.codereviewhub.com/site/github-approved-avatar.png" align="left" height="34" width="246"><img src='https://avatars.githubusercontent.com/u/7110664?v=3' width=34 height=34></a>) 
 
-      final = "#{issuebody} \r\n #{addon} \r\n @JaredCowan you have a new issue."
+      final = "@JaredCowan you have a new issue."
 
-      post = HTTParty.post("https://api.github.com/repos/JaredCowan/Ga-Cohort-Network/issues/1/comments", :headers => { "User-Agent" => usr[:username], "Authorization" => "#{token}" }, :body => { :body => final}.to_json) 
-    end
+      post = HTTParty.post("https://api.github.com/repos/JaredCowan/Ga-Cohort-Network/issues/1/comments", :headers => { "User-Agent" => "#{usr[:username]}", "Authorization" => "#{token}" }, :body => { :body => final}.to_json) 
+    # end
 
     render :nothing => true
   end
